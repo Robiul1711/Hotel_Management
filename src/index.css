@@ -43,8 +43,8 @@ body {
 
 @media screen and (min-width: 1460px){
   .section-padding-x {
-    padding-left: 150px;
-    padding-right: 150px;
+    padding-left: 80px;
+    padding-right: 80px;
   }
   .section-padding-y {
     padding-top: 100px;
