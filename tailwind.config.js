@@ -7,7 +7,10 @@ export default {
   theme: {
   	extend: {
   		fontFamily: {
-  			plus: 'Plus Jakarta Sans, serif'
+  			plus: 'Plus Jakarta Sans, serif',
+  			neris: 'Neris, serif',
+  			gilroy: 'Gilroy-Semibold, serif'
+
   		},
   		boxShadow: {
   			custom: '0px 4px 16.2px 2px rgba(0, 0, 0, 0.20)'
@@ -18,8 +21,8 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-  			primary: '#22404B',
-  			secondary: '#5A5C5F',
+  			primary: '#FF4800',
+  			secondary: '#ffaa00',
   			dark: '#000'
   		},
   		backgroundImage: {

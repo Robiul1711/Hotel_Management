@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FiHome, FiCalendar, FiFolder, FiUser } from 'react-icons/fi';
+import { FiHome, FiUser } from 'react-icons/fi';
+import { TripIcons, CalanderIcons, UserIcons, HomeIcons } from '@/lib/CustomIcons';
 
 const MobileNavbar = () => {
   const navItems = [
-    { to: '/', icon: <FiHome size={22} />, label: 'Home' },
-    { to: '/calendar', icon: <FiCalendar size={22} />, label: 'Calendar' },
-    { to: '/bookings', icon: <FiFolder size={22} />, label: 'Bookings' },
-    { to: '/profile', icon: <FiUser size={22} />, label: 'Profile' },
+    { to: '/', icon: HomeIcons, label: 'Home' },
+    { to: '/', icon: CalanderIcons, label: 'Calendar' },
+    { to: '/bookings', icon: TripIcons, label: 'Bookings' },
+    { to: '/profile', icon: UserIcons, label: 'Profile' },
   ];
 
   return (
@@ -23,7 +24,11 @@ const MobileNavbar = () => {
               }`
             }
           >
-            {item.icon}
+            {({ isActive }) => {
+              const IconComponent = item.icon;
+              const color = isActive ? '#f97316' : '#6b7280'; // tailwind's orange-500 and gray-500
+              return <IconComponent color={color} size={22} />;
+            }}
           </NavLink>
         ))}
       </div>

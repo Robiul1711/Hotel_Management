@@ -7,7 +7,7 @@ const Footer = () => {
     return isActive ? 'font-semibold text-[#486284]' : 'font-semibold text-black'
   }
   return (
-    <div className='w-11/12 space-y-8 mx-auto'>
+    <div className='w-11/12 space-y-8 mx-auto pb-10'>
 
       <div className="border-b border-black flex justify-center py-8">
         <ul className='text-black flex gap-5 lg:gap-12'>
