@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 const SearchBar = () => {
     const [activeTab, setActiveTab] = useState("stays");
@@ -35,13 +36,13 @@ const SearchBar = () => {
 
                             {/* Check-out */}
                             <div className="flex flex-col">
-                                <span className="text-lg text-black">Check-out</span>
+                                <span className="text-lg text-black flex items-center">Check-out <RiArrowDropDownLine className='text-2xl' /></span>
                                 <span className="text-primary text-2xl font-medium">28 Feb ‘25</span>
                             </div>
 
                             {/* Guests */}
                             <div className="flex flex-col">
-                                <span className="text-lg text-black">Guests</span>
+                                <span className="text-lg text-black flex items-center">Guests <RiArrowDropDownLine className='text-2xl' /></span>
                                 <span className="text-primary text-2xl font-medium">2 Adults | 1 Room</span>
                             </div>
 

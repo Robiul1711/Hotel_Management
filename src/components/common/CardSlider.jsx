@@ -1,30 +1,40 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
-import { IoLocationOutline } from "react-icons/io5";
-
 import Card from './Card';
 
-
-
-export default function CardSlider({data}) {
+export default function CardSlider({ data }) {
   return (
     <div className="w-full mx-auto py-10 bg-transparent">
       <Swiper
-        // modules={[Autoplay]}
-        spaceBetween={30}
-        slidesPerView={3}
+        modules={[]}
+        spaceBetween={20}
         loop={true}
-        // autoplay={{
-        //   delay: 1, // almost no delay
-        //   disableOnInteraction: false,
-        // }}
-
-        speed={6000} // smooth transition over 3 seconds
-        allowTouchMove={true} // optional: disable dragging to keep it smooth
         grabCursor={true}
-      >{
-        data.map((item, index) => (
+        speed={3000}
+        autoplay={{
+          delay: 1,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          480: {
+            slidesPerView: 1.2,
+          },
+          640: {
+            slidesPerView: 1.5,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
+      >
+        {data.map((item, index) => (
           <SwiperSlide key={index}>
             <Card data={item} />
           </SwiperSlide>
