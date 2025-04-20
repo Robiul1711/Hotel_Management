@@ -1,9 +1,7 @@
-import React from 'react';
 import CardSlider from '../common/CardSlider';
-import CommonPageWrapper from '@/lib/CommonPageWrapper';
-import img1 from '@/assets/images/stay1.png';
-import img2 from '@/assets/images/stay2.png';
-
+import img1 from '@/assets/images/outdoor1.png';
+import img2 from '@/assets/images/outdoor2.png';
+import { FireIcons, MediIcons } from '@/lib/CustomIcons';
 const data = [
     {
         img: img1,
@@ -46,34 +44,21 @@ const data = [
         location: 'Lagos, Nigeria',
     }
 ]
-
-
-const Stays = () => {
+const Outdoor = () => {
     return (
-        <div>
-            <div className="flex flex-col gap-8">
-                <p className="text-primary text-5xl">
-                    Popular Hich Stays
-                </p>
-                <div className="flex gap-4">
-                    <button className="bg-secondary text-white md:px-6 md:py-2 rounded-full hover:bg-orange-600 transition-all">
-                        Hotels
-                    </button>
-
-                    <button className="text-secondary border border-secondary md:px-6 md:py-2 rounded-full hover:bg-orange-600 transition-all">
-                        Villa Rentals
-                    </button>
-                </div>
+        <div className='relative'>
+            <div className="flex justify-between">
+                <p className="text-[32px] text-secondary">Adventures & Outdoors</p>
+                <FireIcons />
             </div>
-            <CardSlider data={data}  />
-
+            <CardSlider data={data} cardNo={2} />
             <div className="flex justify-center">
-                <button className="bg-primary text-white md:px-8  md:py-5 rounded-full hover:bg-orange-600 transition-all">
-                View All Packages
+                <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all">
+                    View All
                 </button>
             </div>
         </div>
     );
 };
 
-export default Stays;
+export default Outdoor;

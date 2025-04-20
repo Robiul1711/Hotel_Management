@@ -1,8 +1,7 @@
-import React from 'react';
-import CardSlider from '../common/CardSlider';
-import CommonPageWrapper from '@/lib/CommonPageWrapper';
 import img1 from '@/assets/images/stay1.png';
 import img2 from '@/assets/images/stay2.png';
+import element from '@/assets/images/element2.png';
+import CardSlider from '../common/CardSlider';
 
 const data = [
     {
@@ -47,33 +46,18 @@ const data = [
     }
 ]
 
-
-const Stays = () => {
+const PrivateVilla = () => {
     return (
-        <div>
-            <div className="flex flex-col gap-8">
-                <p className="text-primary text-5xl">
-                    Popular Hich Stays
-                </p>
-                <div className="flex gap-4">
-                    <button className="bg-secondary text-white md:px-6 md:py-2 rounded-full hover:bg-orange-600 transition-all">
-                        Hotels
-                    </button>
-
-                    <button className="text-secondary border border-secondary md:px-6 md:py-2 rounded-full hover:bg-orange-600 transition-all">
-                        Villa Rentals
-                    </button>
-                </div>
-            </div>
-            <CardSlider data={data}  />
-
+        <div className='relative'>
+            <p className="text-[32px] text-secondary">Private Villas & Stays</p>
+            <CardSlider data={data} />
             <div className="flex justify-center">
-                <button className="bg-primary text-white md:px-8  md:py-5 rounded-full hover:bg-orange-600 transition-all">
-                View All Packages
+                <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all">
+                    View All
                 </button>
             </div>
         </div>
     );
 };
 
-export default Stays;
+export default PrivateVilla;
