@@ -1,4 +1,6 @@
+import Experience from "@/components/home/Experience";
 import Layout from "@/layout/Layout";
+import ExperiencePage from "@/pages/experience/ExperiencePage";
 import Home from "@/pages/home/Home";
 import StayPage from "@/pages/stays/StayPage";
 import { createBrowserRouter } from "react-router-dom";
@@ -15,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/stays",
         element: <StayPage/>
+      },
+      {
+        path: "/experience",
+        element: <ExperiencePage/>
       }
     ],
   },

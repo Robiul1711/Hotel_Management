@@ -3,7 +3,7 @@ import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import Card from './Card';
 
-export default function CardSlider({ data }) {
+export default function CardSlider({ data, cardNo=3 }) {
   return (
     <div className="w-full mx-auto py-10 bg-transparent">
       <Swiper
@@ -30,7 +30,7 @@ export default function CardSlider({ data }) {
             slidesPerView: 2,
           },
           1024: {
-            slidesPerView: 3,
+            slidesPerView: cardNo,
           },
         }}
       >
