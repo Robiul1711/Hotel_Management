@@ -1,5 +1,6 @@
 import SearchBar from '@/components/home/SearchBar';
 import Service from '@/components/home/Service';
+import Details from '@/components/hotelPackage/Details';
 import HichFacilities from '@/components/hotelPackage/HichFacilities';
 import PackageGallery from '@/components/hotelPackage/PackageGallery';
 import CommonPageWrapper from '@/lib/CommonPageWrapper';
@@ -45,6 +46,7 @@ const HotelPackage = () => {
             <CommonPageWrapper>
                 <PackageGallery/>
                 <HichFacilities/>
+                <Details/>
             </CommonPageWrapper>
         </>
 
