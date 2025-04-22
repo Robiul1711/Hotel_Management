@@ -7,8 +7,8 @@ const MobileNavbar = () => {
   const navItems = [
     { to: '/', icon: HomeIcons, label: 'Home' },
     { to: '/', icon: CalanderIcons, label: 'Calendar' },
-    { to: '/bookings', icon: TripIcons, label: 'Bookings' },
-    { to: '/profile', icon: UserIcons, label: 'Profile' },
+    { to: '/', icon: TripIcons, label: 'Bookings' },
+    { to: '/', icon: UserIcons, label: 'Profile' },
   ];
 
   return (

@@ -5,15 +5,23 @@ import img2 from '@/assets/images/hotelP2.png';
 import img3 from '@/assets/images/hotelP3.png';
 import img4 from '@/assets/images/hotelP4.png';
 import img5 from '@/assets/images/hotelP5.png';
+import { SettingIcons } from '@/lib/CustomIcons';
 
 const PackageGallery = () => {
     return (
         <div className=" px-4 py-6">
-            <p className="text-[28px] md:text-[32px] font-semibold text-primary">The Peninsula Beverly Hills</p>
-            <p className="flex items-center gap-2 text-[18px] md:text-[20px] text-gray-600 mb-6">
-                <CiLocationOn />
-                Lonavala
-            </p>
+            <div className="flex items-start justify-between">
+                <div className="">
+                    <p className=" md:text-[32px] font-semibold text-primary">The Peninsula Beverly Hills</p>
+                    <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
+                        <CiLocationOn />
+                        Lonavala
+                    </p>
+                </div>
+                <span className="bg-primary p-2 md:hidden rounded-xl">
+                    <SettingIcons />
+                </span>
+            </div>
 
             <div className="flex flex-col md:flex-row gap-4">
                 {/* Left Large Image */}
@@ -22,7 +30,7 @@ const PackageGallery = () => {
                 </div>
 
                 {/* Right Grid */}
-                <div className="md:w-[42%] w-full grid grid-cols-2 gap-4">
+                <div className="hidden  md:w-[42%] w-full md:grid grid-cols-2 gap-4">
                     <img src={img2} alt="Grid1" className="w-full h-full object-cover rounded-xl" />
                     <img src={img3} alt="Grid2" className="w-full h-full object-cover rounded-xl" />
                     <img src={img4} alt="Grid3" className="w-full h-full object-cover rounded-xl" />

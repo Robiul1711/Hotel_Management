@@ -1,16 +1,22 @@
 import SearchBar from '@/components/home/SearchBar';
+import SectionBanner from '@/components/home/SectionBanner';
 import Service from '@/components/home/Service';
+import Details from '@/components/hotelPackage/Details';
 import HichFacilities from '@/components/hotelPackage/HichFacilities';
 import PackageGallery from '@/components/hotelPackage/PackageGallery';
 import CommonPageWrapper from '@/lib/CommonPageWrapper';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 
 const HotelPackage = () => {
     return (
         <>
+        <Helmet>
+            <title>Hotel Package</title>
+        </Helmet>
             <div className="">
-                <div className=" w-11/12 mx-auto px-4">
+                <div className="hidden md:block w-11/12 mx-auto px-4">
                     <div className=" rounded-xl bg-[#f6f7f9] border p-2 md:p-8">
                         {/* Search Fields */}
 
@@ -45,6 +51,9 @@ const HotelPackage = () => {
             <CommonPageWrapper>
                 <PackageGallery/>
                 <HichFacilities/>
+                <Details/>
+                <SectionBanner/>
+
             </CommonPageWrapper>
         </>
 

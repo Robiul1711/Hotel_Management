@@ -50,10 +50,13 @@ const Experience = () => {
     return (
         <div>
             <div className="flex flex-col gap-8">
-                <p className="text-primary text-5xl">
-                    Popular Hich Experiences
-                </p>
-                <div className="flex gap-4">
+                <div className="flex justify-between">
+                    <p className="text-primary md:text-5xl">
+                        Popular Hich Experiences
+                    </p>
+                    <button className="md:hidden text-gray-400">see all</button>
+                </div>
+                <div className="hidden md:flex gap-4">
                     <button className="bg-secondary text-white md:px-6 md:py-2 rounded-full hover:bg-orange-600 transition-all">
                         Health & Wellness
                     </button>
@@ -68,8 +71,8 @@ const Experience = () => {
             </div>
             <CardSlider data={data} />
 
-            <div className="flex justify-center">
-                <button className="bg-primary text-white md:px-8  md:py-5 rounded-full hover:bg-orange-600 transition-all">
+            <div className="hidden md:flex justify-center">
+                <button className="bg-primary text-white px-4 py-2 md:px-8  md:py-5 rounded-full hover:bg-orange-600 transition-all">
                     View All Packages
                 </button>
             </div>

@@ -10,18 +10,25 @@ import Experience from '@/components/home/Experience';
 import Gallery from '@/components/home/Gallery';
 import Choose from '@/components/home/Choose';
 import SectionBanner from '@/components/home/SectionBanner';
+import MobileGallery from '@/components/home/MobileGallery';
+import { Helmet } from 'react-helmet-async';
 
 
 const Home = () => {
   return (
     <div className=''>
+      <Helmet>
+        <title>HICH</title>
+      </Helmet>
       <Banner />
       <CommonPageWrapper>
         <App />
         <Service />
         <Stays />
         <Experience />
+        
         <Gallery />
+        <MobileGallery/>
         <Choose />
       </CommonPageWrapper>
       <SectionBanner />

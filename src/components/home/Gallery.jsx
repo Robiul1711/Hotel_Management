@@ -13,7 +13,8 @@ const breakpointColumnsObj = {
     default: 4,
     1024: 3,
     768: 2,
-    480: 1
+    640: 3,  // Show 3 columns on mobile (640px and above)
+    480: 2   // Show 2 columns on very small screens (below 640px)
 };
 
 const galleryItems = [
@@ -25,45 +26,43 @@ const galleryItems = [
     { img: img4, title: "City Apartment", category: "Urban" },
     { img: img2, title: "Luxury Suite", category: "Premium" },
     { img: img6, title: "Historic Manor", category: "Classic" },
-
 ];
 
 const Gallery = () => {
     return (
-        <div className="flex flex-col gap-8 relative">
-            <img src={element} className='w-40 absolute right-0 -top-28' alt="" />
+        <div className="hidden md:flex flex-col gap-6 md:gap-8 relative px-4 sm:px-6">
+            <img src={element} className='w-32 md:w-40 hidden md:flex absolute right-0 -top-20 md:-top-28' alt="" />
 
-            <p className="text-primary text-5xl">
+            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">
                 Create Memories, One Stay at a Time
             </p>
 
-
             <Masonry
                 breakpointCols={breakpointColumnsObj}
-                className="flex gap-6 -ml-6"
-                columnClassName="ml-6"
+                className="flex gap-4 md:gap-6 -ml-4 md:-ml-6"
+                columnClassName="ml-4 md:ml-6"
             >
                 {galleryItems.map((item, i) => (
-                    <div key={i} className="mb-6 relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-500">
+                    <div key={i} className="mb-4 md:mb-6 relative group overflow-hidden rounded-lg md:rounded-xl shadow-md hover:shadow-xl transition-all duration-500">
                         <img
                             src={item.img}
                             alt={item.title}
                             className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <div className="absolute bottom-0 left-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <span className="bg-primary text-xs font-semibold px-3 py-1 rounded-full mb-2 inline-block">
+                            <div className="absolute bottom-0 left-0 p-4 md:p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <span className="bg-primary text-xs font-semibold px-2 py-1 md:px-3 rounded-full mb-1 md:mb-2 inline-block">
                                     {item.category}
                                 </span>
-                                <h3 className="text-xl font-bold">{item.title}</h3>
+                                <h3 className="text-base md:text-xl font-bold">{item.title}</h3>
                             </div>
                         </div>
                     </div>
                 ))}
             </Masonry>
 
-            <div className="text-center mt-12">
-                <button className="bg-primary text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all font-medium shadow-lg hover:shadow-primary/30">
+            <div className="text-center">
+                <button className="bg-primary text-white px-6 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-full hover:bg-opacity-90 transition-all font-medium shadow-lg hover:shadow-primary/30">
                     Show More
                 </button>
             </div>

@@ -1,4 +1,11 @@
 import React from "react";
+import TabSection from "./TabSection";
+import Service from "../home/Service";
+import CardGrid from "../common/CardGrid";
+import yoga from "@/assets/images/yoga.png";
+import CardSwipe from "../home/CardSwipe";
+import CardGrid2 from "../common/CardGrid2";
+
 
 export default function HichFacilities() {
   const facilities = [
@@ -41,38 +48,22 @@ export default function HichFacilities() {
   ];
 
   return (
-    <div className="px-6 py-10">
-      <h2 className="text-2xl font-semibold mb-6">
+    <div className=" md:py-10 ">
+      <TabSection />
+      <h2 className="text-2xl font-semibold mt-12">
         Complimentary Facilities Only With Hich:
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {facilities.map((facility, index) => (
-          <div
-            key={index}
-            className="bg-orange-400 text-white p-6 rounded-xl shadow-md hover:shadow-lg transition"
-          >
-            <div className="text-3xl mb-4">{facility.icon}</div>
-            <h3 className="text-lg font-semibold mb-2">
-              {facility.title}
-            </h3>
-            <p className="text-sm leading-relaxed">{facility.description}</p>
-          </div>
-        ))}
-      </div>
 
-      <div className="mt-10">
-        <div className="relative w-full max-w-md mx-auto">
-          <div className="absolute top-0 left-0 bg-white text-orange-500 px-2 py-1 text-xs font-bold rounded-br-md">
-            Free
+      <div className="flex flex-col lg:flex-row items-center">
+        <div className=" lg:w-[72%]">
+          <div className=" ">
+            {/* <CardGrid /> */}
+            <CardGrid2 />
           </div>
-          <img
-            src="/yoga-meditation.jpg"
-            alt="Yoga & Meditation"
-            className="rounded-xl w-full h-64 object-cover"
-          />
-          <div className="absolute bottom-6 left-6 text-white text-xl font-semibold">
-            Yoga & Meditation <br /> With Hich Coach
-          </div>
+
+        </div>
+        <div className="w-[80%] lg:w-[28%]">
+          <CardSwipe />
         </div>
       </div>
     </div>

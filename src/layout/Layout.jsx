@@ -3,6 +3,7 @@ import Navbar from "@/shared/navbar/Navbar";
 import MobileNavbar from "@/shared/navbar/MobileNavbar"; // import this
 import { Outlet } from "react-router-dom";
 import FloatingNav from "@/shared/navbar/FloatingNav";
+import MobileTopNav from "@/shared/navbar/MobileTopNav";
 
 const Layout = () => {
   return (
@@ -10,9 +11,12 @@ const Layout = () => {
       <div className="hidden sticky top-0 z-20 sm:block bg-white">
         <Navbar />
       </div>
+      <div className="md:hidden">
+        <MobileTopNav />
+      </div>
 
       <Outlet />
-      <div className="hidden sm:block">
+      <div className="">
         <Footer />
       </div>
 
