@@ -5,10 +5,12 @@ import RoomList from './RoomList';
 const RoomOptions = () => {
     return (
         <div>
-            <p className="text-[24px] text-black">Room Options</p>
-            <div className="my-5">
+            <div className="flex md:flex-col justify-between md:justify-start gap-5 mb-4">
+                <p className="text-[24px] text-black">Room Options</p>
                 <DropdownBtn />
-                <RoomList/>
+            </div>
+            <div className="">
+                <RoomList />
             </div>
         </div>
     );

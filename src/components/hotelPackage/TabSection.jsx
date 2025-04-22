@@ -22,13 +22,13 @@ const TabSection = () => {
     const [selectedTab, setSelectedTab]=useState('Details');
     return (
         <div className=''>
-            <div className="flex flex-wrap gap-3 justify-start">
+            <div className=" flex flex-wrap gap-3 justify-start">
                 {
                     tabs?.map((tab)=>(
                         <button
                         key={tab}
                         onClick={()=>setSelectedTab(tab)}
-                        className={`relative  text-black px-4 py-2 rounded-full text-lg  transition-all duration-200 ${selectedTab === tab ? ' bg-primary text-white': 'hover:bg-gray-100'}`}
+                        className={`relative  text-black px-2 md:px-4 py-2 rounded-full text-xs md:text-lg  transition-all duration-200 ${selectedTab === tab ? ' bg-primary text-white': 'hover:bg-gray-100'}`}
                         >
                             {tab}
                         </button>

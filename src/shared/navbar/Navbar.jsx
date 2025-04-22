@@ -16,10 +16,10 @@ const Navbar = () => {
       <div className="">
         <ul className='text-black flex gap-5 lg:gap-12'>
           <NavLink className={navLinkClass} to={'/'}>Home</NavLink>
-          <NavLink className={navLinkClass} to={'/about'}>About Us</NavLink>
-          <NavLink className={navLinkClass} to={'/contact'}>Our Packages</NavLink>
-          <NavLink className={navLinkClass} to={'/faq'}>FAQ</NavLink>
-          <NavLink className={navLinkClass} to={'/faq'}>Contact Us</NavLink>
+          <NavLink className={navLinkClass} to={'/'}>About Us</NavLink>
+          <NavLink className={navLinkClass} to={'/'}>Our Packages</NavLink>
+          <NavLink className={navLinkClass} to={'/'}>FAQ</NavLink>
+          <NavLink className={navLinkClass} to={'/'}>Contact Us</NavLink>
         </ul>
       </div>
     </div>

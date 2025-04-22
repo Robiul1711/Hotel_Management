@@ -34,14 +34,27 @@ const mockRoomData = [
 
 const RoomCard = ({ room }) => {
     return (
-        <div className=" p-4 flex mb-6">
-            <div className="w-1/3 border rounded-lg p-4">
-                <img src={room.image} alt={room.name} className="rounded-lg object-cover h-full w-full" />
+        <div className="flex flex-col md:flex-row mb-6">
+            <div className="hidden md:block md:w-1/3 border rounded-lg p-4">
+                <img src={room.image} alt={room.name} className="rounded-lg object-cover h-full mx-auto md:w-full" />
             </div>
 
-            <div className="w-2/3 flex flex-col justify-between border rounded-lg p-4">
+            <div className="md:hidden md:w-1/3 border rounded-lg p-4 flex gap-10">
+                <div className="w-1/4">
+                    <img src={room.image} alt={room.name} className="rounded-lg object-cover h-full mx-auto md:w-full" />
+                </div>
+                <div className="">
+                    <h2 className="text-lg font-semibold">{room.name}</h2>
+                    <div className="">
+                        <p className="text-xl font-bold">₹ {room.price.toLocaleString()}</p>
+                        <p className="text-xs text-gray-500">Incl. Taxes Per Night</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="md:w-2/3 flex flex-col justify-between border rounded-lg p-4">
                 <div>
-                    <div className="flex justify-between items-start">
+                    <div className="hidden md:flex justify-between items-start">
                         <h2 className="text-lg font-semibold">{room.name}</h2>
                         <div className="text-center">
                             <p className="text-xl font-bold">₹ {room.price.toLocaleString()}</p>
@@ -85,7 +98,7 @@ const RoomList = () => {
     }, []);
 
     return (
-        <div className=" mx-auto p-4">
+        <div className=" mx-auto my-4">
             {rooms.map((room) => (
                 <RoomCard key={room.id} room={room} />
             ))}

@@ -3,8 +3,8 @@ import { CareIcons, FingerIcons, TailorIcons } from '@/lib/CustomIcons';
 
 const Choose = () => {
     return (
-        <>
-            <div className='space-y-4 w-1/2'>
+        <div className='space-y-20 hidden md:block'>
+            <div className='space-y-4 xlg:w-1/2'>
                 <p className="text-primary text-5xl">
                     Why Choose Us?
                 </p>
@@ -13,44 +13,53 @@ const Choose = () => {
                 </p>
             </div>
 
-            <div className="flex items-center justify-between">
-                <div className="w-[60%]">
+            <div className="flex flex-col xlg:flex-row items-center gap-14">
+                <div className="xlg:w-[60%] ">
                     <img src={choose} className="w-full" alt="" />
                 </div>
 
-                <div className="w-[30%] space-y-16">
-                    <div className="flex gap-4">
-                        <FingerIcons />
-                        <div className="">
-                            <p className="text-3xl">Effortless Convenience</p>
-                            <p className="">
+                <div className="w-full xlg:w-[30%] flex  xlg:flex-col  xlg:space-y-16">
+                    {/* First Feature */}
+                    <div className="flex gap-3 md:gap-4 flex-col sm:flex-row">
+                        <div className="flex-shrink-0">
+                            <FingerIcons className="w-8 h-8 md:w-10 md:h-10" />
+                        </div>
+                        <div>
+                            <p className="text-xl sm:text-2xl lg:text-3xl font-medium">Effortless Convenience</p>
+                            <p className="text-sm sm:text-base">
                                 One-click services for housekeeping, room service, and amenities.
                             </p>
                         </div>
                     </div>
 
-                    <div className="flex gap-4">
-                        <CareIcons />
-                        <div className="">
-                            <p className="text-3xl">Comfort & Care</p>
-                            <p className="">
+                    {/* Second Feature */}
+                    <div className="flex gap-3 md:gap-4 flex-col sm:flex-row">
+                        <div className="flex-shrink-0">
+                            <CareIcons className="w-8 h-8 md:w-10 md:h-10" />
+                        </div>
+                        <div>
+                            <p className="text-xl sm:text-2xl lg:text-3xl font-medium">Comfort & Care</p>
+                            <p className="text-sm sm:text-base">
                                 Cozy accommodations designed for relaxation and productivity.
                             </p>
                         </div>
                     </div>
 
-                    <div className="flex gap-4">
-                        <TailorIcons />
-                        <div className="">
-                            <p className="text-3xl">Tailored Experiences</p>
-                            <p className="">
+                    {/* Third Feature */}
+                    <div className="flex gap-3 md:gap-4 flex-col sm:flex-row">
+                        <div className="flex-shrink-0">
+                            <TailorIcons className="w-8 h-8 md:w-10 md:h-10" />
+                        </div>
+                        <div>
+                            <p className="text-xl sm:text-2xl lg:text-3xl font-medium">Tailored Experiences</p>
+                            <p className="text-sm sm:text-base">
                                 Complimentary activities and personalized services to enhance your stay.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

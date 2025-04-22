@@ -31,7 +31,7 @@ const DropdownBtn = () => {
   return (
     <Dropdown menu={{ items }}>
       <button
-        className="shadow px-4 py-2 rounded-full text-lg bg-secondary text-white"
+        className="shadow px-4 py-2 w-fit rounded-full text-lg bg-secondary text-white"
         onClick={(e) => e.preventDefault()}
       >
         <Space>

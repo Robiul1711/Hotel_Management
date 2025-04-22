@@ -62,7 +62,7 @@ const CardGrid = () => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto flex gap-3 p-4">
+    <div className=" mx-auto flex gap-3 p-4">
       {columns.map((column, colIndex) => (
         <div key={colIndex} className="flex flex-col">
           {column.map((item, i) => (

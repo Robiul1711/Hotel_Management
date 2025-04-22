@@ -23,7 +23,8 @@ export default {
   		colors: {
   			primary: '#FF4800',
   			secondary: '#ffaa00',
-  			dark: '#000'
+  			dark: '#000',
+			
   		},
   		backgroundImage: {
   			banner: 'linear-gradient(329deg, rgba(87, 33, 33, 0.90) 0.75%, #474747 96.85%)'
