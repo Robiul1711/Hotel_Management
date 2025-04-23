@@ -27,11 +27,11 @@ const Keypoints = () => {
     return (
         <div className="">
             <div className="flex justify-between items-center">
-                <div className='space-y-14'>
-                    <p className="text-primary text-5xl">
+                <div className='md:space-y-14'>
+                    <p className="text-primary md:text-5xl">
                         Explore Hich Beyond Walls
                     </p>
-                    <p className="text-[#747474] text-[28px]">
+                    <p className="text-[#747474] md:text-[28px]">
                         Experience curated moments—both complimentary and premium—that <br /> elevate your stay, effortlessly.
                     </p>
                 </div>
@@ -43,13 +43,13 @@ const Keypoints = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-10 ">
                 {
                     data?.map((item) => (
-                        <div key={item.id} className="flex items-center gap-2  justify-center">
+                        <div key={item.id} className="flex items-center gap-6 md:gap-2  md:justify-center px-5">
                             <div className="">
                                 {item?.icon}
                             </div>
                             <div className="">
-                                <p className="text-[28px]">{item?.title}</p>
-                                <p className="text-gray-400 text-[20px]">{item?.desc}</p>
+                                <p className="md:text-[28px]">{item?.title}</p>
+                                <p className="text-gray-400 md:text-[20px]">{item?.desc}</p>
                             </div>
                         </div>
                     ))

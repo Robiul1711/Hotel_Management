@@ -9,6 +9,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @font-face {
   font-family: "Neris";
   src: url("./assets//fonts/neris/Neris-SemiBold.otf") format("opentype");

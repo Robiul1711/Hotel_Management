@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '@/assets/images/logo.png'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between w-11/12 mx-auto ">
       <div className=''>
-        <img src={logo} alt="" />
+        <Link to={'/'}><img src={logo} alt="" /></Link>
       </div>
       <div className="">
         <ul className='text-black flex gap-5 lg:gap-12'>

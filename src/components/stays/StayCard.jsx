@@ -1,10 +1,11 @@
-import { IoLocationOutline } from "react-icons/io5";
+import React from 'react';
+import { IoLocationOutline } from 'react-icons/io5';
 
-const Card = ({ data }) => {
+const StayCard = ({data}) => {
     return (
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[300px] xs:h-[340px] sm:h-[380px] md:h-[400px] lg:h-[480px]">
+        <div className="flex bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full my-10">
             {/* Image Section */}
-            <div className="relative h-[60%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
+            <div className="relative">
                 <img
                     src={data?.img}
                     className="w-full h-full object-cover"
@@ -38,4 +39,4 @@ const Card = ({ data }) => {
     );
 };
 
-export default Card;
+export default StayCard;
