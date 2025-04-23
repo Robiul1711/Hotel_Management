@@ -4,6 +4,7 @@ import ExperiencePage from "@/pages/experience/ExperiencePage";
 import Home from "@/pages/home/Home";
 import HotelPackage from "@/pages/hotelPackage/HotelPackage";
 import MyBooking from "@/pages/mybooking/MyBooking";
+import SearchPage from "@/pages/searchPage/SearchPage";
 import StayPage from "@/pages/stays/StayPage";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/my-booking",
         element: <MyBooking/>
+      },
+      {
+        path: "/search-result",
+        element: <SearchPage/>
       }
     ],
   },

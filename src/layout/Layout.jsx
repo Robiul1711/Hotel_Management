@@ -20,7 +20,7 @@ const Layout = () => {
         <Footer />
       </div>
 
-      <FloatingNav />
+      <FloatingNav />f
 
       {/* Mobile Nav (only visible on small screens) */}
       <div className="sm:hidden">

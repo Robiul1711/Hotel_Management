@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 const SearchBar = () => {
     const [activeTab, setActiveTab] = useState("stays");
@@ -10,17 +11,15 @@ const SearchBar = () => {
             <div className="flex">
                 <button
                     onClick={() => setActiveTab("stays")}
-                    className={`px-4 py-2 font-medium rounded-t-md text-sm sm:text-base ${
-                        activeTab === "stays" ? "bg-orange-500 text-white" : "text-gray-600 bg-white"
-                    }`}
+                    className={`px-4 py-2 font-medium rounded-t-md text-sm sm:text-base ${activeTab === "stays" ? "bg-orange-500 text-white" : "text-gray-600 bg-white"
+                        }`}
                 >
                     Stays
                 </button>
                 <button
                     onClick={() => setActiveTab("experiences")}
-                    className={`px-4 py-2 font-medium rounded-t-md text-sm sm:text-base ${
-                        activeTab === "experiences" ? "bg-orange-500 text-white" : "text-gray-600 bg-white"
-                    }`}
+                    className={`px-4 py-2 font-medium rounded-t-md text-sm sm:text-base ${activeTab === "experiences" ? "bg-orange-500 text-white" : "text-gray-600 bg-white"
+                        }`}
                 >
                     Experiences
                 </button>
@@ -35,7 +34,7 @@ const SearchBar = () => {
                             <span className="text-primary text-base md:text-2xl font-medium">Lonavala</span>
                         </div>
 
-                     
+
 
                         {/* Check-out */}
                         <div className="flex flex-col w-full sm:w-auto">
@@ -54,14 +53,17 @@ const SearchBar = () => {
                         </div>
 
                         {/* Search Button */}
-                        <button className="bg-primary  text-white text-sm sm:text-base md:text-lg  py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 w-full sm:w-auto rounded-full hover:bg-orange-600 transition-all mt-2 sm:mt-0">
-                            Search
-                        </button>
+                        <Link to={'/search-result'}>
+                            <button className="bg-primary  text-white text-sm sm:text-base md:text-lg  py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 w-full sm:w-auto rounded-full hover:bg-orange-600 transition-all mt-2 sm:mt-0">
+                                Search
+                            </button>
+                        </Link>
+
                     </div>
                 ) : (
-                   <div className="">
-                    Experience
-                   </div>
+                    <div className="">
+                        Experience
+                    </div>
                 )}
             </div>
         </div>

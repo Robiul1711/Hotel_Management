@@ -1,9 +1,15 @@
-import img1 from '@/assets/images/hotel1.png';
-import img2 from '@/assets/images/hotel2.png';
-import element from '@/assets/images/element2.png';
-import CardSlider from '../common/CardSlider';
+import banner1 from '@/assets/images/stayBanner.png';
+import banner2 from '@/assets/images/stayBanner1.png';
+import banner3 from '@/assets/images/stayBanner2.png';
+import banner4 from '@/assets/images/stayBanner3.png';
+import banner5 from '@/assets/images/stayBanner4.png';
 
-const data = [
+export const banners = [banner1, banner2, banner3, banner4, banner5];
+
+import img1 from '@/assets/images/stay1.png';
+import img2 from '@/assets/images/stay2.png';
+
+export const StayData = [
     {
         img: img1,
         title: 'Tropical Adventures and Sun-Kissed Shores1',
@@ -45,20 +51,3 @@ const data = [
         location: 'Lagos, Nigeria',
     }
 ]
-
-const HotelResort = () => {
-    return (
-        <div className='relative'>
-            <p className="text-[32px] text-secondary">Hotels & Resorts</p>
-            <CardSlider data={data} />
-            <div className="flex justify-center">
-                <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all">
-                    View All
-                </button>
-            </div>
-            {/* <img className='absolute -bottom-20 -left-20' src={element} alt="" /> */}
-        </div>
-    );
-};
-
-export default HotelResort;
