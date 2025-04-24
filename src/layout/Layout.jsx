@@ -8,7 +8,7 @@ import MobileTopNav from "@/shared/navbar/MobileTopNav";
 const Layout = () => {
   return (
     <>
-      <div className="hidden sticky top-0 z-20 sm:block bg-white">
+      <div className="hidden sticky top-0 z-50 sm:block bg-white">
         <Navbar />
       </div>
       <div className="md:hidden">

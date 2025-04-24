@@ -20,18 +20,21 @@ const FilterBar = () => {
                     <AntdDualRangeSlider />
                 </div>
 
-                <div className="grid grid-cols-2 gap-5 justify-center items-center">
-                    <button className="border py-3 px-8 rounded-xl">
+                <div className="flex gap-5 justify-center items-center">
+                    <button className="border py-3 px-4 rounded-xl">
                         ₹1000
                     </button>
-                    <button className="border py-3 px-8 rounded-xl">
+                    <button className="border py-3 px-4 rounded-xl">
                         ₹500000
                     </button>
                 </div>
 
-                <button className="border py-3 px-8 mt-5 rounded-xl w-full">
-                    Apply Filter
-                </button>
+                <div className="w-fit mx-auto">
+
+                    <button className="border  py-3 px-8 mt-5 rounded-xl ">
+                        Apply Filter
+                    </button>
+                </div>
             </div>
 
             <div className="py-8 border-b-2 flex items-center justify-between ">

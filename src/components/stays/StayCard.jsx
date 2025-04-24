@@ -70,12 +70,12 @@ const StayCard = ({ data }) => {
                     <div className=" border-l flex flex-col justify-evenly p-2 w-1/4 h-full items-center ">
                         <p className="flex items-center gap-2"><StarIcons />4/5</p>
                         <div className=" flex flex-col gap-2 items-center">
-                            <p className="text-2xl ">₹ 21,876</p>
-                            <button className='border py-3 px-5 rounded-3xl text-secondary border-secondary flex items-center gap-3'>
+                            <p className="xlg:text-2xl">₹ 21,876</p>
+                            <button className='border py-1 px-[2px] xlg:py-3 xlg:px-5 rounded-3xl text-secondary border-secondary flex items-center gap-3 text-xs'>
                                 For 1 Room
                             </button>
                             <p className="text-[12px] text-center text-gray-300">Per Night + Taxes (1 Room)</p>
-                            <button className=' py-3 px-5 rounded-3xl text-white bg-secondary flex items-center gap-3'>
+                            <button className=' py-1 xlg:py-3 px-[2px] xlg:px-5 rounded-3xl text-white bg-secondary flex items-center gap-3 text-xs'>
                                 View package
                             </button>
                         </div>

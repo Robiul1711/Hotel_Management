@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import { DatePicker } from 'antd';
+import 'antd/dist/reset.css';
+import dayjs from 'dayjs';
 
 const SearchBar = () => {
     const [activeTab, setActiveTab] = useState("stays");
-
+    const [checkIn, setCheckIn] = useState(dayjs('2025-02-28'));
+    const [checkOut, setCheckOut] = useState(dayjs('2025-02-28'));
     return (
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full max-w-6xl px-4">
             {/* Tab Selector (commented out but made responsive) */}
@@ -36,12 +40,39 @@ const SearchBar = () => {
 
 
 
-                        {/* Check-out */}
-                        <div className="flex flex-col w-full sm:w-auto">
+                        {/* Check-in */}
+                        <div className="flex flex-col basis-[48%] sm:basis-auto">
                             <span className="text-sm md:text-lg text-black flex items-center">
-                                Check-out <RiArrowDropDownLine className='text-xl md:text-2xl' />
+                                Check-in <RiArrowDropDownLine className='text-2xl' />
                             </span>
-                            <span className="text-primary text-sm md:text-2xl font-medium">28 Feb '25</span>
+                            <DatePicker
+                                value={checkIn}
+                                format="DD MMM 'YY"
+                                onChange={setCheckIn}
+                                allowClear={false}
+                                bordered={false}
+                                suffixIcon={null}
+                                className="!text-primary !text-2xl !font-medium !bg-transparent !p-0 !border-none !shadow-none hover:!border-none focus:!border-none focus:!shadow-none custom-datepicker"
+                                popupClassName ="custom-calendar-dropdown"
+                            />
+                        </div>
+
+
+                        {/* Check-out */}
+                        <div className="flex flex-col basis-[48%] sm:basis-auto">
+                            <span className="text-sm md:text-lg text-black flex items-center">
+                                Check-out <RiArrowDropDownLine className='text-2xl' />
+                            </span>
+                            <DatePicker
+                                value={checkOut}
+                                format="DD MMM 'YY"
+                                onChange={setCheckOut}
+                                allowClear={false}
+                                bordered={false}
+                                suffixIcon={null}
+                                className="!text-primary !text-[40px] !font-medium !bg-transparent !p-0 !border-none !shadow-none hover:!border-none focus:!border-none focus:!shadow-none custom-datepicker"
+                                popupClassName ="custom-calendar-dropdown"
+                            />
                         </div>
 
                         {/* Guests */}
@@ -54,7 +85,7 @@ const SearchBar = () => {
 
                         {/* Search Button */}
                         <Link to={'/search-result'}>
-                            <button className="bg-primary  text-white text-sm sm:text-base md:text-lg  py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 w-full sm:w-auto rounded-full hover:bg-orange-600 transition-all mt-2 sm:mt-0">
+                            <button className="bg-primary  text-white text-sm sm:text-base md:text-lg  py-2 px-2 sm:px-6 sm:py-3 md:px-8 md:py-4 w-full sm:w-auto rounded-full hover:bg-orange-600 transition-all mt-2 sm:mt-0">
                                 Search
                             </button>
                         </Link>
