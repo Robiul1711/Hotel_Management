@@ -9,10 +9,10 @@ const StaySearchBar = () => {
                     {/* Search Fields */}
 
                     <div className="flex  items-center justify-between  gap-4">
-                        {/* Destination */}
-                        <div className="hidden md:flex flex-col">
-                            <span className="text-lg text-black">Destination</span>
-                            <span className="text-primary text-2xl font-medium">Lonavala</span>
+                        {/* Check in */}
+                        <div className="flex flex-col">
+                            <span className="text-lg text-black flex items-center">Check-in <RiArrowDropDownLine className='text-2xl' /></span>
+                            <span className="text-primary text-2xl font-medium">28 Feb ‘25</span>
                         </div>
 
                         {/* Check-out */}

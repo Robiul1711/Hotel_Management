@@ -24,9 +24,15 @@ const StayPage = () => {
                     </div>
                     <div className="md:w-3/4 ">
                         <HotelVilla />
-                        {
-                            StayData?.map(item => <StayCard key={item.id} data = {item}/>)
-                        }
+                        <div className="space-y-12">
+                            {
+                                StayData?.map(item => <StayCard key={item.id} data={item} />)
+                            }
+                            <button className='w-fit mx-auto py-3 px-10 rounded-3xl text-white bg-primary flex items-center gap-3'>
+                                View All
+                            </button>
+                        </div>
+
                     </div>
                 </div>
                 <Keypoints />

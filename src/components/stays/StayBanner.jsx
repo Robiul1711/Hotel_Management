@@ -4,9 +4,9 @@ import banner2 from '@/assets/images/stayBanner2.png';
 import banner3 from '@/assets/images/stayBanner3.png';
 import { CiSearch } from "react-icons/ci";
 import StaySearchBar from './StaySearchBar';
+import { banners } from '@/lib/Database';
 
 const StayBanner = () => {
-    const banners = [banner1, banner2, banner3];
 
     return (
         <div className="relative">
