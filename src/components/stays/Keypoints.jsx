@@ -35,7 +35,7 @@ const Keypoints = () => {
                         Experience curated moments—both complimentary and premium—that <br /> elevate your stay, effortlessly.
                     </p>
                 </div>
-                <div className="">
+                <div className="hidden xmd:block">
                     <img src={element} alt="" />
                 </div>
             </div>

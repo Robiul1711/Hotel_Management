@@ -2,11 +2,11 @@ import banner from '@/assets/images/banner2.png';
 
 const SectionBanner = () => {
     return (
-        <div className="relative my-10 md:my-20">
+        <div className="relative   my-10 md:my-20">
             {/* Banner Image - Added min-h for mobile */}
             <img
                 src={banner}
-                className="w-full h-auto object-cover min-h-[300px] md:min-h-[400px] lg:min-h-auto"
+                className="w-full h-auto object-cover min-h-[300px] md:min-h-[400px] lg:min-h-[500px] px-2 xmd:px-0 rounded-3xl"  
                 alt="Banner background"
             />
 

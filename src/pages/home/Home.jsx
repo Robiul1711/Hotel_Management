@@ -12,6 +12,7 @@ import Choose from '@/components/home/Choose';
 import SectionBanner from '@/components/home/SectionBanner';
 import MobileGallery from '@/components/home/MobileGallery';
 import { Helmet } from 'react-helmet-async';
+import PromotionalBanner from '@/components/common/PromotionalBanner';
 
 
 const Home = () => {
@@ -20,19 +21,28 @@ const Home = () => {
       <Helmet>
         <title>HICH</title>
       </Helmet>
+      <div className="bg-secondary text-white text-[20px] py-3 text-center">
+        <span className="font-plus font-extralight">
+          FLAT 50% OFF on 2nd night on our newest escapes. 
+        </span>
+        <span className="">
+           Use code: HICHUNHOTEL
+        </span>
+      </div>
       <Banner />
       <CommonPageWrapper>
         <App />
         <Service />
         <Stays />
+        <PromotionalBanner/>
         <Experience />
-        
+
         <Gallery />
-        <MobileGallery/>
+        <MobileGallery />
         <Choose />
       </CommonPageWrapper>
       <SectionBanner />
-    </div>
+    </div >
   );
 };
 

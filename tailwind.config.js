@@ -9,7 +9,8 @@ export default {
   		fontFamily: {
   			plus: 'Plus Jakarta Sans, serif',
   			neris: 'Neris, serif',
-  			gilroy: 'Gilroy-Semibold, serif'
+  			gilroy: 'Gilroy-Semibold, serif',
+			gilroyReg: 'Gilroy-Regular, serif'
 
   		},
   		boxShadow: {

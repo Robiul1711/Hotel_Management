@@ -15,20 +15,26 @@ const FilterBar = () => {
             </div>
 
             <div className="border-b-2 pb-8">
-                <p className="text-2xl">Price Range</p>
-                <AntdDualRangeSlider />
-                <div className="grid grid-cols-2 gap-5 justify-center items-center">
-                    <button className="border py-3 px-8 rounded-xl">
+                <div className="my-5">
+                    <p className="text-2xl">Price Range</p>
+                    <AntdDualRangeSlider />
+                </div>
+
+                <div className="flex gap-5 justify-center items-center">
+                    <button className="border py-3 px-4 rounded-xl">
                         ₹1000
                     </button>
-                    <button className="border py-3 px-8 rounded-xl">
+                    <button className="border py-3 px-4 rounded-xl">
                         ₹500000
                     </button>
-
                 </div>
-                <button className="border py-3 px-8 mt-5 rounded-xl w-full">
-                    Apply Filter
-                </button>
+
+                <div className="w-fit mx-auto">
+
+                    <button className="border  py-3 px-8 mt-5 rounded-xl ">
+                        Apply Filter
+                    </button>
+                </div>
             </div>
 
             <div className="py-8 border-b-2 flex items-center justify-between ">
@@ -83,7 +89,7 @@ const FilterBar = () => {
                 </label>
                 <label className="inline-flex items-center gap-2">
                     <input type="checkbox" className="accent-blue-500" />
-                    <span>Kidss</span>
+                    <span>Kids</span>
                 </label>
                 <p className="underline text-gray-400">See More</p>
             </div>
@@ -119,9 +125,9 @@ const FilterBar = () => {
 
                 <div className="flex items-center justify-between">
                     <button className="border py-3 px-8  rounded-xl">
-                        Apply Filter
+                        All Results
                     </button>
-                    <p className="underline text-gray-400">See More</p>
+                    <p className="underline text-gray-400">Clear All</p>
                 </div>
 
 
