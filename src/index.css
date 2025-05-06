@@ -17,6 +17,14 @@
 }
 
 @font-face {
+  font-family: "Neris-light";
+  src: url("./assets//fonts/neris/Neris-Light.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
   font-family: "Gilroy-Semibold";
   src: url("./assets//fonts/gilroy-semibold/gilroy-semibold.ttf")
     format("truetype");

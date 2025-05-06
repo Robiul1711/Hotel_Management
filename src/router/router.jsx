@@ -1,5 +1,12 @@
 import Experience from "@/components/home/Experience";
+import DashboardLayout from "@/layout/DashboardLayout";
 import Layout from "@/layout/Layout";
+import Booking from "@/pages/dashboard/booking/Booking";
+import BookingHistory from "@/pages/dashboard/bookingHistory/BookingHistory";
+import CheckIn from "@/pages/dashboard/checkin/CheckIn";
+import Dashboard from "@/pages/dashboard/Dashboard";
+import Settings from "@/pages/dashboard/settings/Settings";
+import Support from "@/pages/dashboard/support/Support";
 import ExperiencePage from "@/pages/experience/ExperiencePage";
 import Home from "@/pages/home/Home";
 import HotelPackage from "@/pages/hotelPackage/HotelPackage";
@@ -39,6 +46,36 @@ const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: '/dashboard',
+    element: <DashboardLayout/>,
+    children: [
+      {
+        path: '/dashboard',
+        element: <Dashboard/>
+      },
+      {
+        path: 'booking',
+        element: <Booking/>
+      },
+      {
+        path: 'booking-history',
+        element: <BookingHistory/>
+      },
+      {
+        path: 'check-in',
+        element: <CheckIn/>
+      },
+      {
+        path: 'support',
+        element: <Support/>
+      },
+      {
+        path: 'settings',
+        element:<Settings/>
+      }
+    ]
+  }
 ]);
 
 export default router;
