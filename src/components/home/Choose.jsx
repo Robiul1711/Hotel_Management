@@ -1,9 +1,16 @@
+import { SlideUp } from '@/animation/animate';
 import choose from '@/assets/images/choose.png';
 import { CareIcons, FingerIcons, TailorIcons } from '@/lib/CustomIcons';
+import { motion } from 'framer-motion'
 
 const Choose = () => {
     return (
-        <div className='space-y-20 hidden md:block'>
+        <motion.div
+            variants={SlideUp(0.3)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.5 }}
+            className='space-y-20 hidden md:block'>
             <div className='space-y-4 xlg:w-1/2'>
                 <p className="text-primary text-5xl">
                     Why Choose Us?
@@ -59,7 +66,7 @@ const Choose = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

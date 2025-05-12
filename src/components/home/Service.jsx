@@ -3,6 +3,8 @@ import { CheckCircle, Truck, BedDouble, Briefcase, Utensils, Wifi } from "lucide
 import CardGrid from "../common/CardGrid";
 import CardSwipe from "./CardSwipe";
 import CardGrid2 from "../common/CardGrid2";
+import { motion } from 'framer-motion'
+import { SlideUp } from "@/animation/animate";
 
 const services = [
     {
@@ -39,7 +41,12 @@ const services = [
 
 const Service = () => {
     return (
-        <section className="md:py-12 bg-white">
+        <motion.section
+            variants={SlideUp(0.3)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.5 }}
+            className="md:py-12 bg-white">
             <div className=" ">
                 <h2 className="md:text-4xl font-bold text-secondary md:mb-8">
                     Enjoy Exclusive services for free:
@@ -50,16 +57,16 @@ const Service = () => {
                     <div className=" lg:w-[72%]">
                         <div className=" ">
                             {/* <CardGrid /> */}
-                            <CardGrid2/>
+                            <CardGrid2 />
                         </div>
-                       
+
                     </div>
                     <div className="w-[80%] lg:w-[28%]">
                         <CardSwipe />
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

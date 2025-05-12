@@ -1,12 +1,19 @@
+import { SlideUp } from '@/animation/animate';
 import banner from '@/assets/images/banner2.png';
+import { motion } from 'framer-motion'
 
 const SectionBanner = () => {
     return (
-        <div className="relative   my-10 md:my-20">
+        <motion.div
+            variants={SlideUp(0.3)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.5 }}
+            className="relative   my-10 md:my-20">
             {/* Banner Image - Added min-h for mobile */}
             <img
                 src={banner}
-                className="w-full h-auto object-cover min-h-[300px] md:min-h-[400px] lg:min-h-[500px] px-2 xmd:px-0 rounded-3xl"  
+                className="w-full h-auto object-cover min-h-[300px] md:min-h-[400px] lg:min-h-[500px] px-2 xmd:px-0 rounded-3xl"
                 alt="Banner background"
             />
 
@@ -19,7 +26,7 @@ const SectionBanner = () => {
                 <p className="text-sm sm:text-base md:text-lg max-w-[500px]">
                     Enjoy personalized services, local flavors, and activities designed to enrich your journey.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5  sm:w-auto  justify-start">
                     <button className="border border-white text-white px-4 py-2 sm:px-5 sm:py-2 md:px-6 md:py-2 rounded-full hover:bg-orange-600 transition-all text-sm sm:text-base">
                         Contact Us
@@ -30,7 +37,7 @@ const SectionBanner = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

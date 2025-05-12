@@ -13,6 +13,8 @@ import SectionBanner from '@/components/home/SectionBanner';
 import MobileGallery from '@/components/home/MobileGallery';
 import { Helmet } from 'react-helmet-async';
 import PromotionalBanner from '@/components/common/PromotionalBanner';
+import { motion } from 'framer-motion'
+import { SlideUp } from '@/animation/animate';
 
 
 const Home = () => {
@@ -21,12 +23,13 @@ const Home = () => {
       <Helmet>
         <title>HICH</title>
       </Helmet>
-      <div className="bg-secondary text-white text-[20px] py-3 text-center">
+      <div
+        className="bg-secondary text-white text-[20px] py-3 text-center">
         <span className="font-plus font-extralight">
-          FLAT 50% OFF on 2nd night on our newest escapes. 
+          FLAT 50% OFF on 2nd night on our newest escapes.
         </span>
         <span className="">
-           Use code: HICHUNHOTEL
+          Use code: HICHUNHOTEL
         </span>
       </div>
       <Banner />
@@ -34,7 +37,7 @@ const Home = () => {
         <App />
         <Service />
         <Stays />
-        <PromotionalBanner/>
+        <PromotionalBanner />
         <Experience />
 
         <Gallery />

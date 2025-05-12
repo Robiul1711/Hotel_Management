@@ -10,7 +10,7 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
     return (
         <aside
-            className={`fixed z-20 top-0 left-0 h-full font-nerisLight  w-64 bg-[#FFF4DC] p-4 transform transition-transform duration-300 ease-in-out
+            className={`fixed z-20 top-0 left-0 h-auto border border-black font-nerisLight  w-64 bg-[#FFF4DC] p-4 transform transition-transform duration-300 ease-in-out
                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
                 md:relative md:translate-x-0 md:block`}
         >
