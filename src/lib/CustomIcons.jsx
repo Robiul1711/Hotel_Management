@@ -364,3 +364,12 @@ export const FilterIcons = () => {
         </svg>
     );
 };
+
+export const RattingIcons = () => {
+    return (
+       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M11.996 18.26L4.94251 22.2082L6.51784 14.2799L0.583252 8.7918L8.61029 7.84006L11.996 0.5L15.3816 7.84006L23.4086 8.7918L17.4741 14.2799L19.0494 22.2082L11.996 18.26Z" fill="#F0BB40"/>
+</svg>
+    );
+};
+

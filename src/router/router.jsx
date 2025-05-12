@@ -1,6 +1,8 @@
 import Experience from "@/components/home/Experience";
 import DashboardLayout from "@/layout/DashboardLayout";
 import Layout from "@/layout/Layout";
+import AuthForm from "@/pages/auth/AuthForm";
+import AuthLayout from "@/pages/auth/AuthLayout";
 import Booking from "@/pages/dashboard/booking/Booking";
 import BookingHistory from "@/pages/dashboard/bookingHistory/BookingHistory";
 import CheckIn from "@/pages/dashboard/checkin/CheckIn";
@@ -24,6 +26,8 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+   
+
       {
         path: "/stays",
         element: <StayPage/>
@@ -73,6 +77,16 @@ const router = createBrowserRouter([
       {
         path: 'settings',
         element:<Settings/>
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout/>,
+    children:[
+      {
+        path: 'registration',
+        element: <AuthForm/>
       }
     ]
   }
