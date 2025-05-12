@@ -3,6 +3,8 @@ import CardSlider from '../common/CardSlider';
 import CommonPageWrapper from '@/lib/CommonPageWrapper';
 import img1 from '@/assets/images/stay1.png';
 import img2 from '@/assets/images/stay2.png';
+import { motion } from 'framer-motion';
+import { SlideUp } from '@/animation/animate';
 
 const data = [
     {
@@ -50,13 +52,18 @@ const data = [
 
 const Stays = () => {
     return (
-        <div>
+        <motion.div
+            variants={SlideUp(0.3)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.5 }}
+        >
             <div className="flex flex-col gap-8">
-                
+
 
                 <div className="flex justify-between">
                     <p className="text-primary md:text-5xl">
-                    Popular Hich Stays
+                        Popular Hich Stays
                     </p>
                     <button className="md:hidden text-gray-400">see all</button>
                 </div>
@@ -77,7 +84,7 @@ const Stays = () => {
                     View All Packages
                 </button>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -2,6 +2,8 @@ import React from 'react';
 import CardSlider from '../common/CardSlider';
 import img1 from '@/assets/images/ex1.png';
 import img2 from '@/assets/images/ex2.png';
+import { motion } from 'framer-motion'
+import { SlideUp } from '@/animation/animate';
 
 const data = [
     {
@@ -48,7 +50,12 @@ const data = [
 
 const Experience = () => {
     return (
-        <div>
+        <motion.div
+            variants={SlideUp(0.3)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.5 }}
+        >
             <div className="flex flex-col gap-8">
                 <div className="flex justify-between">
                     <p className="text-primary md:text-5xl">
@@ -76,7 +83,7 @@ const Experience = () => {
                     View All Packages
                 </button>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

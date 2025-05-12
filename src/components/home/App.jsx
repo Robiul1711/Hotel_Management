@@ -1,8 +1,14 @@
 import React from 'react';
-
+import { motion } from 'framer-motion'
+import { SlideUp } from '@/animation/animate';
 const App = () => {
     return (
-        <div className='mt-[90px] flex flex-col gap-11'>
+        <motion.div
+            variants={SlideUp(0.3)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.5 }}
+            className='mt-[90px] flex flex-col gap-11'>
             <div className="space-y-4 md:space-y-10">
                 <p className="text-primary md:text-5xl">
                     Beyond hospitality—download the Hich app <br /> for a seamless stay.
@@ -20,7 +26,7 @@ const App = () => {
                     </p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -9,6 +9,7 @@ export default {
   		fontFamily: {
   			plus: 'Plus Jakarta Sans, serif',
   			neris: 'Neris, serif',
+  			nerisLight: 'Neris-light, serif',
   			gilroy: 'Gilroy-Semibold, serif',
 			gilroyReg: 'Gilroy-Regular, serif'
 
