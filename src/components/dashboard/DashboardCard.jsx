@@ -2,9 +2,11 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
 
 const DashboardCard = ({ data }) => {
+    console.log(data);
     return (
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[300px] xs:h-[340px] sm:h-[380px] md:h-[400px] lg:h-[480px]">
             {/* Image Section */}
+            
             <div className="relative h-[60%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
                 <img
                     src={data?.img}
