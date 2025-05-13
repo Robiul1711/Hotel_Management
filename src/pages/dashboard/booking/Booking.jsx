@@ -56,10 +56,10 @@ const data = [
 const Booking = () => {
     return (
         <div> 
-            <h1 className='text-2xl font-semibold '>Upcomming Bookings</h1>
+            <h1 className='text-2xl font-semibold mb-6 font-neris'>Upcomming Bookings</h1>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
             {
-                data.map((item, index) => <DashboardCard key={index} data={item} />)
+                data.map((item, index) => <DashboardCard key={index} data={item}  />)
             }
     
         </div>
