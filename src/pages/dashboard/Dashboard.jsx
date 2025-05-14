@@ -60,7 +60,7 @@ const Dashboard = () => {
     return (
         <div>
           <div className="">
-            <p className="text-[32px] font-neris">Welcome Back,  John Smith!</p>
+            <p className="text-xl  md:text-[32px] font-neris">Welcome Back,  John Smith!</p>
             <p className='font-nerisLight'>Here's what's coming up and your recent activity.</p>
 
             <DashboardCardSlider data={data} />

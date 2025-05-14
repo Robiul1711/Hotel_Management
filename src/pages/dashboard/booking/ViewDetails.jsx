@@ -5,7 +5,7 @@ import DetailsAboutBooking from '@/components/bookingComponents/DetailsAboutBook
 const ViewDetails = () => {
   return (
     <div className='font-neris'>
-           <h1 className='text-2xl font-semibold mb-6 font-neris'>View Details</h1>
+           <h1 className='text-2xl font-semibold xlg:mb-6 font-neris'>View Details</h1>
            <div>
          <PhotoGallery />
          <DetailsAboutBooking />
