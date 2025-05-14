@@ -1,19 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-// Dummy Security component
-const Security = () => (
-  <div className="bg-yellow-50 p-6 sm:p-8 rounded-xl space-y-6">
-    <h2 className="text-lg font-semibold">Security Settings</h2>
-    <p>This is the security section. Add your security-related inputs here.</p>
-  </div>
-);
 
 const MyProfile = () => {
-
-  const [showSecurity, setShowSecurity] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
-
   const {
     register,
     handleSubmit,
@@ -35,28 +25,7 @@ const MyProfile = () => {
 
   return (
     <div>
-      <div className="flex items-center gap-12 mb-6">
-        <button
-          onClick={() => setShowSecurity(false)}
-          className={`text-lg font-semibold ${
-            !showSecurity ? "text-orange-500 underline" : ""
-          }`}
-        >
-          My Profile
-        </button>
-        <button
-          onClick={() => setShowSecurity(true)}
-          className={`text-lg font-semibold ${
-            showSecurity ? "text-orange-500 underline" : ""
-          }`}
-        >
-          Security
-        </button>
-      </div>
 
-      {showSecurity ? (
-        <Security />
-      ) : (
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-yellow-50 p-6 sm:p-8 rounded-xl space-y-6"
@@ -190,7 +159,7 @@ const MyProfile = () => {
             </button>
           </div>
         </form>
-      )}
+   
     </div>
   );
 };

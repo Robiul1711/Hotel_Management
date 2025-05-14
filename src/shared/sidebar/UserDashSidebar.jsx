@@ -8,6 +8,7 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const { pathname } = useLocation();
     const webcheck=["/dashboard/check-in","/dashboard/web-check-form","/dashboard/submit-form",].includes(pathname);
     const support=["/dashboard/support","/dashboard/open-support-ticket",].includes(pathname);
+    const booking=["/dashboard/booking","/dashboard/view-detais",].includes(pathname);
     const navItemClasses = (isActive) =>
         `flex items-center gap-2 p-2 rounded transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'text-[#333] hover:bg-orange-100'
         }`;
@@ -39,8 +40,8 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
                 <NavLink to="/dashboard/booking">
                     {({ isActive }) => (
-                        <div className={navItemClasses(isActive)}>
-                            <BookingIcon color={isActive ? '#fff' : '#333'} />
+                        <div className={navItemClasses(isActive || booking)}>
+                            <BookingIcon color={isActive || booking ? '#fff' : '#333'} />
                             Booking
                         </div>
                     )}

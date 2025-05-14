@@ -62,13 +62,13 @@ const CheckIn = () => {
         <div className='pb-10'>
             <h1 className='text-2xl font-semibold mb-6 font-neris'>Web Check-in</h1>
             <div className='flex flex-col items-center justify-center bg-[#FA0] rounded-[12px] p-16'>
-<p className='font-neris text-[32px] text-white  max-w-[826px] text-center mx-auto '>Complete your check-in details to save time at arrival. Upload required documents securely.</p>
-          <button onClick={() => navigate('/dashboard/web-check-form')} className='bg-white text-black px-20 py-3 rounded-[12px] text-center  transition-all'>Complete Booking</button>
+<p className='font-neris text-xl  md:text-[32px] text-white  max-w-[826px] text-center mx-auto '>Complete your check-in details to save time at arrival. Upload required documents securely.</p>
+          <button onClick={() => navigate('/dashboard/web-check-form')} className='bg-white text-black px-4 sm:px-20 py-3 rounded-[12px] text-center  transition-all'>Complete Booking</button>
             </div>
         </div>
  <div> 
             <h1 className='text-2xl font-semibold mb-6 font-neris'>Completed Web Check-in</h1>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+        <div className='grid grid-cols-1  xmd:grid-cols-2 xlg:grid-cols-3 gap-4'>
             {
                 data.map((item, index) => <DashboardCard key={index} data={item}  />)
             }
