@@ -8,12 +8,12 @@ const DashboardLayout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
-        <div className="flex border border-black  h-screen overflow-hidden">
+        <div className="flex  h-screen overflow-hidden">
             {/* Sidebar */}
             <UserDashSidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
             {/* Main Content */}
-            <div className="flex-1 flex flex-col overflow-hidden border border-black">
+            <div className="flex-1 flex flex-col overflow-hidden  ">
                 {/* Top Bar */}
                 <UserDashTopbar setIsSidebarOpen={setIsSidebarOpen} />
 

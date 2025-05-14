@@ -1,11 +1,16 @@
 import Experience from "@/components/home/Experience";
 import DashboardLayout from "@/layout/DashboardLayout";
 import Layout from "@/layout/Layout";
+import AuthForm from "@/pages/auth/AuthForm";
+import AuthLayout from "@/pages/auth/AuthLayout";
 import Booking from "@/pages/dashboard/booking/Booking";
+import ViewDetails from "@/pages/dashboard/booking/ViewDetails";
 import BookingHistory from "@/pages/dashboard/bookingHistory/BookingHistory";
 import CheckIn from "@/pages/dashboard/checkin/CheckIn";
+import WebCheckForm from "@/pages/dashboard/checkin/WebCheckForm";
 import Dashboard from "@/pages/dashboard/Dashboard";
 import Settings from "@/pages/dashboard/settings/Settings";
+import OpenSupportTicket from "@/pages/dashboard/support/OpenSupportTicket";
 import Support from "@/pages/dashboard/support/Support";
 import ExperiencePage from "@/pages/experience/ExperiencePage";
 import Home from "@/pages/home/Home";
@@ -24,6 +29,8 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+   
+
       {
         path: "/stays",
         element: <StayPage/>
@@ -59,6 +66,10 @@ const router = createBrowserRouter([
         element: <Booking/>
       },
       {
+        path: 'view-detais',
+        element: <ViewDetails/>
+      },
+      {
         path: 'booking-history',
         element: <BookingHistory/>
       },
@@ -67,12 +78,32 @@ const router = createBrowserRouter([
         element: <CheckIn/>
       },
       {
+        path: 'web-check-form',
+        element: <WebCheckForm/>
+      },
+      {
         path: 'support',
         element: <Support/>
       },
+      
+      {
+        path: 'open-support-ticket',
+        element: <OpenSupportTicket/>
+      },
+
       {
         path: 'settings',
         element:<Settings/>
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout/>,
+    children:[
+      {
+        path: 'registration',
+        element: <AuthForm/>
       }
     ]
   }

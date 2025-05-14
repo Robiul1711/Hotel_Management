@@ -1,10 +1,11 @@
 import { CiLocationOn } from "react-icons/ci";
-import { IoLocationOutline } from "react-icons/io5";
 
 const DashboardCard = ({ data }) => {
+    console.log(data?.checkIn);
     return (
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[300px] xs:h-[340px] sm:h-[380px] md:h-[400px] lg:h-[480px]">
+        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[350px] xs:h-[340px] sm:h-[380px] md:h-[400px] lg:h-[480px]">
             {/* Image Section */}
+            
             <div className="relative h-[60%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
                 <img
                     src={data?.img}
@@ -32,10 +33,26 @@ const DashboardCard = ({ data }) => {
                     </div>
                 </div>
 
-                <div className="flex  py-4 gap-5">
-                    <button className="border border-primary text-primary px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-xl hover:bg-orange-600 transition-all whitespace-nowrap">
+                <div className="flex  items-center  py-4 gap-5">
+                    {
+                        data?.checkIn && data?.checkOut ? <div className="flex justify-between items-center gap-5">
+                        <div>
+                            <h6 className="text-xs ">Check In</h6>
+                            <h6 className="text-sm text-gray-400">{data?.checkIn}</h6>
+                        </div>
+                        <div>
+                            <h6 className="text-xs ">Check Out</h6>
+                            <h6 className="text-sm text-gray-400">{data?.checkOut}</h6>
+                        </div>
+                        </div>
+                        :
+                       
+                        <button className="border inline-flex border-primary hover:text-white px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-xl hover:bg-primary duration-300 transition-all whitespace-nowrap">
                         View package
                     </button>
+                    
+                    }
+                    
                     <button className="bg-primary text-white px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-xl hover:bg-orange-600 transition-all whitespace-nowrap">
                         View package
                     </button>
