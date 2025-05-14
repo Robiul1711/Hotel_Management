@@ -11,7 +11,7 @@ const Layout = () => {
 
   useEffect(()=>{
     const lenis = new Lenis({
-      duration: 3.2,
+      duration: 1.2,
       easing: (t)=>Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true
     });
@@ -43,7 +43,7 @@ const Layout = () => {
         <Footer />
       </div>
 
-      <FloatingNav />f
+      <FloatingNav />
 
       {/* Mobile Nav (only visible on small screens) */}
       <div className="sm:hidden">
