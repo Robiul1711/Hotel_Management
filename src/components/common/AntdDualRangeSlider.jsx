@@ -2,8 +2,8 @@ import { Slider } from 'antd';
 import { useState } from 'react';
 import 'antd/dist/reset.css'; // for v5 styling
 
-const AntdDualRangeSlider = () => {
-  const [range, setRange] = useState([20, 80]);
+const AntdDualRangeSlider = ({ minPrice, maxPrice, setMinPrice, setMaxPrice }) => {
+  const [range, setRange] = useState([minPrice, maxPrice]);
 
   return (
     <div className=''>

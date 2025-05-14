@@ -15,6 +15,40 @@ import CommonPageWrapper from '@/lib/CommonPageWrapper';
 import { StayData } from '@/lib/Database';
 import React, { useState } from 'react';
 
+import nearby from '@/assets/images/high.png'
+import pune from '@/assets/images/pune.png'
+import mumbai from '@/assets/images/mumbai.png'
+import delhi from '@/assets/images/delhi.png'
+import goa from '@/assets/images/goa.png'
+
+const data = [
+    {
+        id: 0,
+        name: 'Highlights',
+        image: nearby
+    },
+    {
+        id: 1,
+        name: 'Property Name',
+        image: pune
+    },
+    {
+        id: 2,
+        name: 'Property Name',
+        image: mumbai
+    },
+    {
+        id: 3,
+        name: 'Property Name',
+        image: delhi
+    },
+    {
+        id: 4,
+        name: 'Property Name',
+        image: goa
+    }
+]
+
 const StayPage = () => {
     return (
         <>
@@ -32,7 +66,23 @@ const StayPage = () => {
                         <div className="">
                             <div className="hidden lg:block space-y-12">
                                 {
-                                    StayData?.map(item => <StayCard key={item.id} data={item} />)
+                                    StayData?.slice(0, 2)?.map(item => <StayCard key={item.id} data={item} />)
+                                }
+                            </div>
+
+                            <div className="hidden xmd:flex flex-wrap gap-10  my-5">
+                                {
+                                    data?.map((item) =>
+                                        <div key={item?.id} className="flex justify-center items-center flex-col gap-2">
+                                            <img src={item?.image} alt="" className='w-[70px]' />
+                                            <p className="font-extralight text-gray-400 text-sm">{item?.name}</p>
+                                        </div>)
+                                }
+                            </div>
+
+                            <div className="hidden lg:block space-y-12">
+                                {
+                                    StayData?.slice(2, 4)?.map(item => <StayCard key={item.id} data={item} />)
                                 }
                             </div>
 

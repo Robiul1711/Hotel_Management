@@ -5,6 +5,7 @@ import ExclusiveFacilitiesFAQ from './details/ExclusiveFacilitiesFAQ';
 import CheckInOutPolicy from './details/CheckInOutPolicy';
 import SectionBanner from '../home/SectionBanner';
 import BookingSummary from './BookingSummary';
+import Aminities from './details/Aminities';
 
 
 const Details = () => {
@@ -14,6 +15,7 @@ const Details = () => {
                 <Overview />
                 <RoomOptions />
                 <ExclusiveFacilitiesFAQ />
+                <Aminities/>
                 <CheckInOutPolicy />
             </div>
 

@@ -7,22 +7,33 @@ import PackageGallery from '@/components/hotelPackage/PackageGallery';
 import CommonPageWrapper from '@/lib/CommonPageWrapper';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { CiLocationOn } from 'react-icons/ci';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 
 const HotelPackage = () => {
     return (
         <>
-        <Helmet>
-            <title>Hotel Package</title>
-        </Helmet>
+            <Helmet>
+                <title>Hotel Package</title>
+            </Helmet>
             <div className="">
                 <div className="hidden md:block w-11/12 mx-auto px-4">
+
+                    <div className="">
+                        <p className=" md:text-[32px] font-semibold text-primary">The Peninsula Beverly Hills</p>
+                        <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
+                            Lush green valley view
+                            <CiLocationOn />
+                            Lonavala
+                        </p>
+                    </div>
+
                     <div className=" rounded-xl bg-[#f6f7f9] border p-2 md:p-8">
                         {/* Search Fields */}
 
                         <div className="flex  items-center justify-between  gap-4">
                             {/* Destination */}
-                            <div className="hidden md:flex flex-col">
+                            <div className="hidden md:flex flex-col ">
                                 <span className="text-lg text-black">Destination</span>
                                 <span className="text-primary text-2xl font-medium">Lonavala</span>
                             </div>
@@ -49,10 +60,10 @@ const HotelPackage = () => {
                 </div>
             </div>
             <CommonPageWrapper>
-                <PackageGallery/>
-                <HichFacilities/>
-                <Details/>
-                <SectionBanner/>
+                <PackageGallery />
+                <HichFacilities />
+                <Details />
+                <SectionBanner />
 
             </CommonPageWrapper>
         </>

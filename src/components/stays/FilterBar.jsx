@@ -4,6 +4,8 @@ import AntdDualRangeSlider from '../common/AntdDualRangeSlider';
 
 const FilterBar = () => {
     let [quantity, setQuantity] = useState(0);
+    const [minPrice, setMinPrice] = useState(1000);
+    const [maxPrice, setMaxPrice] = useState(500000);
 
     return (
         <div>
@@ -17,7 +19,7 @@ const FilterBar = () => {
             <div className="border-b-2 pb-8">
                 <div className="my-5">
                     <p className="text-2xl">Price Range</p>
-                    <AntdDualRangeSlider />
+                    <AntdDualRangeSlider minPrice={minPrice} maxPrice={maxPrice} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
                 </div>
 
                 <div className="flex gap-5 justify-center items-center">

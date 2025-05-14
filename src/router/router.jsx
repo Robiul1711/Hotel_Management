@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <ExperiencePage/>
       },
       {
-        path: "/hotel-package",
+        path: "/hotel-package-details",
         element:<HotelPackage/>
       },
       {
