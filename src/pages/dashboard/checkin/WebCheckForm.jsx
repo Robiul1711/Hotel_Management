@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 
 const WebCheckForm = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -148,7 +150,7 @@ const WebCheckForm = () => {
 
         {/* Submit button */}
         <div className="text-center">
-          <button
+          <button onClick={()=> navigate('/dashboard/submit-form')}
             type="submit"
             className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition-all"
           >
