@@ -15,6 +15,8 @@ import { Helmet } from 'react-helmet-async';
 import PromotionalBanner from '@/components/common/PromotionalBanner';
 import { motion } from 'framer-motion'
 import { SlideUp } from '@/animation/animate';
+import LuxuryVila from '@/components/home/LuxuryVila';
+import Celebrate from '@/components/home/Celebrate';
 
 
 const Home = () => {
@@ -35,14 +37,17 @@ const Home = () => {
       <Banner />
       <CommonPageWrapper>
         <App />
-        <Service />
         <Stays />
         <PromotionalBanner />
         <Experience />
-
+        <LuxuryVila/>
         <Gallery />
-        <MobileGallery />
+        <Celebrate/>
         <Choose />
+        <Service />
+
+        <MobileGallery />
+        
       </CommonPageWrapper>
       <SectionBanner />
     </div >

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 const PromotionalBanner = () => {
     return (
         <motion.div
-            variants={SlideRight(0.3)}
+            variants={SlideRight(0.1)}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.5 }}

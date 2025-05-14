@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 
 // Dummy Security component
 const Security = () => (
@@ -11,7 +10,7 @@ const Security = () => (
 );
 
 const MyProfile = () => {
-  const navigate = useNavigate();
+
   const [showSecurity, setShowSecurity] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
 

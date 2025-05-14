@@ -51,7 +51,7 @@ const data = [
 const Experience = () => {
     return (
         <motion.div
-            variants={SlideUp(0.3)}
+            variants={SlideUp(0.1)}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.5 }}

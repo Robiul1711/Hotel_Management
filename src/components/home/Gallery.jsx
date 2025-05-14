@@ -9,7 +9,7 @@ import img7 from '@/assets/images/gallery/7.png';
 import img8 from '@/assets/images/gallery/8.png';
 import element from '@/assets/images/element1.png';
 import { motion } from 'framer-motion'
-import { Zooming } from '@/animation/animate';
+import { SlideUp, Zooming } from '@/animation/animate';
 
 const breakpointColumnsObj = {
     default: 4,
@@ -33,7 +33,7 @@ const galleryItems = [
 const Gallery = () => {
     return (
         <motion.div
-            variants={Zooming(0.3)}
+            variants={SlideUp(0.1)}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.5 }}
