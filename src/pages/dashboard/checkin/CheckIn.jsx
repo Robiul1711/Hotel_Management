@@ -63,7 +63,7 @@ const CheckIn = () => {
             <h1 className='text-2xl font-semibold mb-6 font-neris'>Web Check-in</h1>
             <div className='flex flex-col items-center justify-center bg-[#FA0] rounded-[12px] p-16'>
 <p className='font-neris text-[32px] text-white  max-w-[826px] text-center mx-auto '>Complete your check-in details to save time at arrival. Upload required documents securely.</p>
-          <button onClick={() => navigate('/dashboard/web-check-form')} className='bg-white text-black px-20 py-3 rounded-[12px] transition-all'>Complete Booking</button>
+          <button onClick={() => navigate('/dashboard/web-check-form')} className='bg-white text-black px-20 py-3 rounded-[12px] text-center  transition-all'>Complete Booking</button>
             </div>
         </div>
  <div> 

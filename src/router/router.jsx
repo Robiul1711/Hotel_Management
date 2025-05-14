@@ -7,6 +7,7 @@ import Booking from "@/pages/dashboard/booking/Booking";
 import ViewDetails from "@/pages/dashboard/booking/ViewDetails";
 import BookingHistory from "@/pages/dashboard/bookingHistory/BookingHistory";
 import CheckIn from "@/pages/dashboard/checkin/CheckIn";
+import SubmitForm from "@/pages/dashboard/checkin/SubmitForm";
 import WebCheckForm from "@/pages/dashboard/checkin/WebCheckForm";
 import Dashboard from "@/pages/dashboard/Dashboard";
 import Settings from "@/pages/dashboard/settings/Settings";
@@ -81,6 +82,11 @@ const router = createBrowserRouter([
         path: 'web-check-form',
         element: <WebCheckForm/>
       },
+      {
+        path: 'submit-form',
+        element: <SubmitForm/>
+      },
+
       {
         path: 'support',
         element: <Support/>

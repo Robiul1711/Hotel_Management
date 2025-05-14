@@ -1,9 +1,13 @@
 import { BookingHistoryIcon, BookingIcon, CheckInIcon, DashboardIcon, LogoutIcon, SettingIcon, SupportIcon } from '@/lib/CustomIconPackage';
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+
 
 const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+    const { pathname } = useLocation();
+    const webcheck=["/dashboard/check-in","/dashboard/web-check-form","/dashboard/submit-form",].includes(pathname);
+    const support=["/dashboard/support","/dashboard/open-support-ticket",].includes(pathname);
     const navItemClasses = (isActive) =>
         `flex items-center gap-2 p-2 rounded transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'text-[#333] hover:bg-orange-100'
         }`;
@@ -55,8 +59,8 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
                 <NavLink to="/dashboard/check-in">
                     {({ isActive }) => (
-                        <div className={navItemClasses(isActive)}>
-                            <BookingHistoryIcon color={isActive ? '#fff' : '#333'} />
+                        <div className={navItemClasses(isActive || webcheck)}>
+                            <BookingHistoryIcon color={isActive || webcheck ?  '#fff' : '#333'} />
                             Web Check-In
                         </div>
                     )}
@@ -64,8 +68,8 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
                 <NavLink to="/dashboard/support">
                     {({ isActive }) => (
-                        <div className={navItemClasses(isActive)}>
-                            <SupportIcon color={isActive ? '#fff' : '#333'} />
+                        <div className={navItemClasses(isActive || support)}>
+                            <SupportIcon color={isActive || support ? '#fff' : '#333'} />
                             Support
                         </div>
                     )}
