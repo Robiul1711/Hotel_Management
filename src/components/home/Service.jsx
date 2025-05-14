@@ -42,7 +42,7 @@ const services = [
 const Service = () => {
     return (
         <motion.section
-            variants={SlideUp(0.3)}
+            variants={SlideUp(0.1)}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.5 }}
@@ -53,7 +53,7 @@ const Service = () => {
                 </h2>
 
 
-                <div className="flex flex-col lg:flex-row items-center">
+                <div className="flex flex-col gap-5 lg:flex-row items-center">
                     <div className=" lg:w-[72%]">
                         <div className=" ">
                             {/* <CardGrid /> */}
