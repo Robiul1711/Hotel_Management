@@ -15,7 +15,7 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
     return (
         <aside
-            className={`fixed z-20 top-0 left-0 h-auto  font-nerisLight  w-64 bg-[#FFF4DC] p-4 transform transition-transform duration-300 ease-in-out
+            className={`fixed z-20 top-0 left-0 h-full   font-nerisLight  w-64 bg-[#FFF4DC] p-4 transform transition-transform duration-300 ease-in-out
                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
                 md:relative md:translate-x-0 md:block`}
         >
@@ -28,7 +28,7 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 </button>
             </div>
 
-            <nav className="flex flex-col gap-4 h-full">
+            <nav className="flex flex-col gap-4 h-full ">
                 <NavLink to="/dashboard" end>
                     {({ isActive }) => (
                         <div className={navItemClasses(isActive)}>
@@ -87,7 +87,7 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
                 <NavLink to='#' >
 
-                    <div className={`flex items-center gap-2 p-2 border-t pt-5 mt-5  transition-colors duration-200 text-[#333] hover:bg-orange-100`}>
+                    <div className={`flex absolute bottom-5 left-5 z-50 items-center gap-2 p-2  pt-5 mt-5  transition-colors duration-200 text-[#333] hover:bg-orange-100`}>
                         <LogoutIcon color={'#333'} />
                         Log Out
                     </div>
