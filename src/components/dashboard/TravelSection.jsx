@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-
+import popular from "../../assets/images/popular.png";
+import history from "../../assets/images/history.png";
 const tabs = ["Most Popular", "Special Offer", "Near Me"];
 
 const HotelCard = ({ showButton = false }) => (
     <div className="flex items-center gap-4 bg-white rounded-lg shadow-sm p-3">
         <img
-            src="https://via.placeholder.com/100"
+            src={popular}
             alt="hotel"
             className="w-24 h-20 rounded-lg object-cover"
         />
@@ -27,14 +28,35 @@ const HotelCard = ({ showButton = false }) => (
         </div>
     </div>
 );
+const History = ({ showButton = false }) => (
+    <div className="flex items-center relative bg-white  rounded-lg shadow-sm p-3">
+        <img
+            src={history}
+            alt="hotel"
+            className="rounded-lg w-full object-cover"
+        />
+        <div className="absolute bottom-0 left-0 shadow-xl flex justify-between items-center w-full p-2 md:p-4 bg-white rounded-[12px]">
+            <div>
+                <p className="font-semibold text-sm">
+                    Tropical Adventures and Sun-Kissed Shores
+                </p>
+            
+            </div>
+            <div className="">
+                <p className="text-sm font-medium">INR 2500</p>
+    
+            </div>
+        </div>
+    </div>
+);
 
 const TravelSection = () => {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-        <div className="flex gap-4">
+        <div className="flex flex-col xl:flex-row gap-4">
             {/* Left: Tabs + Cards */}
-            <div className="w-2/3">
+            <div className="xl:w-2/3">
                 {/* Tabs */}
                 <div className="flex items-center justify-between mb-3">
                     <div className="flex gap-6 text-sm font-medium">
@@ -57,7 +79,7 @@ const TravelSection = () => {
                 </div>
 
                 {/* Cards Grid */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 xmd:grid-cols-2 gap-4">
                     {[...Array(6)].map((_, idx) => (
                         <HotelCard key={idx} />
                     ))}
@@ -65,11 +87,11 @@ const TravelSection = () => {
             </div>
 
             {/* Right: History Section */}
-            <div className="w-1/3 bg-white rounded-xl p-4 shadow-sm">
+            <div className=" xl:w-1/3  bg-white rounded-xl border p-4 shadow-md">
                 <h3 className="text-md font-medium mb-3">History</h3>
-                <div className="space-y-3">
+                <div className="space-y-3 grid grid-cols-1 xmd:grid-cols-2 xl:grid-cols-1 gap-4 xl:gap-0 ">
                     {[...Array(2)].map((_, idx) => (
-                        <HotelCard key={idx} showButton />
+                        <History key={idx} showButton />
                     ))}
                 </div>
             </div>

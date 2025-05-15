@@ -6,10 +6,14 @@ import HealthWellness from '@/components/experience/HealthWellness';
 import Outdoor from '@/components/experience/Outdoor';
 import Food from '@/components/experience/Food';
 import SectionBanner from '@/components/home/SectionBanner';
+import { Helmet } from 'react-helmet-async';
 
 const ExperiencePage = () => {
     return (
         <div>
+            <Helmet>
+                <title>Experiences</title>
+            </Helmet>
             <ExperienceBanner />
             <CommonPageWrapper>
                 <div className='mt-12'>

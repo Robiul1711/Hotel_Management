@@ -1,7 +1,9 @@
 import { DeleteIcons } from '@/lib/CustomIcons';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BookingSummary = () => {
+    const navigate = useNavigate();
     return (
         <div className='bg-white shadow rounded-xl'>
             <p className="py-5 bg-[#fff8db] px-2 text-[24px]">Booking Summary</p>
@@ -34,8 +36,8 @@ const BookingSummary = () => {
             </div>
 
             <div className="w-10/12 mx-auto">
-                <button
-                    className={` px-4 py-2 xlg:py-4 w-full rounded-full text-lg  bg-primary text-white `}
+                <button onClick={() => navigate('/checkout')}
+                    className={` px-4 py-4 w-full rounded-full text-lg  bg-primary text-white `}
                 >
                     Book now
                 </button>

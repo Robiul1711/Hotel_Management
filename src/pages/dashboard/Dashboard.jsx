@@ -59,11 +59,9 @@ const data = [
 const Dashboard = () => {
     return (
         <div>
-            <div className="">
-                <div className="">
-                    <p className="text-[32px] font-neris ">Welcome Back,  John Smith!11</p>
-                    <p className='font-nerisLight '>Here's what's coming up and your recent activity.</p>
-                </div>
+          <div className="">
+            <p className="text-xl  md:text-[32px] font-neris">Welcome Back,  John Smith!</p>
+            <p className='font-nerisLight'>Here's what's coming up and your recent activity.</p>
 
                 <DashboardCardSlider data={data} />
                 <TravelSection />

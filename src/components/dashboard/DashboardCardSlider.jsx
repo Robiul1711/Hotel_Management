@@ -10,7 +10,7 @@ import DashboardCard from './DashboardCard';
 
 const DashboardCardSlider = ({ data, cardNo = 3 }) => {
     return (
-        <div className="w-full mx-auto py-10 bg-transparent">
+        <div className="w-full mx-auto pb-10 xl:pb-16  bg-transparent">
 
             <p className="font-neris text-[24px]">Upcoming Bookings</p>
 

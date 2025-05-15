@@ -10,7 +10,7 @@ const PhotoGallery = () => {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-4 mx-auto p-4">
+    <div className="grid grid-cols-4 gap-2 md:gap-3 ">
       {/* Left - Large Image */}
       <div className="col-span-2 row-span-2">
         <img

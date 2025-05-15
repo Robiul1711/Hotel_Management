@@ -20,6 +20,7 @@ import pune from '@/assets/images/pune.png'
 import mumbai from '@/assets/images/mumbai.png'
 import delhi from '@/assets/images/delhi.png'
 import goa from '@/assets/images/goa.png'
+import { Helmet } from 'react-helmet-async';
 
 const data = [
     {
@@ -52,6 +53,9 @@ const data = [
 const StayPage = () => {
     return (
         <>
+            <Helmet>
+                <title>Stays</title>
+            </Helmet>
             <StayBanner />
             <CommonPageWrapper>
                 <div className="flex flex-col xmd:flex-row xmd:gap-14 mt-5 xmd:mt-20">
