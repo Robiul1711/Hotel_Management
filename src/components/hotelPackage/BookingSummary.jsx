@@ -35,7 +35,7 @@ const BookingSummary = () => {
 
             <div className="w-10/12 mx-auto">
                 <button
-                    className={` px-4 py-4 w-full rounded-full text-lg  bg-primary text-white `}
+                    className={` px-4 py-2 xlg:py-4 w-full rounded-full text-lg  bg-primary text-white `}
                 >
                     Book now
                 </button>
@@ -47,21 +47,21 @@ const BookingSummary = () => {
                 </p>
             </div>
 
-            <div className="py-5 flex justify-around">
+            <div className="py-5 flex gap-2 flex-wrap justify-around">
                 <button
-                    className={` px-4 py-2 rounded-full text-lg  bg-secondary text-white `}
+                    className={` px-4 py-1 xlg:py-2 rounded-full text-lg  bg-secondary text-white `}
                 >
                     Send  equiry
                 </button>
 
                 <button
-                    className={` px-4 py-2 rounded-full text-lg  bg-secondary text-white `}
+                    className={` px-4 py-1 xlg:py-2 rounded-full text-lg  bg-secondary text-white `}
                 >
                     Whatsapp
                 </button>
 
                 <button
-                    className={` px-4 py-2 rounded-full text-lg  bg-secondary text-white `}
+                    className={` px-4 py-1 xlg:py-2 rounded-full text-lg  bg-secondary text-white `}
                 >
                     Call
                 </button>

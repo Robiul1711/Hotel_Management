@@ -35,7 +35,7 @@ const Aminities = () => {
                 </div>
             </div>
 
-            <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">View All Amenities</button>
+            <button className="bg-primary text-white md:px-16 py-1 px-2  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">View All Amenities</button>
 
             <div className="">
                 <p className="text-[24px] font-bold mt-10">Meals</p>
@@ -46,8 +46,8 @@ const Aminities = () => {
             </div>
 
             <div className="space-x-4">
-                <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">View Menu</button>
-                <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">Meal Pricing</button>
+                <button className="bg-primary text-white md:px-16 py-1 px-2  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">View Menu</button>
+                <button className="bg-primary text-white md:px-16 py-1 px-2  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">Meal Pricing</button>
             </div>
         </div>
     );

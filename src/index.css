@@ -2,6 +2,12 @@
 
 /* google fonts */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 /* google fonts */
 
@@ -9,12 +15,12 @@
 @tailwind components;
 @tailwind utilities;
 
-  @font-face {
-    font-family: "Neris";
-    src: url("./assets//fonts/neris/Neris-SemiBold.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
-  }
+@font-face {
+  font-family: "Neris";
+  src: url("./assets//fonts/neris/Neris-SemiBold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "Neris-light";
@@ -22,7 +28,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 
 @font-face {
   font-family: "Gilroy-Semibold";

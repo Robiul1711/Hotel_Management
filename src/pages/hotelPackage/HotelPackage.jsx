@@ -4,6 +4,8 @@ import Service from '@/components/home/Service';
 import Details from '@/components/hotelPackage/Details';
 import CheckInOutPolicy from '@/components/hotelPackage/details/CheckInOutPolicy';
 import ExperienceSection from '@/components/hotelPackage/details/ExperienceSection';
+import HotelPolicies from '@/components/hotelPackage/details/HotelPolicies';
+import NearbyHotels from '@/components/hotelPackage/details/NearbyHotels';
 import RealMomentSection from '@/components/hotelPackage/details/RealMomentSection';
 import HichFacilities from '@/components/hotelPackage/HichFacilities';
 import PackageGallery from '@/components/hotelPackage/PackageGallery';
@@ -68,7 +70,9 @@ const HotelPackage = () => {
                 <Details />
                 <ExperienceSection />
                 <RealMomentSection/>
-                <CheckInOutPolicy />
+                <NearbyHotels/>
+                {/* <CheckInOutPolicy /> */}
+                <HotelPolicies/>
                 <SectionBanner />
 
             </CommonPageWrapper>

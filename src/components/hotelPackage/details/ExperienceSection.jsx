@@ -49,19 +49,19 @@ const ExperienceCard = ({ data }) => {
                     className="w-full h-full object-cover"
                     alt={data?.title || "Accommodation"}
                 />
-                
+
             </div>
 
             {/* Content Section */}
             <div className="p-3 sm:p-4 bg-white flex-1 flex flex-col justify-between">
                 <div className="flex justify-between items-start gap-2 sm:items-center">
                     <div className="flex flex-col w-[60%] sm:w-[65%]">
-                       
+
                         <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl line-clamp-2">
                             {data?.title}
                         </p>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
@@ -76,17 +76,33 @@ const ExperienceSection = () => {
             <p className="text-gray-400">What all you can do and experience in this property</p>
 
             <div className="w-full mx-auto py-10 bg-transparent">
-                
+
                 <Swiper
                     modules={[]}
                     spaceBetween={20}
                     loop={true}
-                    slidesPerView={3.1}
                     grabCursor={true}
                     speed={3000}
                     autoplay={{
                         delay: 1,
                         disableOnInteraction: false,
+                    }}
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1.2,
+                        },
+                        480: {
+                            slidesPerView: 1.2,
+                        },
+                        640: {
+                            slidesPerView: 1.5,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 4.2,
+                        },
                     }}
 
                 >

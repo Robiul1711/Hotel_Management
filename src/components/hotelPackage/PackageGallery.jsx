@@ -1,20 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CiLocationOn } from 'react-icons/ci';
 import img1 from '@/assets/images/hotelP1.png';
 import img2 from '@/assets/images/hotelP2.png';
 import img3 from '@/assets/images/hotelP3.png';
 import img4 from '@/assets/images/hotelP4.png';
 import img5 from '@/assets/images/hotelP5.png';
-import { SettingIcons, StarIcons } from '@/lib/CustomIcons';
 import { CustomLoveIcon, CustomPdfIcon, CustomShareIcon } from '@/lib/CustomIconPackage';
 import StarRatings from 'react-star-ratings';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 const PackageGallery = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState('');
+
+    // Gallery images
+    const images = [img1, img2, img3, img4, img5];
+
+    // Open modal with selected image
+    const openModal = (image) => {
+        setSelectedImage(image);
+        setIsModalOpen(true);
+    };
+
+    // Close modal
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedImage('');
+    };
+
     return (
         <div>
-            <div className="flex justify-between items-center">
-                <div className="flex gap-3 justify-center items-center">
-
+            <div className="flex justify-between items-center ">
+                <div className=" gap-3 justify-center items-center hidden md:flex">
                     <p className="mt-6 font-bold text-2xl">4.8</p>
                     <div className="flex">
                         <StarRatings
@@ -26,17 +43,27 @@ const PackageGallery = () => {
                             starSpacing="2px"
                         />
                     </div>
-                    <div className="">
+                    <div>
                         <CustomLoveIcon />
                     </div>
                 </div>
 
+                <div className="md:hidden">
+                    <div className="">
+                        <p className=" text-xl font-semibold text-primary mb-0">The Peninsula Beverly Hills</p>
+                        <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600">
+                            Lush green valley view
+                            
+                        </p>
+                    </div>
+                </div>
                 <div className="flex items-center">
                     <CustomPdfIcon />
                     <CustomShareIcon />
                 </div>
             </div>
-            <div className=" px-4 py-6">
+
+            <div className="px-4 py-6">
                 <div className="flex flex-col md:flex-row gap-4">
                     {/* Left Large Image */}
                     <div className="md:w-[58%] w-full rounded-xl overflow-hidden">
@@ -44,21 +71,58 @@ const PackageGallery = () => {
                     </div>
 
                     {/* Right Grid */}
-                    <div className="hidden  md:w-[42%] w-full md:grid grid-cols-2 gap-4">
+                    <div className="hidden md:w-[42%] w-full md:grid grid-cols-2 gap-4">
                         <img src={img2} alt="Grid1" className="w-full h-full object-cover rounded-xl" />
                         <img src={img3} alt="Grid2" className="w-full h-full object-cover rounded-xl" />
                         <img src={img4} alt="Grid3" className="w-full h-full object-cover rounded-xl" />
                         <div className="relative rounded-xl overflow-hidden">
                             <img src={img5} alt="Grid4" className="w-full h-full object-cover rounded-xl" />
-                            <button className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow">
+                            <button
+                                onClick={() => openModal(img5)}
+                                className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
+                            >
                                 View all photos
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+            {/* Modal */}
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-4 rounded-lg max-w-4xl w-full">
+                        <div className="flex justify-end items-center">
+                            <button onClick={closeModal} className="text-red-500 font-bold text-xl flex items-center gap-2">
+                                Close <IoMdCloseCircle />
+                            </button>
+                        </div>
+                        <div className="mt-4">
+                            <img
+                                src={selectedImage}
+                                alt="Selected"
+                                className="w-full h-[400px] object-cover rounded-xl"
+                            />
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
+                            {images.map((image, index) => (
+                                <div key={index} className="relative">
+                                    <img
+                                        src={image}
+                                        alt={`Gallery image ${index + 1}`}
+                                        className="w-full h-full object-cover rounded-xl cursor-pointer"
+                                        onClick={() => setSelectedImage(image)}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Show selected image in modal */}
+
+                    </div>
+                </div>
+            )}
+        </div>
     );
 };
 
