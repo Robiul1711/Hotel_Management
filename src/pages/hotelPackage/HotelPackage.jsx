@@ -2,6 +2,9 @@ import SearchBar from '@/components/home/SearchBar';
 import SectionBanner from '@/components/home/SectionBanner';
 import Service from '@/components/home/Service';
 import Details from '@/components/hotelPackage/Details';
+import CheckInOutPolicy from '@/components/hotelPackage/details/CheckInOutPolicy';
+import ExperienceSection from '@/components/hotelPackage/details/ExperienceSection';
+import RealMomentSection from '@/components/hotelPackage/details/RealMomentSection';
 import HichFacilities from '@/components/hotelPackage/HichFacilities';
 import PackageGallery from '@/components/hotelPackage/PackageGallery';
 import CommonPageWrapper from '@/lib/CommonPageWrapper';
@@ -63,6 +66,9 @@ const HotelPackage = () => {
                 <PackageGallery />
                 <HichFacilities />
                 <Details />
+                <ExperienceSection />
+                <RealMomentSection/>
+                <CheckInOutPolicy />
                 <SectionBanner />
 
             </CommonPageWrapper>
