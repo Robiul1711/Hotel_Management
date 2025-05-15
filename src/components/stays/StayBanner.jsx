@@ -14,7 +14,7 @@ const StayBanner = () => {
             <div className=" overflow-hidden">
                 <Carousel
                     autoplay
-                    autoplaySpeed={4000}
+                    autoplaySpeed={2000}
                     dotPosition="bottom"
                     effect="scrollx"
                     className="h-[33vh] md:h-[70vh]"
