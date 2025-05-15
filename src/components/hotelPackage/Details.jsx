@@ -17,8 +17,7 @@ const Details = () => {
                 <RoomOptions />
                 <ExclusiveFacilitiesFAQ />
                 <Aminities />
-                <ExperienceSection />
-                <CheckInOutPolicy />
+                
             </div>
 
             <div className="w-full lg:w-[30%]">

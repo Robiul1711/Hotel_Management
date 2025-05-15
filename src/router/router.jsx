@@ -20,6 +20,7 @@ import HotelPackage from "@/pages/hotelPackage/HotelPackage";
 import MyBooking from "@/pages/mybooking/MyBooking";
 import SearchPage from "@/pages/searchPage/SearchPage";
 import StayPage from "@/pages/stays/StayPage";
+import VillaPackageDetails from "@/pages/villaPackage/VillaPackageDetails";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -31,90 +32,94 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-   
+
 
       {
         path: "/stays",
-        element: <StayPage/>
+        element: <StayPage />
       },
       {
         path: "/experience",
-        element: <ExperiencePage/>
+        element: <ExperiencePage />
       },
       {
         path: "/hotel-package-details",
-        element:<HotelPackage/>
+        element: <HotelPackage />
       },
       {
-        path: "/my-booking",
-        element: <MyBooking/>
+        path: "/villa-package-details",
+        element: <VillaPackageDetails/>
       },
+      // {
+      //   path: "/my-booking",
+      //   element: <MyBooking />
+      // },
       {
         path: "/search-result",
-        element: <SearchPage/>
+        element: <SearchPage />
       },
       {
         path: "/checkout",
-        element: <Checkout/>
+        element: <Checkout />
       }
     ],
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout/>,
+    element: <DashboardLayout />,
     children: [
       {
         path: '/dashboard',
-        element: <Dashboard/>
+        element: <Dashboard />
       },
       {
         path: 'booking',
-        element: <Booking/>
+        element: <Booking />
       },
       {
         path: 'view-detais',
-        element: <ViewDetails/>
+        element: <ViewDetails />
       },
       {
         path: 'booking-history',
-        element: <BookingHistory/>
+        element: <BookingHistory />
       },
       {
         path: 'check-in',
-        element: <CheckIn/>
+        element: <CheckIn />
       },
       {
         path: 'web-check-form',
-        element: <WebCheckForm/>
+        element: <WebCheckForm />
       },
       {
         path: 'submit-form',
-        element: <SubmitForm/>
+        element: <SubmitForm />
       },
 
       {
         path: 'support',
-        element: <Support/>
+        element: <Support />
       },
-      
+
       {
         path: 'open-support-ticket',
-        element: <OpenSupportTicket/>
+        element: <OpenSupportTicket />
       },
 
       {
         path: 'settings',
-        element:<Settings/>
+        element: <Settings />
       }
     ]
   },
   {
     path: '/auth',
-    element: <AuthLayout/>,
-    children:[
+    element: <AuthLayout />,
+    children: [
       {
         path: 'registration',
-        element: <AuthForm/>
+        element: <AuthForm />
       }
     ]
   }

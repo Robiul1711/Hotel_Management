@@ -40,10 +40,12 @@ const data = [
 ];
 
 const Card = ({ icon, title, description }) => (
-    <div className="bg-[#fef7da] text-dark rounded-xl p-6 mx-2 shadow-md h-full flex flex-col">
+    <div className="bg-[#fef7da] text-dark rounded-xl p-6 mx-2 shadow-md h-full flex items-center md:items-start gap-2 md:flex-col">
         <div className="flex-shrink-0">{icon}</div>
-        <h3 className="font-bold text-lg mt-3 break-words line-clamp-2">{title}</h3>
-        <p className="text-sm mt-2 break-words line-clamp-4 flex-grow">{description}</p>
+        <div className="">
+            <h3 className="font-bold text-lg mt-3 break-words line-clamp-2">{title}</h3>
+            <p className="text-sm mt-2 break-words line-clamp-4 flex-grow">{description}</p>
+        </div>
     </div>
 );
 
@@ -61,7 +63,7 @@ const CardGrid2 = () => {
     return (
         <div className="">
             {/* Mobile: Simple Carousel */}
-            <div className="md:hidden my-5 flex flex-col gap-5 px-4">
+            <div className="md:hidden my-5 flex flex-col gap-5 ">
                 {data?.map((item, index) => (
                     <Card key={index} {...item} />
                 ))}
