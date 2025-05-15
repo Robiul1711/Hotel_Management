@@ -4,8 +4,8 @@ import React from 'react'
 
 const AnySpecialRequests = () => {
   return (
-    <div className='border rounded-2xl p-6 '>
-      <p className='text-sm flex items-center gap-2 pb-2'>
+    <div className='border shadow-lg rounded-2xl w-full bg-white p-6 '>
+      <p className='text-sm flex items-center gap-1 pb-2'>
         <OfferIcons /> Any Special Requests
       </p>
       <textarea
