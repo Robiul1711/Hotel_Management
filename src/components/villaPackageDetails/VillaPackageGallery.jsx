@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { CiLocationOn } from 'react-icons/ci';
-import img1 from '@/assets/images/hotelP1.png';
-import img2 from '@/assets/images/hotelP2.png';
-import img3 from '@/assets/images/hotelP3.png';
-import img4 from '@/assets/images/hotelP4.png';
-import img5 from '@/assets/images/hotelP5.png';
+import img1 from '@/assets/images/villa1.png';
+import img2 from '@/assets/images/villa2.png';
+import img3 from '@/assets/images/villa3.png';
+import img4 from '@/assets/images/villa4.png';
+import img5 from '@/assets/images/villa5.png';
 import { CustomLoveIcon, CustomPdfIcon, CustomShareIcon } from '@/lib/CustomIconPackage';
 import StarRatings from 'react-star-ratings';
 import { IoMdCloseCircle } from 'react-icons/io';
 
-const PackageGallery = () => {
+const VillaPackageGallery = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
 
@@ -53,7 +53,7 @@ const PackageGallery = () => {
                         <p className=" text-xl font-semibold text-primary mb-0">The Peninsula Beverly Hills</p>
                         <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600">
                             Lush green valley view
-                            
+
                         </p>
                     </div>
                 </div>
@@ -126,4 +126,4 @@ const PackageGallery = () => {
     );
 };
 
-export default PackageGallery;
+export default VillaPackageGallery;

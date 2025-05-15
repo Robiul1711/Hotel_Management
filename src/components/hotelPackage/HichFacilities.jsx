@@ -56,7 +56,7 @@ export default function HichFacilities() {
       <div className="mt-10  xlg:w-1/2" >
 
         <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-4xl ">
-          Sunshine & Soul
+          The Peninsula Beverly Hills
         </p>
         <p className="flex items-center text-sm sm:text-base md:text-2xl gap-1 sm:gap-2">
           <span className="">Lonavala, Maharashtra </span>
