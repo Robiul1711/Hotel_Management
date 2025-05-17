@@ -38,10 +38,10 @@ const router = createBrowserRouter([
         path: "/stays",
         element: <StayPage />
       },
-      {
-        path: "/experience",
-        element: <ExperiencePage />
-      },
+      // {
+      //   path: "/experience",
+      //   element: <ExperiencePage />
+      // },
       {
         path: "/hotel-package-details",
         element: <HotelPackage />

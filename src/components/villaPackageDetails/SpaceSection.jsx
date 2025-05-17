@@ -163,7 +163,7 @@ const Card = ({ data }) => {
 
 const SpaceSection = () => {
     return (
-        <div className="w-full mx-auto py-10 bg-transparent">
+        <div className="w-full mx-auto py-10 bg-transparent" id='spaces'>
             <p className="text-2xl font-bold  mb-5">Spaces</p>
             <Swiper
                 modules={[]}

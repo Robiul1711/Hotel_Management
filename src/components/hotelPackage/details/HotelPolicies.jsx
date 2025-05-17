@@ -6,7 +6,7 @@ import { IoMdCloseCircle } from 'react-icons/io';
 const HotelPolicies = () => {
     return (
         <div className="p-4 space-y-4">
-            <div className="">
+            <div className=""  id='hotel-location'>
                 <p className="text-[24px] font-bold leading-none mb-1">Location</p>
                 <p className="text-gray-400">Frichley Hill Rd, Lonavala, Maharashtra </p>
                 <p className="flex text-gray-400 underline gap-2"><Location/>Open in Maps</p>

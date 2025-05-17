@@ -46,7 +46,8 @@ const StayBanner = () => {
                     ))}
                 </Carousel>
 
-               <StaySearchBar/>
+               {/* <StaySearchBar/> */}
+               <SearchBar/>
             </div>
         </div>
     );

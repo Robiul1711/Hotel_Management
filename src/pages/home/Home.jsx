@@ -17,11 +17,13 @@ import { motion } from 'framer-motion'
 import { SlideUp } from '@/animation/animate';
 import LuxuryVila from '@/components/home/LuxuryVila';
 import Celebrate from '@/components/home/Celebrate';
+import { ScrollRestoration } from 'react-router-dom';
 
 
 const Home = () => {
   return (
     <div className=''>
+      <ScrollRestoration/>
       <Helmet>
         <title>HICH</title>
       </Helmet>
@@ -39,7 +41,7 @@ const Home = () => {
         <App />
         <Stays />
         <PromotionalBanner />
-        <Experience />
+        {/* <Experience /> */}
         <LuxuryVila/>
         <Gallery />
         <Celebrate/>

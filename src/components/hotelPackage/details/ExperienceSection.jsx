@@ -71,7 +71,7 @@ const ExperienceCard = ({ data }) => {
 
 const ExperienceSection = () => {
     return (
-        <div>
+        <div id='hotel-experiences'>
             <p className="text-[24px] font-bold">Experiences</p>
             <p className="text-gray-400">What all you can do and experience in this property</p>
 

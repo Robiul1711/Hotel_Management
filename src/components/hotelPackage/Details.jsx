@@ -7,6 +7,7 @@ import SectionBanner from '../home/SectionBanner';
 import BookingSummary from './BookingSummary';
 import Aminities from './details/Aminities';
 import ExperienceSection from './details/ExperienceSection';
+import { AmanityData } from '@/lib/Database';
 
 
 const Details = () => {
@@ -16,7 +17,7 @@ const Details = () => {
                 <Overview />
                 <RoomOptions />
                 <ExclusiveFacilitiesFAQ />
-                <Aminities />
+                <Aminities amenityData={AmanityData} />
                 
             </div>
 

@@ -1,42 +1,40 @@
 import React, { useState } from 'react';
-const tabs = [
-    'Details',
-    'Location',
-    'Room Options',
-    'Facilities',
-    'Policies',
-    'Contact Hotel'
-];
-
-const TabContent = ({selected})=>{
-return (
-    <div className="mt-8 p-6 bg-white rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold mb-2">{selected}</h2>
-        <p className="text-gray-600">This is the content for the {selected} tab.</p>
-    </div>
-)
-}
 
 
-const TabSection = () => {
-    const [selectedTab, setSelectedTab]=useState('Details');
+
+const scrollWithOffset = (element) => {
+    const yCoordinate = element.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -200; // Adjust offset as needed
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+};
+
+const TabSection = ({tabs}) => {
+    const [selectedTab, setSelectedTab] = useState('Details');
+
+    const handleTabClick = (tab) => {
+        setSelectedTab(tab.name);
+
+        const element = document.querySelector(tab.section);
+        if (element) {
+            scrollWithOffset(element);
+        }
+    };
+
     return (
-        <div className=''>
-            <div className=" flex flex-wrap gap-3 justify-start">
-                {
-                    tabs?.map((tab)=>(
-                        <button
-                        key={tab}
-                        onClick={()=>setSelectedTab(tab)}
-                        className={`relative  text-black px-2 md:px-4 py-2 rounded-full text-xs md:text-lg  transition-all duration-200 ${selectedTab === tab ? ' bg-primary text-white': 'hover:bg-gray-100'}`}
-                        >
-                            {tab}
-                        </button>
-                    ))
-                }
+        <div className="">
+            <div className="flex flex-wrap gap-3 justify-start">
+                {tabs.map((tab) => (
+                    <button
+                        key={tab.name}
+                        onClick={() => handleTabClick(tab)}
+                        className={`relative text-black px-2 md:px-4 py-2 rounded-full text-xs md:text-lg transition-all duration-200 ${
+                            selectedTab === tab.name ? 'bg-primary text-white' : 'hover:bg-gray-100'
+                        }`}
+                    >
+                        {tab.name}
+                    </button>
+                ))}
             </div>
-
-            {/* <TabContent selected={selectedTab} /> */}
         </div>
     );
 };
