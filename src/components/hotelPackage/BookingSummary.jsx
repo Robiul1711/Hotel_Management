@@ -6,20 +6,20 @@ const BookingSummary = () => {
     const navigate = useNavigate();
     return (
         <div className='bg-white shadow rounded-xl'>
-            <p className="py-5 bg-[#fff8db] px-2 text-[24px]">Booking Summary</p>
-            <div className="p-8 space-y-8">
+            <p className="py-5 bg-[#fff8db] px-2 lg:text-[24px]">Booking Summary</p>
+            <div className="p-8 lg:space-y-8">
                 <div className="flex justify-between">
-                    <p className="text-lg">Executive Room x 1</p>
+                    <p className="lg:text-lg">Executive Room x 1</p>
                     <DeleteIcons />
                 </div>
-                <p className="text-lg">₹ 3,500 x 1 night</p>
+                <p className="lg:text-lg">₹ 3,500 x 1 night</p>
                 <div className="flex justify-between">
-                    <p className="text-lg">Tax</p>
-                    <p className="text-lg">₹ 500</p>
+                    <p className="lg:text-lg">Tax</p>
+                    <p className="lg:text-lg">₹ 500</p>
                 </div>
                 <div className="flex justify-between">
-                    <p className="text-lg">Total (tax incl.)</p>
-                    <p className="text-lg">₹ 4000</p>
+                    <p className="lg:text-lg">Total (tax incl.)</p>
+                    <p className="lg:text-lg">₹ 4000</p>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@ const BookingSummary = () => {
 
             <div className="w-10/12 mx-auto">
                 <button onClick={() => navigate('/checkout')}
-                    className={` px-4 py-4 w-full rounded-full text-lg  bg-primary text-white `}
+                    className={` px-4 py-2 lg:py-4 w-full rounded-full text-lg  bg-primary text-white `}
                 >
                     Book now
                 </button>

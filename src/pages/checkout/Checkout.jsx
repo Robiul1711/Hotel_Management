@@ -4,9 +4,11 @@ import AnySpecialRequests from "@/components/checkoutComponents/AnySpecialReques
 import SunshineAndSoul from "@/components/checkoutComponents/SunshineAndSoul";
 import BookingCancellationPolicy from "@/components/checkoutComponents/BookingCancellationPolicy";
 import PriceDetails from "@/components/checkoutComponents/PriceDetails";
+import { ScrollRestoration } from "react-router-dom";
 const Checkout = () => {
   return (
     <div>
+      <ScrollRestoration/>
       <div
         className="bg-no-repeat bg-cover bg-center pt-10"
         style={{ backgroundImage: `url(${checkoutBanner})` }}

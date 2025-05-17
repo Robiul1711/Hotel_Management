@@ -12,7 +12,7 @@ import StayCard from '@/components/stays/StayCard';
 import StayMobileCard from '@/components/stays/StayMobileCard';
 import StaySearchBar from '@/components/stays/StaySearchBar';
 import CommonPageWrapper from '@/lib/CommonPageWrapper';
-import { StayData } from '@/lib/Database';
+import { StayData, StayHotelData, StayVillaData } from '@/lib/Database';
 import React, { useState } from 'react';
 
 import nearby from '@/assets/images/high.png'
@@ -21,6 +21,9 @@ import mumbai from '@/assets/images/mumbai.png'
 import delhi from '@/assets/images/delhi.png'
 import goa from '@/assets/images/goa.png'
 import { Helmet } from 'react-helmet-async';
+import { ScrollRestoration } from 'react-router-dom';
+import StayHotelCard from '@/components/stays/StayHotelCard';
+import StayVillaCard from '@/components/stays/StayVillaCard';
 
 const data = [
     {
@@ -51,8 +54,12 @@ const data = [
 ]
 
 const StayPage = () => {
+
+    const [active, setActive] = useState('hotels');
+
     return (
         <>
+            <ScrollRestoration />
             <Helmet>
                 <title>Stays</title>
             </Helmet>
@@ -66,11 +73,11 @@ const StayPage = () => {
                         <MobileFilterBar />
                     </div>
                     <div className="xmd:w-[85%]">
-                        <HotelVilla />
-                        <div className="">
+                        <HotelVilla active={active} setActive={setActive} />
+                        <div className={`hotels ${active === 'hotels' ? '' : 'hidden'}`}>
                             <div className="hidden lg:block space-y-12">
                                 {
-                                    StayData?.slice(0, 2)?.map(item => <StayCard key={item.id} data={item} />)
+                                    StayHotelData?.slice(0, 2)?.map(item => <StayHotelCard key={item.id} data={item} />)
                                 }
                             </div>
 
@@ -86,13 +93,47 @@ const StayPage = () => {
 
                             <div className="hidden lg:block space-y-12">
                                 {
-                                    StayData?.slice(2, 4)?.map(item => <StayCard key={item.id} data={item} />)
+                                    StayHotelData?.slice(2, 4)?.map(item => <StayHotelCard key={item.id} data={item} />)
                                 }
                             </div>
 
                             <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
                                 {
-                                    StayData?.map(item => <StayMobileCard key={item.id} data={item} />)
+                                    StayHotelData?.map(item => <StayMobileCard key={item.id} data={item} />)
+                                }
+                            </div>
+
+                            <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary hover:bg-orange-400 flex items-center gap-3'>
+                                View All
+                            </button>
+                        </div>
+
+                        <div className={`hotels ${active === 'villa' ? '' : 'hidden'}`}>
+                            <div className="hidden lg:block space-y-12">
+                                {
+                                    StayVillaData?.slice(0, 2)?.map(item => <StayVillaCard key={item.id} data={item} />)
+                                }
+                            </div>
+
+                            <div className="hidden xmd:flex flex-wrap gap-10  my-5">
+                                {
+                                    data?.map((item) =>
+                                        <div key={item?.id} className="flex justify-center items-center flex-col gap-2">
+                                            <img src={item?.image} alt="" className='w-[70px]' />
+                                            <p className="font-extralight text-gray-400 text-sm">{item?.name}</p>
+                                        </div>)
+                                }
+                            </div>
+
+                            <div className="hidden lg:block space-y-12">
+                                {
+                                    StayVillaData?.slice(2, 4)?.map(item => <StayVillaCard key={item.id} data={item} />)
+                                }
+                            </div>
+
+                            <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
+                                {
+                                    StayVillaData?.map(item => <StayMobileCard key={item.id} data={item} />)
                                 }
                             </div>
 

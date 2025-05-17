@@ -86,7 +86,7 @@ const HotelCard = ({ data }) => {
 
 const NearbyHotels = () => {
     return (
-        <div className="w-full mx-auto py-10 bg-transparent">
+        <div className="w-full mx-auto py-10 bg-transparent" id='nearby-hotels'>
             <p className="text-[24px] font-bold">Nearby Hotels</p>
             <Swiper
                 modules={[]}

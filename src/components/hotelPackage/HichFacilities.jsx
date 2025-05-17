@@ -7,6 +7,7 @@ import CardSwipe from "../home/CardSwipe";
 import CardGrid2 from "../common/CardGrid2";
 import { StarIcons, Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons } from "@/lib/CustomIcons";
 import { CustomBridgeIcon, CustomPhoneIcon, CustomWarehouseIcon } from "@/lib/CustomIconPackage";
+import { HotelTabsSection } from "@/lib/Database";
 
 
 export default function HichFacilities() {
@@ -51,7 +52,7 @@ export default function HichFacilities() {
 
   return (
     <div className=" md:py-10 ">
-      <TabSection />
+      <TabSection tabs={HotelTabsSection} />
 
       <div className="mt-10  xlg:w-1/2" >
 

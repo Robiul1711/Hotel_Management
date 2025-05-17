@@ -38,7 +38,7 @@ const ExclusiveFacilitiesFAQ = () => {
         setOpenIndex(openIndex === index ? null : index);
     };
     return (
-        <div className=" mx-auto mt-10">
+        <div className="mx-auto mt-10" id="hotel-facilities">
             <h2 className="text-2xl font-semibold mb-6 ">High Exclusive Facilities</h2>
             <div className="space-y-4">
                 {faqData.map((faq, index) => (

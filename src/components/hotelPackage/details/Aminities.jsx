@@ -1,43 +1,38 @@
-import { CustomACIcon, CustomBathIcon, CustomChildIcon, CustomElderIcon, CustomPoolIcon, CustomWifiIcon } from '@/lib/CustomIconPackage';
-import React from 'react';
+import MenuModal from '@/components/common/MenuModal';
+import PriceModal from '@/components/common/PriceModal';
+import { mealPlans } from '@/lib/Database';
+import React, { useState } from 'react';
 
-const Aminities = () => {
+const Aminities = ({ amenityData }) => {
+    const [showAll, setShowAll] = useState(false);
+
+    const displayedAmenities = showAll ? amenityData : amenityData.slice(0, 3);
+
     return (
         <div>
             <p className="text-[24px] font-bold">Amenities</p>
-            <div className="grid grid-cols-2 gap-20">
-                <div className="flex items-center gap-5">
-                    <CustomACIcon />
-                    <p className="text-gray-400">Ac</p>
-                </div>
 
-                <div className="flex items-center gap-5">
-                    <CustomWifiIcon />
-                    <p className="text-gray-400">WiFi</p>
-                </div>
-                <div className="flex items-center gap-5">
-                    <CustomChildIcon />
-                    <p className="text-gray-400">Child Friendly</p>
-                </div>
-                <div className="flex items-center gap-5">
-                    <CustomBathIcon />
-                    <p className="text-gray-400">Ensuite Bathroom</p>
-                </div>
-
-                <div className="flex items-center gap-5">
-                    <CustomElderIcon />
-                    <p className="text-gray-400">Elderly Friendly</p>
-                </div>
-
-                <div className="flex items-center gap-5">
-                    <CustomPoolIcon />
-                    <p className="text-gray-400">Pool</p>
-                </div>
+            <div id='hotel-aminities' className="grid grid-cols-2 gap-20">
+                {displayedAmenities?.map((item, index) => (
+                    <div key={index} className="flex items-center gap-5">
+                        {item.icon}
+                        <p className="text-gray-400">{item.title}</p>
+                    </div>
+                ))}
             </div>
 
-            <button className="bg-primary text-white md:px-16 py-1 px-2  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">View All Amenities</button>
+            
+                <button
+                    onClick={() => setShowAll(!showAll)}
+                    className="bg-primary text-white md:px-16 py-1 px-2 md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10"
+                >
+                    {
+                        showAll ? 'View Less Amenities' : 'View More Amenities'
+                    }
+                </button>
+            
 
-            <div className="">
+            <div className="" id='hotel-meals'>
                 <p className="text-[24px] font-bold mt-10">Meals</p>
                 <p className="text-gray-400">
                     Holiday without good Food? No Ways ;)
@@ -45,9 +40,9 @@ const Aminities = () => {
                 </p>
             </div>
 
-            <div className="space-x-4">
-                <button className="bg-primary text-white md:px-16 py-1 px-2  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">View Menu</button>
-                <button className="bg-primary text-white md:px-16 py-1 px-2  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">Meal Pricing</button>
+            <div className="flex gap-4">
+                <MenuModal pdfUrl={'https://drive.google.com/file/d/1sEf01r9ZkAH4Ay6i6UMqDF0vU40Bwqp9/view?usp=sharing'} />
+                <PriceModal mealPlans={mealPlans} />
             </div>
         </div>
     );

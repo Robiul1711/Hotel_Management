@@ -2,11 +2,12 @@ import React from 'react';
 import TabSection from '../hotelPackage/TabSection';
 import { StarIcons, Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons } from "@/lib/CustomIcons";
 import { CustomBridgeIcon, CustomPhoneIcon, CustomWarehouseIcon } from "@/lib/CustomIconPackage";
+import { HotelTabsSection, VillaTabsSection } from '@/lib/Database';
 
 const VillaTabSection = () => {
     return (
         <div>
-            <TabSection />
+            <TabSection tabs={VillaTabsSection} />
             <div className="mt-10  " >
 
                 <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-4xl ">
