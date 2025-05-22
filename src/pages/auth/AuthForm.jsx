@@ -2,11 +2,64 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
 import logo from "@/assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
+import { useMutation } from "@tanstack/react-query";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+import { BeatLoader, ClipLoader } from "react-spinners";
 
 export default function AuthForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true); // true = Sign Up, false = Sign In
+  const { user, setUser } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const signUpMutation = useMutation({
+    mutationFn: async (data) => {
+      setIsLoading(true);
+      try {
+        const response = await axiosPublic.post('/register', data);
+        if (response) {
+          console.log(response);
+          toast.success('Registration successful');
+          setUser({
+            ...response?.data
+          })
+          navigate('/');
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error(error?.response?.data?.message);
+
+      } finally {
+        setIsLoading(false)
+      }
+    }
+  })
+
+  const signInMutation = useMutation({
+    mutationFn: async (data) => {
+      setIsLoading(true);
+      try {
+        const response = await axiosPublic.post('/login', data);
+        if (response) {
+          console.log(response);
+          toast.success('Login successful');
+          setUser({
+            ...response?.data?.userData,
+            token: response?.data?.token
+          })
+          navigate('/');
+        }
+      } catch (error) {
+        console.log(error);
+
+      }
+    }
+  })
 
   const {
     register,
@@ -16,9 +69,17 @@ export default function AuthForm() {
 
   const onSubmit = (data) => {
     if (isSignUp) {
-      console.log("Sign Up Data:", data);
+      if (data?.password !== data?.password_confirmation) {
+        return toast.error('Password does not match');
+      }
+
+      signUpMutation.mutate(data);
+
+      console.log('Signup data', data);
+      // signUpMutation.mutate(data);
     } else {
       console.log("Sign In Data:", data);
+      signInMutation.mutate(data);
     }
   };
 
@@ -30,17 +91,15 @@ export default function AuthForm() {
       <div className="flex space-x-8 text-gray-600 mb-4">
         <p
           onClick={() => setIsSignUp(false)}
-          className={`cursor-pointer ${
-            !isSignUp ? "text-primary font-bold" : ""
-          }`}
+          className={`cursor-pointer ${!isSignUp ? "text-primary font-bold" : ""
+            }`}
         >
           Sign In
         </p>
         <p
           onClick={() => setIsSignUp(true)}
-          className={`cursor-pointer ${
-            isSignUp ? "text-primary font-bold" : ""
-          }`}
+          className={`cursor-pointer ${isSignUp ? "text-primary font-bold" : ""
+            }`}
         >
           Sign Up
         </p>
@@ -137,6 +196,46 @@ export default function AuthForm() {
             <p className="text-red-600 text-sm">{errors.password.message}</p>
           )}
         </div>
+
+        {
+          isSignUp && (
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">
+                Confirm Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  {...register("password_confirmation", {
+                    required: "Confirm Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters",
+                    },
+                  })}
+                  placeholder="•••••••••••"
+                  className="w-full border border-gray-300 rounded-md p-2 pr-10"
+                />
+                <div
+                  className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </div>
+              </div>
+              {errors.password_confirmation && (
+                <p className="text-red-600 text-sm">{errors.password_confirmation.message}</p>
+              )}
+            </div>
+          )
+        }
+
+
+
+
+
+
+
         <div className="flex justify-end">
           <Link className="text-[#E64D4F] cursor-pointer underline ">
             Forgot Password
@@ -144,9 +243,13 @@ export default function AuthForm() {
         </div>
         <button
           type="submit"
-          className="w-full bg-primary-blue bg-primary duration-300 text-white py-2 rounded-md font-medium hover:bg-blue-900"
+          className="w-full bg-primary-blue bg-primary duration-300 text-white py-2 rounded-md font-medium hover:bg-blue-900 flex justify-center items-center"
         >
-          {isSignUp ? "Register" : "Sign In"}
+          {
+            isLoading ? <BeatLoader color="#fff" /> :
+              <>{isSignUp ? "Register" : "Sign In"} </>
+          }
+
         </button>
       </form>
 
