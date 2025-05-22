@@ -3,6 +3,9 @@ import DashboardLayout from "@/layout/DashboardLayout";
 import Layout from "@/layout/Layout";
 import AuthForm from "@/pages/auth/AuthForm";
 import AuthLayout from "@/pages/auth/AuthLayout";
+import ForgetPassword from "@/pages/auth/ForgetPassword";
+import NewPassword from "@/pages/auth/NewPassword";
+import VerifyOTP from "@/pages/auth/VerifyOTP";
 import Checkout from "@/pages/checkout/Checkout";
 import Booking from "@/pages/dashboard/booking/Booking";
 import ViewDetails from "@/pages/dashboard/booking/ViewDetails";
@@ -120,6 +123,18 @@ const router = createBrowserRouter([
       {
         path: 'registration',
         element: <AuthForm />
+      },
+      {
+        path: 'forget-password',
+        element: <ForgetPassword/>
+      },
+      {
+        path: 'verify-otp',
+        element: <VerifyOTP/>
+      },
+      {
+        path: 'new-password',
+        element: <NewPassword/>
       }
     ]
   }

@@ -47,7 +47,7 @@ export default function AuthForm() {
         const response = await axiosPublic.post('/login', data);
         if (response) {
           console.log(response);
-          toast.success('Login successful');
+          toast.success(response?.data?.message);
           setUser({
             ...response?.data?.userData,
             token: response?.data?.token
@@ -56,7 +56,9 @@ export default function AuthForm() {
         }
       } catch (error) {
         console.log(error);
-
+        toast.error(error?.response?.data?.message);
+      } finally {
+        setIsLoading(false)
       }
     }
   })
@@ -237,7 +239,7 @@ export default function AuthForm() {
 
 
         <div className="flex justify-end">
-          <Link className="text-[#E64D4F] cursor-pointer underline ">
+          <Link to={'/auth/forget-password'} className="text-[#E64D4F] cursor-pointer underline ">
             Forgot Password
           </Link>
         </div>

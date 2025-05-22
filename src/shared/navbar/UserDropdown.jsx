@@ -5,16 +5,22 @@ import toast from 'react-hot-toast';
 import { useMutation } from '@tanstack/react-query';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import useAuth from '@/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const items = [
+    // {
+    //     label: 'Profile',
+    //     key: 'profile',
+    //     icon: <UserOutlined />,
+    // },
+    // {
+    //     label: 'Settings',
+    //     key: 'settings',
+    //     icon: <SettingOutlined />,
+    // },
     {
-        label: 'Profile',
-        key: 'profile',
-        icon: <UserOutlined />,
-    },
-    {
-        label: 'Settings',
-        key: 'settings',
+        label: 'Dashboard',
+        key: 'dashboard',
         icon: <SettingOutlined />,
     },
     {
@@ -34,19 +40,21 @@ const items = [
 
 const UserDropdown = () => {
     const axiosSecure = useAxiosSecure();
-    const { setUser } = useAuth();
+    const { user, setUser } = useAuth();
+    const navigate = useNavigate();
 
     const logout = async () => {
+        const toastId = toast.loading('Logging out...');
         try {
             const response = await axiosSecure.post('/logout');
             if (response) {
                 // console.log(response);
                 setUser(null);
-                toast.success(response?.data?.message);
+                toast.success(response?.data?.message || 'Logout successful', { id: toastId });
             }
         } catch (error) {
             console.log(error);
-            toast.error(error?.response?.data?.message);
+            toast.error(error?.response?.data?.message || 'Logout failed', { id: toastId });
         }
     }
 
@@ -57,6 +65,9 @@ const UserDropdown = () => {
                 break;
             case 'settings':
                 console.log('Go to Settings');
+                break;
+            case 'dashboard':
+                navigate('/dashboard');
                 break;
             case 'logout':
                 logout();
@@ -75,7 +86,7 @@ const UserDropdown = () => {
             <a onClick={(e) => e.preventDefault()}>
                 <Space>
 
-                    <p className="bg-white border rounded-full shadow-lg w-12 h-12 flex items-center justify-center">A</p>
+                    <p className="bg-white border rounded-full shadow-lg w-12 h-12 flex items-center justify-center">{user?.name ? user?.name?.charAt(0) : 'A'}</p>
                 </Space>
             </a>
         </Dropdown>
