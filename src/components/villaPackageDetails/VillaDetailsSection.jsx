@@ -3,14 +3,18 @@ import Overview from '../hotelPackage/details/Overview';
 import BookingSummary from '../hotelPackage/BookingSummary';
 import Aminities from '../hotelPackage/details/Aminities';
 import VillaTabSection from './VillaTabSection';
+import useData from '@/hooks/useData';
 
-const VillaDetailsSection = () => {
+const VillaDetailsSection = ({ villa }) => {
+
+    const { villaData } = useData();
+    console.log(villaData);
     return (
         <div className='flex flex-col lg:flex-row gap-5'>
             <div className="w-full lg:w-[70%] space-y-8">
-                <VillaTabSection/>
+                <VillaTabSection villa={villa} />
                 <Overview />
-               
+
 
             </div>
 

@@ -5,15 +5,21 @@ import Card from '../common/Card';
 import { FaHeart } from 'react-icons/fa';
 import { StarIcons } from '@/lib/CustomIcons';
 import { Link } from 'react-router-dom';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 
 const VillaCard = ({ data }) => {
+
+
+
+
     return (
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[320px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
             {/* Image Section - Fixed ratio but constrained by parent height */}
             <div className="relative h-[55%] w-full"> {/* Percentage of parent height */}
                 <img
-                    src={data?.img}
+                    src={data?.thumbnail}
                     className="w-full h-full object-cover"
                     alt={data?.title || "Accommodation"}
                     loading="lazy" // Better performance
@@ -28,10 +34,10 @@ const VillaCard = ({ data }) => {
                 <div className="flex items-start gap-2 sm:items-center mb-1 sm:mb-2">
                     <div className="flex flex-col flex-1 min-w-0"> {/* Prevents text overflow */}
                         <p className="font-semibold text-gray-800 text-base sm:text-lg md:text-xl lg:text-xl truncate">
-                            {data?.title}
+                            {data?.villa_name}
                         </p>
                         <p className="text-gray-400 text-sm sm:text-base">
-                            {data?.price}
+                            {data?.price_a_night}
                         </p>
                     </div>
                     <div className="flex-shrink-0">
@@ -41,7 +47,7 @@ const VillaCard = ({ data }) => {
                     </div>
                 </div>
                 <p className="text-gray-400 text-sm sm:text-base line-clamp-2 sm:line-clamp-3 mt-auto">
-                    {data?.description}
+                    {data?.short_des}
                 </p>
             </div>
         </div>
@@ -50,6 +56,19 @@ const VillaCard = ({ data }) => {
 
 
 const VillaSlider = ({ cardNo = 3.5, data }) => {
+
+    const axiosPublic = useAxiosPublic();
+
+    const { data: villaData } = useQuery({
+        queryKey: ['villaData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/villa/all')
+            return res?.data?.allVillas;
+        }
+    })
+
+    // console.log(villaData);
+
     return (
         <div className="w-full mx-auto py-10 bg-transparent">
             <Swiper
@@ -80,9 +99,9 @@ const VillaSlider = ({ cardNo = 3.5, data }) => {
                     },
                 }}
             >
-                {data.map((item, index) => (
+                {villaData?.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <Link to={`/villa-package-details`}>
+                        <Link to={`/villa-package-details/${item?.id}`}>
                             <VillaCard data={item} />
                         </Link>
                     </SwiperSlide>
