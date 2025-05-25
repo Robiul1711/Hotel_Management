@@ -60,16 +60,16 @@ const VillaPackageDetails = () => {
             <CommonPageWrapper>
                 <VillaPackageGallery thumbnail={villa?.thumbnail} media={villa?.media} />
                 <VillaDetailsSection villa={villa} />
-                <SpaceSection />
+                <SpaceSection villa={villa} />
                 <div className="flex items-center">
                     <Aminities amenityData={AmanityData} />
                     <img src={element} alt="" className='hidden lg:block' />
                 </div>
-                <ExperienceSection />
-                <RealMomentSection />
+                <ExperienceSection villaExperience={villa?.experiences} />
+                <RealMomentSection realMoment = {villa?.real_moments} />
                 <VillaFacilities />
                 <NearbyHotels />
-                <HotelPolicies />
+                <HotelPolicies villa={villa} />
                 <SectionBanner />
             </CommonPageWrapper>
         </>

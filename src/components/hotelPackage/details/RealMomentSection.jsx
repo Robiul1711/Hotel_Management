@@ -45,7 +45,7 @@ const CelebrateCard = ({ data }) => {
     return (
         <div className="relative w-[115px] h-[170px] xxs:w-[140px] xxs:h-[100px] sm:w-[200px] sm:h-[200px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xlg:w-[360px] xl:w-[300px] xl:h-[350px] rounded-xl overflow-hidden">
             <img
-                src={data.img}
+                src={data?.media_name}
                 alt={data.title}
                 className="w-full h-full object-cover"
             />
@@ -61,7 +61,8 @@ const CelebrateCard = ({ data }) => {
     );
 };
 
-const RealMomentSection = () => {
+const RealMomentSection = ({realMoment}) => {
+    console.log(realMoment)
     return (
         <div className="w-full mx-auto py-10 bg-transparent" id='real-moments'>
             <p className="text-[24px] font-bold">Real Moments</p>
@@ -103,7 +104,7 @@ const RealMomentSection = () => {
                 }}
 
             >
-                {data.map((item, index) => (
+                {realMoment?.map((item, index) => (
                     <SwiperSlide key={index}>
                         <CelebrateCard data={item} />
                     </SwiperSlide>

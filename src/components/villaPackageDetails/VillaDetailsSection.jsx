@@ -7,20 +7,20 @@ import useData from '@/hooks/useData';
 
 const VillaDetailsSection = ({ villa }) => {
 
-    const { villaData } = useData();
-    console.log(villaData);
+    
+   
     return (
         <div className='flex flex-col lg:flex-row gap-5'>
             <div className="w-full lg:w-[70%] space-y-8">
                 <VillaTabSection villa={villa} />
-                <Overview />
+                <Overview villa={villa} />
 
 
             </div>
 
             <div className="w-full lg:w-[30%]">
                 <div className="sticky top-24"> {/* Use a bit of spacing from top */}
-                    <BookingSummary />
+                    <BookingSummary villa={villa} />
                 </div>
             </div>
         </div>

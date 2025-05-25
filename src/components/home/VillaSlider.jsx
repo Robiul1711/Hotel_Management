@@ -7,6 +7,7 @@ import { StarIcons } from '@/lib/CustomIcons';
 import { Link } from 'react-router-dom';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import useData from '@/hooks/useData';
 
 
 const VillaCard = ({ data }) => {
@@ -57,15 +58,7 @@ const VillaCard = ({ data }) => {
 
 const VillaSlider = ({ cardNo = 3.5, data }) => {
 
-    const axiosPublic = useAxiosPublic();
-
-    const { data: villaData } = useQuery({
-        queryKey: ['villaData'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/villa/all')
-            return res?.data?.allVillas;
-        }
-    })
+    const { villaData } = useData();
 
     // console.log(villaData);
 

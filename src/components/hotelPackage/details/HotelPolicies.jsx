@@ -3,12 +3,12 @@ import React from 'react';
 import { FaMinusCircle } from 'react-icons/fa';
 import { IoMdCloseCircle } from 'react-icons/io';
 
-const HotelPolicies = () => {
+const HotelPolicies = ({villa}) => {
     return (
         <div className="p-4 space-y-4">
             <div className=""  id='hotel-location'>
                 <p className="text-[24px] font-bold leading-none mb-1">Location</p>
-                <p className="text-gray-400">Frichley Hill Rd, Lonavala, Maharashtra </p>
+                <p className="text-gray-400">{villa?.location}</p>
                 <p className="flex text-gray-400 underline gap-2"><Location/>Open in Maps</p>
             </div>
 
@@ -50,7 +50,7 @@ const HotelPolicies = () => {
 
             {/* Check-in/out Info */}
             <p className="text-sm text-gray-800">
-                Check-in time: <span className="font-semibold">2PM</span> , Check-out time: <span className="font-semibold">11AM</span>
+                Check-in time: <span className="font-semibold">{villa?.check_in}</span> , Check-out time: <span className="font-semibold">{villa?.check_out}</span>
             </p>
             <p className="text-xs text-gray-500">
                 <span className="underline">Note:</span> Early check-in and late check-out is subject to availability (at an additional fee)

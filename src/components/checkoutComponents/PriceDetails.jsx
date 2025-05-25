@@ -1,7 +1,8 @@
 import React from 'react'
 import { CheckCircle, ShieldCheck } from 'lucide-react'
 
-const PriceDetails = () => {
+const PriceDetails = ({ villa }) => {
+  console.log(villa)
   return (
     <div className="xlg:max-w-md w-full mx-auto border rounded-xl p-6 bg-white shadow-md">
       {/* Title */}
@@ -17,11 +18,11 @@ const PriceDetails = () => {
       <div className="text-sm space-y-2 mb-4">
         <div className="flex justify-between">
           <span>Rental Charges</span>
-          <span className="font-medium">₹ 26,200</span>
+          <span className="font-medium">₹ {villa?.price_a_night}</span>
         </div>
         <div className="flex justify-between">
           <span>GST (As Per Government Guidelines)</span>
-          <span className="font-medium">₹ 4,716</span>
+          <span className="font-medium">₹ 0</span>
         </div>
       </div>
 
@@ -42,7 +43,7 @@ const PriceDetails = () => {
       {/* Total Payable */}
       <div className="flex justify-between items-center bg-[#FF5A1F] text-white px-4 py-3 rounded-lg mb-4">
         <span className="text-sm font-semibold">Total Payable</span>
-        <span className="text-lg font-bold">₹ 30,916</span>
+        <span className="text-lg font-bold">₹ {villa?.price_a_night}</span>
       </div>
 
       {/* Terms & checkbox */}
