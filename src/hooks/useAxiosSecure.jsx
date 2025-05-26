@@ -6,7 +6,7 @@ const useAxiosSecure = () => {
     const auth = useAuth();
     // console.log(auth?.user?.token);
     const access_token = auth?.user?.token;
-    console.log(access_token);
+    // console.log(access_token);
     const axiosSecure = axios.create({
         baseURL: import.meta.env.VITE_API_URL,
         timeout: 30000,

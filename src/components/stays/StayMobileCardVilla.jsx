@@ -3,7 +3,8 @@ import React from 'react';
 import { IoLocationOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
-const StayMobileCard = ({ data }) => {
+const StayMobileCardVilla = ({ data }) => {
+    console.log(data);
     return (
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col ">
             {/* Image Section */}
@@ -24,11 +25,14 @@ const StayMobileCard = ({ data }) => {
                     <div className="flex flex-col w-full  ">
                         <div className="flex justify-between items-center">
                             <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl ">
-                                {data?.hotel_name}
+                                {data?.villa_name}
                             </p>
                             <p className="flex items-center gap-2"><StarIcons />5.0</p>
                         </div>
                         <p className="text-xs text-gray-400">{data?.location}</p>
+                        <div className="text-xs text-gray-400">
+                            {data?.short_des}
+                        </div>
                         {/* <p className="text-xs text-gray-400">Upto 27 Guests  |  9 Rooms  |  10 Baths</p>
                         <p className="text-primary text-sm">₹ 21,876</p> */}
                         <div className="flex justify-between items-center gap-2">
@@ -45,4 +49,4 @@ const StayMobileCard = ({ data }) => {
     );
 };
 
-export default StayMobileCard;
+export default StayMobileCardVilla;

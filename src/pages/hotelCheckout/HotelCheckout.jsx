@@ -7,22 +7,24 @@ import PriceDetails from "@/components/checkoutComponents/PriceDetails";
 import { ScrollRestoration, useLocation, useParams } from "react-router-dom";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-const Checkout = () => {
+import HotelSummarySection from "./HotelSummarySection";
+import HotelPriceDetails from "./HotelPriceDetails";
+const HotelCheckout = () => {
 
   const { id } = useParams();
-  // console.log(id);
+  // console.log('Hotel checkout',id);
   const axiosPublic = useAxiosPublic();
 
-  
-  const { data: villa } = useQuery({
-    queryKey: ['villa', id],
+
+  const { data: hotel } = useQuery({
+    queryKey: ['hotel', id],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/single/villa/${id}`);
-      return res?.data?.specificVilla;
+      const res = await axiosPublic.get(`/single/hotel/${id}`);
+      return res?.data?.singleHotel;
     }
   })
 
-
+  // console.log(hotel)
 
   return (
     <div>
@@ -35,9 +37,9 @@ const Checkout = () => {
         <div className=" w-full section-padding-x flex flex-col xlg:flex-row  justify-between gap-6">
           <div className="space-y-7  xlg:w-[70%]">
             <div className="flex flex-col xlg:flex-col gap-4">
-              <SunshineAndSoul villa={villa} />
+              <HotelSummarySection hotel={hotel} />
               <div className="xlg:hidden">
-                <PriceDetails villa={villa} />
+                <HotelPriceDetails hotel={hotel} />
               </div>
               <BookingCancellationPolicy />
             </div>
@@ -54,7 +56,8 @@ const Checkout = () => {
             </div>
           </div>
           <div className="xlg:w-[30%] hidden xlg:block">
-            <PriceDetails villa={villa} />
+            {/* <PriceDetails villa={hotel} /> */}
+            <HotelPriceDetails hotel={hotel} />
           </div>
         </div>
       </div>
@@ -64,4 +67,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default HotelCheckout;

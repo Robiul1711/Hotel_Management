@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
 import logo from "@/assets/images/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "@/hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
@@ -16,6 +16,8 @@ export default function AuthForm() {
   const axiosPublic = useAxiosPublic();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const signUpMutation = useMutation({
     mutationFn: async (data) => {
@@ -47,16 +49,18 @@ export default function AuthForm() {
         const response = await axiosPublic.post('/login', data);
         if (response) {
           console.log(response);
-          toast.success('Login successful');
+          toast.success(response?.data?.message);
           setUser({
             ...response?.data?.userData,
             token: response?.data?.token
           })
-          navigate('/');
+          navigate(from, { replace: true });
         }
       } catch (error) {
         console.log(error);
-
+        toast.error(error?.response?.data?.message);
+      } finally {
+        setIsLoading(false)
       }
     }
   })
@@ -237,7 +241,7 @@ export default function AuthForm() {
 
 
         <div className="flex justify-end">
-          <Link className="text-[#E64D4F] cursor-pointer underline ">
+          <Link to={'/auth/forget-password'} className="text-[#E64D4F] cursor-pointer underline ">
             Forgot Password
           </Link>
         </div>

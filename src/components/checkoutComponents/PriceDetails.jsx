@@ -1,7 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CheckCircle, ShieldCheck } from 'lucide-react'
+import useAuth from '@/hooks/useAuth'
+import { useLocation } from 'react-router-dom';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
-const PriceDetails = () => {
+const PriceDetails = ({ villa }) => {
+  const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const [loading, setLoading]=useState(false);
+
+  const location = useLocation();
+  const from = location.state?.from;
+
+  console.log("Navigated from:", from);
+
+
+  console.log(user)
+  const handlePayment = async () => {
+    setLoading(true)
+    const payload = {
+      amount: villa?.price_a_night,
+      userEmail: user?.email,
+      userId: user?.id,
+      villaorhotelid: villa?.id,
+      type: from
+    }
+
+    try {
+      const res = await axiosPublic.post('/razoarpay/payment', payload);
+      if (res) {
+        toast.success('Payment successful');
+        window.location.href = res.data.url;
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.error);
+    }finally{
+      setLoading(false)
+    }
+    console.log('this is payload', payload);
+  }
   return (
     <div className="xlg:max-w-md w-full mx-auto border rounded-xl p-6 bg-white shadow-md">
       {/* Title */}
@@ -17,11 +56,11 @@ const PriceDetails = () => {
       <div className="text-sm space-y-2 mb-4">
         <div className="flex justify-between">
           <span>Rental Charges</span>
-          <span className="font-medium">₹ 26,200</span>
+          <span className="font-medium">₹ {villa?.price_a_night}</span>
         </div>
         <div className="flex justify-between">
           <span>GST (As Per Government Guidelines)</span>
-          <span className="font-medium">₹ 4,716</span>
+          <span className="font-medium">₹ 0</span>
         </div>
       </div>
 
@@ -42,7 +81,7 @@ const PriceDetails = () => {
       {/* Total Payable */}
       <div className="flex justify-between items-center bg-[#FF5A1F] text-white px-4 py-3 rounded-lg mb-4">
         <span className="text-sm font-semibold">Total Payable</span>
-        <span className="text-lg font-bold">₹ 30,916</span>
+        <span className="text-lg font-bold">₹ {villa?.price_a_night}</span>
       </div>
 
       {/* Terms & checkbox */}
@@ -58,8 +97,10 @@ const PriceDetails = () => {
       </div>
 
       {/* Continue button */}
-      <button className="w-full bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4">
-        Continue
+      <button
+        onClick={handlePayment}
+        className="w-full bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4">
+        {loading ? 'Processing...' : 'Continue'}
       </button>
 
       {/* Secure payment */}

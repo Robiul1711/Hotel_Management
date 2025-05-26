@@ -3,7 +3,7 @@ import PriceModal from '@/components/common/PriceModal';
 import { mealPlans } from '@/lib/Database';
 import React, { useState } from 'react';
 
-const Aminities = ({ amenityData }) => {
+const Aminities = ({ amenityData, data }) => {
     const [showAll, setShowAll] = useState(false);
 
     const displayedAmenities = showAll ? amenityData : amenityData.slice(0, 3);
@@ -41,7 +41,7 @@ const Aminities = ({ amenityData }) => {
             </div>
 
             <div className="flex gap-4">
-                <MenuModal pdfUrl={'https://drive.google.com/file/d/1sEf01r9ZkAH4Ay6i6UMqDF0vU40Bwqp9/view?usp=sharing'} />
+                <MenuModal pdfUrl={data?.menu} />
                 <PriceModal mealPlans={mealPlans} />
             </div>
         </div>

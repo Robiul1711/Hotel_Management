@@ -126,17 +126,18 @@ const data = [
 ]
 
 const Card = ({ data }) => {
+    // console.log(data)
     return (
         <div className="   overflow-hidden duration-300 w-full flex flex-col h-[300px] xs:h-[340px] sm:h-[380px] md:h-[400px] lg:h-[480px]">
             {/* Image Section */}
             <div className="relative h-[60%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
                 <img
-                    src={data?.img}
+                    src={data?.media[0]?.space_media}
                     className="w-full h-full object-cover rounded-lg"
                     alt={data?.title || "Accommodation"}
                 />
                 <p className="text-white absolute top-3 right-3 sm:top-4  bg-black bg-opacity-10 px-2 py-1 sm:px-3 text-xs sm:text-sm font-medium backdrop-blur-sm rounded w-fit">
-                    Queen-size Bed
+                    {data?.name}
                 </p>
                 <p className="absolute bottom-0 left-3 text-white">{data?.bedroom}</p>
             </div>
@@ -145,14 +146,7 @@ const Card = ({ data }) => {
             <div className="p-3 sm:p-4 bg-white flex-1 flex flex-col justify-between">
                 <div className="flex justify-between items-start gap-2 sm:items-center ">
                     <ul className='list-disc list-inside text-[#656565]'>
-                        {
-                            data?.desc?.map((item, index) => (
-                                <li key={index} className=" text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
-                                    
-                                    <span className="truncate">{item}</span>
-                                </li>
-                            ))
-                        }
+                        <li>{data?.description}</li>
                     </ul>
 
                 </div>
@@ -161,7 +155,7 @@ const Card = ({ data }) => {
     );
 };
 
-const SpaceSection = () => {
+const SpaceSection = ({villa}) => {
     return (
         <div className="w-full mx-auto py-10 bg-transparent" id='spaces'>
             <p className="text-2xl font-bold  mb-5">Spaces</p>
@@ -193,7 +187,7 @@ const SpaceSection = () => {
                     },
                 }}
             >
-                {data.map((item, index) => (
+                {villa?.spaces.map((item, index) => (
                     <SwiperSlide key={index}>
                         <Card data={item} />
                     </SwiperSlide>

@@ -4,26 +4,27 @@ import { StarIcons, Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons } from "@/lib
 import { CustomBridgeIcon, CustomPhoneIcon, CustomWarehouseIcon } from "@/lib/CustomIconPackage";
 import { HotelTabsSection, VillaTabsSection } from '@/lib/Database';
 
-const VillaTabSection = () => {
+const VillaTabSection = ({villa}) => {
+    console.log(villa)
     return (
         <div>
             <TabSection tabs={VillaTabsSection} />
             <div className="mt-10  " >
 
                 <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-4xl ">
-                    Sunshine & Soul
+                    {villa?.villa_name}
                 </p>
                 <p className="flex items-center text-sm sm:text-base md:text-2xl gap-1 sm:gap-2">
-                    <span className="">Lonavala, Maharashtra </span>
+                    <span className="">{villa?.location} </span>
                 </p>
 
                 <p className="text-sm sm:text-base md:text-lg flex items-center gap-3">Guest Favourite  <StarIcons /> 5/5  <span className="border-l px-4 text-blue-500 underline">15 reviews</span></p>
 
 
                 <div className="flex flex-wrap gap-4 xlg:gap-12">
-                    <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">Up to 13 Guests</button>
-                    <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">1 - 4 Rooms</button>
-                    <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">4 Baths</button>
+                    <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">Up to {villa?.total_guest} Guests</button>
+                    <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">{villa?.total_room} Rooms</button>
+                    <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">{villa?.total_bath} Baths</button>
                 </div>
 
                 {/* icons section  */}

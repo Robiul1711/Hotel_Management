@@ -14,11 +14,27 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { CiLocationOn } from 'react-icons/ci';
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import { ScrollRestoration } from 'react-router-dom';
+import { ScrollRestoration, useParams } from 'react-router-dom';
 import SearchTab from '@/components/common/SearchTab';
 import { AmanityData } from '@/lib/Database';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
 
 const VillaPackageDetails = () => {
+    const { id } = useParams();
+    console.log(id);
+    const axiosPublic = useAxiosPublic();
+
+    const {data:villa}=useQuery({
+        queryKey: ['villa', id],
+        queryFn: async()=>{
+            const res = await axiosPublic.get(`/single/villa/${id}`);
+            return res?.data?.specificVilla;
+        }
+    })
+
+    console.log(villa);
+
     return (
         <>
             <ScrollRestoration />
@@ -29,11 +45,11 @@ const VillaPackageDetails = () => {
                 <div className="hidden md:block w-11/12 mx-auto px-4">
 
                     <div className="">
-                        <p className=" md:text-[32px] font-semibold text-primary">Sunshine & Soul</p>
+                        <p className=" md:text-[32px] font-semibold text-primary">{villa?.villa_name}</p>
                         <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
-                            Cozy villa amidst the mountains
+                           
                             <CiLocationOn />
-                            Lonavala
+                            {villa?.location}
                         </p>
                     </div>
 
@@ -42,18 +58,18 @@ const VillaPackageDetails = () => {
                 </div>
             </div>
             <CommonPageWrapper>
-                <VillaPackageGallery />
-                <VillaDetailsSection />
-                <SpaceSection />
+                <VillaPackageGallery thumbnail={villa?.thumbnail} media={villa?.media} />
+                <VillaDetailsSection villa={villa} />
+                <SpaceSection villa={villa} />
                 <div className="flex items-center">
-                    <Aminities amenityData={AmanityData} />
+                    <Aminities amenityData={AmanityData} data={villa} />
                     <img src={element} alt="" className='hidden lg:block' />
                 </div>
-                <ExperienceSection />
-                <RealMomentSection />
+                <ExperienceSection villaExperience={villa?.experiences} />
+                <RealMomentSection realMoment = {villa?.real_moments} />
                 <VillaFacilities />
                 <NearbyHotels />
-                <HotelPolicies />
+                <HotelPolicies villa={villa} />
                 <SectionBanner />
             </CommonPageWrapper>
         </>

@@ -9,7 +9,7 @@ import { CustomLoveIcon, CustomPdfIcon, CustomShareIcon } from '@/lib/CustomIcon
 import StarRatings from 'react-star-ratings';
 import { IoMdCloseCircle } from 'react-icons/io';
 
-const VillaPackageGallery = () => {
+const VillaPackageGallery = ({ thumbnail, media }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
 
@@ -67,23 +67,29 @@ const VillaPackageGallery = () => {
                 <div className="flex flex-col md:flex-row gap-4">
                     {/* Left Large Image */}
                     <div className="md:w-[58%] w-full md:rounded-xl overflow-hidden">
-                        <img src={img1} alt="Main" className="w-full h-full object-cover md:rounded-xl" />
+                        <img src={thumbnail} alt="Main" className="w-full h-full object-cover md:rounded-xl" />
                     </div>
 
                     {/* Right Grid */}
-                    <div className="hidden md:w-[42%] w-full md:grid grid-cols-2 gap-4">
-                        <img src={img2} alt="Grid1" className="w-full h-full object-cover rounded-xl" />
-                        <img src={img3} alt="Grid2" className="w-full h-full object-cover rounded-xl" />
-                        <img src={img4} alt="Grid3" className="w-full h-full object-cover rounded-xl" />
-                        <div className="relative rounded-xl overflow-hidden">
-                            <img src={img5} alt="Grid4" className="w-full h-full object-cover rounded-xl" />
-                            <button
-                                onClick={() => openModal(img5)}
-                                className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
-                            >
-                                View all photos
-                            </button>
-                        </div>
+                    <div className="relative hidden md:w-[42%] w-full md:grid grid-cols-2 gap-4">
+                        {
+                            media?.map((item, index) => {
+                                return (
+                                    <img key={index} src={item?.media_name} alt="Grid1" className="w-full h-full object-cover rounded-xl" />
+                                )
+                            })
+                        }
+
+                        <button
+                            onClick={() => openModal(img5)}
+                            className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
+                        >
+                            View all photos
+                        </button>
+                        {/* <div className="relative rounded-xl overflow-hidden">
+
+
+                        </div> */}
                     </div>
                 </div>
             </div>

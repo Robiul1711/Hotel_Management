@@ -45,9 +45,9 @@ const ExperienceCard = ({ data }) => {
             {/* Image Section */}
             <div className="relative h-[60%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
                 <img
-                    src={data?.img}
+                    src={data?.media[0]?.experience_media}
                     className="w-full h-full object-cover"
-                    alt={data?.title || "Accommodation"}
+                    alt={data?.name || "Accommodation"}
                 />
 
             </div>
@@ -58,7 +58,10 @@ const ExperienceCard = ({ data }) => {
                     <div className="flex flex-col w-[60%] sm:w-[65%]">
 
                         <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl line-clamp-2">
-                            {data?.title}
+                            {data?.name}
+                        </p>
+                        <p className="">
+                            {data?.description}
                         </p>
                     </div>
 
@@ -69,7 +72,7 @@ const ExperienceCard = ({ data }) => {
 };
 
 
-const ExperienceSection = () => {
+const ExperienceSection = ({ villaExperience }) => {
     return (
         <div id='hotel-experiences'>
             <p className="text-[24px] font-bold">Experiences</p>
@@ -106,7 +109,7 @@ const ExperienceSection = () => {
                     }}
 
                 >
-                    {data.map((item, index) => (
+                    {villaExperience?.map((item, index) => (
                         <SwiperSlide key={index}>
                             <ExperienceCard data={item} />
                         </SwiperSlide>

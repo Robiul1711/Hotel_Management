@@ -4,13 +4,14 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
 const StayHotelCard = ({ data }) => {
+    // console.log(data);
     return (
         <div className="border-2 border-gray-200 rounded-xl bg-gray-100">
             <div className="flex flex-col md:flex-row bg-white  overflow-hidden duration-300 w-full rounded-xl ">
                 {/* Image Section */}
                 <div className="relative w-[50%]">
                     <img
-                        src={data?.img}
+                        src={data?.thumbnail}
                         className="w-full h-full object-cover"
                         alt={data?.title || "Accommodation"}
                     />
@@ -25,11 +26,11 @@ const StayHotelCard = ({ data }) => {
                     <div className="  flex flex-col justify-between w-3/4">
                         <div className="p-4">
                             <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl line-clamp-2">
-                                {data?.title}
+                                {data?.hotel_name}
                             </p>
                             <p className="flex items-center text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
                                 <IoLocationOutline className="flex-shrink-0" />
-                                <span className="truncate">{data?.location} | Maharashta</span>
+                                <span className="truncate">{data?.location}</span>
                             </p>
 
                             <p className="flex items-center text-sm sm:text-base md:text-lg gap-4 sm:gap-2">
@@ -76,7 +77,7 @@ const StayHotelCard = ({ data }) => {
                                 For 1 Room
                             </button>
                             <p className="text-[12px] text-center text-gray-300">Per Night + Taxes (1 Room)</p>
-                            <Link to={`/hotel-package-details`}>
+                            <Link to={`/hotel-package-details/${data?.id}`}>
                                 <button className=' py-1 xlg:py-3 px-[2px] xlg:px-5 rounded-3xl text-white hover:bg-orange-600 bg-secondary flex items-center gap-3 text-xs'>
                                     View package
                                 </button>
@@ -88,7 +89,7 @@ const StayHotelCard = ({ data }) => {
             </div>
             <div className="">
                 <p className='text-center mt-4 text-xl'>
-                    Step into Sunshine & Soul, an exquisite villa in Lonavala where elegance meets comfort from the very first moment.
+                   {data?.short_des}
                 </p>
             </div>
         </div>
