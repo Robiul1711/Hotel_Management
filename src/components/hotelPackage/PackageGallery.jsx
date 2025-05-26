@@ -9,12 +9,13 @@ import { CustomLoveIcon, CustomPdfIcon, CustomShareIcon } from '@/lib/CustomIcon
 import StarRatings from 'react-star-ratings';
 import { IoMdCloseCircle } from 'react-icons/io';
 
-const PackageGallery = () => {
+const PackageGallery = ({ hotel }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
 
     // Gallery images
     const images = [img1, img2, img3, img4, img5];
+    console.log(hotel)
 
     // Open modal with selected image
     const openModal = (image) => {
@@ -50,10 +51,10 @@ const PackageGallery = () => {
 
                 <div className="md:hidden">
                     <div className="">
-                        <p className=" text-xl font-semibold text-primary mb-0">The Peninsula Beverly Hills</p>
+                        <p className=" text-xl font-semibold text-primary mb-0">{hotel?.hotel_name}</p>
                         <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600">
-                            Lush green valley view
-                            
+                            {hotel?.location}
+
                         </p>
                     </div>
                 </div>
@@ -67,14 +68,19 @@ const PackageGallery = () => {
                 <div className="flex flex-col md:flex-row gap-4">
                     {/* Left Large Image */}
                     <div className="md:w-[58%] w-full md:rounded-xl overflow-hidden">
-                        <img src={img1} alt="Main" className="w-full h-full object-cover md:rounded-xl" />
+                        <img src={hotel?.thumbnail} alt="Main" className="w-full h-full object-cover md:rounded-xl" />
                     </div>
 
                     {/* Right Grid */}
                     <div className="hidden md:w-[42%] w-full md:grid grid-cols-2 gap-4">
-                        <img src={img2} alt="Grid1" className="w-full h-full object-cover rounded-xl" />
-                        <img src={img3} alt="Grid2" className="w-full h-full object-cover rounded-xl" />
-                        <img src={img4} alt="Grid3" className="w-full h-full object-cover rounded-xl" />
+                        {
+                            hotel?.media?.map((item, index) => {
+                                return (
+                                    <img key={index} src={item?.media_name} alt="Grid1" className="w-full h-full object-cover rounded-xl" />
+                                )
+                            })
+                        }
+
                         <div className="relative rounded-xl overflow-hidden">
                             <img src={img5} alt="Grid4" className="w-full h-full object-cover rounded-xl" />
                             <button

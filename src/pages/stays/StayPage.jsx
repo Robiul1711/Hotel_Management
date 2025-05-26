@@ -24,6 +24,8 @@ import { Helmet } from 'react-helmet-async';
 import { ScrollRestoration } from 'react-router-dom';
 import StayHotelCard from '@/components/stays/StayHotelCard';
 import StayVillaCard from '@/components/stays/StayVillaCard';
+import useData from '@/hooks/useData';
+import StayMobileCardVilla from '@/components/stays/StayMobileCardVilla';
 
 const data = [
     {
@@ -56,6 +58,7 @@ const data = [
 const StayPage = () => {
 
     const [active, setActive] = useState('hotels');
+    const { hotelData, villaData } = useData();
 
     return (
         <>
@@ -77,9 +80,11 @@ const StayPage = () => {
                         <div className={`hotels ${active === 'hotels' ? '' : 'hidden'}`}>
                             <div className="hidden lg:block space-y-12">
                                 {
-                                    StayHotelData?.slice(0, 2)?.map(item => <StayHotelCard key={item.id} data={item} />)
+                                    hotelData?.map(item => <StayHotelCard key={item.id} data={item} />)
                                 }
                             </div>
+
+
 
                             <div className="hidden xmd:flex flex-wrap gap-10  my-5">
                                 {
@@ -91,15 +96,11 @@ const StayPage = () => {
                                 }
                             </div>
 
-                            <div className="hidden lg:block space-y-12">
-                                {
-                                    StayHotelData?.slice(2, 4)?.map(item => <StayHotelCard key={item.id} data={item} />)
-                                }
-                            </div>
+
 
                             <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
                                 {
-                                    StayHotelData?.map(item => <StayMobileCard key={item.id} data={item} />)
+                                    hotelData?.map(item => <StayMobileCard key={item.id} data={item} />)
                                 }
                             </div>
 
@@ -111,7 +112,7 @@ const StayPage = () => {
                         <div className={`hotels ${active === 'villa' ? '' : 'hidden'}`}>
                             <div className="hidden lg:block space-y-12">
                                 {
-                                    StayVillaData?.slice(0, 2)?.map(item => <StayVillaCard key={item.id} data={item} />)
+                                    villaData?.map(item => <StayVillaCard key={item.id} data={item} />)
                                 }
                             </div>
 
@@ -125,15 +126,11 @@ const StayPage = () => {
                                 }
                             </div>
 
-                            <div className="hidden lg:block space-y-12">
-                                {
-                                    StayVillaData?.slice(2, 4)?.map(item => <StayVillaCard key={item.id} data={item} />)
-                                }
-                            </div>
+                           
 
                             <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
                                 {
-                                    StayVillaData?.map(item => <StayMobileCard key={item.id} data={item} />)
+                                    villaData?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
                                 }
                             </div>
 

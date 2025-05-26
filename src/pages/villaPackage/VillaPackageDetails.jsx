@@ -47,7 +47,7 @@ const VillaPackageDetails = () => {
                     <div className="">
                         <p className=" md:text-[32px] font-semibold text-primary">{villa?.villa_name}</p>
                         <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
-                            Cozy villa amidst the mountains
+                           
                             <CiLocationOn />
                             {villa?.location}
                         </p>
@@ -62,7 +62,7 @@ const VillaPackageDetails = () => {
                 <VillaDetailsSection villa={villa} />
                 <SpaceSection villa={villa} />
                 <div className="flex items-center">
-                    <Aminities amenityData={AmanityData} />
+                    <Aminities amenityData={AmanityData} data={villa} />
                     <img src={element} alt="" className='hidden lg:block' />
                 </div>
                 <ExperienceSection villaExperience={villa?.experiences} />

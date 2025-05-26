@@ -5,15 +5,19 @@ import Card from '../common/Card';
 import { FaHeart } from 'react-icons/fa';
 import { StarIcons } from '@/lib/CustomIcons';
 import { Link } from 'react-router-dom';
+import useData from '@/hooks/useData';
 
 
 const HotelCard = ({ data }) => {
+
+    console.log(data);
+
     return (
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[320px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
+        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[320px] sm:h-[350px] md:h-[400px] lg:h-[400px]">
             {/* Image Section - Fixed ratio but constrained by parent height */}
-            <div className="relative h-[50%] w-full"> {/* Percentage of parent height */}
+            <div className="relative h-[80%] w-full"> {/* Percentage of parent height */}
                 <img
-                    src={data?.img}
+                    src={data?.thumbnail}
                     className="w-full h-full object-cover"
                     alt={data?.title || "Accommodation"}
                     loading="lazy" // Better performance
@@ -28,14 +32,14 @@ const HotelCard = ({ data }) => {
                 <div className="flex items-start gap-2 sm:items-center mb-1 sm:mb-2">
                     <div className="flex flex-col flex-1 min-w-0"> {/* Prevents text overflow */}
                         <p className="font-semibold text-gray-800 text-base sm:text-lg md:text-xl lg:text-xl truncate mb-0">
-                            {data?.title}
+                            {data?.hotel_name}
                         </p>
                         <p className="text-gray-400 text-sm sm:text-base">
                             {data?.location}
 
                         </p>
                         <p className="text-gray-400 text-sm sm:text-base">
-                            {data?.overview}
+                            {data?.short_des}
 
                         </p>
 
@@ -46,8 +50,8 @@ const HotelCard = ({ data }) => {
                         </p>
                     </div>
                 </div>
-                <p className="text-primary lg:text-2xl font-bold mb-0">₹ {data?.price}</p>
-                <p className="text-base text-gray-400">For Per Night + Taxes</p>
+                {/* <p className="text-primary lg:text-2xl font-bold mb-0">₹ {data?.price}</p>
+                <p className="text-base text-gray-400">For Per Night + Taxes</p> */}
 
             </div>
         </div>
@@ -56,6 +60,9 @@ const HotelCard = ({ data }) => {
 
 
 const HotelSlider = ({ data, cardNo = 3.5 }) => {
+
+    const { hotelData } = useData();
+
     return (
         <div className="w-full mx-auto py-10 bg-transparent">
             <Swiper
@@ -86,9 +93,9 @@ const HotelSlider = ({ data, cardNo = 3.5 }) => {
                     },
                 }}
             >
-                {data.map((item, index) => (
+                {hotelData?.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <Link to={`/hotel-package-details`}>
+                        <Link to={`/hotel-package-details/${item?.id}`}>
                             <HotelCard data={item} />
                         </Link>
                     </SwiperSlide>

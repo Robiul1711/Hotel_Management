@@ -4,13 +4,14 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
 const StayVillaCard = ({ data }) => {
+    console.log(data);
     return (
         <div className="border-2 border-gray-200 rounded-xl bg-gray-100">
             <div className="flex flex-col md:flex-row bg-white  overflow-hidden duration-300 w-full rounded-xl ">
                 {/* Image Section */}
                 <div className="relative w-[50%]">
                     <img
-                        src={data?.img}
+                        src={data?.thumbnail}
                         className="w-full h-full object-cover"
                         alt={data?.title || "Accommodation"}
                     />
@@ -25,20 +26,20 @@ const StayVillaCard = ({ data }) => {
                     <div className="  flex flex-col justify-between w-3/4">
                         <div className="p-4">
                             <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl line-clamp-2">
-                                {data?.title}
+                                {data?.villa_name}
                             </p>
                             <p className="flex items-center text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
                                 <IoLocationOutline className="flex-shrink-0" />
-                                <span className="truncate">{data?.location} | Maharashta</span>
+                                <span className="truncate">{data?.location}</span>
                             </p>
 
                             <p className="flex items-center text-sm sm:text-base md:text-lg gap-4 sm:gap-2">
 
-                                <span className="truncate">Upto 13 Guests</span>
+                                <span className="truncate">Upto {data?.total_guest} Guests</span>
                                 <SmallStarIcons />
-                                <span className="">4 Rooms</span>
+                                <span className="">{data?.total_room} Rooms</span>
                                 <SmallStarIcons />
-                                <span className="">4 Baths</span>
+                                <span className="">{data?.total_bath} Baths</span>
 
                             </p>
 
@@ -71,12 +72,12 @@ const StayVillaCard = ({ data }) => {
                     <div className=" border-l flex flex-col justify-evenly p-2 w-1/4 h-full items-center ">
                         <p className="flex items-center gap-2"><StarIcons />4/5</p>
                         <div className=" flex flex-col gap-2 items-center">
-                            <p className="xlg:text-2xl">₹ 21,876</p>
+                            <p className="xlg:text-2xl">₹ {data?.price_a_night}</p>
                             <button className='border py-1 px-[2px] xlg:py-3 xlg:px-5 rounded-3xl text-secondary border-secondary flex items-center gap-3 text-xs'>
                                 For 1 Room
                             </button>
                             <p className="text-[12px] text-center text-gray-300">Per Night + Taxes (1 Room)</p>
-                            <Link to={`/villa-package-details`}>
+                            <Link to={`/villa-package-details/${data?.id}`}>
                                 <button className=' py-1 xlg:py-3 px-[2px] xlg:px-5 rounded-3xl text-white hover:bg-orange-600 bg-secondary flex items-center gap-3 text-xs'>
                                     View package
                                 </button>
@@ -88,7 +89,7 @@ const StayVillaCard = ({ data }) => {
             </div>
             <div className="">
                 <p className='text-center mt-4 text-xl'>
-                    Step into Sunshine & Soul, an exquisite villa in Lonavala where elegance meets comfort from the very first moment.
+                   {data?.short_des}
                 </p>
             </div>
         </div>

@@ -10,7 +10,7 @@ import { CustomBridgeIcon, CustomPhoneIcon, CustomWarehouseIcon } from "@/lib/Cu
 import { HotelTabsSection } from "@/lib/Database";
 
 
-export default function HichFacilities() {
+export default function HichFacilities({hotel}) {
   const facilities = [
     {
       title: "One– Click Room Service & Housekeeping",
@@ -57,19 +57,19 @@ export default function HichFacilities() {
       <div className="mt-10  xlg:w-1/2" >
 
         <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-4xl ">
-          The Peninsula Beverly Hills
+          {hotel?.hotel_name}
         </p>
         <p className="flex items-center text-sm sm:text-base md:text-2xl gap-1 sm:gap-2">
-          <span className="">Lonavala, Maharashtra </span>
+          <span className="">{hotel?.location}</span>
         </p>
 
         <p className="text-sm sm:text-base md:text-lg flex items-center gap-3">Guest Favourite  <StarIcons /> 5/5  <span className="border-l px-4 text-blue-500 underline">15 reviews</span></p>
 
 
         <div className="flex flex-wrap gap-4 xlg:gap-12">
-          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">Up to 13 Guests</button>
-          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">1 - 4 Rooms</button>
-          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">4 Baths</button>
+          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">{hotel?.additional_info_block1}</button>
+          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">{hotel?.additional_info_block2}</button>
+          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">{hotel?.additional_info_block3}</button>
         </div>
 
         {/* icons section  */}

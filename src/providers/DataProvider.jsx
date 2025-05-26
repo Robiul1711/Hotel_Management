@@ -8,6 +8,8 @@ const DataProvider = ({ children }) => {
 
   const axiosPublic = useAxiosPublic();
 
+  const [hotelRoom, setHotelRoom]=useState(null);
+
 
 
     const { data: villaData } = useQuery({
@@ -17,12 +19,19 @@ const DataProvider = ({ children }) => {
             return res?.data?.allVillas;
         }
     })
+    const { data: hotelData } = useQuery({
+        queryKey: ['hotelData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/hotel/all')
+            return res?.data?.allHotel;
+        }
+    })
 
 
 
 
     return (
-        <DataContext.Provider value={{ villaData }}>
+        <DataContext.Provider value={{ villaData, hotelData, hotelRoom, setHotelRoom }}>
             {children}
         </DataContext.Provider>
     );

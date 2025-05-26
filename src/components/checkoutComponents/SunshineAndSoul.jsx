@@ -3,7 +3,6 @@ import sunshine from "../../assets/images/sunshine.png";
 import { RattingIcons } from "@/lib/CustomIcons";
 import { CheckInIcon, GuestIcon, RoomIcon, ShareIcon } from "@/lib/CheckOutIconAll";
 const SunshineAndSoul = ({villa}) => {
-  console.log(villa)
   return (
     <div className="md:p-8 p-4 rounded-[12px] bg-white shadow-xl w-full flex flex-col sm:flex-row justify-between gap-8">
       <div className="md:w-[70%] order-2 sm:order-1 flex flex-col ">

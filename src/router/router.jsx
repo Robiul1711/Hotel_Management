@@ -25,6 +25,8 @@ import SearchPage from "@/pages/searchPage/SearchPage";
 import StayPage from "@/pages/stays/StayPage";
 import VillaPackageDetails from "@/pages/villaPackage/VillaPackageDetails";
 import { createBrowserRouter } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+import HotelCheckout from "@/pages/hotelCheckout/HotelCheckout";
 
 const router = createBrowserRouter([
   {
@@ -46,12 +48,12 @@ const router = createBrowserRouter([
       //   element: <ExperiencePage />
       // },
       {
-        path: "/hotel-package-details",
+        path: "/hotel-package-details/:id",
         element: <HotelPackage />
       },
       {
         path: "/villa-package-details/:id",
-        element: <VillaPackageDetails/>
+        element: <VillaPackageDetails />
       },
       // {
       //   path: "/my-booking",
@@ -63,7 +65,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <Checkout />
+        element: <PrivateRoute>
+          <Checkout />
+        </PrivateRoute>
+      },
+      {
+        path: "/hotel-checkout/:id",
+        element: <PrivateRoute>
+          <HotelCheckout />
+        </PrivateRoute>
       }
     ],
   },
@@ -126,15 +136,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'forget-password',
-        element: <ForgetPassword/>
+        element: <ForgetPassword />
       },
       {
         path: 'verify-otp',
-        element: <VerifyOTP/>
+        element: <VerifyOTP />
       },
       {
         path: 'new-password',
-        element: <NewPassword/>
+        element: <NewPassword />
       }
     ]
   }
