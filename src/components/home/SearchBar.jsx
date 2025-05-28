@@ -81,14 +81,14 @@ const SearchBar = () => {
                     {activeTab === "stays" ? (
                         <div className="flex flex-row items-center justify-between gap-3 sm:gap-4">
                             {/* Destination */}
-                            <div className="flex flex-col relative w-full sm:w-auto" ref={destinationRef}>
+                            <div className="hidden xmd:flex flex-col relative w-full sm:w-auto" ref={destinationRef}>
                                 <span className="text-sm md:text-lg text-black flex items-center">
                                     Destination {openPopup === 'destination' ? <RiArrowDropUpLine className='text-xl md:text-2xl' /> : <RiArrowDropDownLine className='text-xl md:text-2xl' />}
                                 </span>
                                 <button
                                     type="button"
                                     className="text-primary text-sm md:text-2xl font-medium text-left"
-                                    onClick={() => togglePopup('destination')}
+                                    // onClick={() => togglePopup('destination')} for popup
                                 >
                                     {watch('destination')}
                                 </button>

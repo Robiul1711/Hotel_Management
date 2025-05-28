@@ -27,7 +27,7 @@ const Home = () => {
       <Helmet>
         <title>HICH</title>
       </Helmet>
-      <div
+      {/* <div
         className="bg-secondary text-white text-[20px] py-3 text-center">
         <span className="font-plus font-extralight">
           FLAT 50% OFF on 2nd night on our newest escapes.
@@ -35,12 +35,12 @@ const Home = () => {
         <span className="">
           Use code: HICHUNHOTEL
         </span>
-      </div>
+      </div> */}
       <Banner />
       <CommonPageWrapper>
         <App />
         <Stays />
-        <PromotionalBanner />
+        {/* <PromotionalBanner /> */}
         {/* <Experience /> */}
         <LuxuryVila/>
         <Gallery />
