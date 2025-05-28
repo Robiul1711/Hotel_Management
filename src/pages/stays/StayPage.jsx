@@ -99,15 +99,21 @@ const StayPage = () => {
 
 
 
-                            <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
-                                {
-                                    hotelData?.map(item => <StayMobileCard key={item.id} data={item} />)
-                                }
-                            </div>
+                            {
+                                hotelData ?
+                                    <>
+                                        <div className="lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
+                                            {
+                                                hotelData?.map(item => <StayMobileCard key={item.id} data={item} />)
+                                            }
+                                        </div>
 
-                            <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary hover:bg-orange-400 flex items-center gap-3'>
-                                View All
-                            </button>
+                                        <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary hover:bg-orange-400 flex items-center gap-3'>
+                                            View All
+                                        </button>
+                                    </> :
+                                    <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Hotel Data Found</p>
+                            }
                         </div>
 
                         <div className={`hotels ${active === 'villa' ? '' : 'hidden'}`}>
@@ -117,7 +123,8 @@ const StayPage = () => {
                                 }
                             </div>
 
-                            <div className="hidden xmd:flex flex-wrap gap-10  my-5">
+                            {/* reels section  */}
+                            <div className="hidden  flex-wrap gap-10  my-5">
                                 {
                                     data?.map((item) =>
                                         <div key={item?.id} className="flex justify-center items-center flex-col gap-2">
@@ -128,16 +135,24 @@ const StayPage = () => {
                             </div>
 
 
+                            {
+                                villaData ?
+                                    <>
+                                        <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
+                                            {
+                                                villaData?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
+                                            }
+                                        </div>
 
-                            <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
-                                {
-                                    villaData?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
-                                }
-                            </div>
+                                        <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary flex items-center gap-3'>
+                                            View All
+                                        </button>
+                                    </>
+                                    :
+                                    <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Villa Data Found</p>
+                            }
 
-                            <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary flex items-center gap-3'>
-                                View All
-                            </button>
+
                         </div>
 
                     </div>
