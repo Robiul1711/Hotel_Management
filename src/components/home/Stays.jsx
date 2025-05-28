@@ -45,7 +45,7 @@ const Stays = () => {
                     <button
                         onClick={() => setActive('villa')}
                         className={`${active === 'villa' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-3 md:px-6 md:py-2 rounded-full hover:bg-orange-600 hover:text-white transition-all`}>
-                        Villa Rentals
+                        Villas
                     </button>
                 </div>
             </div>
@@ -62,7 +62,7 @@ const Stays = () => {
             <div className="hidden md:flex justify-center">
                 <Link to={'/stays'}>
                     <button className="bg-primary text-white px-4 py-2 md:px-8  md:py-5 rounded-full hover:bg-orange-600 transition-all">
-                        View All Packages
+                        View All Stays
                     </button>
                 </Link>
             </div>

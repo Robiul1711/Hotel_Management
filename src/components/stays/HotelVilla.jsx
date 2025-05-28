@@ -6,7 +6,7 @@ const HotelVilla = ({ active, setActive }) => {
         <div className=''>
             <div className="flex flex-col xmd:flex-row xmd:items-center justify-between">
                 <div className="">
-                    <p className="text-primary text-xl xmd:text-5xl">
+                    <p className="text-primary text-xl xmd:text-3xl xlg:text-5xl">
                         Hich Hotels & Villas
                     </p>
                 </div>
@@ -26,7 +26,7 @@ const HotelVilla = ({ active, setActive }) => {
                     
                 </div>
             </div>
-            <p className="my-5 xmd:text-lg text-gray-500">
+            <p className="my-5 text-sm xlg:text-lg text-gray-500">
                 Lörem ipsum biobining senera det teral kupespek. Valav otyrade inte plarere med infrakåvis. Renas ditt, megaling, jösetokroktigt. Tårtgate nyn gende. Lalogi antepoktiga vist misamma om missade. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit at temporibus odit omnis
             </p>
         </div>

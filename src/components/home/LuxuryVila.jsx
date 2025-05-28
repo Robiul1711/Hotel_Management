@@ -1,4 +1,5 @@
 import image from '@/assets/images/luxury.png';
+import EnquireForm from './EnquireForm';
 
 const LuxuryVila = () => {
     return (
@@ -18,9 +19,7 @@ const LuxuryVila = () => {
                         <li className='hidden xmd:flex'>Peace of mind with an end-to-end hospitality operation</li>
                     </ul>
                     <div className="">
-                        <button className="xmd:bg-primary xmd:text-white text-primary border text-[10px] p-1 md:text-base border-primary  md:px-8  md:py-3 rounded-full hover:bg-orange-600 transition-all">
-                            Tell me more
-                        </button>
+                        <EnquireForm/>
                     </div>
                 </div>
             </div>
