@@ -10,7 +10,7 @@ const SectionBanner = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.5 }}
-            className="relative   my-10 md:my-20">
+            className="relative   ">
             {/* Banner Image - Added min-h for mobile */}
             <img
                 src={banner}

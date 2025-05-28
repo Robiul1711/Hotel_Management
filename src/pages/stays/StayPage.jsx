@@ -86,7 +86,8 @@ const StayPage = () => {
 
 
 
-                            <div className="hidden xmd:flex flex-wrap gap-10  my-5">
+                            {/* Reels section  */}
+                            <div className="hidden flex-wrap gap-10  my-5">
                                 {
                                     data?.map((item) =>
                                         <div key={item?.id} className="flex justify-center items-center flex-col gap-2">
@@ -126,7 +127,7 @@ const StayPage = () => {
                                 }
                             </div>
 
-                           
+
 
                             <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
                                 {

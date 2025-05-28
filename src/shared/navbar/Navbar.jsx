@@ -18,7 +18,7 @@ const Navbar = () => {
       </div>
       <div className="flex gap-4 items-center">
         <ul className='text-black flex gap-5 lg:gap-12'>
-          <NavLink className={`${navLinkClass} hover:text-primary`} to={'/stays'}>Stay</NavLink>
+          <NavLink className={`${navLinkClass} hover:text-primary`} to={'/stays'}>Stays</NavLink>
           {/* <NavLink className={navLinkClass} to={'/'}>About Us</NavLink>
           <NavLink className={navLinkClass} to={'/'}>Our Packages</NavLink>
           <NavLink className={navLinkClass} to={'/'}>FAQ</NavLink>

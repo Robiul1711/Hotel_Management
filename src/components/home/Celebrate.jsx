@@ -66,7 +66,16 @@ const Celebrate = () => {
                 modules={[]}
                 spaceBetween={20}
                 loop={true}
-                slidesPerView={3.1}
+                breakpoints={{
+
+                    1024: {
+                        slidesPerView: 3.1,
+                    },
+                    1200: {
+                        slidesPerView: 3.8
+                    }
+                }}
+
                 grabCursor={true}
                 speed={3000}
                 autoplay={{

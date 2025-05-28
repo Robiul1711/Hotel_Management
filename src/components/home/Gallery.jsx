@@ -58,10 +58,10 @@ const Gallery = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <div className="absolute bottom-0 left-0 p-4 md:p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <span className="bg-primary text-xs font-semibold px-2 py-1 md:px-3 rounded-full mb-1 md:mb-2 inline-block">
+                                {/* <span className="bg-primary text-xs font-semibold px-2 py-1 md:px-3 rounded-full mb-1 md:mb-2 inline-block">
                                     {item.category}
                                 </span>
-                                <h3 className="text-base md:text-xl font-bold">{item.title}</h3>
+                                <h3 className="text-base md:text-xl font-bold">{item.title}</h3> */}
                             </div>
                         </div>
                     </div>
