@@ -67,7 +67,18 @@ const Celebrate = () => {
                 spaceBetween={20}
                 loop={true}
                 breakpoints={{
-
+                    0: {
+                        slidesPerView: 3.1,
+                    },
+                    480: {
+                        slidesPerView: 3.1,
+                    },
+                    640: {
+                        slidesPerView: 3.1,
+                    },
+                    768: {
+                        slidesPerView: 3.1,
+                    },
                     1024: {
                         slidesPerView: 3.1,
                     },

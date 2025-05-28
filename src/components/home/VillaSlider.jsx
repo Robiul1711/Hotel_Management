@@ -92,13 +92,20 @@ const VillaSlider = ({ cardNo = 3.5, data }) => {
                     },
                 }}
             >
-                {villaData?.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <Link to={`/villa-package-details/${item?.id}`}>
-                            <VillaCard data={item} />
-                        </Link>
-                    </SwiperSlide>
-                ))}
+                {
+                    villaData ?
+                        <>
+                            {villaData?.map((item, index) => (
+                                <SwiperSlide key={index}>
+                                    <Link to={`/villa-package-details/${item?.id}`}>
+                                        <VillaCard data={item} />
+                                    </Link>
+                                </SwiperSlide>
+                            ))}
+                        </>
+                        :
+                        <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Villa Data Found</p>
+                }
             </Swiper>
         </div>
     );

@@ -93,13 +93,22 @@ const HotelSlider = ({ data, cardNo = 3.5 }) => {
                     },
                 }}
             >
-                {hotelData?.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <Link to={`/hotel-package-details/${item?.id}`}>
-                            <HotelCard data={item} />
-                        </Link>
-                    </SwiperSlide>
-                ))}
+                {
+                    hotelData ?
+                        <>
+                            {hotelData?.map((item, index) => (
+                                <SwiperSlide key={index}>
+                                    <Link to={`/hotel-package-details/${item?.id}`}>
+                                        <HotelCard data={item} />
+                                    </Link>
+                                </SwiperSlide>
+                            ))}
+
+                        </>
+                        :
+                        <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Hotel Data Found</p>
+                }
+
             </Swiper>
         </div>
     );
