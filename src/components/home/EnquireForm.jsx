@@ -1,21 +1,49 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Input, Select } from 'antd';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 const EnquireForm = () => {
 
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
+    const [loading, setLoading] = useState(false);
+    const axiosPublic = useAxiosPublic();
+
 
     const showModal = () => {
         setOpen(true);
     };
 
     const handleOk = () => {
+        setLoading(true);
         form
             .validateFields()
-            .then(values => {
-                console.log('Form values:', values);
-                form.resetFields();
-                setOpen(false);
+            .then(async (values) => {
+                const payload = {
+                    owner_name: values.ownerName,
+                    contact_number: values.contactNumber,
+                    email_address: values.email,
+                    property_name: values.propertyName,
+                    location: values.location,
+                    property_type: values.propertyType,
+                    number_villa: values.roomCount,
+                    anything_text_property: values.uniqueFeatures
+                }
+                console.log('Form values:', payload);
+                try {
+                    const res = await axiosPublic.post('/contact_form', payload);
+                    if (res) {
+                        console.log(res);
+                        toast.success(res?.data)
+                        form.resetFields();
+                        setOpen(false);
+                    }
+                } catch (error) {
+                    console.log(error)
+                } finally {
+                    setLoading(false);
+                }
+
             })
             .catch(info => {
                 console.log('Validate Failed:', info);
@@ -51,7 +79,7 @@ const EnquireForm = () => {
                         Cancel
                     </Button>,
                     <Button key="submit" type="" className='bg-primary text-white font-semibold' onClick={handleOk}>
-                        Enquire
+                        {loading ? 'Submitting' : 'Enquire'}
                     </Button>,
                 ]}
             >
