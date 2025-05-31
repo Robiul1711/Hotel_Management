@@ -25,9 +25,9 @@ const VillaPackageDetails = () => {
     console.log(id);
     const axiosPublic = useAxiosPublic();
 
-    const {data:villa}=useQuery({
+    const { data: villa } = useQuery({
         queryKey: ['villa', id],
-        queryFn: async()=>{
+        queryFn: async () => {
             const res = await axiosPublic.get(`/single/villa/${id}`);
             return res?.data?.specificVilla;
         }
@@ -41,32 +41,35 @@ const VillaPackageDetails = () => {
             <Helmet>
                 <title>Villa Package Details</title>
             </Helmet>
-            <div className="">
-                <div className="hidden md:block w-11/12 mx-auto px-4">
+            <div className="section-padding-x">
+                <div className="">
+                    <div className="hidden md:block ">
 
-                    <div className="">
-                        <p className=" md:text-[32px] font-semibold text-primary">{villa?.villa_name}</p>
-                        <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
-                           
-                            <CiLocationOn />
-                            {villa?.location}
-                        </p>
+                        <div className="">
+                            <p className=" md:text-[32px] font-semibold text-primary">{villa?.villa_name}</p>
+                            <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
+
+                                <CiLocationOn />
+                                {villa?.location}
+                            </p>
+                        </div>
+
+                        {/* search tab  */}
+                        {/* <SearchTab/> */}
                     </div>
-
-                    {/* search tab  */}
-                    {/* <SearchTab/> */}
                 </div>
+                <VillaPackageGallery thumbnail={villa?.thumbnail} media={villa?.media} />
             </div>
             <CommonPageWrapper>
-                <VillaPackageGallery thumbnail={villa?.thumbnail} media={villa?.media} />
+
                 <VillaDetailsSection villa={villa} />
                 <SpaceSection villa={villa} />
                 <div className="flex items-center">
-                    <Aminities amenityData={AmanityData} data={villa} />
+                    <Aminities amenityData={villa?.amenities} data={villa} />
                     <img src={element} alt="" className='hidden lg:block' />
                 </div>
                 <ExperienceSection villaExperience={villa?.experiences} />
-                <RealMomentSection realMoment = {villa?.real_moments} />
+                <RealMomentSection realMoment={villa?.real_moments} />
                 <VillaFacilities />
                 <NearbyHotels />
                 <HotelPolicies villa={villa} />

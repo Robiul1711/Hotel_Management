@@ -62,7 +62,7 @@ const CelebrateCard = ({ data }) => {
 };
 
 const RealMomentSection = ({realMoment}) => {
-    console.log(realMoment)
+    // console.log(realMoment)
     return (
         <div className="w-full mx-auto py-10 bg-transparent" id='real-moments'>
             <p className="text-[24px] font-bold">Real Moments</p>
