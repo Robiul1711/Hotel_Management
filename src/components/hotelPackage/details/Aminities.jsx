@@ -2,35 +2,44 @@ import MenuModal from '@/components/common/MenuModal';
 import PriceModal from '@/components/common/PriceModal';
 import { mealPlans } from '@/lib/Database';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Aminities = ({ amenityData, data }) => {
     const [showAll, setShowAll] = useState(false);
+    console.log('amenityData', amenityData)
 
-    const displayedAmenities = showAll ? amenityData : amenityData.slice(0, 3);
+    const displayedAmenities = showAll ? amenityData : amenityData?.slice(0, 3);
 
     return (
         <div>
             <p className="text-[24px] font-bold">Amenities</p>
 
-            <div id='hotel-aminities' className="grid grid-cols-2 gap-20">
-                {displayedAmenities?.map((item, index) => (
-                    <div key={index} className="flex items-center gap-5">
-                        {item.icon}
-                        <p className="text-gray-400">{item.title}</p>
+            <div id='hotel-aminities' className="grid grid-cols-4 gap-20">
+               {
+                displayedAmenities?.length > 0 ? 
+                <>
+                 {displayedAmenities?.map((item, index) => (
+                    <div key={index} className="flex flex-col items-center gap-5">
+                        <img src= {item?.amenitie?.media} alt="" className="" />
+                       
+                        <p className="text-gray-400">{item.amenitie?.name}</p>
                     </div>
                 ))}
+                </>:
+                <p className="">No Amenities Found</p>
+               }
             </div>
 
-            
-                <button
-                    onClick={() => setShowAll(!showAll)}
-                    className="bg-primary text-white md:px-16 py-1 px-2 md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10"
-                >
-                    {
-                        showAll ? 'View Less Amenities' : 'View More Amenities'
-                    }
-                </button>
-            
+
+            <button
+                onClick={() => setShowAll(!showAll)}
+                className="bg-primary text-white md:px-16 py-1 px-2 md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10"
+            >
+                {
+                    showAll ? 'View Less Amenities' : 'View More Amenities'
+                }
+            </button>
+
 
             <div className="" id='hotel-meals'>
                 <p className="text-[24px] font-bold mt-10">Meals</p>
@@ -41,8 +50,16 @@ const Aminities = ({ amenityData, data }) => {
             </div>
 
             <div className="flex gap-4">
-                <MenuModal pdfUrl={data?.menu} />
-                <PriceModal mealPlans={mealPlans} />
+                {/* <MenuModal pdfUrl={data?.menu} /> */}
+                <Link to={data?.menu ? data?.menu : '#'} target='_blank'>
+                    <button
+
+                        className="bg-primary text-white md:px-16 py-1 px-2 md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10"
+                    >
+                        View Menu
+                    </button>
+                </Link>
+                <PriceModal mealPlans={data?.meal_pricing} />
             </div>
         </div>
     );

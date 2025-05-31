@@ -63,68 +63,79 @@ const VillaPackageGallery = ({ thumbnail, media }) => {
                 </div>
             </div>
 
-            <div className="md:px-4 py-6">
+            <div className="md:px-4">
                 <div className="flex flex-col md:flex-row gap-4">
                     {/* Left Large Image */}
-                    <div className="md:w-[58%] w-full md:rounded-xl overflow-hidden">
-                        <img src={thumbnail} alt="Main" className="w-full h-full object-cover md:rounded-xl" />
+                    <div className="md:w-[58%] w-full aspect-square md:aspect-video md:rounded-xl overflow-hidden">
+                        <img
+                            src={thumbnail}
+                            alt="Main"
+                            className="w-full h-full object-cover md:rounded-xl"
+                        />
                     </div>
 
                     {/* Right Grid */}
                     <div className="relative hidden md:w-[42%] w-full md:grid grid-cols-2 gap-4">
-                        {
-                            media?.map((item, index) => {
-                                return (
-                                    <img key={index} src={item?.media_name} alt="Grid1" className="w-full h-full object-cover rounded-xl" />
-                                )
-                            })
-                        }
+                        {media?.slice(0, 4)?.map((item, index) => (
+                            <div key={index} className="aspect-square overflow-hidden rounded-xl">
+                                <img
+                                    src={item?.media_name}
+                                    alt={`Grid ${index}`}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        ))}
 
                         <button
-                            onClick={() => openModal(img5)}
-                            className=" absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
+                            onClick={() => openModal(thumbnail)}
+                            className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
                         >
                             View all photos
                         </button>
-                        {/* <div className="relative rounded-xl overflow-hidden">
-
-
-                        </div> */}
                     </div>
                 </div>
             </div>
 
             {/* Modal */}
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white p-4 rounded-lg max-w-4xl w-full">
-                        <div className="flex justify-end items-center">
-                            <button onClick={closeModal} className="text-red-500 font-bold text-xl flex items-center gap-2">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+                    <div className="bg-white p-4 rounded-lg max-w-7xl w-full max-h-[90vh] flex flex-col">
+                        <div className="flex justify-end">
+                            <button
+                                onClick={closeModal}
+                                className="text-red-500 font-bold text-xl flex items-center gap-2"
+                            >
                                 Close <IoMdCloseCircle />
                             </button>
                         </div>
-                        <div className="mt-4">
+
+                        {/* Main image */}
+                        <div className="mt-4 flex-1">
                             <img
                                 src={selectedImage}
                                 alt="Selected"
-                                className="w-full h-[400px] object-cover rounded-xl"
+                                className="w-full h-full max-h-[40vh] object-contain rounded-xl"
                             />
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
-                            {images.map((image, index) => (
-                                <div key={index} className="relative">
-                                    <img
-                                        src={image}
-                                        alt={`Gallery image ${index + 1}`}
-                                        className="w-full h-full object-cover rounded-xl cursor-pointer"
-                                        onClick={() => setSelectedImage(image)}
-                                    />
-                                </div>
-                            ))}
+
+                        {/* Thumbnail grid */}
+                        <div className="mt-4 border-t pt-4">
+                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 h-[30vh] overflow-y-auto">
+                                {media?.map((image, index) => (
+                                    <div
+                                        key={index}
+                                        className={`relative cursor-pointer border-4 ${selectedImage === image?.media_name ? 'border-primary rounded-lg' : 'border-transparent'}`}
+                                        onClick={() => setSelectedImage(image?.media_name)}
+                                    >
+                                        <img
+                                            src={image?.media_name}
+                                            alt={`Gallery image ${index + 1}`}
+                                            className="w-full h-full object-cover rounded-md"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-
-                        {/* Show selected image in modal */}
-
                     </div>
                 </div>
             )}

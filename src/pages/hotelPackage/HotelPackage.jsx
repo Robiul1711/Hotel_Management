@@ -22,7 +22,7 @@ import { ScrollRestoration, useParams } from 'react-router-dom';
 const HotelPackage = () => {
 
     const { id } = useParams();
-    console.log(id);
+    // console.log(id);
     const axiosPublic = useAxiosPublic();
 
     const { data: hotel } = useQuery({
@@ -33,7 +33,7 @@ const HotelPackage = () => {
         }
     })
 
-    console.log(hotel);
+    // console.log(hotel);
 
     return (
         <>
@@ -41,24 +41,27 @@ const HotelPackage = () => {
             <Helmet>
                 <title>Hotel Package Details</title>
             </Helmet>
-            <div className="">
-                <div className="hidden md:block w-11/12 mx-auto px-4">
+            <div className="section-padding-x ">
+                <div className="">
+                    <div className="hidden md:block  px-4">
 
-                    <div className="">
-                        <p className=" md:text-[32px] font-semibold text-primary">{hotel?.hotel_name}</p>
-                        <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
+                        <div className="">
+                            <p className=" md:text-[32px] font-semibold text-primary">{hotel?.hotel_name}</p>
+                            <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
 
-                            <CiLocationOn />
-                            {hotel?.location}
-                        </p>
+                                <CiLocationOn />
+                                {hotel?.location}
+                            </p>
+                        </div>
+
+                        {/* search tab  */}
+                        {/* <SearchTab/> */}
                     </div>
-
-                    {/* search tab  */}
-                    {/* <SearchTab/> */}
                 </div>
+                <PackageGallery hotel={hotel} />
             </div>
             <CommonPageWrapper>
-                <PackageGallery hotel={hotel} />
+
                 <HichFacilities hotel={hotel} />
                 <Details hotel={hotel} />
                 <ExperienceSection villaExperience={hotel?.experiences} />
@@ -66,7 +69,7 @@ const HotelPackage = () => {
                 <NearbyHotels />
                 {/* <CheckInOutPolicy /> */}
 
-                <HotelPolicies />
+                <HotelPolicies villa={hotel} />
 
                 <SectionBanner />
 

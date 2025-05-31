@@ -45,7 +45,7 @@ const ExperienceCard = ({ data }) => {
             {/* Image Section */}
             <div className="relative h-[60%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
                 <img
-                    src={data?.media[0]?.experience_media}
+                    src={data?.media[0]?.experience_media ? data?.media[0]?.experience_media : 'https://placehold.co/600x400'}
                     className="w-full h-full object-cover"
                     alt={data?.name || "Accommodation"}
                 />

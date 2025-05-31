@@ -13,13 +13,15 @@ import HotelBookingSummary from './HotelBookingSummary';
 
 
 const Details = ({hotel}) => {
+
+    console.log(hotel?.amenities)
     return (
         <div className='flex flex-col lg:flex-row gap-5'>
             <div className="w-full lg:w-[70%] space-y-8">
                 <HotelOverview hotel={hotel} />
                 <RoomOptions roomTypes={hotel?.room_types}  />
                 <ExclusiveFacilitiesFAQ />
-                <Aminities amenityData={AmanityData} data={hotel} />
+                <Aminities amenityData={hotel?.amenities} data={hotel} />
                 
             </div>
 

@@ -3,8 +3,9 @@ import TabSection from '../hotelPackage/TabSection';
 import { StarIcons, Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons } from "@/lib/CustomIcons";
 import { CustomBridgeIcon, CustomPhoneIcon, CustomWarehouseIcon } from "@/lib/CustomIconPackage";
 import { HotelTabsSection, VillaTabsSection } from '@/lib/Database';
+import { Link } from 'react-router-dom';
 
-const VillaTabSection = ({villa}) => {
+const VillaTabSection = ({ villa }) => {
     console.log(villa)
     return (
         <div>
@@ -50,9 +51,7 @@ const VillaTabSection = ({villa}) => {
                     <div className="border p-2 md:p-5 rounded-full">
                         <CustomWarehouseIcon />
                     </div>
-                    <div className="text-gray-400 p-5 rounded-full">
-                        See All
-                    </div>
+                   
 
                 </div>
                 <div className="bg-[#fff8db] flex items-center justify-between p-3">

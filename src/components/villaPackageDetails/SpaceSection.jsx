@@ -40,7 +40,7 @@ const data = [
 
         ]
     },
-     {
+    {
         img: img2,
         title: 'Tropical Adventures and Sun-Kissed Shores1',
         bedroom: 'Bedroom 3',
@@ -68,7 +68,7 @@ const data = [
         ]
     },
 
-     {
+    {
         img: img1,
         title: 'Tropical Adventures and Sun-Kissed Shores1',
         bedroom: 'Bedroom 1',
@@ -95,7 +95,7 @@ const data = [
 
         ]
     },
-     {
+    {
         img: img2,
         title: 'Tropical Adventures and Sun-Kissed Shores1',
         bedroom: 'Bedroom 3',
@@ -122,7 +122,7 @@ const data = [
 
         ]
     },
-    
+
 ]
 
 const Card = ({ data }) => {
@@ -132,7 +132,7 @@ const Card = ({ data }) => {
             {/* Image Section */}
             <div className="relative h-[60%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
                 <img
-                    src={data?.media[0]?.space_media}
+                    src={data?.media[0]?.space_media ? data?.media[0]?.space_media : 'https://placehold.co/600x400'}
                     className="w-full h-full object-cover rounded-lg"
                     alt={data?.title || "Accommodation"}
                 />
@@ -155,7 +155,7 @@ const Card = ({ data }) => {
     );
 };
 
-const SpaceSection = ({villa}) => {
+const SpaceSection = ({ villa }) => {
     return (
         <div className="w-full mx-auto py-10 bg-transparent" id='spaces'>
             <p className="text-2xl font-bold  mb-5">Spaces</p>
@@ -187,11 +187,17 @@ const SpaceSection = ({villa}) => {
                     },
                 }}
             >
-                {villa?.spaces.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <Card data={item} />
-                    </SwiperSlide>
-                ))}
+                {
+                    villa?.spaces?.length > 0 ?
+                        <>
+                            {villa?.spaces.map((item, index) => (
+                                <SwiperSlide key={index}>
+                                    <Card data={item} />
+                                </SwiperSlide>
+                            ))}
+                        </> :
+                        <p className="">No spaces data found</p>
+                }
             </Swiper>
         </div>
     );

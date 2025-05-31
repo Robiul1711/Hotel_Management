@@ -2,14 +2,18 @@ import { Location } from '@/lib/CustomIconPackage';
 import React from 'react';
 import { FaMinusCircle } from 'react-icons/fa';
 import { IoMdCloseCircle } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
-const HotelPolicies = ({villa}) => {
+const HotelPolicies = ({ villa }) => {
     return (
         <div className="p-4 space-y-4">
-            <div className=""  id='hotel-location'>
+            <div className="" id='hotel-location'>
                 <p className="text-[24px] font-bold leading-none mb-1">Location</p>
-                <p className="text-gray-400">{villa?.location}</p>
-                <p className="flex text-gray-400 underline gap-2"><Location/>Open in Maps</p>
+                <Link target='_blank' to={villa?.map_link}>
+                    <p className="text-gray-400">{villa?.location}</p>
+                    <p className="flex text-gray-400 underline gap-2"><Location />Open in Maps</p>
+                </Link>
+
             </div>
 
             <p className="text-[24px] font-bold leading-none mb-1">Hotel Policies</p>

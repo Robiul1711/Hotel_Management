@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const HotelBookingSummary = ({ hotel }) => {
     const navigate = useNavigate();
     const { hotelRoom } = useData();
-    console.log(hotelRoom);
+    // console.log(hotelRoom);
 
     return (
         <div className='bg-white shadow rounded-xl'>
