@@ -29,11 +29,11 @@ const HotelPackage = () => {
         queryKey: ['hotel', id],
         queryFn: async () => {
             const res = await axiosPublic.get(`single/hotel/${id}`);
-            return res?.data?.singleHotel;
+            return res?.data?.allHotel;
         }
     })
 
-    // console.log(hotel);
+    console.log(hotel);
 
     return (
         <>
@@ -47,7 +47,7 @@ const HotelPackage = () => {
                     <div className="">
                         <p className=" md:text-[32px] font-semibold text-primary">{hotel?.hotel_name}</p>
                         <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
-                            
+
                             <CiLocationOn />
                             {hotel?.location}
                         </p>
@@ -62,7 +62,7 @@ const HotelPackage = () => {
                 <HichFacilities hotel={hotel} />
                 <Details hotel={hotel} />
                 <ExperienceSection villaExperience={hotel?.experiences} />
-                <RealMomentSection realMoment={hotel?.real_moments}  />
+                <RealMomentSection realMoment={hotel?.real_moments} />
                 <NearbyHotels />
                 {/* <CheckInOutPolicy /> */}
 
