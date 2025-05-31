@@ -82,7 +82,7 @@ const VillaPackageGallery = ({ thumbnail, media }) => {
 
                         <button
                             onClick={() => openModal(img5)}
-                            className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
+                            className=" absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
                         >
                             View all photos
                         </button>

@@ -80,6 +80,12 @@ const PackageGallery = ({ hotel }) => {
                                 )
                             })
                         }
+                        {/* <button
+                            onClick={() => openModal(img5)}
+                            className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
+                        >
+                            View all photos
+                        </button> */}
 
                         {/* <div className="relative rounded-xl overflow-hidden">
                             <img src={img5} alt="Grid4" className="w-full h-full object-cover rounded-xl" />
