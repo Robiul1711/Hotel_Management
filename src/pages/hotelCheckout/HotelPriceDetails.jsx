@@ -22,7 +22,9 @@ const HotelPriceDetails = ({ hotel }) => {
 
     const handlePayment = async () => {
         setLoading(true)
+        console.log(hotelRoom)
         const payload = {
+            hoteltypeid: hotelRoom?.id,
             amount: hotelRoom?.room_price,
             userEmail: user?.email,
             userId: user?.id,
