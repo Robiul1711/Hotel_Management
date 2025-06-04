@@ -67,7 +67,7 @@ const UserDropdown = () => {
                 console.log('Go to Settings');
                 break;
             case 'dashboard':
-                navigate('/dashboard');
+                navigate('/dashboard/booking');
                 break;
             case 'logout':
                 logout();

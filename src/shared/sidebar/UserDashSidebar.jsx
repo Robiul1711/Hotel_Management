@@ -4,7 +4,7 @@ import { FaTimes } from 'react-icons/fa';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
 
-const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen, logout }) => {
     const { pathname } = useLocation();
     const webcheck=["/dashboard/check-in","/dashboard/web-check-form","/dashboard/submit-form",].includes(pathname);
     const support=["/dashboard/support","/dashboard/open-support-ticket",].includes(pathname);
@@ -29,14 +29,14 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             </div>
 
             <nav className="flex flex-col gap-4 h-full ">
-                <NavLink to="/dashboard" end>
+                {/* <NavLink to="/dashboard" end>
                     {({ isActive }) => (
                         <div className={navItemClasses(isActive)}>
                             <DashboardIcon color={isActive ? '#fff' : '#333'} />
                             Dashboard
                         </div>
                     )}
-                </NavLink>
+                </NavLink> */}
 
                 <NavLink to="/dashboard/booking">
                     {({ isActive }) => (
@@ -58,7 +58,7 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 </NavLink>
 
 
-                <NavLink to="/dashboard/check-in">
+                {/* <NavLink to="/dashboard/check-in">
                     {({ isActive }) => (
                         <div className={navItemClasses(isActive || webcheck)}>
                             <BookingHistoryIcon color={isActive || webcheck ?  '#fff' : '#333'} />
@@ -83,11 +83,11 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                             Settings
                         </div>
                     )}
-                </NavLink>
+                </NavLink> */}
 
                 <NavLink to='#' >
 
-                    <div className={`flex absolute bottom-5 left-5 z-50 items-center gap-2 p-2  pt-5 mt-5  transition-colors duration-200 text-[#333] hover:bg-orange-100`}>
+                    <div onClick={logout} className={`flex absolute bottom-5 left-5 z-50 items-center gap-2 p-2  pt-5 mt-5  transition-colors duration-200 text-[#333] hover:bg-orange-100`}>
                         <LogoutIcon color={'#333'} />
                         Log Out
                     </div>
