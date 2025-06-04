@@ -15,7 +15,7 @@ import VillaSlider from './VillaSlider';
 
 const Stays = () => {
 
-    const [active, setActive] = useState('hotels');
+    const [active, setActive] = useState('villa');
 
 
     return (
@@ -25,7 +25,7 @@ const Stays = () => {
             whileInView="animate"
             viewport={{ once: true, amount: 0.5 }}
         >
-            <ScrollRestoration/>
+            <ScrollRestoration />
             <div className="flex flex-col gap-8">
                 <div className="flex justify-between">
                     <p className="text-primary md:text-5xl">
@@ -34,18 +34,19 @@ const Stays = () => {
                     <button className="md:hidden text-gray-400">see all</button>
                 </div>
                 <div className="flex gap-4">
-                
 
-                    <button
-                        onClick={() => setActive('hotels')}
-                        className={`${active === 'hotels' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-3 md:px-6 md:py-2 rounded-full hover:bg-orange-600 hover:text-white transition-all`}>
-                        Hotels
-                    </button>
+
+
 
                     <button
                         onClick={() => setActive('villa')}
                         className={`${active === 'villa' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-3 md:px-6 md:py-2 rounded-full hover:bg-orange-600 hover:text-white transition-all`}>
                         Villas
+                    </button>
+                    <button
+                        onClick={() => setActive('hotels')}
+                        className={`${active === 'hotels' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-3 md:px-6 md:py-2 rounded-full hover:bg-orange-600 hover:text-white transition-all`}>
+                        Hotels
                     </button>
                 </div>
             </div>

@@ -57,7 +57,7 @@ const data = [
 
 const StayPage = () => {
 
-    const [active, setActive] = useState('hotels');
+    const [active, setActive] = useState('villa');
     const { hotelData, villaData } = useData();
 
     return (
