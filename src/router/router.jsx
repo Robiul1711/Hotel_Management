@@ -27,6 +27,7 @@ import VillaPackageDetails from "@/pages/villaPackage/VillaPackageDetails";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import HotelCheckout from "@/pages/hotelCheckout/HotelCheckout";
+import PaymentSuccess from "@/pages/PaymentSuccess";
 
 const router = createBrowserRouter([
   {
@@ -74,7 +75,8 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <HotelCheckout />
         </PrivateRoute>
-      }
+      },
+      
     ],
   },
   {

@@ -12,18 +12,19 @@ const HotelVilla = ({ active, setActive }) => {
                 </div>
                 <div className="flex gap-3 xmd:gap-5">
                     <button
+                        onClick={() => setActive('villa')}
+                        className={`border py-3 px-5 rounded-3xl ${active === 'villa' ? 'bg-secondary text-white' : 'text-secondary'}  border-secondary flex items-center gap-3 hover:bg-orange-500 hover:text-white`}>
+                        Villas
+                    </button>
+                    <button
                         onClick={() => setActive('hotels')}
                         className={`border py-3 px-5 rounded-3xl ${active === 'hotels' ? 'bg-secondary text-white' : ''}  border-secondary text-secondary flex items-center gap-3 hover:bg-orange-500 hover:text-white`}>
                         Hotels
                     </button>
 
-                    <button
-                        onClick={() => setActive('villa')}
-                        className={`border py-3 px-5 rounded-3xl ${active === 'villa' ? 'bg-secondary text-white' : 'text-secondary'}  border-secondary flex items-center gap-3 hover:bg-orange-500 hover:text-white`}>
-                        Villas
-                    </button>
 
-                    
+
+
                 </div>
             </div>
             <p className="my-5 text-sm xlg:text-lg text-gray-500">

@@ -2,6 +2,8 @@ import React from 'react';
 import img1 from '@/assets/images/stay1.png';
 import img2 from '@/assets/images/stay2.png';
 import DashboardCard from '@/components/dashboard/DashboardCard';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 const data = [
     {
         img: img1,
@@ -56,12 +58,25 @@ const data = [
 ]
 
 const BookingHistory = () => {
+
+    const axiosSecure = useAxiosSecure();
+
+    const { data: bookingHistoryData } = useQuery({
+        queryKey: ['bookingHistoryData'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/villa/booking-history`);
+            return res?.data?.villa_bookings;
+        }
+    })
+
+    console.log(bookingHistoryData);
+
     return (
         <div> 
             <h1 className='text-2xl font-semibold mb-6 font-neris'>Booking History</h1>
         <div className='grid grid-cols-1  xmd:grid-cols-2 xlg:grid-cols-3 gap-4'>
             {
-                data.map((item, index) => <DashboardCard key={index} data={item}  />)
+                bookingHistoryData?.map((item, index) => <DashboardCard key={index} data={item?.villa} checkin={item?.checkindate} checkout={item?.checkoutdate}  />)
             }
     
         </div>
