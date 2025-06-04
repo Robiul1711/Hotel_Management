@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CheckCircle, ShieldCheck } from 'lucide-react'
 import useAuth from '@/hooks/useAuth'
 import { useLocation } from 'react-router-dom';
@@ -12,8 +12,40 @@ const HotelPriceDetails = ({ hotel }) => {
     const axiosPublic = useAxiosPublic();
     const [loading, setLoading] = useState(false);
 
+    const [checkInDate, setCheckInDate] = useState('');
+    const [checkOutDate, setCheckOutDate] = useState('');
+    const [dateError, setDateError] = useState('');
+
     const location = useLocation();
     const from = location.state?.from;
+
+    useEffect(() => {
+        if (checkInDate && checkOutDate) {
+            const checkIn = new Date(checkInDate);
+            const checkOut = new Date(checkOutDate);
+
+            if (checkOut < checkIn) {
+                const errorMsg = 'Check-out date cannot be before check-in date';
+                setDateError(errorMsg);
+                toast.error(errorMsg);
+            } else {
+                setDateError('');
+            }
+        }
+    }, [checkInDate, checkOutDate]);
+
+
+    const handleCheckInChange = (e) => {
+        const newCheckInDate = e.target.value;
+        setCheckInDate(newCheckInDate);
+
+        // Reset check-out if it's now invalid
+        if (checkOutDate && new Date(newCheckInDate) > new Date(checkOutDate)) {
+            setCheckOutDate('');
+            toast.error('Please select a new check-out date');
+        }
+    };
+
 
     // console.log("Navigated from:", from);
     // console.log("Hotel Room", hotelRoom);   
@@ -23,13 +55,22 @@ const HotelPriceDetails = ({ hotel }) => {
     const handlePayment = async () => {
         setLoading(true)
         console.log(hotelRoom)
+
+        if(checkInDate === '' || checkOutDate === '') {
+            toast.error('Please select both check-in and check-out dates');
+            setLoading(false)
+            return;
+        }
+
         const payload = {
             hoteltypeid: hotelRoom?.id,
             amount: hotelRoom?.room_price,
             userEmail: user?.email,
             userId: user?.id,
             villaorhotelid: hotel?.id,
-            type: from
+            type: from,
+            checkindate: checkInDate,
+            checkoutdate: checkOutDate
         }
 
         console.log('this is payload', payload);
@@ -43,15 +84,51 @@ const HotelPriceDetails = ({ hotel }) => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error?.response?.data?.error);
+            toast.error(error?.response?.data?.message);
         } finally {
             setLoading(false)
         }
     }
+
+    // Calculate minimum dates
+    const today = new Date().toISOString().split('T')[0];
+    const minCheckOutDate = checkInDate || today;
+
     return (
         <div className="xlg:max-w-md w-full mx-auto border rounded-xl p-6 bg-white shadow-md">
             {/* Title */}
             <h2 className="text-lg font-semibold mb-4">Hotel Price Details</h2>
+
+
+            {/* Date Pickers */}
+            <div className="grid grid-cols-2 gap-4 mb-2">
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
+                    <input
+                        type="date"
+                        value={checkInDate}
+                        onChange={handleCheckInChange}
+                        min={today}
+                        className="w-full border rounded-lg p-2 text-sm"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Check-out</label>
+                    <input
+                        type="date"
+                        value={checkOutDate}
+                        onChange={(e) => setCheckOutDate(e.target.value)}
+                        min={minCheckOutDate}
+                        className="w-full border rounded-lg p-2 text-sm"
+                        disabled={!checkInDate}
+                    />
+                </div>
+            </div>
+
+            {dateError && (
+                <p className="text-red-500 text-xs mb-2">{dateError}</p>
+            )}
+
 
             {/* Zero convenience fees */}
             <p className="text-sm text-green-600 flex items-center gap-1 mb-4">
