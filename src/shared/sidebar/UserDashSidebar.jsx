@@ -6,9 +6,9 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen, logout }) => {
     const { pathname } = useLocation();
-    const webcheck=["/dashboard/check-in","/dashboard/web-check-form","/dashboard/submit-form",].includes(pathname);
-    const support=["/dashboard/support","/dashboard/open-support-ticket",].includes(pathname);
-    const booking=["/dashboard/booking","/dashboard/view-detais",].includes(pathname);
+    const webcheck = ["/dashboard/check-in", "/dashboard/web-check-form", "/dashboard/submit-form",].includes(pathname);
+    const support = ["/dashboard/support", "/dashboard/open-support-ticket",].includes(pathname);
+    const booking = ["/dashboard/booking", "/dashboard/view-detais",].includes(pathname);
     const navItemClasses = (isActive) =>
         `flex items-center gap-2 p-2 rounded transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'text-[#333] hover:bg-orange-100'
         }`;
@@ -42,7 +42,7 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen, logout }) => {
                     {({ isActive }) => (
                         <div className={navItemClasses(isActive || booking)}>
                             <BookingIcon color={isActive || booking ? '#fff' : '#333'} />
-                            Booking
+                            Villa Booking
                         </div>
                     )}
                 </NavLink>
@@ -52,7 +52,7 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen, logout }) => {
                     {({ isActive }) => (
                         <div className={navItemClasses(isActive)}>
                             <BookingHistoryIcon color={isActive ? '#fff' : '#333'} />
-                            Booking History
+                           Villa Booking History
                         </div>
                     )}
                 </NavLink>
