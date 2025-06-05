@@ -51,7 +51,7 @@ const BookingSummary = ({ villa }) => {
                 </p>
             </div>
 
-            <div className="py-5 flex gap-2 flex-wrap justify-around">
+            {/* <div className="py-5 flex gap-2 flex-wrap justify-around">
                 <button
                     className={`px-4 py-1 xlg:py-2 rounded-full text-lg bg-secondary text-white`}
                 >
@@ -69,7 +69,7 @@ const BookingSummary = ({ villa }) => {
                 >
                     Call
                 </button>
-            </div>
+            </div> */}
 
             {/* Mobile Sticky Button (shown only on mobile) */}
             

@@ -54,14 +54,14 @@ const VillaTabSection = ({ villa }) => {
                    
 
                 </div>
-                <div className="bg-[#fff8db] flex items-center justify-between p-3">
+                {/* <div className="bg-[#fff8db] flex items-center justify-between p-3">
 
                     <div className="flex items-center ">
                         <CustomPhoneIcon />
                         <span className="text-[12px] md:text-base">Connect with Host</span>
                     </div>
                     <button className="border-primary border rounded-full text-[12px] md:text-base py-3 px-8">Request Callback</button>
-                </div>
+                </div> */}
             </div>
         </div>
     );

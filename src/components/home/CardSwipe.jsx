@@ -7,10 +7,11 @@ import img4 from '@/assets/images/card4.png';
 import img5 from '@/assets/images/card5.png';
 import img6 from '@/assets/images/card6.png';
 
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-const data =[
+const data = [
     img1,
     img2,
     img3,
@@ -23,8 +24,11 @@ const CardSwipe = () => {
     return (
         <div className=" h-full">
             <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 navigation={true} 
+                pagination={{
+                    clickable: true,
+                }}
                 spaceBetween={20}
                 loop={true}
                 grabCursor={false}
@@ -53,7 +57,7 @@ const CardSwipe = () => {
             >
                 {data.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <img src={item} className='w-full h-[460px] object-cover' alt="" />
+                        <img src={item} className='w-full h-[460px] object-cover rounded-3xl' alt="" />
                     </SwiperSlide>
                 ))}
             </Swiper>
