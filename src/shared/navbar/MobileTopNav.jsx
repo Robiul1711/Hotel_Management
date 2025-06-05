@@ -8,7 +8,10 @@ import pune from '@/assets/images/pune.png'
 import mumbai from '@/assets/images/mumbai.png'
 import delhi from '@/assets/images/delhi.png'
 import goa from '@/assets/images/goa.png'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { FaPhone } from 'react-icons/fa';
+import { BsTelephone } from "react-icons/bs";
+import UserDropdown from './UserDropdown';
 
 
 const data = [
@@ -48,11 +51,15 @@ const MobileTopNav = () => {
     return (
         <div className='px-5'>
             <div className='flex justify-center'>
-                <img src={logo} alt="" />
+                <Link to={'/'}>
+                    <img src={logo} alt="" />
+                </Link>
             </div>
 
             {/* input and navigation  */}
-            {
+
+            {/* need to hide search and reels for now.  */}
+            {/* {
                 show && (
                     <div className="">
                         <div className="bg-white flex justify-between items-center w-full border gap-5  px-4 rounded-full p-5 md:py-5">
@@ -75,7 +82,16 @@ const MobileTopNav = () => {
                         </div>
                     </div>
                 )
-            }
+            } */}
+
+            <div className="font-semibold flex justify-between items-center text-sm">
+                <p className=""> <Link to={'/stays'} className="">Stays</Link></p>
+                <p className="flex gap-2"><BsTelephone />+9142424242424</p>
+                <p className="">List your home</p>
+                <div className="">
+                    <UserDropdown />
+                </div>
+            </div>
         </div>
 
     );

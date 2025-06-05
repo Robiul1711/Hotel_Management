@@ -26,7 +26,7 @@ const Stays = () => {
             viewport={{ once: true, amount: 0.5 }}
         >
             <ScrollRestoration />
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2 lg:gap-8">
                 <div className="flex justify-between">
                     <p className="text-primary font-semibold mb-0 md:text-5xl">
                         Popular Hich Stays
@@ -40,12 +40,12 @@ const Stays = () => {
 
                     <button
                         onClick={() => setActive('villa')}
-                        className={`${active === 'villa' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-3 md:px-6 md:py-2 rounded-full hover:bg-orange-600 hover:text-white transition-all`}>
+                        className={`${active === 'villa' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-7 py-2 md:px-6 md:py-2 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition-all`}>
                         Villas
                     </button>
                     <button
                         onClick={() => setActive('hotels')}
-                        className={`${active === 'hotels' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-3 md:px-6 md:py-2 rounded-full hover:bg-orange-600 hover:text-white transition-all`}>
+                        className={`${active === 'hotels' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-7 py-2 md:px-6 md:py-2 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition-all`}>
                         Hotels
                     </button>
                 </div>
