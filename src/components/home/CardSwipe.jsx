@@ -7,10 +7,11 @@ import img4 from '@/assets/images/card4.png';
 import img5 from '@/assets/images/card5.png';
 import img6 from '@/assets/images/card6.png';
 
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-const data =[
+const data = [
     img1,
     img2,
     img3,
@@ -21,10 +22,41 @@ const data =[
 
 const CardSwipe = () => {
     return (
-        <div className="">
+        <div className="relative">
+            {/* Add custom styles for navigation and pagination */}
+            <style jsx global>{`
+                .swiper-button-next,
+                .swiper-button-prev {
+                    color: white;
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    padding: 10px;
+                }
+                .swiper-button-next:after,
+                .swiper-button-prev:after {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+                .swiper-pagination-bullet {
+                    background: white;
+                    opacity: 0.5;
+                    width: 10px;
+                    height: 10px;
+                }
+                .swiper-pagination-bullet-active {
+                    opacity: 1;
+                    background: white;
+                }
+            `}</style>
+            
             <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 navigation={true} 
+                pagination={{
+                    clickable: true,
+                }}
                 spaceBetween={20}
                 loop={true}
                 grabCursor={false}

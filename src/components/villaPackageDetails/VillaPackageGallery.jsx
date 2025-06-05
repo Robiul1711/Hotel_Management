@@ -57,10 +57,10 @@ const VillaPackageGallery = ({ thumbnail, media }) => {
                         </p>
                     </div>
                 </div>
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                     <CustomPdfIcon />
                     <CustomShareIcon />
-                </div>
+                </div> */}
             </div>
 
             <div className="md:px-4">

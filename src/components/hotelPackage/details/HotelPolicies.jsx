@@ -60,7 +60,7 @@ const HotelPolicies = ({ villa }) => {
                 <span className="underline">Note:</span> Early check-in and late check-out is subject to availability (at an additional fee)
             </p>
 
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
                 <p className="text-[24px]">Contact Hotel</p>
                 <div className="space-x-5">
                     <button
@@ -74,7 +74,7 @@ const HotelPolicies = ({ villa }) => {
                         Call Us
                     </button>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };
