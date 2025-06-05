@@ -6,7 +6,7 @@ const LuxuryVila = () => {
         <div className='flex  justify-between rounded-[10px] '>
             <div className="w-[60%] flex items-center justify-center px-4 rounded-l-[8px] xlg:px-20 bg-[#fef7da] text-dark">
                 <div className="">
-                    <p className="text-[12px] sm:text-[24px]">
+                    <p className="text-[12px] sm:text-[24px] font-semibold">
                         List your home amongst India’s finest luxury villas.
                         <span className="hidden xmd:inline">
                             and become part of our prestigious homeowner community...

@@ -18,6 +18,7 @@ import { SlideUp } from '@/animation/animate';
 import LuxuryVila from '@/components/home/LuxuryVila';
 import Celebrate from '@/components/home/Celebrate';
 import { ScrollRestoration } from 'react-router-dom';
+import PromotionalBanner2 from '@/components/common/PromotionalBanner2';
 
 
 const Home = () => {
@@ -40,7 +41,7 @@ const Home = () => {
       <CommonPageWrapper>
         <App />
         <Stays />
-        {/* <PromotionalBanner /> */}
+        <PromotionalBanner2 />
         {/* <Experience /> */}
         <LuxuryVila/>
         <Gallery />

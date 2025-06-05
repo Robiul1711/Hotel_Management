@@ -58,8 +58,8 @@ const CelebrateCard = ({ data }) => {
 
 const Celebrate = () => {
     return (
-        <div className="w-full mx-auto py-10 bg-transparent">
-            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">
+        <div className="w-full mx-auto  bg-transparent">
+            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left font-semibold mb-4">
                 Celebrate with Hich
             </p>
             <Swiper
@@ -83,7 +83,10 @@ const Celebrate = () => {
                         slidesPerView: 3.1,
                     },
                     1200: {
-                        slidesPerView: 3.8
+                        slidesPerView: 3.1
+                    },
+                     1400: {
+                        slidesPerView: 3.5
                     }
                 }}
 
