@@ -40,7 +40,7 @@ const Gallery = () => {
             className="hidden md:flex flex-col gap-6 md:gap-8 relative px-4 sm:px-6">
             <img src={element} className='w-32 md:w-40 hidden md:flex absolute right-0 -top-20 md:-top-28' alt="" />
 
-            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">
+            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left font-semibold mb-0">
                 Create Memories, One Stay at a Time
             </p>
 
@@ -68,11 +68,11 @@ const Gallery = () => {
                 ))}
             </Masonry>
 
-            <div className="text-center">
+            {/* <div className="text-center">
                 <button className="bg-primary text-white px-6 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-full hover:bg-opacity-90 transition-all font-medium shadow-lg hover:shadow-primary/30">
                     Show More
                 </button>
-            </div>
+            </div> */}
         </motion.div>
     );
 };

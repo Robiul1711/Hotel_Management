@@ -28,7 +28,7 @@ const Stays = () => {
             <ScrollRestoration />
             <div className="flex flex-col gap-8">
                 <div className="flex justify-between">
-                    <p className="text-primary md:text-5xl">
+                    <p className="text-primary font-semibold mb-0 md:text-5xl">
                         Popular Hich Stays
                     </p>
                     <button className="md:hidden text-gray-400">see all</button>

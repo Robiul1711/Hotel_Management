@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DatePicker } from 'antd';
 import 'antd/dist/reset.css';
 import dayjs from 'dayjs';
@@ -23,6 +23,7 @@ const SearchBar = () => {
     const popupRef = useRef(null);
     const destinationRef = useRef(null);
     const guestsRef = useRef(null);
+    const navigate = useNavigate();
 
     // Close popup when clicking outside
     useEffect(() => {
@@ -57,14 +58,15 @@ const SearchBar = () => {
         };
         console.log(formattedData);
         // Handle search logic here
+        navigate('/stays');
     };
 
     return (
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full max-w-6xl px-4">
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full max-w-6xl px-4 ">
             <div className="flex">
                 <button
                     onClick={() => setActiveTab("stays")}
-                    className={`px-4 py-2 font-medium rounded-t-md text-sm sm:text-base ${activeTab === "stays" ? "bg-orange-500 text-white" : "text-gray-600 bg-white"}`}
+                    className={`px-4 py-2 font-semibold rounded-t-md text-sm sm:text-base ${activeTab === "stays" ? "bg-orange-500 text-white" : "text-gray-600 bg-white"}`}
                 >
                     Stays
                 </button>
@@ -77,9 +79,9 @@ const SearchBar = () => {
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="rounded-xl bg-white shadow-md p-4 md:p-6 lg:p-8">
+                <div className="rounded-tr-xl rounded-br-xl rounded-bl-xl bg-white shadow-md p-4 md:p-6 lg:p-8">
                     {activeTab === "stays" ? (
-                        <div className="flex flex-row items-center justify-between gap-3 sm:gap-4">
+                        <div className="flex flex-row items-center justify-between gap-3 sm:gap-4 font-semibold">
                             {/* Destination */}
                             <div className="hidden xmd:flex flex-col relative w-full sm:w-auto" ref={destinationRef}>
                                 <span className="text-sm md:text-lg text-black flex items-center">
@@ -87,7 +89,7 @@ const SearchBar = () => {
                                 </span>
                                 <button
                                     type="button"
-                                    className="text-primary text-sm md:text-2xl font-medium text-left"
+                                    className="text-primary text-sm md:text-2xl font-semibold text-left"
                                     // onClick={() => togglePopup('destination')} for popup
                                 >
                                     {watch('destination')}
@@ -96,11 +98,11 @@ const SearchBar = () => {
                                 {openPopup === 'destination' && (
                                     <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg z-10 p-4">
                                         <div className="space-y-2">
-                                            <h4 className="font-medium text-gray-700 mb-2">Popular destinations</h4>
+                                            <h4 className="font-semibold text-gray-700 mb-2">Popular destinations</h4>
                                             {popularDestinations.map(dest => (
                                                 <div
                                                     key={dest}
-                                                    className="p-2 hover:bg-gray-100 rounded cursor-pointer"
+                                                    className="p-2 hover:bg-gray-100 rounded cursor-pointer "
                                                     onClick={() => {
                                                         setValue('destination', dest);
                                                         setOpenPopup(null);
@@ -165,7 +167,7 @@ const SearchBar = () => {
                                 </span>
                                 <button
                                     type="button"
-                                    className="text-primary text-sm md:text-2xl font-medium text-left"
+                                    className="text-primary text-sm md:text-2xl font-semibold text-left"
                                     onClick={() => togglePopup('guests')}
                                 >
                                     {watch('adults')} Adults | {watch('rooms')} Room

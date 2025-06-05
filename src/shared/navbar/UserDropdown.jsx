@@ -86,7 +86,7 @@ const UserDropdown = () => {
             <a onClick={(e) => e.preventDefault()}>
                 <Space>
 
-                    <p className="bg-white border rounded-full shadow-lg w-12 h-12 flex items-center justify-center">{user?.name ? user?.name?.charAt(0) : 'A'}</p>
+                    <p className="bg-white border font-semibold rounded-full shadow-lg w-12 h-12 flex items-center justify-center">{user?.name ? user?.name?.charAt(0) : 'A'}</p>
                 </Space>
             </a>
         </Dropdown>

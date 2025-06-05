@@ -12,7 +12,7 @@ const Choose = () => {
             viewport={{ once: true, amount: 0.5 }}
             className='space-y-20 hidden md:block'>
             <div className='space-y-4 xlg:w-1/2'>
-                <p className="text-primary text-5xl">
+                <p className="text-primary text-5xl font-semibold mb-0">
                     Why Choose Us?
                 </p>
                 <p className="text-lg">
