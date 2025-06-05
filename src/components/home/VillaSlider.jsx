@@ -25,9 +25,9 @@ const VillaCard = ({ data }) => {
                     alt={data?.title || "Accommodation"}
                     loading="lazy" // Better performance
                 />
-                <div className="bg-white p-1 sm:p-2 absolute top-3 sm:top-5 rounded-full right-3 sm:right-10">
+                {/* <div className="bg-white p-1 sm:p-2 absolute top-3 sm:top-5 rounded-full right-3 sm:right-10">
                     <FaHeart className='text-xl sm:text-2xl md:text-3xl text-[#ff4c05]' />
-                </div>
+                </div> */}
             </div>
 
             {/* Content Section - Flexible height */}

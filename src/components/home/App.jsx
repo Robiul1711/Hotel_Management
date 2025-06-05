@@ -13,7 +13,7 @@ const App = () => {
                 <p className="text-primary md:text-5xl font-semibold mb-0">
                     HICH – The Unhotel Experience. Stay Different. Live More.
                 </p>
-                <div className="text-xl">
+                <div className=" text-sm lg:text-xl">
                     <p className="">
                         Hich isn’t just a place to stay—it’s a vibe, a community, a way of life. We’re redefining hospitality by bringing together hotels, villas, modern hostels, farm stays, glamping spots, and urban ashrams to create experiences that go beyond just a comfy bed and good WiFi.
                     </p>

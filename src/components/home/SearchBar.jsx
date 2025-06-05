@@ -161,7 +161,7 @@ const SearchBar = () => {
                             </div>
 
                             {/* Guests Dropdown */}
-                            <div className="flex flex-col relative w-full sm:w-auto" ref={guestsRef}>
+                            {/* <div className="flex flex-col relative w-full sm:w-auto" ref={guestsRef}>
                                 <span className="text-sm md:text-lg text-black flex items-center">
                                     Guests {openPopup === 'guests' ? <RiArrowDropUpLine className='text-xl md:text-2xl' /> : <RiArrowDropDownLine className='text-xl md:text-2xl' />}
                                 </span>
@@ -219,12 +219,12 @@ const SearchBar = () => {
                                         </div>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
 
                             {/* Search Button */}
                             <button
                                 type="submit"
-                                className="bg-primary text-white text-sm sm:text-base md:text-lg py-2 px-2 sm:px-6 sm:py-3 md:px-8 md:py-4 w-full sm:w-auto rounded-full hover:bg-orange-600 transition-all mt-2 sm:mt-0"
+                                className="bg-primary text-white text-sm sm:text-base md:text-lg py-2 px-2 sm:px-6 sm:py-3 md:px-8 md:py-4 w-fit sm:w-auto rounded-full hover:bg-orange-600 transition-all mt-2 sm:mt-0"
                             >
                                 Search
                             </button>
