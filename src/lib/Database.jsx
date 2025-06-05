@@ -304,15 +304,14 @@ export const HotelTabsSection = [
 ];
 
 export const VillaTabsSection = [
-    { name: 'Details', section: '#details' },
     { name: 'Description', section: '#description' },
     { name: 'Spaces', section: '#spaces' },
     { name: 'Amenities', section: '#hotel-aminities' },
     { name: 'Meals', section: '#hotel-meals' },
     { name: 'Experience', section: '#hotel-experiences' },
-    { name: 'Real Moments', section: '#real-moments' },
     { name: 'Nearby Hotels', section: '#nearby-hotels' },
-    { name: 'Location', section: '#hotel-location' },
+    { name: 'Location', section: '#location' },
+    
 
 ];
 

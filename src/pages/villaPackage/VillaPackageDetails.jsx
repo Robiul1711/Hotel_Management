@@ -45,7 +45,7 @@ const VillaPackageDetails = () => {
                 <div className="">
                     <div className="hidden md:block ">
 
-                        <div className="">
+                        <div className=" flex flex-col items-start">
                             <p className=" md:text-[32px] font-semibold text-primary">{villa?.villa_name}</p>
                             <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
 
