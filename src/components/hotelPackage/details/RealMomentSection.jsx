@@ -64,7 +64,7 @@ const CelebrateCard = ({ data }) => {
 const RealMomentSection = ({realMoment}) => {
     // console.log(realMoment)
     return (
-        <div className="w-full mx-auto py-10 bg-transparent" id='real-moments'>
+        <div className="w-full mx-auto lg:py-10 py-4 bg-transparent" id='real-moments'>
             <p className="text-[24px] font-bold">Real Moments</p>
             <p className="text-gray-400">Real People, Real Stories (just like you)</p>
             <Swiper

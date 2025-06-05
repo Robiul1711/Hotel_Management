@@ -128,7 +128,7 @@ const data = [
 const Card = ({ data }) => {
     // console.log(data)
     return (
-        <div className="   overflow-hidden duration-300 w-full flex flex-col h-[300px] xs:h-[340px] sm:h-[380px] md:h-[400px] lg:h-[480px]">
+        <div className="   overflow-hidden duration-300 - w-full flex flex-col h-[300px] xs:h-[340px] sm:h-[380px] md:h-[400px] lg:h-[480px]">
             {/* Image Section */}
             <div className="relative h-[60%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
                 <img
@@ -157,7 +157,7 @@ const Card = ({ data }) => {
 
 const SpaceSection = ({ villa }) => {
     return (
-        <div className="w-full mx-auto py-10 bg-transparent" id='spaces'>
+        <div className="w-full mx-auto lg:py-10 py-3 bg-transparent" id='spaces'>
             <p className="text-2xl font-bold  mb-5">Spaces</p>
             <Swiper
                 modules={[]}

@@ -14,7 +14,7 @@ const SectionBanner = () => {
             {/* Banner Image - Added min-h for mobile */}
             <img
                 src={banner}
-                className="w-full h-auto object-cover min-h-[300px] md:min-h-[400px] lg:min-h-[500px] px-2 xmd:px-0 rounded-3xl"
+                className="w-full h-auto object-cover min-h-[300px] -z-50 md:min-h-[400px] lg:min-h-[500px] px-2 xmd:px-0 rounded-3xl"
                 alt="Banner background"
             />
 
