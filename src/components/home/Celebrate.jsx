@@ -59,7 +59,7 @@ const CelebrateCard = ({ data }) => {
 const Celebrate = () => {
     return (
         <div className="w-full mx-auto  bg-transparent">
-            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left font-semibold mb-4">
+            <p className="text-primary  md:text-4xl lg:text-5xl lg:text-center md:text-left font-semibold mb-4">
                 Celebrate with Hich
             </p>
             <Swiper

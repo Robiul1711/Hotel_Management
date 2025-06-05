@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import img1 from '@/assets/images/card1.png';
+import img1 from '@/assets/images/card1.jpg';
 import img2 from '@/assets/images/card2.png';
 import img3 from '@/assets/images/card3.png';
 import img4 from '@/assets/images/card4.png';
@@ -22,35 +22,7 @@ const data = [
 
 const CardSwipe = () => {
     return (
-        <div className="relative">
-            {/* Add custom styles for navigation and pagination */}
-            <style jsx global>{`
-                .swiper-button-next,
-                .swiper-button-prev {
-                    color: white;
-                    width: 40px;
-                    height: 40px;
-                    background: rgba(0, 0, 0, 0.5);
-                    border-radius: 50%;
-                    padding: 10px;
-                }
-                .swiper-button-next:after,
-                .swiper-button-prev:after {
-                    font-size: 20px;
-                    font-weight: bold;
-                }
-                .swiper-pagination-bullet {
-                    background: white;
-                    opacity: 0.5;
-                    width: 10px;
-                    height: 10px;
-                }
-                .swiper-pagination-bullet-active {
-                    opacity: 1;
-                    background: white;
-                }
-            `}</style>
-            
+        <div className=" h-full">
             <Swiper
                 modules={[Navigation, Pagination]}
                 navigation={true} 
@@ -85,7 +57,7 @@ const CardSwipe = () => {
             >
                 {data.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <img src={item} className='w-full' alt="" />
+                        <img src={item} className='w-full h-[460px] object-cover rounded-3xl' alt="" />
                     </SwiperSlide>
                 ))}
             </Swiper>
