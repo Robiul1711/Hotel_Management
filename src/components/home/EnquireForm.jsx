@@ -65,7 +65,7 @@ const EnquireForm = () => {
     return (
         <>
 
-            <button onClick={showModal} className="xmd:bg-primary xmd:text-white text-primary border text-[10px] p-1 md:text-base border-primary  md:px-8  md:py-3 rounded-full hover:bg-orange-600 transition-all">
+            <button onClick={showModal} className="xmd:bg-primary xmd:text-white text-primary border text-[10px] p-1 md:text-base border-primary  md:px-8  md:py-3 rounded-full hover:bg-orange-600 transition-all px-3">
                 Enquire Now
             </button>
             <Modal

@@ -102,6 +102,17 @@ body {
   border-radius: 8px;
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+    color: white !important;
+}
+
+/* Optional: If you want to change the hover color */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #ffffff !important;
+}
+
 /* Hovered cell style */
 .custom-calendar-dropdown .ant-picker-cell-inner:hover {
   background-color: #e5e5e5;

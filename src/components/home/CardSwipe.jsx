@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import img1 from '@/assets/images/card1.png';
+import img1 from '@/assets/images/card1.jpg';
 import img2 from '@/assets/images/card2.png';
 import img3 from '@/assets/images/card3.png';
 import img4 from '@/assets/images/card4.png';
@@ -21,7 +21,7 @@ const data =[
 
 const CardSwipe = () => {
     return (
-        <div className="">
+        <div className=" h-full">
             <Swiper
                 modules={[Navigation]}
                 navigation={true} 
@@ -53,7 +53,7 @@ const CardSwipe = () => {
             >
                 {data.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <img src={item} className='w-full' alt="" />
+                        <img src={item} className='w-full h-[460px] object-cover' alt="" />
                     </SwiperSlide>
                 ))}
             </Swiper>

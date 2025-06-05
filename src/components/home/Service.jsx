@@ -48,7 +48,7 @@ const Service = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="md:py-12 bg-white">
             <div className=" ">
-                <h2 className="md:text-4xl font-bold text-secondary md:mb-8">
+                <h2 className="md:text-4xl font-bold text-primary md:mb-8">
                     Enjoy Exclusive services for free:
                 </h2>
 
@@ -57,11 +57,12 @@ const Service = () => {
                     <div className=" lg:w-[72%]">
                         <div className=" ">
                             {/* <CardGrid /> */}
+                            
                             <CardGrid2 />
                         </div>
 
                     </div>
-                    <div className="w-[80%] lg:w-[28%] border ">
+                    <div className="w-[80%] hidden lg:block lg:w-[28%]  ">
                         <CardSwipe />
                     </div>
                 </div>
