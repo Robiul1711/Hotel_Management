@@ -14,15 +14,32 @@ const Aminities = ({ amenityData, data }) => {
         <div>
             <p className="text-[24px] font-bold">Amenities</p>
 
-            <div id='hotel-aminities' className="grid grid-cols-4 gap-20">
+            <div id='hotel-aminities' className="sm:grid hidden xmd:grid-cols-4 grid-cols-3 gap-20">
                {
                 displayedAmenities?.length > 0 ? 
                 <>
                  {displayedAmenities?.map((item, index) => (
-                    <div key={index} className="flex flex-col items-center gap-5">
+                    <div key={index} className="flex  flex-col items-center gap-5 ">
                         <img src= {item?.amenitie?.media} alt="" className="" />
                        
                         <p className="text-gray-400">{item.amenitie?.name}</p>
+                    </div>
+                ))}
+                </>:
+                <p className="">No Amenities Found</p>
+               }
+            </div>
+            <div id='hotel-aminities' className=" sm:hidden grid grid-cols-1  gap-4">
+               {
+                displayedAmenities?.length > 0 ? 
+                <>
+                 {displayedAmenities?.map((item, index) => (
+                    <div key={index} className="flex items-center gap-6 ">
+                     <div className=' w-[40px]'>
+                     <img src= {item?.amenitie?.media} alt="" className="object-cover" />
+                     </div>
+                       
+                        <p className="text-gray-400 mt-4">{item.amenitie?.name}</p>
                     </div>
                 ))}
                 </>:
@@ -33,7 +50,7 @@ const Aminities = ({ amenityData, data }) => {
 
             <button
                 onClick={() => setShowAll(!showAll)}
-                className="bg-primary text-white md:px-16 py-1 px-2 md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10"
+                className="bg-primary text-white md:px-16  px-4 md:py-3 py-2 rounded-full hover:bg-orange-600 transition-all mt-10"
             >
                 {
                     showAll ? 'View Less Amenities' : 'View More Amenities'
@@ -54,7 +71,7 @@ const Aminities = ({ amenityData, data }) => {
                 <Link to={data?.menu ? data?.menu : '#'} target='_blank'>
                     <button
 
-                        className="bg-primary text-white md:px-16 py-1 px-2 md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10"
+                        className="bg-primary text-white md:px-16 py-2 px-4 md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10"
                     >
                         View Menu
                     </button>

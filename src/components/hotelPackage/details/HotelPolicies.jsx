@@ -64,12 +64,12 @@ const HotelPolicies = ({ villa }) => {
                 <p className="text-[24px]">Contact Hotel</p>
                 <div className="space-x-5">
                     <button
-                        className={` px-4 md:py-2 rounded-full text-lg  bg-secondary text-white `}
+                        className={` px-4 md:py-2 py-1 rounded-full text-lg  bg-secondary text-white `}
                     >
                         Whatsapp Us
                     </button>
                     <button
-                        className={` px-6 md:py-2 rounded-full text-lg  bg-secondary text-white `}
+                        className={` px-6 md:py-2 py-1 rounded-full text-lg  bg-secondary text-white `}
                     >
                         Call Us
                     </button>

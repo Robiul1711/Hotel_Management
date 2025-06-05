@@ -1,7 +1,7 @@
 import Footer from "@/shared/footer/Footer";
 import Navbar from "@/shared/navbar/Navbar";
 import MobileNavbar from "@/shared/navbar/MobileNavbar"; // import this
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import FloatingNav from "@/shared/navbar/FloatingNav";
 import MobileTopNav from "@/shared/navbar/MobileTopNav";
 import { useEffect } from "react";
@@ -28,6 +28,9 @@ const Layout = () => {
   //   }
   // }, [])
 
+  const {pathname} = useLocation();
+  const isVillaPackagePage = /^\/villa-package-details\/\d+$/.test(pathname);
+
 
   return (
     <>
@@ -44,6 +47,24 @@ const Layout = () => {
       </div>
 
       <FloatingNav />
+      {isVillaPackagePage && (
+        <div className="md:hidden fixed bottom-12 z-[9999] left-0 right-0 bg-white shadow-lg p-4">
+          <button 
+            onClick={() => {
+              const descSection = document.getElementById('description');
+              if (descSection) {
+                descSection.scrollIntoView({ behavior: 'smooth' });
+              } else {
+                const villaId = pathname.split('/').pop();
+                navigate(`/checkout/${villaId}`, { state: { from: 'villa' } });
+              }
+            }}
+            className="w-full py-3 rounded-full text-lg bg-primary text-white shadow-lg"
+          >
+            Reserve Now
+          </button>
+        </div>
+      )}
 
       {/* Mobile Nav (only visible on small screens) */}
       <div className="sm:hidden">

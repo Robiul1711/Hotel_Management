@@ -78,7 +78,7 @@ const ExperienceSection = ({ villaExperience }) => {
             <p className="text-[24px] font-bold">Experiences</p>
             <p className="text-gray-400">What all you can do and experience in this property</p>
 
-            <div className="w-full mx-auto py-10 bg-transparent">
+            <div className="w-full mx-auto lg:py-10 py-4 bg-transparent">
 
                 <Swiper
                     modules={[]}
