@@ -48,7 +48,7 @@ const Layout = () => {
 
       <FloatingNav />
       {isVillaPackagePage && (
-        <div className="md:hidden fixed bottom-12 z-[9999] left-0 right-0 bg-white shadow-lg p-4">
+        <div className="md:hidden fixed bottom-12 z-[9999] left-0 right-0 bg-white shadow-lg px-4 py-3">
           <button 
             onClick={() => {
               const descSection = document.getElementById('description');
@@ -59,7 +59,7 @@ const Layout = () => {
                 navigate(`/checkout/${villaId}`, { state: { from: 'villa' } });
               }
             }}
-            className="w-full py-3 rounded-full text-lg bg-primary text-white shadow-lg"
+            className="w-full py-2 rounded-full text-base bg-primary text-white shadow-lg"
           >
             Reserve Now
           </button>
