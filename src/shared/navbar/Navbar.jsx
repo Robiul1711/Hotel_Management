@@ -3,6 +3,9 @@ import logo from '@/assets/images/logo.png'
 import { Link, NavLink } from 'react-router-dom';
 import UserDropdown from './UserDropdown';
 import useAuth from '@/hooks/useAuth';
+import { BsTelephone } from 'react-icons/bs';
+import EnquireForm from '@/components/home/EnquireForm';
+import ListYourVilla from '@/components/home/ListYourVilla';
 
 const Navbar = () => {
   const { user } = useAuth();
@@ -18,7 +21,13 @@ const Navbar = () => {
       </div>
       <div className="flex gap-4 items-center">
         <ul className='text-black flex gap-5 lg:gap-12'>
-          <NavLink className={`${navLinkClass} hover:text-primary`} to={'/stays'}>Stays</NavLink>
+          <li>
+            <NavLink className={`${navLinkClass} hover:text-primary`} to={'/stays'}>Stays</NavLink>
+          </li>
+          <li className='flex items-center gap-2 font-bold'><BsTelephone className='font-bold' />+91 8424996432</li>
+          <li>
+            <ListYourVilla/>
+          </li>
           {/* <NavLink className={navLinkClass} to={'/'}>About Us</NavLink>
           <NavLink className={navLinkClass} to={'/'}>Our Packages</NavLink>
           <NavLink className={navLinkClass} to={'/'}>FAQ</NavLink>
@@ -37,7 +46,7 @@ const Navbar = () => {
           user && <UserDropdown />
         }
 
-      
+
 
       </div>
     </div>
