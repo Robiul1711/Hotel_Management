@@ -11,15 +11,16 @@ const VillaFacilities = () => {
             </h2>
 
 
-            <div className="flex flex-col gap-5 lg:flex-row items-center">
+            <div className="flex flex-col gap-3 xlg:gap-5 lg:flex-row items-stretch">
                 <div className=" lg:w-[72%]">
                     <div className=" ">
                         {/* <CardGrid /> */}
+
                         <CardGrid2 />
                     </div>
 
                 </div>
-                <div className="w-[80%] lg:w-[28%]">
+                <div className=" hidden md:block md:w-full lg:w-[28%]  ">
                     <CardSwipe />
                 </div>
             </div>

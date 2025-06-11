@@ -26,6 +26,7 @@ import StayHotelCard from '@/components/stays/StayHotelCard';
 import StayVillaCard from '@/components/stays/StayVillaCard';
 import useData from '@/hooks/useData';
 import StayMobileCardVilla from '@/components/stays/StayMobileCardVilla';
+import VillaForWeekdays from '@/components/stays/VillaForWeekdays';
 
 const data = [
     {
@@ -157,7 +158,8 @@ const StayPage = () => {
 
                     </div>
                 </div>
-                <Keypoints />
+                {/* <Keypoints /> */}
+                <VillaForWeekdays />
             </CommonPageWrapper>
             <SectionBanner />
         </>

@@ -19,9 +19,9 @@ const StayCard = ({ data }) => {
                 </div>
 
                 {/* Content Section */}
-                <div className=" bg-white w-[60%] flex  items-start">
+                <div className=" bg-white w-[50%] flex  items-start">
                     {/* content left side  */}
-                    <div className="  flex flex-col justify-between w-3/4">
+                    <div className="  flex flex-col justify-between w-[70%] ">
                         <div className="p-4">
                             <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl line-clamp-2">
                                 {data?.title}
@@ -41,10 +41,10 @@ const StayCard = ({ data }) => {
 
                             </p>
 
-                            <p className="flex items-center text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
+                            {/* <p className="flex items-center text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
                                 Great for : <TrackingIcons /> Trekking
 
-                            </p>
+                            </p> */}
                         </div>
                         <div className="flex border-t pt-4 justify-evenly items-center ">
                             <div className="border p-5 rounded-full">
@@ -67,9 +67,12 @@ const StayCard = ({ data }) => {
                     </div>
 
                     {/* content right side  */}
-                    <div className=" border-l flex flex-col justify-evenly p-2 w-1/4 h-full items-center ">
-                        <p className="flex items-center gap-2"><StarIcons />4/5</p>
-                        <div className=" flex flex-col gap-2 items-center">
+                    <div className=" border-l flex flex-col justify-between  p-2 w-[30%]  h-full  ">
+                        <div className='flex justify-end '>
+                        <p className="flex  gap-2"><StarIcons />4/5</p>
+                        </div>
+                            
+                        <div className=" flex flex-col justify-between items-end gap-2 ">
                             <p className="xlg:text-2xl">₹ 21,876</p>
                             <button className='border py-1 px-[2px] xlg:py-3 xlg:px-5 rounded-3xl text-secondary border-secondary flex items-center gap-3 text-xs'>
                                 For 1 Room
@@ -83,7 +86,7 @@ const StayCard = ({ data }) => {
                 </div>
             </div>
             <div className="">
-                <p className='text-center mt-4 text-xl'>
+                <p className='text-center mt-4 '>
                     Step into Sunshine & Soul, an exquisite villa in Lonavala where elegance meets comfort from the very first moment.
                 </p>
             </div>

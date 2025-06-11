@@ -12,10 +12,10 @@ const VillaTabSection = ({ villa }) => {
             <TabSection tabs={VillaTabsSection} />
             <div className="mt-10  " >
 
-                <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-4xl ">
+                <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-4xl mb-0">
                     {villa?.villa_name}
                 </p>
-                <p className="flex items-center text-sm sm:text-base md:text-2xl gap-1 sm:gap-2">
+                <p className="flex items-center text-sm sm:text-base md:text-2xl gap-1 sm:gap-2 mb-0">
                     <span className="">{villa?.location} </span>
                 </p>
 
@@ -51,7 +51,9 @@ const VillaTabSection = ({ villa }) => {
                     <div className="border p-2 md:p-5 rounded-full">
                         <CustomWarehouseIcon />
                     </div>
-                   
+                    <Link to={'#hotel-aminities'} className="text-xl text-gray-500 underline cursor-pointer">
+                        See All
+                    </Link>
 
                 </div>
                 {/* <div className="bg-[#fff8db] flex items-center justify-between p-3">
