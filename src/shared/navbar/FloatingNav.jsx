@@ -1,26 +1,31 @@
 // src/components/FloatingNav.jsx
-import { PhoneIcons, WhatsAppIcons } from "@/lib/CustomIcons";
-import { FaWhatsapp, FaPhone } from "react-icons/fa";
-import { BsWhatsapp } from "react-icons/bs";
-import { MdOutlinePhone } from "react-icons/md";
+import { CustomPhnone1Icon, CustomWhatsapp1Icon } from "@/lib/CustomIconPackage";
 
 const FloatingNav = () => {
     return (
-        <div className="fixed right-0 top-1/3 z-50 flex flex-col items-center gap-4">
+        <div className="fixed -right-2 top-3/4 z-50 flex flex-col items-center gap-4">
             <a
-                href="https://wa.me/your-number"
+                href="https://api.whatsapp.com/send?phone=918424996432&text=Hi%2C%20would%20like%20to%20know%20more%20about%20Hich"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-orange-500 text-white p-3 md:p-5 rounded-l-full shadow-lg hover:bg-orange-600 transition-all"
+                className="bg-orange-500 text-white p-2 sm:p-3 md:p-4 rounded-l-full shadow-lg hover:bg-orange-600 transition-all"
             >
-                <BsWhatsapp className="text-2xl md:text-4xl" />
+                <CustomWhatsapp1Icon 
+                    height="30" 
+                    width="30"
+                    className="sm:h-6 sm:w-6 md:h-8 md:w-8"
+                />
             </a>
-            <a
+            {/* <a
                 href="tel:+yourphonenumber"
-                className="bg-orange-500 text-white p-3 md:p-5 rounded-l-full shadow-lg hover:bg-orange-600 transition-all"
+                className="bg-orange-500 text-white p-2 sm:p-3 md:p-4 rounded-l-full shadow-lg hover:bg-orange-600 transition-all"
             >
-               <MdOutlinePhone className="text-2xl md:text-4xl" />
-            </a>
+                <CustomPhnone1Icon 
+                    height="20" 
+                    width="20"
+                    className="sm:h-6 sm:w-6 md:h-8 md:w-8"
+                />
+            </a> */}
         </div>
     );
 };

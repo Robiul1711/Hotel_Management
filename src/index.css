@@ -1,24 +1,24 @@
 /* google fonts */
-
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+/* google fonts */
 /* google fonts */
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-/* google fonts */
+
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-  @font-face {
-    font-family: "Neris";
-    src: url("./assets//fonts/neris/Neris-SemiBold.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
-  }
+@font-face {
+  font-family: "Neris";
+  src: url("./assets//fonts/neris/Neris-SemiBold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "Neris-light";
@@ -26,7 +26,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 
 @font-face {
   font-family: "Gilroy-Semibold";
@@ -38,14 +37,14 @@
 
 @font-face {
   font-family: "Gilroy-Regular";
-  src: url("./assets//fonts/gilroy-semibold/gilroy-semibold.ttf")
+  src: url("./assets//fonts/gilroy-semibold/gilroy-regular.ttf")
     format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: "Gilroy-Semibold", serif;
+  font-family: "Gilroy-Regular", serif;
   overflow-x: hidden;
 }
 
@@ -101,6 +100,17 @@ body {
   background-color: #22404b !important; /* your primary */
   color: white !important;
   border-radius: 8px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white !important;
+}
+
+/* Optional: If you want to change the hover color */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #ffffff !important;
 }
 
 /* Hovered cell style */

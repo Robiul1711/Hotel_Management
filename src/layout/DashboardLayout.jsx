@@ -3,14 +3,34 @@ import { Outlet } from 'react-router-dom';
 import { FaSearch, FaBell, FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
 import UserDashSidebar from '@/shared/sidebar/UserDashSidebar';
 import UserDashTopbar from '@/shared/topbar/UserDashTopbar';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
+import useAuth from '@/hooks/useAuth';
 
 const DashboardLayout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const axiosSecure = useAxiosSecure();
+    const { user, setUser } = useAuth();
+
+    const logout = async () => {
+        const toastId = toast.loading('Logging out...');
+        try {
+            const response = await axiosSecure.post('/logout');
+            if (response) {
+                // console.log(response);
+                setUser(null);
+                toast.success(response?.data?.message || 'Logout successful', { id: toastId });
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error?.response?.data?.message || 'Logout failed', { id: toastId });
+        }
+    }
 
     return (
         <div className="flex  h-screen overflow-hidden">
             {/* Sidebar */}
-            <UserDashSidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+            <UserDashSidebar logout={logout} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
             {/* Main Content */}
             <div className="flex-1 flex flex-col overflow-hidden  ">

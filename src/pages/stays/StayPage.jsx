@@ -12,7 +12,7 @@ import StayCard from '@/components/stays/StayCard';
 import StayMobileCard from '@/components/stays/StayMobileCard';
 import StaySearchBar from '@/components/stays/StaySearchBar';
 import CommonPageWrapper from '@/lib/CommonPageWrapper';
-import { StayData } from '@/lib/Database';
+import { StayData, StayHotelData, StayVillaData } from '@/lib/Database';
 import React, { useState } from 'react';
 
 import nearby from '@/assets/images/high.png'
@@ -20,6 +20,12 @@ import pune from '@/assets/images/pune.png'
 import mumbai from '@/assets/images/mumbai.png'
 import delhi from '@/assets/images/delhi.png'
 import goa from '@/assets/images/goa.png'
+import { Helmet } from 'react-helmet-async';
+import { ScrollRestoration } from 'react-router-dom';
+import StayHotelCard from '@/components/stays/StayHotelCard';
+import StayVillaCard from '@/components/stays/StayVillaCard';
+import useData from '@/hooks/useData';
+import StayMobileCardVilla from '@/components/stays/StayMobileCardVilla';
 import VillaForWeekdays from '@/components/stays/VillaForWeekdays';
 
 const data = [
@@ -51,8 +57,16 @@ const data = [
 ]
 
 const StayPage = () => {
+
+    const [active, setActive] = useState('villa');
+    const { hotelData, villaData } = useData();
+
     return (
         <>
+            <ScrollRestoration />
+            <Helmet>
+                <title>Stays</title>
+            </Helmet>
             <StayBanner />
             <CommonPageWrapper>
                 <div className="flex flex-col xmd:flex-row xmd:gap-14 mt-5 xmd:mt-20">
@@ -63,15 +77,18 @@ const StayPage = () => {
                         <MobileFilterBar />
                     </div>
                     <div className="xmd:w-[85%]">
-                        <HotelVilla />
-                        <div className="">
+                        <HotelVilla active={active} setActive={setActive} />
+                        <div className={`hotels ${active === 'hotels' ? '' : 'hidden'}`}>
                             <div className="hidden lg:block space-y-12">
                                 {
-                                    StayData?.slice(0, 2)?.map(item => <StayCard key={item.id} data={item} />)
+                                    hotelData?.map(item => <StayHotelCard key={item.id} data={item} />)
                                 }
                             </div>
 
-                            <div className="hidden xmd:flex flex-wrap gap-10  my-5">
+
+
+                            {/* Reels section  */}
+                            <div className="hidden flex-wrap gap-10  my-5">
                                 {
                                     data?.map((item) =>
                                         <div key={item?.id} className="flex justify-center items-center flex-col gap-2">
@@ -81,21 +98,62 @@ const StayPage = () => {
                                 }
                             </div>
 
+
+
+                            {
+                                hotelData ?
+                                    <>
+                                        <div className="lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
+                                            {
+                                                hotelData?.map(item => <StayMobileCard key={item.id} data={item} />)
+                                            }
+                                        </div>
+
+                                        <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary hover:bg-orange-400 flex items-center gap-3'>
+                                            View All
+                                        </button>
+                                    </> :
+                                    <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Hotel Data Found</p>
+                            }
+                        </div>
+
+                        <div className={`hotels ${active === 'villa' ? '' : 'hidden'}`}>
                             <div className="hidden lg:block space-y-12">
                                 {
-                                    StayData?.slice(2, 4)?.map(item => <StayCard key={item.id} data={item} />)
+                                    villaData?.map(item => <StayVillaCard key={item.id} data={item} />)
                                 }
                             </div>
 
-                            <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
+                            {/* reels section  */}
+                            <div className="hidden  flex-wrap gap-10  my-5">
                                 {
-                                    StayData?.map(item => <StayMobileCard key={item.id} data={item} />)
+                                    data?.map((item) =>
+                                        <div key={item?.id} className="flex justify-center items-center flex-col gap-2">
+                                            <img src={item?.image} alt="" className='w-[70px]' />
+                                            <p className="font-extralight text-gray-400 text-sm">{item?.name}</p>
+                                        </div>)
                                 }
                             </div>
 
-                            <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary flex items-center gap-3'>
-                                View All
-                            </button>
+
+                            {
+                                villaData ?
+                                    <>
+                                        <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
+                                            {
+                                                villaData?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
+                                            }
+                                        </div>
+
+                                        <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary flex items-center gap-3'>
+                                            View All
+                                        </button>
+                                    </>
+                                    :
+                                    <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Villa Data Found</p>
+                            }
+
+
                         </div>
 
                     </div>

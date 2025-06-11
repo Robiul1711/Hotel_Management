@@ -7,23 +7,27 @@ import SectionBanner from '../home/SectionBanner';
 import BookingSummary from './BookingSummary';
 import Aminities from './details/Aminities';
 import ExperienceSection from './details/ExperienceSection';
+import { AmanityData } from '@/lib/Database';
+import HotelOverview from './HotelOverview';
+import HotelBookingSummary from './HotelBookingSummary';
 
 
-const Details = () => {
+const Details = ({hotel}) => {
+
+    console.log(hotel?.amenities)
     return (
         <div className='flex flex-col lg:flex-row gap-5'>
             <div className="w-full lg:w-[70%] space-y-8">
-                <Overview />
-                <RoomOptions />
+                <HotelOverview hotel={hotel} />
+                <RoomOptions roomTypes={hotel?.room_types}  />
                 <ExclusiveFacilitiesFAQ />
-                <Aminities />
-                <ExperienceSection />
-                <CheckInOutPolicy />
+                <Aminities amenityData={hotel?.amenities} data={hotel} />
+                
             </div>
 
             <div className="w-full lg:w-[30%]">
                 <div className="sticky top-24"> {/* Use a bit of spacing from top */}
-                    <BookingSummary />
+                  <HotelBookingSummary hotel={hotel}/>
                 </div>
             </div>
         </div>

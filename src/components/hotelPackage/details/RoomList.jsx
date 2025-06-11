@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { RightOutlined } from '@ant-design/icons';
 import room1 from '@/assets/images/stay2.png'; // default fallback image
+import useData from '@/hooks/useData';
 
 const mockRoomData = [
     {
@@ -33,42 +34,45 @@ const mockRoomData = [
 ];
 
 const RoomCard = ({ room }) => {
+    const {setHotelRoom} = useData();
     return (
-        <div className="flex flex-col md:flex-row mb-6">
-            <div className="hidden md:block md:w-1/3 border rounded-lg p-4">
-                <img src={room.image} alt={room.name} className="rounded-lg object-cover h-full mx-auto md:w-full" />
+        <div className="flex flex-col md:flex-row mb-6 border md:border-none rounded-lg">
+            <div className="hidden md:block md:w-1/3 md:border rounded-lg p-4">
+                <img src={room?.media[0]?.media_name} alt={room.type_name} className="rounded-lg object-cover h-full mx-auto md:w-full" />
             </div>
 
-            <div className="md:hidden md:w-1/3 border rounded-lg p-4 flex gap-10">
+
+            {/* mobile view */}
+            <div className="md:hidden md:w-1/3 md:border rounded-lg p-4 flex gap-10">
                 <div className="w-1/4">
-                    <img src={room.image} alt={room.name} className="rounded-lg object-cover h-full mx-auto md:w-full" />
+                    <img src={room?.media[0]?.media_name} alt={room.name} className="rounded-lg object-cover h-full mx-auto md:w-full" />
                 </div>
                 <div className="">
-                    <h2 className="text-lg font-semibold">{room.name}</h2>
+                    <h2 className="text-lg font-semibold">{room?.type_name}</h2>
                     <div className="">
-                        <p className="text-xl font-bold">₹ {room.price.toLocaleString()}</p>
+                        <p className="text-xl font-bold">₹ {room?.room_price?.toLocaleString()}</p>
                         <p className="text-xs text-gray-500">Incl. Taxes Per Night</p>
                     </div>
                 </div>
             </div>
 
-            <div className="md:w-2/3 flex flex-col justify-between border rounded-lg p-4">
+            <div className="md:w-2/3 flex flex-col justify-between md:border rounded-lg p-4">
                 <div>
                     <div className="hidden md:flex justify-between items-start">
-                        <h2 className="text-lg font-semibold">{room.name}</h2>
+                        <h2 className="text-lg font-semibold">{room?.type_name}</h2>
                         <div className="text-center">
-                            <p className="text-xl font-bold">₹ {room.price.toLocaleString()}</p>
+                            <p className="text-xl font-bold">₹ {room.room_price.toLocaleString()}</p>
                             <p className="text-xs text-gray-500">Incl. Taxes Per Night</p>
                         </div>
                     </div>
 
-                    <p className="mt-2 text-sm ">{room.description}</p>
+                    <p className="mt-2 text-sm "></p>
 
                     <div className="mt-3">
                         <p className="font-medium text-sm">Hich Exclusives:</p>
                         <ul className="list-disc list-inside text-sm  mt-1 space-y-1">
-                            <li>Stay Services: {room.stayServices}</li>
-                            <li>Experiences: {room.experiences}</li>
+                            <li>Stay Services: {room.description}</li>
+                          
                         </ul>
                     </div>
                 </div>
@@ -78,8 +82,8 @@ const RoomCard = ({ room }) => {
                         View Facilities <RightOutlined />
                     </button>
                     <div className="flex flex-col gap-2">
-                        <button className="bg-primary text-white px-6 py-2 rounded-full shadow-md">Book</button>
-                        <p className="text-xs ">Only {room.availability} Room Left!</p>
+                        <button onClick={() => { setHotelRoom(room) }} className="bg-primary text-white px-6 py-2 rounded-full shadow-md">Book</button>
+                        {/* <p className="text-xs ">Only {room.availability} Room Left!</p> */}
                     </div>
                 </div>
 
@@ -89,9 +93,9 @@ const RoomCard = ({ room }) => {
     );
 };
 
-const RoomList = () => {
+const RoomList = ({ roomTypes }) => {
     const [rooms, setRooms] = useState([]);
-
+    // console.log(roomTypes)
     useEffect(() => {
         // Replace this with real API call when backend is ready
         setRooms(mockRoomData);
@@ -99,7 +103,7 @@ const RoomList = () => {
 
     return (
         <div className=" mx-auto my-4">
-            {rooms.map((room) => (
+            {roomTypes?.map((room) => (
                 <RoomCard key={room.id} room={room} />
             ))}
         </div>

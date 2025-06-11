@@ -7,9 +7,10 @@ import CardSwipe from "../home/CardSwipe";
 import CardGrid2 from "../common/CardGrid2";
 import { StarIcons, Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons } from "@/lib/CustomIcons";
 import { CustomBridgeIcon, CustomPhoneIcon, CustomWarehouseIcon } from "@/lib/CustomIconPackage";
+import { HotelTabsSection } from "@/lib/Database";
 
 
-export default function HichFacilities() {
+export default function HichFacilities({hotel}) {
   const facilities = [
     {
       title: "One– Click Room Service & Housekeeping",
@@ -51,45 +52,47 @@ export default function HichFacilities() {
 
   return (
     <div className=" md:py-10 ">
-      <TabSection />
+      <TabSection tabs={HotelTabsSection} />
 
       <div className="mt-10  xlg:w-1/2" >
 
         <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-4xl ">
-          Sunshine & Soul
+          {hotel?.hotel_name}
         </p>
         <p className="flex items-center text-sm sm:text-base md:text-2xl gap-1 sm:gap-2">
-          <span className="">Lonavala, Maharashtra </span>
+          <span className="">{hotel?.location}</span>
         </p>
 
         <p className="text-sm sm:text-base md:text-lg flex items-center gap-3">Guest Favourite  <StarIcons /> 5/5  <span className="border-l px-4 text-blue-500 underline">15 reviews</span></p>
 
-        <div className="flex flex-wrap gap-4 xlg:gap-20">
-          <button className="bg-[#fdd13c] rounded-full py-4 px-8 min-w-48">Up to 13 Guests</button>
-          <button className="bg-[#fdd13c] rounded-full py-4 px-8 min-w-48">1 - 4 Rooms</button>
-          <button className="bg-[#fdd13c] rounded-full py-4 px-8 min-w-48">4 Baths</button>
+
+        <div className="flex flex-wrap gap-4 xlg:gap-12">
+          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">{hotel?.additional_info_block1}</button>
+          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">{hotel?.additional_info_block2}</button>
+          <button className="bg-[#fdd13c] rounded-full py-4 px-5 md:px-8 text-[14px] md:text-base">{hotel?.additional_info_block3}</button>
         </div>
 
-        <div className="flex flex-wrap  py-5 gap-10 items-center ">
-          <div className="border p-5 rounded-full">
+        {/* icons section  */}
+        <div className="flex flex-wrap  py-5 gap-2 md:gap-10 items-center ">
+          <div className="border p-2 md:p-5 rounded-full">
             <Stay1Icons />
           </div>
 
-          <div className="border p-5 rounded-full">
+          <div className="border p-2 md:p-5 rounded-full">
             <Stay2Icons />
           </div>
 
-          <div className="border p-5 rounded-full">
+          <div className="border p-2 md:p-5 rounded-full">
             <Stay3Icons />
           </div>
 
-          <div className="border p-5 rounded-full">
+          <div className="border p-2 md:p-5 rounded-full">
             <Stay4Icons />
           </div>
-          <div className="border p-5 rounded-full">
+          <div className="border p-2 md:p-5 rounded-full">
             <CustomBridgeIcon />
           </div>
-          <div className="border p-5 rounded-full">
+          <div className="border p-2 md:p-5 rounded-full">
             <CustomWarehouseIcon />
           </div>
           <div className="text-gray-400 p-5 rounded-full">
@@ -101,9 +104,9 @@ export default function HichFacilities() {
 
           <div className="flex items-center ">
             <CustomPhoneIcon />
-            <span className="">Connect with Host</span>
+            <span className="text-[12px] md:text-base">Connect with Host</span>
           </div>
-          <button className="border-primary border rounded-full py-3 px-8">Request Callback</button>
+          <button className="border-primary border rounded-full text-[12px] md:text-base py-3 px-8">Request Callback</button>
         </div>
       </div>
 

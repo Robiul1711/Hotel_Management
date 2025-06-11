@@ -58,15 +58,38 @@ const CelebrateCard = ({ data }) => {
 
 const Celebrate = () => {
     return (
-        <div className="w-full mx-auto py-10 bg-transparent">
-            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">
+        <div className="w-full mx-auto  bg-transparent">
+            <p className="text-primary  md:text-4xl lg:text-5xl lg:text-center md:text-left font-semibold mb-4">
                 Celebrate with Hich
             </p>
             <Swiper
                 modules={[]}
                 spaceBetween={20}
                 loop={true}
-                slidesPerView={3.1}
+                breakpoints={{
+                    0: {
+                        slidesPerView: 3.1,
+                    },
+                    480: {
+                        slidesPerView: 3.1,
+                    },
+                    640: {
+                        slidesPerView: 3.1,
+                    },
+                    768: {
+                        slidesPerView: 3.1,
+                    },
+                    1024: {
+                        slidesPerView: 3.1,
+                    },
+                    1200: {
+                        slidesPerView: 3.1
+                    },
+                     1400: {
+                        slidesPerView: 3.5
+                    }
+                }}
+
                 grabCursor={true}
                 speed={3000}
                 autoplay={{

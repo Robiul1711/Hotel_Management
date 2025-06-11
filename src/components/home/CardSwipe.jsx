@@ -1,16 +1,17 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import img1 from '@/assets/images/card1.png';
+import img1 from '@/assets/images/card1.jpg';
 import img2 from '@/assets/images/card2.png';
 import img3 from '@/assets/images/card3.png';
 import img4 from '@/assets/images/card4.png';
 import img5 from '@/assets/images/card5.png';
 import img6 from '@/assets/images/card6.png';
 
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-const data =[
+const data = [
     img1,
     img2,
     img3,
@@ -21,10 +22,13 @@ const data =[
 
 const CardSwipe = () => {
     return (
-        <div className="">
+        <div className=" h-full">
             <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 navigation={true} 
+                pagination={{
+                    clickable: true,
+                }}
                 spaceBetween={20}
                 loop={true}
                 grabCursor={false}
@@ -53,7 +57,7 @@ const CardSwipe = () => {
             >
                 {data.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <img src={item} className='w-full' alt="" />
+                        <img src={item} className='w-full h-[460px] object-cover rounded-3xl' alt="" />
                     </SwiperSlide>
                 ))}
             </Swiper>

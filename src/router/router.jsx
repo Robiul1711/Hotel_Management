@@ -3,6 +3,9 @@ import DashboardLayout from "@/layout/DashboardLayout";
 import Layout from "@/layout/Layout";
 import AuthForm from "@/pages/auth/AuthForm";
 import AuthLayout from "@/pages/auth/AuthLayout";
+import ForgetPassword from "@/pages/auth/ForgetPassword";
+import NewPassword from "@/pages/auth/NewPassword";
+import VerifyOTP from "@/pages/auth/VerifyOTP";
 import Checkout from "@/pages/checkout/Checkout";
 import Booking from "@/pages/dashboard/booking/Booking";
 import ViewDetails from "@/pages/dashboard/booking/ViewDetails";
@@ -20,7 +23,11 @@ import HotelPackage from "@/pages/hotelPackage/HotelPackage";
 import MyBooking from "@/pages/mybooking/MyBooking";
 import SearchPage from "@/pages/searchPage/SearchPage";
 import StayPage from "@/pages/stays/StayPage";
+import VillaPackageDetails from "@/pages/villaPackage/VillaPackageDetails";
 import { createBrowserRouter } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+import HotelCheckout from "@/pages/hotelCheckout/HotelCheckout";
+import PaymentSuccess from "@/pages/PaymentSuccess";
 
 const router = createBrowserRouter([
   {
@@ -31,90 +38,115 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-   
+
 
       {
         path: "/stays",
-        element: <StayPage/>
+        element: <StayPage />
+      },
+      // {
+      //   path: "/experience",
+      //   element: <ExperiencePage />
+      // },
+      {
+        path: "/hotel-package-details/:id",
+        element: <HotelPackage />
       },
       {
-        path: "/experience",
-        element: <ExperiencePage/>
+        path: "/villa-package-details/:id",
+        element: <VillaPackageDetails />
       },
-      {
-        path: "/hotel-package-details",
-        element:<HotelPackage/>
-      },
-      {
-        path: "/my-booking",
-        element: <MyBooking/>
-      },
+      // {
+      //   path: "/my-booking",
+      //   element: <MyBooking />
+      // },
       {
         path: "/search-result",
-        element: <SearchPage/>
+        element: <SearchPage />
       },
       {
-        path: "/checkout",
-        element: <Checkout/>
-      }
+        path: "/checkout/:id",
+        element: <PrivateRoute>
+          <Checkout />
+        </PrivateRoute>
+      },
+      {
+        path: "/hotel-checkout/:id",
+        element: <PrivateRoute>
+          <HotelCheckout />
+        </PrivateRoute>
+      },
+      
     ],
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout/>,
+    element: <DashboardLayout />,
     children: [
       {
         path: '/dashboard',
-        element: <Dashboard/>
+        element: <Dashboard />
       },
       {
         path: 'booking',
-        element: <Booking/>
+        element: <Booking />
       },
       {
         path: 'view-detais',
-        element: <ViewDetails/>
+        element: <ViewDetails />
       },
       {
         path: 'booking-history',
-        element: <BookingHistory/>
+        element: <BookingHistory />
       },
       {
         path: 'check-in',
-        element: <CheckIn/>
+        element: <CheckIn />
       },
       {
         path: 'web-check-form',
-        element: <WebCheckForm/>
+        element: <WebCheckForm />
       },
       {
         path: 'submit-form',
-        element: <SubmitForm/>
+        element: <SubmitForm />
       },
 
       {
         path: 'support',
-        element: <Support/>
+        element: <Support />
       },
-      
+
       {
         path: 'open-support-ticket',
-        element: <OpenSupportTicket/>
+        element: <OpenSupportTicket />
       },
 
       {
         path: 'settings',
-        element:<Settings/>
+        element: <Settings />
       }
     ]
   },
   {
     path: '/auth',
-    element: <AuthLayout/>,
-    children:[
+    element: <AuthLayout />,
+    children: [
       {
         path: 'registration',
-        element: <AuthForm/>
+        element: <AuthForm />
+      },
+      {
+        path: 'forget-password',
+        element: <ForgetPassword />
+      },
+      {
+        path: 'verify-otp',
+        element: <VerifyOTP />
+      },
+      {
+        path: 'new-password',
+        element: <NewPassword />
       }
     ]
   }

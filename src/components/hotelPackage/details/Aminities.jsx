@@ -1,56 +1,127 @@
-import { CustomACIcon, CustomBathIcon, CustomChildIcon, CustomElderIcon, CustomPoolIcon, CustomWifiIcon } from '@/lib/CustomIconPackage';
-import React from 'react';
+import MenuModal from "@/components/common/MenuModal";
+import PriceModal from "@/components/common/PriceModal";
+import { mealPlans } from "@/lib/Database";
+import { Modal } from "antd";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Aminities = () => {
-    return (
-        <div>
-            <p className="text-[24px] font-bold">Amenities</p>
-            <div className="grid grid-cols-2 gap-20">
-                <div className="flex items-center gap-5">
-                    <CustomACIcon />
-                    <p className="text-gray-400">Ac</p>
+const Aminities = ({ amenityData, data }) => {
+  const [showAll, setShowAll] = useState(false);
+  console.log("amenityData", amenityData);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const displayedAmenities = showAll ? amenityData : amenityData?.slice(0, 3);
+
+  return (
+    <div>
+      <p className="text-[24px] font-bold">Amenities</p>
+
+      <div
+        id="hotel-aminities"
+        className="sm:grid hidden xmd:grid-cols-4 grid-cols-3 gap-20"
+      >
+        {displayedAmenities?.length > 0 ? (
+          <>
+            {displayedAmenities?.map((item, index) => (
+              <div key={index} className="flex  flex-col items-center gap-5 ">
+                <img src={item?.amenitie?.media} alt="" className="" />
+
+                <p className="text-gray-400">{item.amenitie?.name}</p>
+              </div>
+            ))}
+          </>
+        ) : (
+          <p className="">No Amenities Found</p>
+        )}
+      </div>
+      <div id="hotel-aminities" className=" sm:hidden grid grid-cols-1  gap-4">
+        {displayedAmenities?.length > 0 ? (
+          <>
+            {amenityData?.slice(0, 3)?.map((item, index) => (
+              <div key={index} className="flex items-center gap-6 ">
+                <div className=" w-[40px]">
+                  <img
+                    src={item?.amenitie?.media}
+                    alt=""
+                    className="object-cover"
+                  />
                 </div>
 
-                <div className="flex items-center gap-5">
-                    <CustomWifiIcon />
-                    <p className="text-gray-400">WiFi</p>
-                </div>
-                <div className="flex items-center gap-5">
-                    <CustomChildIcon />
-                    <p className="text-gray-400">Child Friendly</p>
-                </div>
-                <div className="flex items-center gap-5">
-                    <CustomBathIcon />
-                    <p className="text-gray-400">Ensuite Bathroom</p>
+                <p className="text-gray-400 mt-4">{item.amenitie?.name}</p>
+              </div>
+            ))}
+          </>
+        ) : (
+          <p className="">No Amenities Found</p>
+        )}
+      </div>
+
+      <>
+        {
+          amenityData?.length > 3  &&(
+            <button
+          onClick={showModal}
+          className="bg-transparent text-[#FF4800] md:px-16 px-4 md:py-3 py-2 rounded-full  border-[1px] border-orange-600 transition-all mt-10"
+        >
+          View More Amenities
+        </button>
+          )
+        }
+
+        <Modal
+          title="Amenities"
+          closable={{ "aria-label": "Custom Close Button" }}
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+        >
+             {amenityData?.map((item, index) => (
+              <div key={index} className="flex items-center gap-6 ">
+                <div className=" w-[40px]">
+                  <img
+                    src={item?.amenitie?.media}
+                    alt=""
+                    className="object-cover"
+                  />
                 </div>
 
-                <div className="flex items-center gap-5">
-                    <CustomElderIcon />
-                    <p className="text-gray-400">Elderly Friendly</p>
-                </div>
+                <p className="text-gray-400 mt-4">{item.amenitie?.name}</p>
+              </div>
+            ))}
+        </Modal>
+      </>
 
-                <div className="flex items-center gap-5">
-                    <CustomPoolIcon />
-                    <p className="text-gray-400">Pool</p>
-                </div>
-            </div>
+      <div className="" id="hotel-meals">
+        <p className="text-[24px] font-bold mt-10">Meals</p>
+        <p className="text-gray-400">
+          Holiday without good Food? No Ways ;) You can book your meals in
+          advance! (And don’t worry—you can change your preferences up to 24
+          hours before check-in. We get it, moods change! 🙂
+        </p>
+      </div>
 
-            <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">View All Amenities</button>
-
-            <div className="">
-                <p className="text-[24px] font-bold mt-10">Meals</p>
-                <p className="text-gray-400">
-                    Holiday without good Food? No Ways ;)
-                    You can book your meals in advance! (And don’t worry—you can change your preferences up to 24 hours before check-in. We get it, moods change! 🙂
-                </p>
-            </div>
-
-            <div className="space-x-4">
-                <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">View Menu</button>
-                <button className="bg-primary text-white md:px-16  md:py-3 rounded-full hover:bg-orange-600 transition-all mt-10">Meal Pricing</button>
-            </div>
-        </div>
-    );
+      <div className="flex gap-4">
+        {/* <MenuModal pdfUrl={data?.menu} /> */}
+        <Link to={data?.menu ? data?.menu : "#"} target="_blank">
+          <button className="bg-transparent border-[1px] border-primary  text-primary md:px-16 py-2 px-4 md:py-3 rounded-full  transition-all mt-10">
+            View Menu
+          </button>
+        </Link>
+        <PriceModal mealPlans={data?.meal_pricing} />
+      </div>
+    </div>
+  );
 };
 
 export default Aminities;

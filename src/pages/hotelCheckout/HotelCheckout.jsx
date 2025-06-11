@@ -1,0 +1,70 @@
+import SectionBanner from "@/components/home/SectionBanner";
+import checkoutBanner from "@/assets/images/checkoutBanner.png";
+import AnySpecialRequests from "@/components/checkoutComponents/AnySpecialRequests";
+import SunshineAndSoul from "@/components/checkoutComponents/SunshineAndSoul";
+import BookingCancellationPolicy from "@/components/checkoutComponents/BookingCancellationPolicy";
+import PriceDetails from "@/components/checkoutComponents/PriceDetails";
+import { ScrollRestoration, useLocation, useParams } from "react-router-dom";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import HotelSummarySection from "./HotelSummarySection";
+import HotelPriceDetails from "./HotelPriceDetails";
+const HotelCheckout = () => {
+
+  const { id } = useParams();
+  // console.log('Hotel checkout',id);
+  const axiosPublic = useAxiosPublic();
+
+
+  const { data: hotel } = useQuery({
+    queryKey: ['hotel', id],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/single/hotel/${id}`);
+      return res?.data?.singleHotel;
+    }
+  })
+
+  // console.log(hotel)
+
+  return (
+    <div>
+      <ScrollRestoration />
+      <div
+        className="bg-no-repeat bg-cover bg-center pt-10"
+        style={{ backgroundImage: `url(${checkoutBanner})` }}
+      >
+        {/* <img src={checkoutBanner} alt="" className="w-full h-full" /> */}
+        <div className=" w-full section-padding-x flex flex-col xlg:flex-row  justify-between gap-6">
+          <div className="space-y-7  xlg:w-[70%]">
+            <div className="flex flex-col xlg:flex-col gap-4">
+              <HotelSummarySection hotel={hotel} />
+              <div className="xlg:hidden">
+                <HotelPriceDetails hotel={hotel} />
+              </div>
+              <BookingCancellationPolicy />
+            </div>
+            <div className="flex flex-col xmd:flex-row w-full xlg:flex-col items-start gap-4">
+              <div className="flex items-start sm:items-center justify-between w-full bg-[#FEF7DA] p-4 rounded-xl ">
+                <h1 className="text-xs xxs:text-sm sm:text-base">
+                  Any issue to complete your booking?
+                </h1>
+                <button className="border border-primary px-4 py-2 text-xs xxs:text-sm sm:text-base rounded-md">
+                  Click here
+                </button>
+              </div>
+              <AnySpecialRequests />
+            </div>
+          </div>
+          <div className="xlg:w-[30%] hidden xlg:block">
+            {/* <PriceDetails villa={hotel} /> */}
+            <HotelPriceDetails hotel={hotel} />
+          </div>
+        </div>
+      </div>
+
+      <SectionBanner />
+    </div>
+  );
+};
+
+export default HotelCheckout;

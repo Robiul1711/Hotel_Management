@@ -2,14 +2,14 @@ import React from "react";
 import sunshine from "../../assets/images/sunshine.png";
 import { RattingIcons } from "@/lib/CustomIcons";
 import { CheckInIcon, GuestIcon, RoomIcon, ShareIcon } from "@/lib/CheckOutIconAll";
-const SunshineAndSoul = () => {
+const SunshineAndSoul = ({villa}) => {
   return (
     <div className="md:p-8 p-4 rounded-[12px] bg-white shadow-xl w-full flex flex-col sm:flex-row justify-between gap-8">
       <div className="md:w-[70%] order-2 sm:order-1 flex flex-col ">
         <div className="flex items-start justify-between pb-3 sm:pb-6 border-b">
           <div>
-            <h1 className="font-semibold text-xl md:text-[36px] mb-0">Sunshine And Soul</h1>
-            <p className="text-[#999999] text-base md:text-xl mb-0">Lonavala, Maharashtra</p>
+            <h1 className="font-semibold text-xl md:text-[36px] mb-0">{villa?.villa_name}</h1>
+            <p className="text-[#999999] text-base md:text-xl mb-0">{villa?.location}</p>
           </div>
           <button className="border px-4 py-2.5 flex items-center gap-2  rounded-[8px]"><ShareIcon /> Share</button>
         </div>
@@ -20,7 +20,7 @@ const SunshineAndSoul = () => {
             <div className="flex items-start  gap-2">
               <CheckInIcon />
               <div className="flex flex-col">
-                <div className="font-semibold text-sm  md:text-lg">Sat 17 May 2025</div>
+                <div className="font-semibold text-sm  md:text-lg">{villa?.check_in}</div>
                 <div className="text-[#999999] text-sm">(From 02:00 PM)</div>
               </div>{" "}
             </div>
@@ -31,7 +31,7 @@ const SunshineAndSoul = () => {
             <div className="flex items-start  gap-2">
               <CheckInIcon />
               <div className="flex flex-col">
-                <div className="font-semibold text-sm  md:text-lg">Sat 17 May 2025</div>
+                <div className="font-semibold text-sm  md:text-lg">{villa?.check_out}</div>
                 <div className="text-[#999999] text-sm">(From 02:00 PM)</div>
               </div>{" "}
             </div>
@@ -43,9 +43,9 @@ const SunshineAndSoul = () => {
             <div className="flex items-start  gap-2">
               <RoomIcon />
               <div className="flex items-center  gap-3">
-                <div className="font-semibold text-sm  md:text-lg">4 Rooms</div>
+                <div className="font-semibold text-sm  md:text-lg">{villa?.total_room} Rooms</div>
                 <div className="w-px h-6 bg-[#999999]"></div>
-                <div className="font-semibold text-sm  md:text-lg">4 Baths</div>
+                <div className="font-semibold text-sm  md:text-lg">{villa?.total_bath} Baths</div>
              
               </div>{" "}
             </div>
@@ -55,9 +55,9 @@ const SunshineAndSoul = () => {
             <div className="flex items-start  gap-2">
               <GuestIcon />
               <div className="flex items-center  gap-3">
-                <div className="font-semibold text-sm sm:text-base md:text-lg">4 Rooms</div>
+                <div className="font-semibold text-sm sm:text-base md:text-lg">{villa?.total_room} Rooms</div>
                 <div className="w-px h-6 bg-[#999999]"></div>
-                <div className="font-semibold text-sm  md:text-lg">4 Baths</div>
+                <div className="font-semibold text-sm  md:text-lg">{villa?.total_bath} Baths</div>
              
               </div>{" "}
             </div>
@@ -70,7 +70,7 @@ const SunshineAndSoul = () => {
         <div className="flex items-center gap-2 pb-2 text-[#999999]">
           <RattingIcons />5 Guest Favourite
         </div>
-        <img src={sunshine} alt="" className="w-full"/>
+        <img src={villa?.thumbnail} alt="" className="w-full rounded-lg"/>
       </div>
     </div>
   );

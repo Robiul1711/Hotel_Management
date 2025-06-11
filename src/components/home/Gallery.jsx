@@ -40,7 +40,7 @@ const Gallery = () => {
             className="hidden md:flex flex-col gap-6 md:gap-8 relative px-4 sm:px-6">
             <img src={element} className='w-32 md:w-40 hidden md:flex absolute right-0 -top-20 md:-top-28' alt="" />
 
-            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">
+            <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left font-semibold mb-0">
                 Create Memories, One Stay at a Time
             </p>
 
@@ -58,21 +58,21 @@ const Gallery = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <div className="absolute bottom-0 left-0 p-4 md:p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <span className="bg-primary text-xs font-semibold px-2 py-1 md:px-3 rounded-full mb-1 md:mb-2 inline-block">
+                                {/* <span className="bg-primary text-xs font-semibold px-2 py-1 md:px-3 rounded-full mb-1 md:mb-2 inline-block">
                                     {item.category}
                                 </span>
-                                <h3 className="text-base md:text-xl font-bold">{item.title}</h3>
+                                <h3 className="text-base md:text-xl font-bold">{item.title}</h3> */}
                             </div>
                         </div>
                     </div>
                 ))}
             </Masonry>
 
-            <div className="text-center">
+            {/* <div className="text-center">
                 <button className="bg-primary text-white px-6 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-full hover:bg-opacity-90 transition-all font-medium shadow-lg hover:shadow-primary/30">
                     Show More
                 </button>
-            </div>
+            </div> */}
         </motion.div>
     );
 };

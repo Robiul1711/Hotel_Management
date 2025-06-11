@@ -11,10 +11,10 @@ const Footer = () => {
 
       <div className="border-b border-black md:flex justify-center py-8 hidden">
         <ul className='text-black flex gap-5 lg:gap-12'>
-          <NavLink className={navLinkClass} to={'/'}>Home</NavLink>
-          <NavLink className={navLinkClass} to={'/about'}>Product</NavLink>
+          <NavLink className={navLinkClass} to={'/stays'}>Stays</NavLink>
+          {/* <NavLink className={navLinkClass} to={'/about'}>Product</NavLink>
           <NavLink className={navLinkClass} to={'/contact'}>Contact Us</NavLink>
-          <NavLink className={navLinkClass} to={'/faq'}>About</NavLink>
+          <NavLink className={navLinkClass} to={'/faq'}>About</NavLink> */}
         </ul>
       </div>
 
@@ -25,7 +25,7 @@ const Footer = () => {
           <ul className='text-black flex justify-between gap-4 lg:gap-12'>
             <NavLink className={navLinkClass} to={'/'}> <span className="underline text-xs md:text-lg">Privacy Policy</span> </NavLink>
             <NavLink className={navLinkClass} to={'/about'}><span className="underline text-xs md:text-lg">Terms of Service</span></NavLink>
-            <NavLink className={navLinkClass} to={'/contact'}><span className="underline text-xs md:text-lg">Cookies Settings</span></NavLink>
+            {/* <NavLink className={navLinkClass} to={'/contact'}><span className="underline text-xs md:text-lg">Cookies Settings</span></NavLink> */}
           </ul>
         </div>
       </div>

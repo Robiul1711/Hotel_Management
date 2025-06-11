@@ -2,24 +2,25 @@ import { DeleteIcons } from '@/lib/CustomIcons';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const BookingSummary = () => {
+const BookingSummary = ({ villa }) => {
     const navigate = useNavigate();
+    
     return (
-        <div className='bg-white shadow rounded-xl'>
-            <p className="py-5 bg-[#fff8db] px-2 text-[24px]">Booking Summary</p>
-            <div className="p-8 space-y-8">
+        <div className='bg-white shadow rounded-xl relative pb-16 md:pb-0 z-[9999]'>
+            <p className="py-5 bg-[#fff8db] px-2 lg:text-[24px]">Booking Summary</p>
+            <div className="p-8 lg:space-y-8">
                 <div className="flex justify-between">
-                    <p className="text-lg">Executive Room x 1</p>
+                    <p className="lg:text-lg">Executive Room x 1</p>
                     <DeleteIcons />
                 </div>
-                <p className="text-lg">₹ 3,500 x 1 night</p>
+                <p className="lg:text-lg">₹ {villa?.price_a_night} x 1 night</p>
                 <div className="flex justify-between">
-                    <p className="text-lg">Tax</p>
-                    <p className="text-lg">₹ 500</p>
+                    <p className="lg:text-lg">Tax</p>
+                    <p className="lg:text-lg">₹ 0</p>
                 </div>
                 <div className="flex justify-between">
-                    <p className="text-lg">Total (tax incl.)</p>
-                    <p className="text-lg">₹ 4000</p>
+                    <p className="lg:text-lg">Total (tax incl.)</p>
+                    <p className="lg:text-lg">₹ {villa?.price_a_night}</p>
                 </div>
             </div>
 
@@ -27,47 +28,51 @@ const BookingSummary = () => {
                 <div className="flex gap-5 items-center justify-between">
                     <input type="text" className='border w-full h-10' />
                     <button
-                        className={` px-4 py-2 rounded-full text-lg  bg-secondary text-white `}
+                        className={`px-4 py-2 rounded-full text-lg bg-secondary text-white`}
                     >
                         Apply
                     </button>
                 </div>
-
             </div>
 
-            <div className="w-10/12 mx-auto">
-                <button onClick={() => navigate('/checkout')}
-                    className={` px-4 py-4 w-full rounded-full text-lg  bg-primary text-white `}
+            {/* Desktop Button (hidden on mobile) */}
+            <div className="hidden md:block w-10/12 mx-auto my-5">
+                <button 
+                    onClick={() => navigate(`/checkout/${villa?.id}`, { state: { from: 'villa' } })}
+                    className={`px-4 py-4 w-full rounded-full text-lg bg-primary text-white`}
                 >
-                    Book now
+                    Reserve Now
                 </button>
             </div>
 
-            <div className="py-5 my-5 bg-gray-100 ">
+            <div className="py-5 my-5 bg-gray-100">
                 <p className="text-center">
                     Got Questions? Hich is at your Service
                 </p>
             </div>
 
-            <div className="py-5 flex justify-around">
+            {/* <div className="py-5 flex gap-2 flex-wrap justify-around">
                 <button
-                    className={` px-4 py-2 rounded-full text-lg  bg-secondary text-white `}
+                    className={`px-4 py-1 xlg:py-2 rounded-full text-lg bg-secondary text-white`}
                 >
-                    Send  equiry
+                    Send enquiry
                 </button>
 
                 <button
-                    className={` px-4 py-2 rounded-full text-lg  bg-secondary text-white `}
+                    className={`px-4 py-1 xlg:py-2 rounded-full text-lg bg-secondary text-white`}
                 >
                     Whatsapp
                 </button>
 
                 <button
-                    className={` px-4 py-2 rounded-full text-lg  bg-secondary text-white `}
+                    className={`px-4 py-1 xlg:py-2 rounded-full text-lg bg-secondary text-white`}
                 >
                     Call
                 </button>
-            </div>
+            </div> */}
+
+            {/* Mobile Sticky Button (shown only on mobile) */}
+            
         </div>
     );
 };

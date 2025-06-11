@@ -1,6 +1,7 @@
 import { SlideUp } from '@/animation/animate';
 import banner from '@/assets/images/banner2.png';
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom';
 
 const SectionBanner = () => {
     return (
@@ -9,11 +10,11 @@ const SectionBanner = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.5 }}
-            className="relative   my-10 md:my-20">
+            className="relative   ">
             {/* Banner Image - Added min-h for mobile */}
             <img
                 src={banner}
-                className="w-full h-auto object-cover min-h-[300px] md:min-h-[400px] lg:min-h-[500px] px-2 xmd:px-0 rounded-3xl"
+                className="w-full h-auto object-cover min-h-[300px] -z-50 md:min-h-[400px] lg:min-h-[500px] px-2 xmd:px-0 rounded-3xl"
                 alt="Banner background"
             />
 
@@ -32,9 +33,11 @@ const SectionBanner = () => {
                         Contact Us
                     </button>
 
-                    <button className="bg-primary text-white px-6 py-2 sm:px-8 sm:py-2 md:px-10 md:py-3 rounded-full hover:bg-opacity-90 transition-all font-medium shadow-lg hover:shadow-primary/30 text-sm sm:text-base">
-                        Explore Stays
-                    </button>
+                    <Link to={'/stays'}>
+                        <button className="bg-primary text-white px-6 py-2 sm:px-8 sm:py-2 md:px-10 md:py-3 rounded-full hover:bg-opacity-90 transition-all font-medium shadow-lg hover:shadow-primary/30 text-sm sm:text-base">
+                            Explore Stays
+                        </button>
+                    </Link>
                 </div>
             </div>
         </motion.div>
