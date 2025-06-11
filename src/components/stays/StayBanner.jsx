@@ -37,14 +37,14 @@ const StayBanner = () => {
                                 <p className="text-sm  xlg:text-[20px] ">
                                     From Local Escapes to far-flung adventures, find what makes you <br /> happy anytime, anywhere
                                 </p>
-                                <div className="bg-white hidden lg:flex justify-between w-full px-4 rounded-full p-2 md:py-5">
+                                {/* <div className="bg-white hidden lg:flex justify-between w-full px-4 rounded-full p-2 md:py-5">
                                     <input
                                         type="text"
                                         className='w-full text-sm md:text-base text-black outline-none'
                                         placeholder='Search Properties/Destinations/Packages'
                                     />
                                    
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     ))}

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const StayHotelCard = ({ data }) => {
     // console.log(data);
     return (
-        <div className="border-2 border-gray-200 rounded-xl bg-gray-100">
+        <Link to={`/hotel-package-details/${data?.id}`} className="border-2 block border-gray-200 rounded-xl bg-gray-100">
             <div className="flex flex-col md:flex-row bg-white  overflow-hidden duration-300 w-full rounded-xl ">
                 {/* Image Section */}
                 <div className="relative w-[50%]">
@@ -43,25 +43,25 @@ const StayHotelCard = ({ data }) => {
 
                             </p>
 
-                            <p className="flex items-center text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
+                            {/* <p className="flex items-center text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
                                 Great for : <TrackingIcons /> Trekking
 
-                            </p>
+                            </p> */}
                         </div>
                         <div className="flex border-t pt-4 justify-evenly items-center ">
-                            <div className="border p-5 rounded-full">
+                            <div className="border p-4 rounded-full">
                                 <Stay1Icons />
                             </div>
 
-                            <div className="border p-5 rounded-full">
+                            <div className="border p-4 rounded-full">
                                 <Stay2Icons />
                             </div>
 
-                            <div className="border p-5 rounded-full">
+                            <div className="border p-4 rounded-full">
                                 <Stay3Icons />
                             </div>
 
-                            <div className="border p-5 rounded-full">
+                            <div className="border p-4 rounded-full">
                                 <Stay4Icons />
                             </div>
 
@@ -88,11 +88,11 @@ const StayHotelCard = ({ data }) => {
                 </div>
             </div>
             <div className="">
-                <p className='text-center mt-4 text-xl'>
+                <p className='text-center mt-4 '>
                    {data?.short_des}
                 </p>
             </div>
-        </div>
+        </Link>
 
     );
 };

@@ -1,99 +1,89 @@
-import { SmallStarIcons, StarIcons, Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons, TrackingIcons } from '@/lib/CustomIcons';
+import { SmallStarIcons, StarIcons, Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons } from '@/lib/CustomIcons';
 import React from 'react';
 import { IoLocationOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
 const StayVillaCard = ({ data }) => {
-    console.log(data);
     return (
-        <div className="border-2 border-gray-200 rounded-xl bg-gray-100">
-            <div className="flex flex-col md:flex-row bg-white  overflow-hidden duration-300 w-full rounded-xl ">
+        <Link
+            to={`/villa-package-details/${data?.id}`}
+            className="block border-2 border-gray-200 rounded-xl bg-gray-100 overflow-hidden"
+        >
+            <div className="flex flex-col md:flex-row bg-white w-full rounded-xl">
                 {/* Image Section */}
-                <div className="relative w-[50%]">
+                <div className="relative w-full md:w-1/2">
                     <img
                         src={data?.thumbnail}
-                        className="w-full max-h-[350px] object-cover"
-                        alt={data?.title || "Accommodation"}
+                        className="w-full h-64 md:h-full object-cover"
+                        alt={data?.title || 'Accommodation'}
                     />
-                    <p className="text-white absolute top-3 left-3 sm:top-4 sm:left-4 bg-black bg-opacity-10 px-2 py-1 sm:px-3 text-xs sm:text-sm font-medium backdrop-blur-sm rounded">
+                    <p className="absolute top-3 left-3 bg-black/10 text-white px-3 py-1 text-sm font-medium backdrop-blur-sm rounded">
                         Free Exclusive Services
                     </p>
                 </div>
 
                 {/* Content Section */}
-                <div className=" bg-white w-[60%] flex  items-start">
-                    {/* content left side  */}
-                    <div className="  flex flex-col justify-between w-3/4">
-                        <div className="p-4">
-                            <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl line-clamp-2">
+                <div className="flex flex-col md:flex-row w-full md:w-full">
+                    {/* Left content */}
+                    <div className="flex flex-col justify-between p-4 md:w-[70%]">
+                        <div>
+                            <p className="font-semibold text-gray-800 text-lg md:text-xl lg:text-2xl line-clamp-2">
                                 {data?.villa_name}
                             </p>
-                            <p className="flex items-center text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
-                                <IoLocationOutline className="flex-shrink-0" />
+                            <p className="flex items-center gap-2 text-sm md:text-base text-gray-600 mt-2">
+                                <IoLocationOutline />
                                 <span className="truncate">{data?.location}</span>
                             </p>
 
-                            <p className="flex items-center text-sm sm:text-base md:text-lg gap-4 sm:gap-2">
-
-                                <span className="truncate">Upto {data?.total_guest} Guests</span>
+                            <p className="flex flex-wrap items-center gap-2 text-sm md:text-base mt-2">
+                                <span>Upto {data?.total_guest} Guests</span>
                                 <SmallStarIcons />
-                                <span className="">{data?.total_room} Rooms</span>
+                                <span>{data?.total_room} Rooms</span>
                                 <SmallStarIcons />
-                                <span className="">{data?.total_bath} Baths</span>
-
-                            </p>
-
-                            <p className="flex items-center text-sm sm:text-base md:text-lg gap-1 sm:gap-2">
-                                Great for : <TrackingIcons /> Trekking
-
+                                <span>{data?.total_bath} Baths</span>
                             </p>
                         </div>
-                        <div className="flex border-t pt-4 justify-evenly items-center ">
-                            <div className="border p-5 rounded-full">
-                                <Stay1Icons />
-                            </div>
 
-                            <div className="border p-5 rounded-full">
-                                <Stay2Icons />
-                            </div>
+               {/* Icons row */}
+<div className="flex gap-6 border-t pt-4 mt-4">
+  {[Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons].map((Icon, index) => (
+    <div
+      key={index}
+      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 border rounded-full flex items-center justify-center"
+    >
+      <Icon className="w-5 h-5 md:w-6 md:h-6" />
+    </div>
+  ))}
+</div>
 
-                            <div className="border p-5 rounded-full">
-                                <Stay3Icons />
-                            </div>
-
-                            <div className="border p-5 rounded-full">
-                                <Stay4Icons />
-                            </div>
-
-                        </div>
                     </div>
 
-                    {/* content right side  */}
-                    <div className=" border-l flex flex-col justify-evenly p-2 w-1/4 h-full items-center ">
-                        <p className="flex items-center gap-2"><StarIcons />4/5</p>
-                        <div className=" flex flex-col gap-2 items-center">
-                            <p className="xlg:text-2xl">₹ {data?.price_a_night}</p>
-                            <button className='border py-1 px-[2px] xlg:py-3 xlg:px-5 rounded-3xl text-secondary border-secondary flex items-center gap-3 text-xs'>
+                    {/* Right content */}
+                    <div className="border-t md:border-t-0 md:border-l p-4 md:w-[40%] flex flex-col   gap-4">
+                        <p className="flex justify-end gap-2 text-sm">
+                            <StarIcons /> 4/5
+                        </p>
+                        <div className="text-center space-y-2">
+                            <p className="text-lg font-semibold">₹ {data?.price_a_night}</p>
+                            <button className="border py-1 px-4 rounded-3xl text-secondary border-secondary text-xs">
                                 For 1 Room
                             </button>
-                            <p className="text-[12px] text-center text-gray-300">Per Night + Taxes (1 Room)</p>
+                            <p className="text-[12px] text-gray-400">Per Night + Taxes (1 Room)</p>
                             <Link to={`/villa-package-details/${data?.id}`}>
-                                <button className=' py-1 xlg:py-3 px-[2px] xlg:px-5 rounded-3xl text-white hover:bg-orange-600 bg-secondary flex items-center gap-3 text-xs'>
+                                <button className="py-1 px-4 rounded-3xl text-white bg-secondary hover:bg-orange-600 text-xs">
                                     View package
                                 </button>
                             </Link>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="">
-                <p className='text-center mt-4 text-xl'>
-                   {data?.short_des}
-                </p>
-            </div>
-        </div>
 
+            {/* Description Section */}
+            <div className="p-4">
+                <p className="text-center text-sm text-gray-600">{data?.short_des}</p>
+            </div>
+        </Link>
     );
 };
 
