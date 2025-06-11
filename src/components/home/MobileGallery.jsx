@@ -13,16 +13,18 @@ const galleryItems = [
 const MobileGallery = () => {
     return (
         <div className='md:hidden space-y-5'>
-            <div className="flex justify-between">
-                <p className="text-primary  md:text-4xl lg:text-5xl md:text-left">
+            <div className="flex justify-between items-center">
+                <p className="text-primary mb-0 font-semibold  md:text-4xl lg:text-5xl md:text-left">
                     Create Memories, One Stay at a Time
                 </p>
-                <button className='text-gray-400'>See all</button>
+                {/* <div className="">
+                    <button className='text-gray-400'>See all</button>
+                </div> */}
             </div>
             <div className='grid grid-cols-3 gap-4'>
                 {
                     galleryItems?.map((item) => <div key={item?.img}>
-                        <img src={item?.img} alt="" />
+                        <img src={item?.img} alt="" className='h-[100px] rounded-2xl'/>
                     </div>)
                 }
             </div>

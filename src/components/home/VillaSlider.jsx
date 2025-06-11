@@ -63,7 +63,7 @@ const VillaSlider = ({ cardNo = 3.5, data }) => {
     // console.log(villaData);
 
     return (
-        <div className="w-full mx-auto py-10 bg-transparent">
+        <div className="w-full mx-auto py-3 lg:py-10 bg-transparent">
             <Swiper
                 modules={[]}
                 spaceBetween={20}
