@@ -41,19 +41,16 @@ const services = [
 
 const Service = () => {
     return (
-        <motion.section
-            variants={SlideUp(0.1)}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.5 }}
-            className="md:py-12 bg-white">
+        <section
+           
+            className=" bg-white">
             <div className=" ">
                 <h2 className="md:text-4xl font-bold text-primary md:mb-8">
                     Enjoy Exclusive services for free:
                 </h2>
 
 
-                <div className="flex flex-col gap-5 lg:flex-row items-stretch">
+                <div className="flex flex-col gap-3 xlg:gap-5 lg:flex-row items-stretch">
                     <div className=" lg:w-[72%]">
                         <div className=" ">
                             {/* <CardGrid /> */}
@@ -62,12 +59,12 @@ const Service = () => {
                         </div>
 
                     </div>
-                    <div className="w-[80%] hidden lg:block lg:w-[28%]  ">
+                    <div className=" hidden md:block md:w-full lg:w-[28%]  ">
                         <CardSwipe />
                     </div>
                 </div>
             </div>
-        </motion.section>
+        </section>
     );
 };
 

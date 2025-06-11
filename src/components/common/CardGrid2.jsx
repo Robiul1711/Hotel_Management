@@ -44,10 +44,10 @@ const data = [
 ];
 
 const Card = ({ icon, title, description }) => (
-    <div className="bg-[#fef7da] text-dark rounded-xl p-4 mx-2  h-full flex items-center md:items-start gap-2 md:flex-col">
+    <div className="bg-[#fef7da] text-dark rounded-xl p-4  h-full flex items-center md:items-start gap-2 md:flex-col">
         <div className="flex-shrink-0">{icon}</div>
         <div>
-            <h3 className="font-bold text-sm lg:text-lg mt-3 break-words line-clamp-2">{title}</h3>
+            <h3 className="font-bold text-sm xlg:text-lg mt-3 break-words line-clamp-2">{title}</h3>
             <p className="text-sm mt-2 break-words line-clamp-4">{description}</p>
         </div>
     </div>
@@ -98,7 +98,7 @@ const CardGrid2 = () => {
 
             {/* Desktop: Grid Layout */}
             <div className="hidden md:block">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 xlg:gap-6 xlg:px-4">
                     {data.map((item, index) => (
                         <Card key={index} {...item} />
                     ))}

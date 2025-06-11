@@ -39,6 +39,7 @@ export default {
   			xmd: '992px',
   			lg: '1024px',
   			xlg: '1200px',
+  			xxlg: '1400px',
   			xl: '1560px',
   			xxl: '1920px'
   		},
