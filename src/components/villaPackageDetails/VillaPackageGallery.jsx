@@ -31,7 +31,7 @@ const VillaPackageGallery = ({ thumbnail, media }) => {
     return (
         <div>
             <div className="flex justify-between items-center ">
-                <div className=" gap-3 justify-center items-center hidden md:flex">
+                {/* <div className=" gap-3 justify-center items-center hidden md:flex">
                     <p className="mt-6 font-bold text-2xl">4.8</p>
                     <div className="flex">
                         <StarRatings
@@ -46,7 +46,7 @@ const VillaPackageGallery = ({ thumbnail, media }) => {
                     <div>
                         <CustomLoveIcon />
                     </div>
-                </div>
+                </div> */}
 
                 <div className="md:hidden">
                     <div className="">

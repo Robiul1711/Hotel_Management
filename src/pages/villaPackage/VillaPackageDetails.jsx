@@ -19,6 +19,7 @@ import SearchTab from '@/components/common/SearchTab';
 import { AmanityData } from '@/lib/Database';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
+import Service from '@/components/home/Service';
 
 const VillaPackageDetails = () => {
     const { id } = useParams();
@@ -33,7 +34,7 @@ const VillaPackageDetails = () => {
         }
     })
 
-    console.log(villa);
+    console.log('villa related data', villa);
 
     return (
         <>
@@ -46,12 +47,13 @@ const VillaPackageDetails = () => {
                     <div className="hidden md:block ">
 
                         <div className=" flex flex-col items-start">
-                            <p className=" md:text-[32px] font-semibold text-primary">{villa?.villa_name}</p>
+                            <p className=" md:text-[32px] font-semibold text-primary mb-0">{villa?.villa_name}</p>
                             <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
 
                                 <CiLocationOn />
                                 {villa?.location}
                             </p>
+                            <p className="text-sm md:text-[20px]">{villa?.short_des}</p>
                         </div>
 
                         {/* search tab  */}
@@ -71,7 +73,8 @@ const VillaPackageDetails = () => {
                 <ExperienceSection villaExperience={villa?.experiences} />
                 <RealMomentSection realMoment={villa?.real_moments} />
                 <VillaFacilities />
-                <NearbyHotels />
+
+                {/* <NearbyHotels /> */}
                 <HotelPolicies villa={villa} />
                 <SectionBanner />
             </CommonPageWrapper>
