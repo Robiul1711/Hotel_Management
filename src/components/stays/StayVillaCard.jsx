@@ -49,7 +49,7 @@ const StayVillaCard = ({ data }) => {
   {[Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons].map((Icon, index) => (
     <div
       key={index}
-      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 border rounded-full flex items-center justify-center"
+      className="w-12 h-12 sm:w-14 sm:h-14 xl:w-16 xl:h-16 border rounded-full flex items-center justify-center"
     >
       <Icon className="w-5 h-5 md:w-6 md:h-6" />
     </div>
@@ -59,18 +59,18 @@ const StayVillaCard = ({ data }) => {
                     </div>
 
                     {/* Right content */}
-                    <div className="border-t md:border-t-0 md:border-l p-4 md:w-[40%] flex flex-col   gap-4">
+                    <div className="border-t md:border-t-0 md:border-l p-4 md:w-[40%] flex flex-col justify-between   gap-4">
                         <p className="flex justify-end gap-2 text-sm">
                             <StarIcons /> 4/5
                         </p>
-                        <div className="text-center space-y-2">
-                            <p className="text-lg font-semibold">₹ {data?.price_a_night}</p>
-                            <button className="border py-1 px-4 rounded-3xl text-secondary border-secondary text-xs">
+                        <div className="flex flex-col justify-end items-end space-y-2">
+                            <p className="text-lg lg:text-xl font-semibold">₹ {data?.price_a_night}</p>
+                            <button className="border py-1 px-4 rounded-3xl text-secondary border-secondary text-xs  sm:text-base sm:px-6 sm:py-2">
                                 For 1 Room
                             </button>
                             <p className="text-[12px] text-gray-400">Per Night + Taxes (1 Room)</p>
                             <Link to={`/villa-package-details/${data?.id}`}>
-                                <button className="py-1 px-4 rounded-3xl text-white bg-secondary hover:bg-orange-600 text-xs">
+                                <button className="py-1 px-4 rounded-3xl whitespace-nowrap text-white bg-secondary hover:bg-orange-600 text-xs sm:text-base sm:px-6 sm:py-2">
                                     View package
                                 </button>
                             </Link>
