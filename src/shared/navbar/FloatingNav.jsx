@@ -8,7 +8,7 @@ const FloatingNav = () => {
                 href="https://api.whatsapp.com/send?phone=918424996432&text=Hi%2C%20would%20like%20to%20know%20more%20about%20Hich"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-orange-500 text-white p-2 sm:p-3 md:p-4 rounded-l-full shadow-lg hover:bg-orange-600 transition-all"
+                className="bg-green-500 text-white p-2 sm:p-3 md:p-4 rounded-l-full shadow-lg hover:bg-green-600 transition-all"
             >
                 <CustomWhatsapp1Icon 
                     height="30" 

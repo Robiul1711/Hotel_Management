@@ -2,12 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 /* google fonts */
 /* google fonts */
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 @tailwind base;
 @tailwind components;
@@ -104,13 +103,24 @@ body {
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: white !important;
+  color: white !important;
 }
 
 /* Optional: If you want to change the hover color */
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.6;
+}
+
+/* Active bullet (the one currently active) */
+.swiper-pagination-bullet-active {
+  background: white !important;
+  opacity: 1;
 }
 
 /* Hovered cell style */

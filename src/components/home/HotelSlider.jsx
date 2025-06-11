@@ -64,7 +64,7 @@ const HotelSlider = ({ data, cardNo = 3.5 }) => {
     const { hotelData } = useData();
 
     return (
-        <div className="w-full mx-auto py-10 bg-transparent">
+        <div className="w-full mx-auto py-3 lg:py-10 bg-transparent">
             <Swiper
                 modules={[]}
                 spaceBetween={20}
