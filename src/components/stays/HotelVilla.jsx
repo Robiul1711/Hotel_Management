@@ -11,12 +11,13 @@ const HotelVilla = () => {
                     </p>
                 </div>
                 <div className="flex gap-3 xmd:gap-5">
+                            <button className='border py-3 px-5 rounded-3xl text-secondary border-secondary flex items-center gap-3'>
+                        Villas
+                    </button>
                     <button className='border py-3 px-5 rounded-3xl text-white bg-secondary border-secondary flex items-center gap-3'>
                         Hotels
                     </button>
-                    <button className='border py-3 px-5 rounded-3xl text-secondary border-secondary flex items-center gap-3'>
-                        Villas
-                    </button>
+            
                 </div>
             </div>
             <p className="my-5 xmd:text-lg text-gray-500">

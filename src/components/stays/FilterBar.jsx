@@ -9,7 +9,7 @@ const FilterBar = () => {
 
     return (
         <div>
-            <p className="text-lg"><span className="text-blue-500">Home</span> {">"} <span className="text-gray-400">Villas in Lonavala</span></p>
+            <p className="text-lg"><span className="text-primary">Home</span> {">"} <span className="text-gray-400">Villas in Lonavala</span></p>
             <div className="border-b-2 space-y-3 my-5 pb-8">
                 <p className="text-2xl">Display total Price</p>
                 <p className="text-lg">Price per night with taxes</p>
@@ -74,7 +74,7 @@ const FilterBar = () => {
                 <p className="underline text-gray-400">See More</p>
             </div>
 
-            <div className="py-8 border-b-2 flex flex-col gap-3">
+            {/* <div className="py-8 border-b-2 flex flex-col gap-3">
                 <p className="text-2xl">Great For</p>
 
                 <label className="inline-flex items-center gap-2">
@@ -94,7 +94,7 @@ const FilterBar = () => {
                     <span>Kids</span>
                 </label>
                 <p className="underline text-gray-400">See More</p>
-            </div>
+            </div> */}
 
             <div className="py-8 border-b-2 flex flex-col gap-3">
                 <p className="text-2xl">Price Per Night</p>

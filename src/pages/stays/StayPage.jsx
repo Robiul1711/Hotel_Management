@@ -20,6 +20,7 @@ import pune from '@/assets/images/pune.png'
 import mumbai from '@/assets/images/mumbai.png'
 import delhi from '@/assets/images/delhi.png'
 import goa from '@/assets/images/goa.png'
+import VillaForWeekdays from '@/components/stays/VillaForWeekdays';
 
 const data = [
     {
@@ -99,7 +100,8 @@ const StayPage = () => {
 
                     </div>
                 </div>
-                <Keypoints />
+                {/* <Keypoints /> */}
+                <VillaForWeekdays />
             </CommonPageWrapper>
             <SectionBanner />
         </>

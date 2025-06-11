@@ -39,7 +39,7 @@ const StayBanner = () => {
                                         className='w-full text-sm md:text-base text-black outline-none'
                                         placeholder='Search Properties/Destinations/Packages'
                                     />
-                                    <CiSearch className='text-black text-xl md:text-2xl' />
+                                   
                                 </div>
                             </div>
                         </div>
