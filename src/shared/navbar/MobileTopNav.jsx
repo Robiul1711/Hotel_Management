@@ -13,6 +13,7 @@ import { FaPhone } from 'react-icons/fa';
 import { BsTelephone } from "react-icons/bs";
 import UserDropdown from './UserDropdown';
 import ListYourVilla from '@/components/home/ListYourVilla';
+import PropertyListingForm from '@/components/home/PropertyListingForm';
 
 
 const data = [
@@ -88,7 +89,7 @@ const MobileTopNav = () => {
             <div className="font-semibold flex justify-between items-center text-sm">
                 <p className=""> <Link to={'/stays'} className="">Stays</Link></p>
                 <p className="flex justify-center items-center gap-2"><BsTelephone />+91 84249 96432</p>
-                <p className=""><ListYourVilla/></p>
+                <p className="">   <PropertyListingForm button={false} /></p>
                 <div className="">
                     <UserDropdown />
                 </div>

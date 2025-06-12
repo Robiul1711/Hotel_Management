@@ -140,7 +140,7 @@ export default function AuthForm() {
               </label>
               <input
                 type="text"
-                {...register("address", { required: "Address is required" })}
+                {...register("address")}
                 placeholder="49640 Walker Knoll, New Ellaberg 17790"
                 className="w-full border border-gray-300 rounded-md p-2"
               />

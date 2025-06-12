@@ -2,10 +2,43 @@ import React, { useState } from 'react';
 import ToggleButton from '../common/ToggleButton';
 import AntdDualRangeSlider from '../common/AntdDualRangeSlider';
 import { Slider } from "@/components/ui/slider"
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '@/hooks/useAxiosPublic';
+import useData from '@/hooks/useData';
+import toast from 'react-hot-toast';
 const FilterBar = () => {
     let [quantity, setQuantity] = useState(0);
     const [minPrice, setMinPrice] = useState(1000);
     const [maxPrice, setMaxPrice] = useState(500000);
+    const [showAll, setShowAll] = useState(false);
+    const [selectedAmenities, setSelectedAmenities] = useState([]);
+    const axiosPublic = useAxiosPublic();
+    const { setVillaSearchResult } = useData();
+
+    const { data: aminities } = useQuery({
+        queryKey: ["aminities"],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/villa/allAmenities');
+            return res?.data?.allamenities;
+        }
+    })
+    const displayedAmenities = showAll ? aminities : aminities?.slice(0, 6);
+    // console.log('All amenities:', aminities);
+
+    const handleSearch = async () => {
+        const payload = { minPrice, maxPrice, amenity_id: selectedAmenities };
+        // console.log(payload)
+        const toastId = toast.loading('Searching...');
+        try {
+            const res = await axiosPublic.post('/villa/allfilterdatas', payload);
+            setVillaSearchResult(res?.data?.allVillas);
+            scrollTo(0, 400);
+            toast.success('Villas found', { id: toastId });
+        } catch (error) {
+            console.log(error);
+            toast.error('Something went wrong', { id: toastId });
+        }
+    }
 
     return (
         <div>
@@ -56,46 +89,27 @@ const FilterBar = () => {
             <div className="py-8 border-b-2 flex flex-col gap-3">
                 <p className="text-2xl">Key Amenities</p>
 
-                <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>Newly Launched</span>
-                </label>
-                <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>High Speed WiFi</span>
-                </label>
-                <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>Pool/Jacuzzi</span>
-                </label>
-                <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>Pet Friendly</span>
-                </label>
-                <p className="underline text-gray-400">See More</p>
+                {
+                    displayedAmenities?.map(item =>
+                        <label key={item?.id} className="inline-flex items-center gap-2">
+                            <input type="checkbox"
+                                className="accent-blue-500"
+                                value={item?.id}
+                                onChange={(e) => {
+                                    const id = e.target.value;
+                                    setSelectedAmenities(prev => e.target.checked ? [...prev, id] : prev.filter(aid => aid !== id));
+                                }}
+                            />
+                            <span>{item?.name}</span>
+                        </label>
+                    )
+                }
+
+
+                <p onClick={() => setShowAll(!showAll)} className="underline text-gray-400">{showAll ? "See Less" : "See More"}</p>
             </div>
 
-            {/* <div className="py-8 border-b-2 flex flex-col gap-3">
-                <p className="text-2xl">Great For</p>
 
-                <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>Food</span>
-                </label>
-                <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>Service</span>
-                </label>
-                <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>View</span>
-                </label>
-                <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>Kids</span>
-                </label>
-                <p className="underline text-gray-400">See More</p>
-            </div> */}
 
             <div className="py-8 border-b-2 flex flex-col gap-3">
                 <p className="text-2xl">Price Per Night</p>
@@ -127,10 +141,16 @@ const FilterBar = () => {
                 <p className="text-2xl">Selected Filters</p>
 
                 <div className="flex items-center justify-between">
-                    <button className="border py-3 px-8  rounded-xl">
+                    <button onClick={handleSearch} className="border py-3 px-8  rounded-xl">
                         All Results
                     </button>
-                    <p className="underline text-gray-400">Clear All</p>
+                    <p onClick={() => {
+                        setSelectedAmenities([]);
+                        setMinPrice(1000);
+                        setMaxPrice(500000);
+                        setVillaSearchResult(null);
+                        scrollTo(0, 400);
+                    }} className="underline cursor-pointer text-gray-400">Clear All</p>
                 </div>
 
 

@@ -6,9 +6,10 @@ import React, { useState } from 'react';
 
 const DataProvider = ({ children }) => {
 
-  const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
 
-  const [hotelRoom, setHotelRoom]=useState(null);
+    const [hotelRoom, setHotelRoom] = useState(null);
+    const [villaSearchResult, setVillaSearchResult] = useState(null);
 
 
 
@@ -28,11 +29,11 @@ const DataProvider = ({ children }) => {
     })
 
 
-   
+
 
 
     return (
-        <DataContext.Provider value={{ villaData, hotelData, hotelRoom, setHotelRoom }}>
+        <DataContext.Provider value={{ villaData, hotelData, hotelRoom, setHotelRoom, villaSearchResult, setVillaSearchResult }}>
             {children}
         </DataContext.Provider>
     );
