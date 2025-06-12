@@ -30,12 +30,12 @@ const StayBanner = () => {
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
 
-                            <div className="absolute inset-0 flex flex-col  md:items-start  md:justify-start px-4 md:px-0 w-[80%] md:w-[45%] left-1/3 md:left-1/2 top-[10%] md:top-[15%] gap-4  text-white text-left drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
-                                <h1 className="text-4xl  sm:text-4xl lg:text-5xl xl:text-7xl font-bold">
+                            <div className="absolute inset-0 flex flex-col  md:items-start  md:justify-start px-4 md:px-0 w-[80%] md:w-[45%] left-[28%] md:left-1/2 top-[10%] md:top-[15%] gap-4  text-white text-left drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+                                <h1 className="text-2xl  sm:text-4xl lg:text-5xl xl:text-7xl font-bold mb-0">
                                     Your World of Joy
                                 </h1>
                                 <p className="text-sm  xlg:text-[20px] ">
-                                    From Local Escapes to far-flung adventures, find what makes you <br /> happy anytime, anywhere
+                                    From Local Escapes to far-flung adventures, <br /> find what makes you  happy anytime, anywhere
                                 </p>
                                 {/* <div className="bg-white hidden lg:flex justify-between w-full px-4 rounded-full p-2 md:py-5">
                                     <input
