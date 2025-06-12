@@ -291,7 +291,7 @@ export const mealPlans = [
 
 
 export const HotelTabsSection = [
-    { name: 'Details', section: '#details' },
+    // { name: 'Details', section: '#details' },
     { name: 'Room Options', section: '#hotel-room-options' },
     { name: 'Facilities', section: '#hotel-facilities' },
     { name: 'Amenities', section: '#hotel-aminities' },

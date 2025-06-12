@@ -14,7 +14,7 @@ const StayVillaCard = ({ data }) => {
                 <div className="relative w-full md:w-1/2">
                     <img
                         src={data?.thumbnail}
-                        className="w-full h-64 md:h-full object-cover"
+                        className="w-full h-full  object-cover"
                         alt={data?.title || 'Accommodation'}
                     />
                     <p className="absolute top-3 left-3 bg-black/10 text-white px-3 py-1 text-sm font-medium backdrop-blur-sm rounded">
@@ -44,17 +44,16 @@ const StayVillaCard = ({ data }) => {
                             </p>
                         </div>
 
-               {/* Icons row */}
-<div className="flex gap-6 border-t pt-4 mt-4">
-  {[Stay1Icons, Stay2Icons, Stay3Icons, Stay4Icons].map((Icon, index) => (
-    <div
-      key={index}
-      className="w-12 h-12 sm:w-14 sm:h-14 xl:w-16 xl:h-16 border rounded-full flex items-center justify-center"
-    >
-      <Icon className="w-5 h-5 md:w-6 md:h-6" />
-    </div>
-  ))}
-</div>
+                        {/* Icons row */}
+                        <div className="flex gap-6 border-t pt-4 mt-4">
+                            {
+                                data?.amenities?.slice(0, 4)?.map((item, index) => (
+                                    <div key={index} className="border p-2  rounded-full">
+                                        <img src={item?.amenitie?.media} alt="" className="w-7" />
+                                    </div>
+                                ))
+                            }
+                        </div>
 
                     </div>
 
@@ -80,8 +79,8 @@ const StayVillaCard = ({ data }) => {
             </div>
 
             {/* Description Section */}
-            <div className="p-4">
-                <p className="text-center text-sm text-gray-600">{data?.short_des}</p>
+            <div className="">
+                <p className="text-center text-sm text-gray-600 mb-0 p-1">{data?.short_des}</p>
             </div>
         </Link>
     );

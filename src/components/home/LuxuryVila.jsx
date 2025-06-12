@@ -1,5 +1,6 @@
 import image from '@/assets/images/luxury.png';
 import EnquireForm from './EnquireForm';
+import PropertyListingForm from './PropertyListingForm';
 
 const LuxuryVila = () => {
     return (
@@ -19,7 +20,7 @@ const LuxuryVila = () => {
                         <li className='hidden xmd:flex'>Peace of mind with an end-to-end hospitality operation</li>
                     </ul>
                     <div className="">
-                        <EnquireForm/>
+                        <PropertyListingForm  />
                     </div>
                 </div>
             </div>

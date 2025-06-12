@@ -7,6 +7,7 @@ import {
     CustomFoodIcon,
     CustomTransportIcon,
 } from '@/lib/CustomIconPackage';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const data = [
     {
@@ -93,6 +94,10 @@ const CardGrid2 = () => {
                             <Card {...item} />
                         </div>
                     ))}
+                </div>
+                <div className="flex gap-3 py-2 justify-center">
+                    <ArrowLeft className='text-primary '/>
+                    <ArrowRight className='text-primary '/>
                 </div>
             </div>
 

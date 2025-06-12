@@ -1,6 +1,6 @@
 import { SlideLeft, SlideRight, SlideUp } from '@/animation/animate';
 import logo from '@/assets/images/biglogo.png';
-import element from '@/assets/images/promotion.png';
+import element from '@/assets/images/promotion2.png';
 import { motion } from 'framer-motion'
 
 const PromotionalBanner2 = () => {

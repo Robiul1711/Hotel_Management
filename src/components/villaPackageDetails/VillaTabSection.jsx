@@ -6,7 +6,7 @@ import { HotelTabsSection, VillaTabsSection } from '@/lib/Database';
 import { Link } from 'react-router-dom';
 
 const VillaTabSection = ({ villa }) => {
-    console.log(villa)
+    // console.log(villa)
     return (
         <div>
             <TabSection tabs={VillaTabsSection} />
@@ -30,27 +30,17 @@ const VillaTabSection = ({ villa }) => {
 
                 {/* icons section  */}
                 <div className="flex flex-wrap  py-5 gap-2 md:gap-10 items-center ">
-                    <div className="border p-2 md:p-5 rounded-full">
-                        <Stay1Icons />
-                    </div>
 
-                    <div className="border p-2 md:p-5 rounded-full">
-                        <Stay2Icons />
-                    </div>
+                    {
+                        villa?.amenities?.slice(0, 4)?.map((item, index) => (
+                            <div key={index} className="border p-2 md:p-5 rounded-full">
+                                <img src={item?.amenitie?.media} alt="" className="w-7" />
+                            </div>
+                        ))
+                    }
 
-                    <div className="border p-2 md:p-5 rounded-full">
-                        <Stay3Icons />
-                    </div>
 
-                    <div className="border p-2 md:p-5 rounded-full">
-                        <Stay4Icons />
-                    </div>
-                    <div className="border p-2 md:p-5 rounded-full">
-                        <CustomBridgeIcon />
-                    </div>
-                    <div className="border p-2 md:p-5 rounded-full">
-                        <CustomWarehouseIcon />
-                    </div>
+
                     <Link to={'#hotel-aminities'} className="text-xl text-gray-500 underline cursor-pointer">
                         See All
                     </Link>

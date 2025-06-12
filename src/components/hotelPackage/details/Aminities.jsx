@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Aminities = ({ amenityData, data }) => {
   const [showAll, setShowAll] = useState(false);
-  console.log("amenityData", amenityData);
+  // console.log("amenityData", amenityData);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -20,7 +20,7 @@ const Aminities = ({ amenityData, data }) => {
     setIsModalOpen(false);
   };
 
-  const displayedAmenities = showAll ? amenityData : amenityData?.slice(0, 3);
+  const displayedAmenities = showAll ? amenityData : amenityData?.slice(0, 6);
 
   return (
     <div>
@@ -28,15 +28,15 @@ const Aminities = ({ amenityData, data }) => {
 
       <div
         id="hotel-aminities"
-        className="sm:grid hidden xmd:grid-cols-4 grid-cols-3 gap-20"
+        className="grid grid-cols-2 gap-2"
       >
         {displayedAmenities?.length > 0 ? (
           <>
             {displayedAmenities?.map((item, index) => (
-              <div key={index} className="flex  flex-col items-center gap-5 ">
-                <img src={item?.amenitie?.media} alt="" className="" />
+              <div key={index} className="flex items-center gap-4  ">
+                <img src={item?.amenitie?.media} alt="" className="w-8" />
 
-                <p className="text-gray-400">{item.amenitie?.name}</p>
+                <p className="text-gray-400 mb-0">{item.amenitie?.name}</p>
               </div>
             ))}
           </>
@@ -44,37 +44,17 @@ const Aminities = ({ amenityData, data }) => {
           <p className="">No Amenities Found</p>
         )}
       </div>
-      <div id="hotel-aminities" className=" sm:hidden grid grid-cols-1  gap-4">
-        {displayedAmenities?.length > 0 ? (
-          <>
-            {amenityData?.slice(0, 3)?.map((item, index) => (
-              <div key={index} className="flex items-center gap-6 ">
-                <div className=" w-[40px]">
-                  <img
-                    src={item?.amenitie?.media}
-                    alt=""
-                    className="object-cover"
-                  />
-                </div>
 
-                <p className="text-gray-400 mt-4">{item.amenitie?.name}</p>
-              </div>
-            ))}
-          </>
-        ) : (
-          <p className="">No Amenities Found</p>
-        )}
-      </div>
 
       <>
         {
-          amenityData?.length > 3  &&(
+          amenityData?.length > 3 && (
             <button
-          onClick={showModal}
-          className="bg-transparent text-[#FF4800] md:px-16 px-4 md:py-3 py-2 rounded-full  border-[1px] border-orange-600 transition-all mt-10"
-        >
-          View More Amenities
-        </button>
+              onClick={showModal}
+              className="bg-transparent text-[#FF4800] md:px-16 px-4 md:py-3 py-2 rounded-full  border-[1px] border-orange-600 transition-all mt-10"
+            >
+              View More Amenities
+            </button>
           )
         }
 
@@ -86,19 +66,19 @@ const Aminities = ({ amenityData, data }) => {
           onCancel={handleCancel}
           footer={null}
         >
-             {amenityData?.map((item, index) => (
-              <div key={index} className="flex items-center gap-6 ">
-                <div className=" w-[40px]">
-                  <img
-                    src={item?.amenitie?.media}
-                    alt=""
-                    className="object-cover"
-                  />
-                </div>
-
-                <p className="text-gray-400 mt-4">{item.amenitie?.name}</p>
+          {amenityData?.map((item, index) => (
+            <div key={index} className="flex items-center gap-6 ">
+              <div className=" w-[40px]">
+                <img
+                  src={item?.amenitie?.media}
+                  alt=""
+                  className="object-cover"
+                />
               </div>
-            ))}
+
+              <p className="text-gray-400 mt-4">{item.amenitie?.name}</p>
+            </div>
+          ))}
         </Modal>
       </>
 
@@ -113,11 +93,20 @@ const Aminities = ({ amenityData, data }) => {
 
       <div className="flex gap-4">
         {/* <MenuModal pdfUrl={data?.menu} /> */}
-        <Link to={data?.menu ? data?.menu : "#"} target="_blank">
-          <button className="bg-transparent border-[1px] border-primary  text-primary md:px-16 py-2 px-4 md:py-3 rounded-full  transition-all mt-10">
-            View Menu
-          </button>
-        </Link>
+        {
+          data?.menu ? (
+            <Link to={data?.menu ? data?.menu : "#"} target="_blank">
+              <button className="bg-transparent border-[1px] border-primary  text-primary md:px-16 py-2 px-4 md:py-3 rounded-full  transition-all mt-10">
+                View Menu
+              </button>
+            </Link>
+          ) :
+            (
+              <button className="bg-transparent border-[1px] border-primary  text-primary md:px-16 py-2 px-4 md:py-3 rounded-full  transition-all mt-10">
+                No Menu Given
+              </button>
+            )
+        }
         <PriceModal mealPlans={data?.meal_pricing} />
       </div>
     </div>

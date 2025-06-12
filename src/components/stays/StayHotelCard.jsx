@@ -12,7 +12,7 @@ const StayHotelCard = ({ data }) => {
                 <div className="relative  w-full md:w-1/2">
                     <img
                         src={data?.thumbnail}
-                        className="w-full h-[400px] object-cover"
+                        className="w-full h-full object-cover"
                         alt={data?.title || "Accommodation"}
                     />
                     <p className="text-white absolute top-3 left-3 sm:top-4 sm:left-4 bg-black bg-opacity-10 px-2 py-1 sm:px-3 text-xs sm:text-sm font-medium backdrop-blur-sm rounded">
@@ -49,27 +49,21 @@ const StayHotelCard = ({ data }) => {
                             </p> */}
                         </div>
                         <div className="flex flex-wrap border-t pt-4 gap-6 p-4  items-center ">
-                            <div className="border p-3 xl:p-4 rounded-full">
-                                <Stay1Icons />
-                            </div>
+                            {
+                                data?.amenities?.slice(0, 4)?.map((item, index) => (
+                                    <div key={index} className="border p-2  rounded-full">
+                                        <img src={item?.amenitie?.media} alt="" className="w-7" />
+                                    </div>
+                                ))
+                            }
 
-                            <div className="border p-3 xl:p-4 rounded-full">
-                                <Stay2Icons />
-                            </div>
 
-                            <div className="border p-3 xl:p-4 rounded-full">
-                                <Stay3Icons />
-                            </div>
-
-                            <div className="border p-3 xl:p-4 rounded-full">
-                                <Stay4Icons />
-                            </div>
 
                         </div>
                     </div>
 
                     {/* content right side  */}
-                    <div className=" border-l flex flex-col justify-between  p-2 w-[40%] xl:w-[30%] h-full  ">   
+                    <div className=" border-l flex flex-col justify-between  p-2 w-[40%] xl:w-[30%] h-full  ">
                         <p className="flex justify-end gap-2 p-2"><StarIcons />4/5</p>
                         <div className=" flex flex-col gap-2 items-end">
                             <p className="text-lg xlg:text-xl font-semibold">₹ 21,876</p>
@@ -89,7 +83,7 @@ const StayHotelCard = ({ data }) => {
             </div>
             <div className="">
                 <p className='text-center mt-4 '>
-                   {data?.short_des}
+                    {data?.short_des}
                 </p>
             </div>
         </Link>

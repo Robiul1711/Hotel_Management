@@ -31,7 +31,7 @@ const PriceModal = ({ mealPlans }) => {
         <Divider />
 
         <div className="text-sm text-gray-500 p-4 bg-gray-50 rounded-lg">
-          <p className="text-black text-xl">{mealPlans}</p>
+          <p className="text-black text-xl">{mealPlans || "No meal plans"}</p>
         </div>
       </Modal>
     </>

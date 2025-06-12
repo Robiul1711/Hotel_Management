@@ -11,7 +11,7 @@ const StayMobileCardVilla = ({ data }) => {
             <div className="relative h-[80%] sm:h-[65%] md:h-[50%] lg:h-[70%] w-full">
                 <img
                     src={data?.thumbnail}
-                    className="w-full h-full object-cover"
+                    className="w-full h-[300px] object-cover"
                     alt={data?.title || "Accommodation"}
                 />
                 <p className="text-white absolute top-3 left-3 sm:top-4 sm:left-4 bg-black bg-opacity-10 px-2 py-1 sm:px-3 text-xs sm:text-sm font-medium backdrop-blur-sm rounded">

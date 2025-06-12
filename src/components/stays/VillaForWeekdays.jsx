@@ -25,8 +25,8 @@ const data = [
 
 const VillaForWeekdays = () => {
   return (
-    <div className="px-4 md:px-8 lg:px-16">
-      <div className="mb-10 text-center">
+    <div className="">
+      <div className="mb-10 ">
         <p className="text-primary text-2xl sm:text-3xl md:text-5xl font-semibold mb-3">
           Villas for ₹1 on Weekdays
         </p>

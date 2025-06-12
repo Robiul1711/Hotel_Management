@@ -33,7 +33,7 @@ const HotelPackage = () => {
         }
     })
 
-    // console.log(hotel);
+    console.log('hotel data', hotel);
 
     return (
         <>
@@ -46,11 +46,13 @@ const HotelPackage = () => {
                     <div className="hidden md:block  px-4">
 
                         <div className="">
-                            <p className=" md:text-[32px] font-semibold text-primary">{hotel?.hotel_name}</p>
+                            <p className=" md:text-[32px] font-semibold text-primary mb-0">{hotel?.hotel_name}</p>
                             <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
-
                                 <CiLocationOn />
                                 {hotel?.location}
+                            </p>
+                            <p className="text-sm md:text-[20px] text-gray-800">
+                                {hotel?.short_des}
                             </p>
                         </div>
 
@@ -66,7 +68,7 @@ const HotelPackage = () => {
                 <Details hotel={hotel} />
                 <ExperienceSection villaExperience={hotel?.experiences} />
                 <RealMomentSection realMoment={hotel?.real_moments} />
-                <NearbyHotels />
+                {/* <NearbyHotels /> */}
                 {/* <CheckInOutPolicy /> */}
 
                 <HotelPolicies villa={hotel} />

@@ -6,7 +6,7 @@ const HotelOverview = ({hotel}) => {
             <p className="text-[24px] text-black"> Description</p>
             <div className="hidden md:block">
                 <p className="">
-                    {hotel?.long_des}
+                    {hotel?.long_des || 'No description available'}
                 </p>
             </div>
         </div>
