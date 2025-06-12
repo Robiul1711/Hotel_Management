@@ -55,13 +55,13 @@ const ExperienceCard = ({ data }) => {
             {/* Content Section */}
             <div className="p-3 sm:p-4 bg-white flex-1 flex flex-col justify-between">
                 <div className="flex justify-between items-start gap-2 sm:items-center">
-                    <div className="flex flex-col w-[60%] sm:w-[65%]">
+                    <div className="flex flex-col ">
 
-                        <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl line-clamp-2">
+                        <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl line-clamp-2 mb-0">
                             {data?.name}
                         </p>
                         <p className="">
-                            {data?.description}
+                            {data?.description?.slice(0, 200)}...
                         </p>
                     </div>
 

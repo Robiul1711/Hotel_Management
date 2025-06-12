@@ -36,7 +36,7 @@ const BookingSummary = ({ villa }) => {
             </div>
 
             {/* Desktop Button (hidden on mobile) */}
-            <div className="hidden md:block w-10/12 mx-auto my-5">
+            <div className=" w-10/12 mx-auto my-5">
                 <button 
                     onClick={() => navigate(`/checkout/${villa?.id}`, { state: { from: 'villa' } })}
                     className={`px-4 py-4 w-full rounded-full text-lg bg-primary text-white`}

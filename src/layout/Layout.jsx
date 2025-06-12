@@ -30,6 +30,7 @@ const Layout = () => {
 
   const {pathname} = useLocation();
   const isVillaPackagePage = /^\/villa-package-details\/\d+$/.test(pathname);
+  const isHotelPackagePage = /^\/hotel-package-details\/\d+$/.test(pathname);
 
 
   return (
@@ -47,7 +48,7 @@ const Layout = () => {
       </div>
 
       <FloatingNav />
-      {isVillaPackagePage && (
+      {(isVillaPackagePage || isHotelPackagePage) && (
         <div className="md:hidden fixed bottom-12 z-[9999] left-0 right-0 bg-white shadow-lg px-4 py-3">
           <button 
             onClick={() => {

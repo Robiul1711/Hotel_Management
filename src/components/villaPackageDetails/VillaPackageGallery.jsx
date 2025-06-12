@@ -30,38 +30,7 @@ const VillaPackageGallery = ({ thumbnail, media }) => {
 
     return (
         <div>
-            <div className="flex justify-between items-center ">
-                {/* <div className=" gap-3 justify-center items-center hidden md:flex">
-                    <p className="mt-6 font-bold text-2xl">4.8</p>
-                    <div className="flex">
-                        <StarRatings
-                            rating={4.8}
-                            starRatedColor="orange"
-                            numberOfStars={5}
-                            name='rating'
-                            starDimension="20px"
-                            starSpacing="2px"
-                        />
-                    </div>
-                    <div>
-                        <CustomLoveIcon />
-                    </div>
-                </div> */}
-
-                <div className="md:hidden">
-                    <div className="">
-                        <p className=" text-xl font-semibold text-primary mb-0">The Peninsula Beverly Hills</p>
-                        <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600">
-                            Lush green valley view
-
-                        </p>
-                    </div>
-                </div>
-                {/* <div className="flex items-center">
-                    <CustomPdfIcon />
-                    <CustomShareIcon />
-                </div> */}
-            </div>
+           
 
             <div className="md:px-4">
                 <div className="flex flex-col md:flex-row gap-4">

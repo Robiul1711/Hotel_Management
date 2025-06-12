@@ -23,7 +23,7 @@ import Service from '@/components/home/Service';
 
 const VillaPackageDetails = () => {
     const { id } = useParams();
-    console.log(id);
+    // console.log(id);
     const axiosPublic = useAxiosPublic();
 
     const { data: villa } = useQuery({
@@ -34,7 +34,7 @@ const VillaPackageDetails = () => {
         }
     })
 
-    console.log('villa related data', villa);
+    // console.log('villa related data', villa);
 
     return (
         <>
@@ -44,7 +44,7 @@ const VillaPackageDetails = () => {
             </Helmet>
             <div className="section-padding-x">
                 <div className="">
-                    <div className="hidden md:block ">
+                    <div className=" block ">
 
                         <div className=" flex flex-col items-start">
                             <p className=" md:text-[32px] font-semibold text-primary mb-0">{villa?.villa_name}</p>
@@ -56,10 +56,11 @@ const VillaPackageDetails = () => {
                             <p className="text-sm md:text-[20px]">{villa?.short_des}</p>
                         </div>
 
-                        {/* search tab  */}
+
                         {/* <SearchTab/> */}
                     </div>
                 </div>
+                
                 <VillaPackageGallery thumbnail={villa?.thumbnail} media={villa?.media} />
             </div>
             <CommonPageWrapper>

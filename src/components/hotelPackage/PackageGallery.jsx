@@ -32,7 +32,7 @@ const PackageGallery = ({ hotel }) => {
     return (
         <div>
             <div className="flex justify-between items-center ">
-                <div className=" gap-3 justify-center items-center hidden md:flex">
+                {/* <div className=" gap-3 justify-center items-center hidden md:flex">
                     <p className="mt-6 font-bold text-2xl">4.8</p>
                     <div className="flex">
                         <StarRatings
@@ -47,21 +47,23 @@ const PackageGallery = ({ hotel }) => {
                     <div>
                         <CustomLoveIcon />
                     </div>
-                </div>
+                </div> */}
 
                 <div className="md:hidden">
                     <div className="">
                         <p className=" text-xl font-semibold text-primary mb-0">{hotel?.hotel_name}</p>
                         <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600">
                             {hotel?.location}
-
+                        </p>
+                        <p className="text-sm md:text-[20px] text-gray-800">
+                            {hotel?.short_des}
                         </p>
                     </div>
                 </div>
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                     <CustomPdfIcon />
                     <CustomShareIcon />
-                </div>
+                </div> */}
             </div>
 
             <div className="md:px-4">

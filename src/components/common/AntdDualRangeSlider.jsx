@@ -16,8 +16,8 @@ const AntdDualRangeSlider = ({ minPrice, maxPrice, setMinPrice, setMaxPrice }) =
           { backgroundColor: 'white', borderColor: 'white' },
         ]}
         onChange={(val) => setRange(val)}
-        min={0}
-        max={100}
+        min={minPrice}
+        max={maxPrice}
       />
       <div className="mt-2 text-center">Selected Range: {range.join(' - ')}</div>
     </div>

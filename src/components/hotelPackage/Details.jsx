@@ -14,7 +14,7 @@ import HotelBookingSummary from './HotelBookingSummary';
 
 const Details = ({hotel}) => {
 
-    console.log(hotel?.amenities)
+    // console.log(hotel?.amenities)
     return (
         <div className='flex flex-col lg:flex-row gap-5'>
             <div className="w-full lg:w-[70%] space-y-8">

@@ -10,7 +10,7 @@ import useData from '@/hooks/useData';
 
 const HotelCard = ({ data }) => {
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[320px] sm:h-[350px] md:h-[400px] lg:h-[400px]">

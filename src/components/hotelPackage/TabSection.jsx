@@ -9,7 +9,7 @@ const scrollWithOffset = (element) => {
 };
 
 const TabSection = ({tabs}) => {
-    const [selectedTab, setSelectedTab] = useState('Details');
+    const [selectedTab, setSelectedTab] = useState('Description');
 
     const handleTabClick = (tab) => {
         setSelectedTab(tab.name);

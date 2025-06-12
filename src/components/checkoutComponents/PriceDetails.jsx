@@ -4,6 +4,15 @@ import useAuth from '@/hooks/useAuth';
 import { useLocation } from 'react-router-dom';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import { set } from 'date-fns';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 const PriceDetails = ({ villa }) => {
   const { user } = useAuth();
@@ -14,8 +23,14 @@ const PriceDetails = ({ villa }) => {
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [dateError, setDateError] = useState('');
 
+  const [guestDropdownOpen, setGuestDropdownOpen] = useState(false);
+  const [adults, setAdults] = useState(2); // default 2 adults
+  const [children, setChildren] = useState(0);
+  const [infants, setInfants] = useState(0);
+
   const location = useLocation();
   const from = location.state?.from;
+  console.log('villa details', villa)
 
   // Date validation effect
   useEffect(() => {
@@ -32,6 +47,11 @@ const PriceDetails = ({ villa }) => {
       }
     }
   }, [checkInDate, checkOutDate]);
+
+  useEffect(() => {
+    setAdults(villa?.max_guest ? parseFloat(villa?.max_guest) : 2);
+  }, [villa?.max_guest])
+
 
   const handleCheckInChange = (e) => {
     const newCheckInDate = e.target.value;
@@ -62,7 +82,7 @@ const PriceDetails = ({ villa }) => {
       return;
     }
 
-    setLoading(true);
+    // setLoading(true);
     const payload = {
       amount: villa?.price_a_night,
       userEmail: user?.email,
@@ -70,24 +90,30 @@ const PriceDetails = ({ villa }) => {
       villaorhotelid: villa?.id,
       type: from,
       checkindate: checkInDate,
-      checkoutdate: checkOutDate
+      checkoutdate: checkOutDate,
+      guests: {
+        adults,
+        children,
+        infants,
+        total: adults + children + infants,
+      },
     };
 
 
     console.log(payload)
 
-    try {
-      const res = await axiosPublic.post('/razoarpay/payment', payload);
-      if (res) {
-        toast.success('Payment successful');
-        window.location.href = res.data.url;
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error?.response?.data?.error || 'Payment failed');
-    } finally {
-      setLoading(false);
-    }
+    // try {
+    //   const res = await axiosPublic.post('/razoarpay/payment', payload);
+    //   if (res) {
+    //     toast.success('Payment successful');
+    //     window.location.href = res.data.url;
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    //   toast.error(error?.response?.data?.error || 'Payment failed');
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   // Calculate minimum dates
@@ -122,6 +148,60 @@ const PriceDetails = ({ villa }) => {
           />
         </div>
       </div>
+
+      {/* guest section  */}
+      <div className="relative mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">Guests</label>
+        <div
+          className="border rounded-lg p-2 text-sm cursor-pointer flex justify-between items-center"
+          onClick={() => setGuestDropdownOpen(!guestDropdownOpen)}
+        >
+          <span>{adults + children + infants} Guests</span>
+          <svg
+            className={`w-4 h-4 transition-transform ${guestDropdownOpen ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+
+        {guestDropdownOpen && (
+          <div className="absolute z-10 mt-2 w-full bg-white border rounded-xl shadow-lg p-4">
+            {[
+              { label: 'Adults', age: '12+ Years', count: adults, setCount: setAdults },
+              { label: 'Children', age: '6–11 Years', count: children, setCount: setChildren },
+              { label: 'Infants', age: '0–5 Years', count: infants, setCount: setInfants },
+            ].map(({ label, age, count, setCount }) => (
+              <div className="flex justify-between items-center py-2" key={label}>
+                <div>
+                  <p className="font-medium text-sm">{label}</p>
+                  <p className="text-xs text-gray-500">{age}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
+                    onClick={() => setCount(Math.max(count - 1, 0))}
+                    disabled={count === 0}
+                  >
+                    −
+                  </button>
+                  <span className="w-4 text-center text-sm">{count}</span>
+                  <button
+                    className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
+                    onClick={() => setCount(count + 1)}
+                  // disabled={adults + children + infants >=  parseFloat(villa?.max_guests)} 
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
 
       {dateError && (
         <p className="text-red-500 text-xs mb-2">{dateError}</p>
@@ -176,14 +256,37 @@ const PriceDetails = ({ villa }) => {
         </span>
       </div>
 
-      <button
+      {/* For api call  */}
+      {/* <button
         onClick={handlePayment}
         disabled={loading || !acceptTerms || !checkInDate || !checkOutDate || dateError}
         className={`w-full bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 ${(loading || !acceptTerms || !checkInDate || !checkOutDate || dateError) ? 'opacity-50 cursor-not-allowed' : ''
           }`}
       >
         {loading ? 'Processing...' : 'Continue'}
-      </button>
+      </button> */}
+
+      {/* For zoho form open  */}
+
+
+      <Dialog>
+        <DialogTrigger className="w-full">
+          <button
+            className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full"
+          >
+            Continue
+          </button>
+        </DialogTrigger>
+        <DialogContent className="max-w-4xl w-full p-0 overflow-hidden">
+          <iframe
+            title="Hich Booking Reservation Form"
+            aria-label="Hich Booking Reservation Form"
+            src="https://forms.zohopublic.com/happiitude/form/HichBookingReservationForm/formperma/waC6BnIrySDnOkkja2rjqMK5eNviEOL80VVkx576KEo"
+            frameBorder="0"
+            style={{ height: "800px", width: "100%", border: "none" }}
+          />
+        </DialogContent>
+      </Dialog>
 
       <div className="flex items-center justify-center border rounded-lg p-3 text-sm text-green-600">
         <ShieldCheck className="w-4 h-4 mr-2" />

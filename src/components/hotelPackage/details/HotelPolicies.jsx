@@ -3,6 +3,11 @@ import React from 'react';
 import { FaMinusCircle } from 'react-icons/fa';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
 
 const HotelPolicies = ({ villa }) => {
     return (
@@ -31,13 +36,13 @@ const HotelPolicies = ({ villa }) => {
 
             <div className="pt-20">
                 <p className="text-[24px] font-bold leading-none mb-1">Hotel Policies</p>
-                <p className="text-2xl border-l-4 border-red-600 px-2 leading-tight mb-4">
+                <p className="text-2xl leading-tight mb-4">
                     Rules And Refund Policy
                 </p>
 
                 {/* Refund Timeline */}
-                <div className="flex items-start justify-between  border-gray-200 rounded-lg p-4 gap-6 max-w-[700px]">
-                    {/* Left side */}
+                {/* <div className="flex items-start justify-between  border-gray-200 rounded-lg p-4 gap-6 max-w-[700px]">
+                   
                     <div className=" space-y-1">
                         <FaMinusCircle className="text-orange-400 text-xl align-middle" />
                         <div className="flex items-center space-x-2">
@@ -46,7 +51,7 @@ const HotelPolicies = ({ villa }) => {
                         <p className="text-sm text-gray-600">On/Before 10th May, 2025</p>
                     </div>
 
-                    {/* Right side */}
+                 
                     <div className=" space-y-1">
                         <IoMdCloseCircle className="text-pink-600 text-xl align-middle" />
                         <div className="flex items-center space-x-2">
@@ -54,16 +59,45 @@ const HotelPolicies = ({ villa }) => {
                         </div>
                         <p className="text-sm text-gray-600">After 10th May, 2025</p>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Action Buttons */}
                 <div className="flex space-x-3">
-                    <button className="bg-gray-100 text-sm font-medium px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-200 transition">
-                        Refund Policy
-                    </button>
-                    <button className="bg-gray-100 text-sm font-medium px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-200 transition">
-                        Home Rules and Policy
-                    </button>
+
+                    <Popover>
+                        <PopoverTrigger>
+                            <button className="bg-gray-100 text-sm font-medium px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-200 transition">
+                                Refund Policy
+                            </button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-screen max-w-lg">
+                            {
+                                villa?.refunc_policy ? (
+                                    <p className="text-sm text-gray-800">{villa?.refunc_policy}</p>
+                                ) : (
+                                    <p className="text-sm text-gray-800">Refund policy not available</p>
+                                )
+                            }
+                        </PopoverContent>
+                    </Popover>
+
+                    <Popover>
+                        <PopoverTrigger>
+                            <button className="bg-gray-100 text-sm font-medium px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-200 transition">
+                                Home Rules and Policy
+                            </button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-screen max-w-lg">
+                            {
+                                villa?.property_policy ? (
+                                    <p className="text-sm text-gray-800">{villa?.property_policy}</p>
+                                ) : (
+                                    <p className="text-sm text-gray-800">Home rules and policy not available</p>
+                                )
+                            }
+                        </PopoverContent>
+                    </Popover>
+
                 </div>
 
                 {/* Check-in/out Info */}

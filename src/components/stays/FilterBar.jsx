@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ToggleButton from '../common/ToggleButton';
 import AntdDualRangeSlider from '../common/AntdDualRangeSlider';
-
+import { Slider } from "@/components/ui/slider"
 const FilterBar = () => {
     let [quantity, setQuantity] = useState(0);
     const [minPrice, setMinPrice] = useState(1000);
@@ -20,6 +20,7 @@ const FilterBar = () => {
                 <div className="my-5">
                     <p className="text-2xl">Price Range</p>
                     <AntdDualRangeSlider minPrice={minPrice} maxPrice={maxPrice} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
+                    {/* <Slider defaultValue={[33]} max={100} step={1} /> */}
                 </div>
 
                 <div className="flex gap-5 justify-center items-center">
