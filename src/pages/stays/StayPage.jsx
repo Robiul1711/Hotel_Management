@@ -59,7 +59,9 @@ const data = [
 const StayPage = () => {
 
     const [active, setActive] = useState('villa');
-    const { hotelData, villaData } = useData();
+    const { hotelData, villaData, villaSearchResult } = useData();
+
+    console.log('villa search result', villaSearchResult);
 
     return (
         <>
@@ -118,11 +120,30 @@ const StayPage = () => {
                         </div>
 
                         <div className={`hotels ${active === 'villa' ? '' : 'hidden'}`}>
-                            <div className="hidden lg:block space-y-12">
-                                {
-                                    villaData?.map(item => <StayVillaCard key={item.id} data={item} />)
-                                }
-                            </div>
+                            {
+                                villaSearchResult ?
+                                    (
+
+                                        <div className="hidden lg:block space-y-12">
+
+                                            <p className="text-primary text-xl xmd:text-3xl xlg:text-5xl">
+                                                This is search result
+                                            </p>
+                                            {
+                                                villaSearchResult?.map(item => <StayVillaCard key={item.id} data={item} />)
+                                            }
+                                        </div>
+                                    ) :
+                                    (
+                                        <div className="hidden lg:block space-y-12">
+
+                                            {
+                                                villaData?.map(item => <StayVillaCard key={item.id} data={item} />)
+                                            }
+                                        </div>
+                                    )
+                            }
+
 
                             {/* reels section  */}
                             <div className="hidden  flex-wrap gap-10  my-5">
@@ -135,15 +156,29 @@ const StayPage = () => {
                                 }
                             </div>
 
-
+                            {/* Mobile view  */}
                             {
                                 villaData ?
                                     <>
-                                        <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
-                                            {
-                                                villaData?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
-                                            }
-                                        </div>
+                                        {
+                                            villaSearchResult ? (
+                                                <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
+                                                    <p className="text-primary text-xl xmd:text-3xl xlg:text-5xl">
+                                                        This is search result
+                                                    </p>
+                                                    {
+                                                        villaSearchResult?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
+                                                    }
+                                                </div>
+                                            ) :
+                                                (
+                                                    <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
+                                                        {
+                                                            villaData?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
+                                                        }
+                                                    </div>
+                                                )
+                                        }
 
                                         <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary flex items-center gap-3'>
                                             View All
@@ -160,7 +195,7 @@ const StayPage = () => {
                 </div>
                 {/* <Keypoints /> */}
                 <VillaForWeekdays />
-            </CommonPageWrapper>
+            </CommonPageWrapper >
             <SectionBanner />
         </>
     );

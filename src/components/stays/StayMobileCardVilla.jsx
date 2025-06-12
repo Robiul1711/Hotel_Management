@@ -4,7 +4,7 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
 const StayMobileCardVilla = ({ data }) => {
-    console.log(data);
+    // console.log(data);
     return (
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col ">
             {/* Image Section */}
