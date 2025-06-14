@@ -21,7 +21,7 @@ import mumbai from '@/assets/images/mumbai.png'
 import delhi from '@/assets/images/delhi.png'
 import goa from '@/assets/images/goa.png'
 import { Helmet } from 'react-helmet-async';
-import { ScrollRestoration } from 'react-router-dom';
+import { Link, ScrollRestoration } from 'react-router-dom';
 import StayHotelCard from '@/components/stays/StayHotelCard';
 import StayVillaCard from '@/components/stays/StayVillaCard';
 import useData from '@/hooks/useData';
@@ -107,7 +107,11 @@ const StayPage = () => {
                                     <>
                                         <div className="lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
                                             {
-                                                hotelData?.map(item => <StayMobileCard key={item.id} data={item} />)
+                                                hotelData?.map(item =>
+                                                    <Link key={item?.id} to={`/hotel-package-details/${item?.id}`}>
+                                                        <StayMobileCard key={item.id} data={item} />
+                                                    </Link>
+                                                )
                                             }
                                         </div>
 
@@ -167,14 +171,18 @@ const StayPage = () => {
                                                         This is search result
                                                     </p>
                                                     {
-                                                        villaSearchResult?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
+                                                        villaSearchResult?.map(item => <Link key={item.id} to={`/villa-package-details/${item?.id}`}>
+                                                            <StayMobileCardVilla key={item.id} data={item} />
+                                                        </Link>)
                                                     }
                                                 </div>
                                             ) :
                                                 (
                                                     <div className=" lg:hidden gap-4 grid grid-cols-1 sm:grid-cols-2">
                                                         {
-                                                            villaData?.map(item => <StayMobileCardVilla key={item.id} data={item} />)
+                                                            villaData?.map(item => <Link key={item.id} to={`/villa-package-details/${item?.id}`}>
+                                                                <StayMobileCardVilla key={item.id} data={item} />
+                                                            </Link>)
                                                         }
                                                     </div>
                                                 )

@@ -4,6 +4,15 @@ import { RightOutlined } from '@ant-design/icons';
 import room1 from '@/assets/images/stay2.png'; // default fallback image
 import useData from '@/hooks/useData';
 
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+
 const mockRoomData = [
     {
         id: 1,
@@ -34,7 +43,7 @@ const mockRoomData = [
 ];
 
 const RoomCard = ({ room }) => {
-    const {setHotelRoom} = useData();
+    const { setHotelRoom } = useData();
     return (
         <div className="flex flex-col md:flex-row mb-6 border md:border-none rounded-lg">
             <div className="hidden md:block md:w-1/3 md:border rounded-lg p-4">
@@ -72,7 +81,7 @@ const RoomCard = ({ room }) => {
                         <p className="font-medium text-sm">Hich Exclusives:</p>
                         <ul className="list-disc list-inside text-sm  mt-1 space-y-1">
                             <li>Stay Services: {room.description}</li>
-                          
+
                         </ul>
                     </div>
                 </div>
@@ -82,7 +91,21 @@ const RoomCard = ({ room }) => {
                         View Facilities <RightOutlined />
                     </button>
                     <div className="flex flex-col gap-2">
-                        <button onClick={() => { setHotelRoom(room) }} className="bg-primary text-white px-6 py-2 rounded-full shadow-md">Book</button>
+
+                        <Dialog>
+                            <DialogTrigger className="w-full">
+                                <button onClick={() => { setHotelRoom(room) }} className="bg-primary text-white px-6 py-2 rounded-full shadow-md">Reserve Now</button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-4xl w-full p-0 overflow-hidden">
+                                <iframe
+                                    title="Hich Booking Reservation Form"
+                                    aria-label="Hich Booking Reservation Form"
+                                    src="https://forms.zohopublic.com/happiitude/form/HichBookingReservationForm/formperma/waC6BnIrySDnOkkja2rjqMK5eNviEOL80VVkx576KEo"
+                                    frameBorder="0"
+                                    style={{ height: "800px", width: "100%", border: "none" }}
+                                />
+                            </DialogContent>
+                        </Dialog>
                         {/* <p className="text-xs ">Only {room.availability} Room Left!</p> */}
                     </div>
                 </div>
