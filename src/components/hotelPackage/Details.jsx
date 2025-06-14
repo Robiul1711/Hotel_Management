@@ -26,7 +26,7 @@ const Details = ({hotel}) => {
             </div>
 
             <div className="w-full lg:w-[30%]">
-                <div className="sticky top-24"> {/* Use a bit of spacing from top */}
+                <div className="sticky top-24 hidden xmd:block"> {/* Use a bit of spacing from top */}
                   <HotelBookingSummary hotel={hotel}/>
                 </div>
             </div>

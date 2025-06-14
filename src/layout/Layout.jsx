@@ -49,7 +49,7 @@ const Layout = () => {
 
       <FloatingNav />
       {(isVillaPackagePage || isHotelPackagePage) && (
-        <div className="md:hidden fixed bottom-12 z-[9999] left-0 right-0 bg-white shadow-lg px-4 py-3">
+        <div className="md:hidden fixed bottom-0 z-[9999] left-0 right-0 bg-white shadow-lg px-4 py-3">
           <button 
             onClick={() => {
               const descSection = document.getElementById('description');
@@ -62,7 +62,7 @@ const Layout = () => {
             }}
             className="w-full py-2 rounded-full text-base bg-primary text-white shadow-lg"
           >
-            Reserve Now
+           {isVillaPackagePage ? ' Reserve Now' : 'Select Room'}
           </button>
         </div>
       )}
@@ -70,7 +70,7 @@ const Layout = () => {
       {/* Mobile Nav (only visible on small screens) */}
       <div className="sm:hidden">
 
-        <MobileNavbar />
+        {/* <MobileNavbar /> */}
       </div>
     </>
   );

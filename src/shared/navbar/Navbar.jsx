@@ -33,19 +33,19 @@ const Navbar = () => {
           <NavLink className={navLinkClass} to={'/'}>Our Packages</NavLink>
           <NavLink className={navLinkClass} to={'/'}>FAQ</NavLink>
           <NavLink className={navLinkClass} to={'/'}>Contact Us</NavLink> */}
-          {
+          {/* {
             user ?
               ''
               :
 
               <NavLink className={`${navLinkClass} hover:text-primary`} to={'/auth/registration'}>Login/Register</NavLink>
 
-          }
+          } */}
         </ul>
 
-        {
+        {/* {
           user && <UserDropdown />
-        }
+        } */}
 
 
 

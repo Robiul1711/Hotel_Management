@@ -37,7 +37,7 @@ const StayMobileCardVilla = ({ data }) => {
                         <p className="text-primary text-sm">₹ 21,876</p> */}
                         <div className="flex justify-between items-center gap-2">
                             {/* <p className="text-xs text-gray-400">For Per Night + Taxes</p> */}
-                            <Link to={`/hotel-package-details/${data?.id}`}>
+                            <Link to={`/villa-package-details/${data?.id}`}>
                                 <p className="text-primary text-sm">View Package</p>
                             </Link>
                         </div>

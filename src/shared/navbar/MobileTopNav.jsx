@@ -86,13 +86,13 @@ const MobileTopNav = () => {
                 )
             } */}
 
-            <div className="font-semibold flex justify-between items-center text-sm">
+            <div className="font-semibold flex justify-around items-center text-sm">
                 <p className=""> <Link to={'/stays'} className="">Stays</Link></p>
                 <p className="flex justify-center items-center gap-2"><BsTelephone />+91 84249 96432</p>
                 <p className="">   <PropertyListingForm button={false} /></p>
-                <div className="">
+                {/* <div className="">
                     <UserDropdown />
-                </div>
+                </div> */}
             </div>
         </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CiLocationOn } from 'react-icons/ci';
 import img1 from '@/assets/images/hotelP1.png';
 import img2 from '@/assets/images/hotelP2.png';
@@ -12,6 +12,26 @@ import { IoMdCloseCircle } from 'react-icons/io';
 const PackageGallery = ({ hotel }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState('');
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+    useEffect(() => {
+        if (hotel?.media?.length) {
+            setSelectedImage(hotel.media[selectedImageIndex]?.media_name);
+        }
+    }, [selectedImageIndex]);
+
+    const showNextImage = () => {
+        setSelectedImageIndex((prevIndex) =>
+            prevIndex + 1 < hotel.media.length ? prevIndex + 1 : 0
+        );
+    };
+
+    const showPrevImage = () => {
+        setSelectedImageIndex((prevIndex) =>
+            prevIndex - 1 >= 0 ? prevIndex - 1 : hotel.media.length - 1
+        );
+    };
+
 
     // Gallery images
     const images = [img1, img2, img3, img4, img5];
@@ -101,47 +121,65 @@ const PackageGallery = ({ hotel }) => {
 
             {/* Modal */}
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
-                    <div className="bg-white p-4 rounded-lg max-w-7xl w-full max-h-[90vh] flex flex-col">
-                        <div className="flex justify-end">
-                            <button
-                                onClick={closeModal}
-                                className="text-red-500 font-bold text-xl flex items-center gap-2"
-                            >
-                                Close <IoMdCloseCircle />
-                            </button>
-                        </div>
+                <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex flex-col items-center justify-center p-4">
+                    {/* Close Button */}
+                    <button
+                        onClick={closeModal}
+                        className="absolute top-4 right-4 text-white text-2xl z-50"
+                    >
+                        <IoMdCloseCircle />
+                    </button>
 
-                        {/* Main image */}
-                        <div className="mt-4 flex-1">
-                            <img
-                                src={selectedImage}
-                                alt="Selected"
-                                className="w-full h-full max-h-[40vh] object-contain rounded-xl"
-                            />
-                        </div>
+                    {/* Image Display with Navigation */}
+                    <div className="relative w-full max-w-5xl h-[80vh] flex items-center justify-center">
+                        {/* Left Navigation */}
+                        <button
+                            onClick={showPrevImage}
+                            className="absolute left-4 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-3 rounded-full z-40"
+                        >
+                            &#8592;
+                        </button>
 
-                        {/* Thumbnail grid */}
-                        <div className="mt-4 border-t pt-4">
-                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 h-[30vh] overflow-y-auto">
-                                {hotel?.media?.map((image, index) => (
-                                    <div
-                                        key={index}
-                                        className={`relative cursor-pointer border-4 ${selectedImage === image?.media_name ? 'border-primary rounded-lg' : 'border-transparent'}`}
-                                        onClick={() => setSelectedImage(image?.media_name)}
-                                    >
-                                        <img
-                                            src={image?.media_name}
-                                            alt={`Gallery image ${index + 1}`}
-                                            className="w-full h-full object-cover rounded-md"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+                        {/* Selected Image */}
+                        <img
+                            src={selectedImage}
+                            alt="Selected"
+                            className="max-h-full max-w-full object-contain rounded-lg shadow-lg"
+                        />
+
+                        {/* Right Navigation */}
+                        <button
+                            onClick={showNextImage}
+                            className="absolute right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-80 p-3 rounded-full z-40"
+                        >
+                            &#8594;
+                        </button>
+                    </div>
+
+                    {/* Thumbnails Grid */}
+                    <div className="mt-4 w-full max-w-6xl px-4">
+                        <div className="bg-white p-2 rounded-lg shadow max-h-[20vh] overflow-y-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
+                            {hotel?.media?.map((image, index) => (
+                                <div
+                                    key={index}
+                                    className={`cursor-pointer border-4 ${selectedImage === image?.media_name ? 'border-primary rounded-lg' : 'border-transparent'}`}
+                                    onClick={() => {
+                                        setSelectedImage(image?.media_name);
+                                        setSelectedImageIndex(index);
+                                    }}
+                                >
+                                    <img
+                                        src={image?.media_name}
+                                        alt={`Gallery image ${index + 1}`}
+                                        className="w-full h-full object-cover rounded-md"
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             )}
+
         </div>
     );
 };
