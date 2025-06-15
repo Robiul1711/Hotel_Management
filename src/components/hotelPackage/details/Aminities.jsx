@@ -107,7 +107,7 @@ const Aminities = ({ amenityData, data }) => {
               </button>
             )
         }
-        <PriceModal mealPlans={data?.meal_pricing} />
+        {/* <PriceModal mealPlans={data?.meal_pricing} /> */}
       </div>
     </div>
   );

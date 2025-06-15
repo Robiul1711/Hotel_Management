@@ -48,7 +48,7 @@ const Layout = () => {
       </div>
 
       <FloatingNav />
-      {(isVillaPackagePage || isHotelPackagePage) && (
+      {( isHotelPackagePage) && (
         <div className="md:hidden fixed bottom-0 z-[9999] left-0 right-0 bg-white shadow-lg px-4 py-3">
           <button 
             onClick={() => {

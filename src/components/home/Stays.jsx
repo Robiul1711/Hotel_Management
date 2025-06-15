@@ -31,7 +31,7 @@ const Stays = () => {
                     <p className="text-primary font-semibold mb-0 md:text-5xl">
                         Popular Hich Stays
                     </p>
-                    <button className="md:hidden text-gray-400">see all</button>
+                    {/* <button className="md:hidden text-gray-400">see all</button> */}
                 </div>
                 <div className="flex gap-4">
 

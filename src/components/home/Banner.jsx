@@ -90,7 +90,7 @@ const Banner = () => {
             </div>
             <div
 
-                className="absolute bottom-[5%] w-full px-4 flex justify-center z-10"
+                className="absolute bottom-[5%] w-full px-4 flex justify-center z-30"
             >
                 <SearchBar />
             </div>

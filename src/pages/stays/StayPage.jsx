@@ -75,8 +75,8 @@ const StayPage = () => {
                     <div className="hidden xmd:block xmd:w-[25%] border border-l-0  rounded-r-2xl p-4">
                         <FilterBar />
                     </div>
-                    <div className="xmd:hidden">
-                        <MobileFilterBar />
+                    <div className="xmd:hidden py-5">
+                        {/* <MobileFilterBar /> */}
                     </div>
                     <div className="xmd:w-[85%]">
                         <HotelVilla active={active} setActive={setActive} />
@@ -202,7 +202,7 @@ const StayPage = () => {
                     </div>
                 </div>
                 {/* <Keypoints /> */}
-                <VillaForWeekdays />
+                {/* <VillaForWeekdays /> */}
             </CommonPageWrapper >
             <SectionBanner />
         </>

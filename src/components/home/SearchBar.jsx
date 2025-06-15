@@ -90,7 +90,7 @@ const SearchBar = () => {
                                 <button
                                     type="button"
                                     className="text-primary text-sm md:text-2xl font-semibold text-left"
-                                    // onClick={() => togglePopup('destination')} for popup
+                                // onClick={() => togglePopup('destination')} for popup
                                 >
                                     {watch('destination')}
                                 </button>
@@ -222,12 +222,14 @@ const SearchBar = () => {
                             </div> */}
 
                             {/* Search Button */}
+
                             <button
                                 type="submit"
-                                className="bg-primary text-white text-sm sm:text-base md:text-lg py-2 px-3 sm:px-6 sm:py-2 md:px-8 md:py-2 w-fit sm:w-auto rounded-full hover:bg-orange-600 transition-all mt-2 sm:mt-0"
+                                className="bg-primary text-white text-sm sm:text-base md:text-lg py-2 px-3 sm:px-6 sm:py-2 md:px-8 md:py-2 w-fit sm:w-auto rounded-full hover:bg-orange-600 transition-all mt-2 sm:mt-0 cursor-pointer"
                             >
                                 Search
                             </button>
+
                         </div>
                     ) : (
                         <div className="">
