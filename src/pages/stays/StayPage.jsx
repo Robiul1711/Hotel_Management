@@ -115,9 +115,9 @@ const StayPage = () => {
                                             }
                                         </div>
 
-                                        <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary hover:bg-orange-400 flex items-center gap-3'>
+                                        {/* <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary hover:bg-orange-400 flex items-center gap-3'>
                                             View All
-                                        </button>
+                                        </button> */}
                                     </> :
                                     <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Hotel Data Found</p>
                             }
@@ -128,15 +128,25 @@ const StayPage = () => {
                                 villaSearchResult ?
                                     (
 
-                                        <div className="hidden lg:block space-y-12">
-
-                                            <p className="text-primary text-xl xmd:text-3xl xlg:text-5xl">
-                                                This is search result
-                                            </p>
+                                        <>
                                             {
-                                                villaSearchResult?.map(item => <StayVillaCard key={item.id} data={item} />)
+                                                villaSearchResult?.length > 0 ? (
+                                                    <div className="hidden lg:block space-y-12">
+
+                                                        <p className="text-primary text-xl xmd:text-3xl xlg:text-5xl">
+                                                            Your search result
+                                                        </p>
+                                                        {
+                                                            villaSearchResult?.map(item => <StayVillaCard key={item.id} data={item} />)
+                                                        }
+                                                    </div>
+                                                ) :
+                                                    (
+                                                        <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Villa Data Found</p>
+
+                                                    )
                                             }
-                                        </div>
+                                        </>
                                     ) :
                                     (
                                         <div className="hidden lg:block space-y-12">
@@ -188,9 +198,9 @@ const StayPage = () => {
                                                 )
                                         }
 
-                                        <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary flex items-center gap-3'>
+                                        {/* <button className='w-fit mx-auto mt-5 py-3 px-10 rounded-3xl text-white bg-primary flex items-center gap-3'>
                                             View All
-                                        </button>
+                                        </button> */}
                                     </>
                                     :
                                     <p className="text-primary text-3xl md:text-4xl lg:text-5xl text-center md:text-left">No Villa Data Found</p>

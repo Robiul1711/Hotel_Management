@@ -67,9 +67,9 @@ const FilterBar = () => {
 
                 <div className="w-fit mx-auto">
 
-                    <button className="border  py-3 px-8 mt-5 rounded-xl ">
+                    {/* <button className="border  py-3 px-8 mt-5 rounded-xl ">
                         Apply Filter
-                    </button>
+                    </button> */}
                 </div>
             </div>
 
