@@ -109,12 +109,16 @@ const PackageGallery = ({ hotel }) => {
                             </div>
                         ))}
 
-                        <button
-                            onClick={() => openModal(hotel?.thumbnail)}
-                            className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
-                        >
-                            View all photos
-                        </button>
+                        {
+                            hotel?.media?.length > 0 &&
+                            <button
+                                onClick={() => openModal(hotel?.thumbnail)}
+                                className="absolute bottom-3 right-3 bg-white text-black px-4 py-2 rounded-full text-sm shadow"
+                            >
+                                View all photos
+                            </button>
+                        }
+
                     </div>
                 </div>
             </div>
