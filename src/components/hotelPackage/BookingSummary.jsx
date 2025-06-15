@@ -15,7 +15,7 @@ const BookingSummary = ({ villa }) => {
 
     return (
         <div className='bg-white shadow rounded-xl relative  md:pb-0 z-[9999]'>
-            <p className="py-5 bg-[#fff8db] px-2 lg:text-[24px]">Booking Summary</p>
+            {/* <p className="py-5 bg-[#fff8db] px-2 lg:text-[24px]">Booking Summary</p> */}
             <div className="p-4 ">
                 <div className="flex justify-between">
                     <p className="font-semibold text-xl xlg:text-3xl">Starting ₹ {villa?.price_a_night} / Night</p>
