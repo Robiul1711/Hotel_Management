@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import Card from '../common/Card';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaMapMarkerAlt, FaShare } from 'react-icons/fa';
 import { StarIcons } from '@/lib/CustomIcons';
 import { Link } from 'react-router-dom';
 import useData from '@/hooks/useData';
@@ -15,7 +15,7 @@ const HotelCard = ({ data }) => {
     return (
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col h-[320px] sm:h-[350px] md:h-[400px] lg:h-[400px]">
             {/* Image Section - Fixed ratio but constrained by parent height */}
-            <div className="relative h-[80%] w-full"> {/* Percentage of parent height */}
+            <div className="relative h-[60%] w-full"> {/* Percentage of parent height */}
                 <img
                     src={data?.thumbnail}
                     className="w-full h-full object-cover"
@@ -28,9 +28,9 @@ const HotelCard = ({ data }) => {
             </div>
 
             {/* Content Section - Flexible height */}
-            <div className="p-3 sm:p-4 bg-white flex-1 flex flex-col">
+            <div className="p-3 sm:p-4 bg-white flex-1 flex flex-col ">
                 <div className="flex items-start gap-2 sm:items-center mb-1 sm:mb-2">
-                    <div className="flex flex-col flex-1 min-w-0"> {/* Prevents text overflow */}
+                    <div className="flex flex-col flex-1 "> {/* Prevents text overflow */}
                         <p className="font-semibold text-gray-800 text-base sm:text-lg md:text-xl lg:text-xl truncate mb-0">
                             {data?.hotel_name}
                         </p>
@@ -38,18 +38,27 @@ const HotelCard = ({ data }) => {
                             {data?.location}
 
                         </p>
-                        <p className="text-gray-400 text-sm sm:text-base">
-                            {data?.short_des}
 
-                        </p>
 
                     </div>
+
                     <div className="flex-shrink-0">
                         <p className="flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
                             <StarIcons className="w-3 h-3 sm:w-4 sm:h-4" />5.0
                         </p>
                     </div>
+
                 </div>
+                <p className="text-gray-400 text-sm sm:text-base">
+                    {data?.short_des?.slice(0, 100)}
+                    {
+                        data?.short_des?.length > 100 ?
+                            '...'
+                            :
+                            ''
+                    }
+
+                </p>
                 {/* <p className="text-primary lg:text-2xl font-bold mb-0">₹ {data?.price}</p>
                 <p className="text-base text-gray-400">For Per Night + Taxes</p> */}
 
@@ -57,6 +66,8 @@ const HotelCard = ({ data }) => {
         </div>
     );
 };
+
+
 
 
 const HotelSlider = ({ data, cardNo = 3.5 }) => {
