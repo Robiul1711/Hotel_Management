@@ -19,7 +19,7 @@ const PromotionalBanner2 = () => {
             <div className="space-y-3">
                 <p className=" lg:text-5xl font-semibold mb-0">Villas for ₹1 on Weekdays!</p>
                 <p className="lg:text-xl  font-semibold">Just pay for meals – the villa’s practically on us from Monday -Thursday!</p>
-                <Link className='' target='_blank' to={'https://api.whatsapp.com/send?phone=918424996432&text=Hi%2C%20would%20like%20to%20know%20more%20about%20the%201%20rupee%20villas'}>
+                <Link className='' target='_blank' to={'https://api.whatsapp.com/send?phone=919769389956&text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20the%201%20rupee%20villas'}>
                     <button className='bg-primary text-white px-2 py-2 my-3 font-semibold xmd:px-6 xmd:py-4 rounded-full'>Save on Stays</button>
                 </Link>
             </div>

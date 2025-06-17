@@ -5,7 +5,7 @@ const FloatingNav = () => {
     return (
         <div className="fixed -right-2 top-3/4 z-50 flex flex-col items-center gap-4">
             <a
-                href="https://api.whatsapp.com/send?phone=918424996432&text=Hi%2C%20would%20like%20to%20know%20more%20about%20Hich"
+                href="https://api.whatsapp.com/send?phone=919769389956&text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20Hich"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 text-white p-2 sm:p-3 md:p-4 rounded-l-full shadow-lg hover:bg-green-600 transition-all"
