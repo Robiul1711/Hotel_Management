@@ -23,8 +23,8 @@ const Footer = () => {
         <p className='font-semibold'>2023. All right reserved.</p>
         <div className="">
           <ul className='text-black flex justify-between gap-4 lg:gap-12'>
-            <NavLink className={navLinkClass} to={'/'}> <span className="underline text-xs md:text-lg">Privacy Policy</span> </NavLink>
-            <NavLink className={navLinkClass} to={'/about'}><span className="underline text-xs md:text-lg">Terms of Service</span></NavLink>
+            {/* <NavLink className={navLinkClass} to={'/'}> <span className="underline text-xs md:text-lg">Privacy Policy</span> </NavLink> */}
+            {/* <NavLink className={navLinkClass} to={'/about'}><span className="underline text-xs md:text-lg">Terms of Service</span></NavLink> */}
             {/* <NavLink className={navLinkClass} to={'/contact'}><span className="underline text-xs md:text-lg">Cookies Settings</span></NavLink> */}
           </ul>
         </div>

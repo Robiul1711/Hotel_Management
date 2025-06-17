@@ -25,7 +25,7 @@ const Navbar = () => {
           <li>
             <NavLink className={`${navLinkClass} hover:text-primary`} to={'/stays'}>Stays</NavLink>
           </li>
-          <li className='flex items-center gap-2 font-bold'><BsTelephone className='font-bold' />+91 8424996432</li>
+          <li className='flex items-center gap-2 font-bold'><BsTelephone className='font-bold' />+91 97693 89956</li>
           <li>
             <PropertyListingForm button={false} />
           </li>
