@@ -33,7 +33,8 @@ const HotelBookingSummary = ({ hotel }) => {
                             <p className="text-3xl text-center text-primary">Select a room Type!</p>
                         </>
                 }
-                <Dialog>
+                {/* zoho form  */}
+                {/* <Dialog>
                     <DialogTrigger className="w-full">
                         <button
                             className={` py-2 xlg:py-4 my-4 w-full rounded-full text-lg bg-primary text-white mx-auto `}
@@ -50,11 +51,11 @@ const HotelBookingSummary = ({ hotel }) => {
                             style={{ height: "800px", width: "100%", border: "none" }}
                         />
                     </DialogContent>
-                </Dialog>
+                </Dialog> */}
             </div>
 
 
-            {/* <div className="border-t p-5">
+            <div className="border-t p-5">
                 <div className="flex gap-5 items-center justify-between">
                     <input type="text" className='border w-full h-10' />
                     <button
@@ -64,9 +65,9 @@ const HotelBookingSummary = ({ hotel }) => {
                     </button>
                 </div>
 
-            </div> */}
+            </div>
 
-            {/* <div className="w-10/12 mx-auto">
+            <div className="w-10/12 mx-auto">
                 <button
                     disabled={!hotelRoom}
                     onClick={() => navigate(`/hotel-checkout/${hotel?.id}`, { state: { from: 'hotel' } })}
@@ -74,13 +75,13 @@ const HotelBookingSummary = ({ hotel }) => {
                 >
                     {hotelRoom ? 'Book Now' : 'Select a Room'}
                 </button>
-            </div> */}
+            </div>
 
-            {/* <div className="py-5 my-5 bg-gray-100 ">
+            <div className="py-5 my-5 bg-gray-100 ">
                 <p className="text-center">
                     Got Questions? Hich is at your Service
                 </p>
-            </div> */}
+            </div>
 
             {/* <div className="py-5 flex gap-2 flex-wrap justify-around">
                 <button
