@@ -2,25 +2,26 @@ import { DeleteIcons } from '@/lib/CustomIcons';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
 } from "@/components/ui/dialog"
 
 const BookingSummary = ({ villa }) => {
     const navigate = useNavigate();
 
     return (
-        <div className='bg-white shadow rounded-xl relative  md:pb-0 z-[9999]'>
+        <div className='bg-white shadow rounded-xl relative  md:pb-0 z-[9999] border'>
             {/* <p className="py-5 bg-[#fff8db] px-2 lg:text-[24px]">Booking Summary</p> */}
             <div className="p-4 ">
                 <div className="flex justify-between">
                     <p className="font-semibold text-xl xlg:text-3xl">Starting ₹ {villa?.price_a_night} / Night</p>
                 </div>
-                <Dialog>
+                {/* zoho form  */}
+                {/* <Dialog>
                     <DialogTrigger className="w-full">
                         <button
                             className={`px-4 py-2 xlg:py-4 w-full rounded-full text-lg bg-primary text-white `}
@@ -37,21 +38,21 @@ const BookingSummary = ({ villa }) => {
                             style={{ height: "800px", width: "100%", border: "none" }}
                         />
                     </DialogContent>
-                </Dialog>
+                </Dialog> */}
 
             </div>
 
 
 
             {/* Desktop Button (hidden on mobile) */}
-            {/* <div className=" w-10/12 mx-auto my-5">
+            <div className=" w-10/12 mx-auto my-5">
                 <button
                     onClick={() => navigate(`/checkout/${villa?.id}`, { state: { from: 'villa' } })}
                     className={`px-4 py-4 w-full rounded-full text-lg bg-primary text-white`}
                 >
                     Reserve Now
                 </button>
-            </div> */}
+            </div>
 
 
             {/* <div className="py-5 flex gap-2 flex-wrap justify-around">
