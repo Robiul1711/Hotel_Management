@@ -91,8 +91,8 @@ const RoomCard = ({ room }) => {
                         View Facilities <RightOutlined />
                     </button>
                     <div className="flex flex-col gap-2">
-
-                        <Dialog>
+                        <button onClick={() => { setHotelRoom(room) }} className="bg-primary text-white px-6 py-2 rounded-full shadow-md">Reserve Now</button>
+                        {/* <Dialog>
                             <DialogTrigger className="w-full">
                                 <button onClick={() => { setHotelRoom(room) }} className="bg-primary text-white px-6 py-2 rounded-full shadow-md">Reserve Now</button>
                             </DialogTrigger>
@@ -105,7 +105,7 @@ const RoomCard = ({ room }) => {
                                     style={{ height: "800px", width: "100%", border: "none" }}
                                 />
                             </DialogContent>
-                        </Dialog>
+                        </Dialog> */}
                         {/* <p className="text-xs ">Only {room.availability} Room Left!</p> */}
                     </div>
                 </div>
