@@ -63,10 +63,10 @@ const StayVillaCard = ({ data }) => {
                             <StarIcons /> 4/5
                         </p>
                         <div className="flex flex-col justify-end items-end space-y-2">
-                            <p className="text-lg lg:text-xl font-semibold">₹ {data?.price_a_night}</p>
-                            <button className="border py-1 px-4 rounded-3xl text-secondary border-secondary text-xs  sm:text-base sm:px-6 sm:py-2">
+                            <p className="text-lg lg:text-xl mb-0 font-semibold">₹ {data?.price_a_night}</p>
+                            {/* <button className="border py-1 px-4 rounded-3xl text-secondary border-secondary text-xs  sm:text-base sm:px-6 sm:py-2">
                                 For 1 Room
-                            </button>
+                            </button> */}
                             <p className="text-[12px] text-gray-400">Per Night + Taxes (1 Room)</p>
                             <Link to={`/villa-package-details/${data?.id}`}>
                                 <button className="py-1 px-4 rounded-3xl whitespace-nowrap text-white bg-secondary hover:bg-orange-600 text-xs sm:text-base sm:px-6 sm:py-2">
