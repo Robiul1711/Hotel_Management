@@ -41,8 +41,20 @@ const FilterBar = () => {
     }
 
     return (
-        <div>
+        <div className='relative'>
             <p className="text-lg"><span className="text-primary">Home</span> {">"} <span className="text-gray-400">Villas in Lonavala</span></p>
+            <div className="flex items-center justify-between sticky top-[90px] bg-white z-10 py-2 border-b ">
+                <button onClick={handleSearch} className="border py-3 px-8  rounded-xl">
+                    Apply
+                </button>
+                <p onClick={() => {
+                    setSelectedAmenities([]);
+                    setMinPrice(1000);
+                    setMaxPrice(500000);
+                    setVillaSearchResult(null);
+                    scrollTo(0, 400);
+                }} className="underline cursor-pointer text-gray-400 mb-0">Clear All</p>
+            </div>
             <div className="border-b-2 space-y-3 my-5 pb-8">
                 <p className="text-2xl">Display total Price</p>
                 <p className="text-lg">Price per night with taxes</p>
@@ -140,7 +152,7 @@ const FilterBar = () => {
             <div className="py-8 flex flex-col gap-3">
                 <p className="text-2xl">Selected Filters</p>
 
-                <div className="flex items-center justify-between">
+                {/* <div className="flex items-center justify-between">
                     <button onClick={handleSearch} className="border py-3 px-8  rounded-xl">
                         All Results
                     </button>
@@ -151,7 +163,7 @@ const FilterBar = () => {
                         setVillaSearchResult(null);
                         scrollTo(0, 400);
                     }} className="underline cursor-pointer text-gray-400">Clear All</p>
-                </div>
+                </div> */}
 
 
             </div>
