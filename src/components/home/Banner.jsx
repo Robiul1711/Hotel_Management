@@ -10,32 +10,37 @@ import banner2 from "@/assets/images/homebanner1.jpg";
 import banner3 from "@/assets/images/homebanner2.jpg";
 import banner4 from "@/assets/images/homebanner3.jpg";
 import banner5 from "@/assets/images/homebanner4.jpg";
+import useBannerData from "@/hooks/useBannerDataHook";
 
-const banners = [banner1, banner2, banner3, banner4, banner5];
+const banners1 = [banner1, banner2, banner3, banner4, banner5];
 
 const Banner = () => {
+
+    const { banners } = useBannerData();
+
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Auto-slide logic
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) =>
-                prevIndex === banners.length - 1 ? 0 : prevIndex + 1
+                prevIndex === banners?.length - 1 ? 0 : prevIndex + 1
             );
         }, 4000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [banners]);
 
     const goToPrevious = () => {
         setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? banners.length - 1 : prevIndex - 1
+            prevIndex === 0 ? banners?.length - 1 : prevIndex - 1
         );
     };
 
     const goToNext = () => {
         setCurrentIndex((prevIndex) =>
-            prevIndex === banners.length - 1 ? 0 : prevIndex + 1
+            prevIndex === banners?.length - 1 ? 0 : prevIndex + 1
         );
     };
 
@@ -43,10 +48,10 @@ const Banner = () => {
         <div className="relative">
             <div className="relative w-full h-[75vh] overflow-hidden">
                 {/* Fade Transition Images */}
-                {banners.map((img, index) => (
+                {banners?.map((img, index) => (
                     <img
                         key={index}
-                        src={img}
+                        src={img?.image_url}
                         alt={`Banner ${index}`}
                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${currentIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                     />

@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const ToggleButton = () => {
-    const [enabled, setEnabled] = useState(false);
+const ToggleButton = ({enabled, onToggle}) => {
+  
 
     return (
         <div
-            onClick={() => setEnabled(!enabled)}
+            onClick={() => onToggle(!enabled)}
             className={`w-[52px] h-7 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${enabled ? "bg-blue-500" : "bg-gray-300"
                 }`}
         >

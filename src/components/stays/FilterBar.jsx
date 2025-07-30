@@ -7,11 +7,15 @@ import useAxiosPublic from '@/hooks/useAxiosPublic';
 import useData from '@/hooks/useData';
 import toast from 'react-hot-toast';
 const FilterBar = () => {
+
     let [quantity, setQuantity] = useState(0);
     const [minPrice, setMinPrice] = useState(1000);
     const [maxPrice, setMaxPrice] = useState(500000);
     const [showAll, setShowAll] = useState(false);
     const [selectedAmenities, setSelectedAmenities] = useState([]);
+
+    const [isEnabled, setIsEnabled] = useState(false);
+
     const axiosPublic = useAxiosPublic();
     const { setVillaSearchResult } = useData();
 
@@ -26,8 +30,11 @@ const FilterBar = () => {
     // console.log('All amenities:', aminities);
 
     const handleSearch = async () => {
-        const payload = { minPrice, maxPrice, amenity_id: selectedAmenities };
-        // console.log(payload)
+        let payload = {};
+        isEnabled ? payload = { minPrice, maxPrice, amenity_id: selectedAmenities } :
+            payload = { one_rupe: 1 };
+        console.log(payload)
+
         const toastId = toast.loading('Searching...');
         try {
             const res = await axiosPublic.post('/villa/allfilterdatas', payload);
@@ -39,6 +46,8 @@ const FilterBar = () => {
             toast.error('Something went wrong', { id: toastId });
         }
     }
+
+
 
     return (
         <div className='relative'>
@@ -55,11 +64,19 @@ const FilterBar = () => {
                     scrollTo(0, 400);
                 }} className="underline cursor-pointer text-gray-400 mb-0">Clear All</p>
             </div>
+
             <div className="border-b-2 space-y-3 my-5 pb-8">
+                <p className="text-2xl">One Rupee Villa</p>
+                <p className="text-lg">Price per night with taxes</p>
+                <ToggleButton enabled={isEnabled} onToggle={setIsEnabled} />
+            </div>
+
+
+            {/* <div className="border-b-2 space-y-3 my-5 pb-8">
                 <p className="text-2xl">Display total Price</p>
                 <p className="text-lg">Price per night with taxes</p>
                 <ToggleButton />
-            </div>
+            </div> */}
 
             <div className="border-b-2 pb-8">
                 <div className="my-5">

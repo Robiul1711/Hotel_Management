@@ -14,8 +14,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-const PriceDetails = ({ villa }) => {
+const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
+
   const { user } = useAuth();
+
+
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(false);
   const [checkInDate, setCheckInDate] = useState('');
@@ -24,13 +27,34 @@ const PriceDetails = ({ villa }) => {
   const [dateError, setDateError] = useState('');
 
   const [guestDropdownOpen, setGuestDropdownOpen] = useState(false);
-  const [adults, setAdults] = useState(2); // default 2 adults
+  const [adults, setAdults] = useState(0); // default 2 adults
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);
 
+  // for package total price 
+  const [mealPackageTotal, setMealPackageTotal] = useState(0);
+  const [totalPayable, setTotalPayable] = useState(0);
+  // Calculation effect
+  useEffect(() => {
+    const newMealPackageTotal = selectedMealPackages?.reduce((total, pkg) => {
+      const adultPrice = parseFloat(pkg.adult_price) || 0;
+      const childPrice = parseFloat(pkg.child_price) || 0;
+      return total + (adultPrice * adults) + (childPrice * children);
+    }, 0);
+
+    console.log('New Meal package total',newMealPackageTotal)
+
+    setMealPackageTotal(newMealPackageTotal);
+    // setTotalPayable(
+    //   (parseFloat(villa?.price_a_night) || 0) +
+    //   (parseFloat(addOnPrice) || 0) +
+    //   newMealPackageTotal
+    // );
+  }, [selectedMealPackages, adults, children, villa?.price_a_night, addOnPrice]);
+
+
   const location = useLocation();
   const from = location.state?.from;
-  console.log('villa details', villa)
 
   // Date validation effect
   useEffect(() => {
@@ -48,9 +72,9 @@ const PriceDetails = ({ villa }) => {
     }
   }, [checkInDate, checkOutDate]);
 
-  useEffect(() => {
-    setAdults(villa?.max_guest ? parseFloat(villa?.max_guest) : 2);
-  }, [villa?.max_guest])
+  // useEffect(() => {
+  //   setAdults(villa?.max_guest ? parseFloat(villa?.max_guest) : 2);
+  // }, [villa?.max_guest])
 
 
   const handleCheckInChange = (e) => {
@@ -120,6 +144,18 @@ const PriceDetails = ({ villa }) => {
   const today = new Date().toISOString().split('T')[0];
   const minCheckOutDate = checkInDate || today;
 
+  // calculate package price 
+  // console.log('Addon prices: ', addOnPrice);
+  // console.log('selected meal packages', selectedMealPackages);
+
+  // console.log('Number of adult', adults);
+  // console.log('Number of children', children);
+
+  console.log('Meal package total', mealPackageTotal);
+
+
+
+
   return (
     <div className="xlg:max-w-md w-full mx-auto border rounded-xl p-6 bg-white shadow-md">
       <h2 className="text-lg font-semibold mb-4">Price Details</h2>
@@ -156,7 +192,7 @@ const PriceDetails = ({ villa }) => {
           className="border rounded-lg p-2 text-sm cursor-pointer flex justify-between items-center"
           onClick={() => setGuestDropdownOpen(!guestDropdownOpen)}
         >
-          <span>{adults + children + infants} Guests</span>
+          <span>{adults + children} Guests</span>
           <svg
             className={`w-4 h-4 transition-transform ${guestDropdownOpen ? 'rotate-180' : ''}`}
             fill="none"
@@ -172,7 +208,7 @@ const PriceDetails = ({ villa }) => {
             {[
               { label: 'Adults', age: '12+ Years', count: adults, setCount: setAdults },
               { label: 'Children', age: '6–11 Years', count: children, setCount: setChildren },
-              { label: 'Infants', age: '0–5 Years', count: infants, setCount: setInfants },
+              // { label: 'Infants', age: '0–5 Years', count: infants, setCount: setInfants },
             ].map(({ label, age, count, setCount }) => (
               <div className="flex justify-between items-center py-2" key={label}>
                 <div>
@@ -207,7 +243,7 @@ const PriceDetails = ({ villa }) => {
         <p className="text-red-500 text-xs mb-2">{dateError}</p>
       )}
 
-      <p className="text-sm text-green-600 flex items-center gap-1 mb-4">
+      {/* <p className="text-sm text-green-600 flex items-center gap-1 mb-4">
         <CheckCircle className="w-4 h-4 text-green-600" />
         You Pay Zero Convenience Fees On Your Booking!
       </p>
@@ -233,11 +269,11 @@ const PriceDetails = ({ villa }) => {
 
       <p className="text-xs text-blue-600 mb-4 cursor-pointer underline">
         View coupons / Apply Future Stay Voucher →
-      </p>
+      </p> */}
 
       <div className="flex justify-between items-center bg-[#FF5A1F] text-white px-4 py-3 rounded-lg mb-4">
         <span className="text-sm font-semibold">Total Payable</span>
-        <span className="text-lg font-bold">₹ {villa?.price_a_night}</span>
+        <span className="text-lg font-bold">₹ {parseFloat(villa?.price_a_night) + parseFloat(addOnPrice)}</span>
       </div>
 
       <div className="flex items-start mb-4 text-xs text-gray-600">

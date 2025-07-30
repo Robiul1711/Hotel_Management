@@ -55,12 +55,10 @@ const VillaPackageDetails = () => {
                             </p>
                             <p className="text-sm md:text-[20px]">{villa?.short_des}</p>
                         </div>
-
-
                         {/* <SearchTab/> */}
                     </div>
                 </div>
-                
+
                 <VillaPackageGallery thumbnail={villa?.thumbnail} media={villa?.media} />
             </div>
             <CommonPageWrapper>
