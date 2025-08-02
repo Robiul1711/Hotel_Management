@@ -26,7 +26,8 @@ const LuxuryVila = () => {
                         }
                     </ul>
                     <div className="">
-                        <PropertyListingForm />
+                        {/* <PropertyListingForm /> zoho form  */}
+                        <EnquireForm />
                     </div>
                 </div>
             </div>

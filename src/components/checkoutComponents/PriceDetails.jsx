@@ -42,7 +42,7 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
       return total + (adultPrice * adults) + (childPrice * children);
     }, 0);
 
-    console.log('New Meal package total',newMealPackageTotal)
+
 
     setMealPackageTotal(newMealPackageTotal);
     // setTotalPayable(
@@ -152,6 +152,7 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
   // console.log('Number of children', children);
 
   console.log('Meal package total', mealPackageTotal);
+  console.log('Add on price', addOnPrice);
 
 
 
@@ -185,9 +186,9 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
         </div>
       </div>
 
-      {/* guest section  */}
+      {/* initial guest section  */}
       <div className="relative mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">Guests</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Initial Guests ({villa?.total_guest})</label>
         <div
           className="border rounded-lg p-2 text-sm cursor-pointer flex justify-between items-center"
           onClick={() => setGuestDropdownOpen(!guestDropdownOpen)}
@@ -227,7 +228,60 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
                   <button
                     className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
                     onClick={() => setCount(count + 1)}
-                  // disabled={adults + children + infants >=  parseFloat(villa?.max_guests)} 
+                    disabled={adults + children >= parseFloat(villa?.max_guests)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* extra guest section */}
+      <div className="relative mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">Extra Guests ({villa?.max_guest - villa?.total_guest})</label>
+        <div
+          className="border rounded-lg p-2 text-sm cursor-pointer flex justify-between items-center"
+          onClick={() => setGuestDropdownOpen(!guestDropdownOpen)}
+        >
+          <span>{adults + children} Guests</span>
+          <svg
+            className={`w-4 h-4 transition-transform ${guestDropdownOpen ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+
+        {guestDropdownOpen && (
+          <div className="absolute z-10 mt-2 w-full bg-white border rounded-xl shadow-lg p-4">
+            {[
+              { label: 'Adults', age: '12+ Years', count: adults, setCount: setAdults },
+              { label: 'Children', age: '6–11 Years', count: children, setCount: setChildren },
+              // { label: 'Infants', age: '0–5 Years', count: infants, setCount: setInfants },
+            ].map(({ label, age, count, setCount }) => (
+              <div className="flex justify-between items-center py-2" key={label}>
+                <div>
+                  <p className="font-medium text-sm">{label}</p>
+                  <p className="text-xs text-gray-500">{age}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
+                    onClick={() => setCount(Math.max(count - 1, 0))}
+                    disabled={count === 0}
+                  >
+                    −
+                  </button>
+                  <span className="w-4 text-center text-sm">{count}</span>
+                  <button
+                    className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
+                    onClick={() => setCount(count + 1)}
+                    disabled={adults + children >= parseFloat(villa?.max_guests)}
                   >
                     +
                   </button>

@@ -31,8 +31,8 @@ const FilterBar = () => {
 
     const handleSearch = async () => {
         let payload = {};
-        isEnabled ? payload = { minPrice, maxPrice, amenity_id: selectedAmenities } :
-            payload = { one_rupe: 1 };
+        isEnabled ? payload = { one_rupe: 1 } :
+            payload = { minPrice, maxPrice, amenity_id: selectedAmenities };
         console.log(payload)
 
         const toastId = toast.loading('Searching...');
@@ -78,11 +78,10 @@ const FilterBar = () => {
                 <ToggleButton />
             </div> */}
 
-            <div className="border-b-2 pb-8">
+            {/*  <div className="border-b-2 pb-8">
                 <div className="my-5">
                     <p className="text-2xl">Price Range</p>
                     <AntdDualRangeSlider minPrice={minPrice} maxPrice={maxPrice} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
-                    {/* <Slider defaultValue={[33]} max={100} step={1} /> */}
                 </div>
 
                 <div className="flex gap-5 justify-center items-center">
@@ -96,11 +95,9 @@ const FilterBar = () => {
 
                 <div className="w-fit mx-auto">
 
-                    {/* <button className="border  py-3 px-8 mt-5 rounded-xl ">
-                        Apply Filter
-                    </button> */}
+                    
                 </div>
-            </div>
+            </div> */}
 
             <div className="py-8 border-b-2 flex items-center justify-between ">
                 <div className="">
@@ -144,30 +141,69 @@ const FilterBar = () => {
                 <p className="text-2xl">Price Per Night</p>
 
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(1000);
+                            setMaxPrice(10000);
+                        }}
+                        checked={minPrice === 1000 && maxPrice === 10000}
+                    />
                     <span>Under ₹10,000</span>
                 </label>
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(10000);
+                            setMaxPrice(20000);
+                        }}
+                        checked={minPrice === 10000 && maxPrice === 20000}
+                    />
                     <span>₹10,000 - ₹20,000</span>
                 </label>
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(20000);
+                            setMaxPrice(35000);
+                        }}
+                        checked={minPrice === 20000 && maxPrice === 35000}
+                    />
                     <span>₹20,000 - ₹35,000</span>
                 </label>
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(35000);
+                            setMaxPrice(50000);
+                        }}
+                        checked={minPrice === 35000 && maxPrice === 50000}
+                    />
                     <span>₹35,000 - ₹50,000</span>
                 </label>
-
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>More than ₹50,000 </span>
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(50000);
+                            setMaxPrice(500000);
+                        }}
+                        checked={minPrice === 50000 && maxPrice === 500000}
+                    />
+                    <span>More than ₹50,000</span>
                 </label>
             </div>
 
             <div className="py-8 flex flex-col gap-3">
-                <p className="text-2xl">Selected Filters</p>
+                {/* <p className="text-2xl">Selected Filters</p> */}
 
                 {/* <div className="flex items-center justify-between">
                     <button onClick={handleSearch} className="border py-3 px-8  rounded-xl">

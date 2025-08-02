@@ -12,6 +12,7 @@ import useData from '@/hooks/useData';
 
 const VillaCard = ({ data }) => {
 
+    console.log(data);
 
 
 
@@ -34,17 +35,20 @@ const VillaCard = ({ data }) => {
             <div className="p-3 sm:p-4 bg-white flex-1 flex flex-col">
                 <div className="flex items-start gap-2 sm:items-center mb-1 sm:mb-2">
                     <div className="flex flex-col flex-1 min-w-0"> {/* Prevents text overflow */}
-                        <p className="font-semibold text-gray-800 text-base sm:text-lg md:text-xl lg:text-xl truncate">
+                        <p className="font-semibold mb-2 text-gray-800 text-base sm:text-lg md:text-xl lg:text-xl truncate">
                             {data?.villa_name}
                         </p>
-                        <p className="text-gray-400 text-sm sm:text-base">
-                            {data?.price_a_night}
+                        <p className="my-0">
+                            Location: {data?.location}
+                        </p>
+                        <p className="font-bold text-sm sm:text-base">
+                            Starting form ₹{data?.price_a_night}
                         </p>
                     </div>
                     <div className="flex-shrink-0">
-                        <p className="flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
+                        {/* <p className="flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
                             <StarIcons className="w-3 h-3 sm:w-4 sm:h-4" />5.0
-                        </p>
+                        </p> */}
                     </div>
                 </div>
                 <p className="text-gray-400 text-sm sm:text-base line-clamp-2 sm:line-clamp-3 mt-auto">

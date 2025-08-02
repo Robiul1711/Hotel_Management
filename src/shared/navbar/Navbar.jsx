@@ -27,7 +27,8 @@ const Navbar = () => {
           </li>
           <li className='flex items-center gap-2 font-bold'><BsTelephone className='font-bold' />+91 97693 89956</li>
           <li>
-            <PropertyListingForm button={false} />
+            {/* <PropertyListingForm button={false} /> */}
+            <ListYourVilla/>
           </li>
           {/* <NavLink className={navLinkClass} to={'/'}>About Us</NavLink>
           <NavLink className={navLinkClass} to={'/'}>Our Packages</NavLink>

@@ -42,7 +42,7 @@ const Home = () => {
         <Gallery />
         <Celebrate/>
         <Choose />
-        <Service />
+        {/* <Service /> */}
 
         <MobileGallery />
         

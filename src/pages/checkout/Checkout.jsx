@@ -12,6 +12,7 @@ import useMealPackageHook from "@/hooks/useMealPackageHook";
 import useAddOnHooks from "@/hooks/useAddOnHooks";
 import AddOnCard from "./AddOnCard";
 import { useEffect, useState } from "react";
+import ComplaintForm from "./ComplaintForm";
 const Checkout = () => {
 
   const { id } = useParams();
@@ -125,9 +126,8 @@ const Checkout = () => {
                 <h1 className="text-xs xxs:text-sm sm:text-base">
                   Any issue to complete your booking?
                 </h1>
-                <button className="border border-primary px-4 py-2 text-xs xxs:text-sm sm:text-base rounded-md">
-                  Click here
-                </button>
+                
+                <ComplaintForm />
               </div>
               <AnySpecialRequests />
             </div>
