@@ -13,6 +13,8 @@ import {
 const BookingSummary = ({ villa }) => {
     const navigate = useNavigate();
 
+    console.log(villa?.booking_option)
+
     return (
         <div className='bg-white shadow rounded-xl relative  md:pb-0 z-[9999] border'>
             {/* <p className="py-5 bg-[#fff8db] px-2 lg:text-[24px]">Booking Summary</p> */}
@@ -50,8 +52,14 @@ const BookingSummary = ({ villa }) => {
                     onClick={() => navigate(`/villa-checkout/${villa?.id}`, { state: { from: 'villa' } })}
                     className={`px-4 py-4 w-full rounded-full text-lg bg-primary text-white`}
                 >
-                    Reserve Now
+                    {
+                        villa?.booking_option === "reserve_btn" ? " Reserve Now" : "Book Now"
+                    }
                 </button>
+
+                
+
+
             </div>
 
 

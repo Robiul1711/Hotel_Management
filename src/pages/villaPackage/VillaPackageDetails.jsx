@@ -72,7 +72,7 @@ const VillaPackageDetails = () => {
                 </div>
                 <ExperienceSection villaExperience={villa?.experiences} />
                 <RealMomentSection realMoment={villa?.real_moments} />
-                <VillaFacilities />
+                {/* <VillaFacilities /> */}
 
                 {/* <NearbyHotels /> */}
                 <HotelPolicies villa={villa} />

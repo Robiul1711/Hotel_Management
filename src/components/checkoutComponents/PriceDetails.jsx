@@ -361,11 +361,21 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
 
       <Dialog>
         <DialogTrigger className="w-full">
-          <button
-            className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full"
-          >
-            Continue
-          </button>
+          {
+            villa?.booking_option === "reserve_btn" ?
+              <button
+                className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full"
+              >
+                Reserve Now
+              </button>
+              :
+              <button
+                className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full"
+              >
+                Book Now
+              </button>
+          }
+
         </DialogTrigger>
         <DialogContent className="max-w-4xl w-full p-0 overflow-hidden">
           <iframe
