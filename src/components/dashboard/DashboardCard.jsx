@@ -1,9 +1,11 @@
+import ReviewForm from "@/pages/dashboard/bookingHistory/ReviewForm";
 import { CiLocationOn } from "react-icons/ci";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { useLocation, useNavigate } from "react-router-dom";
 const DashboardCard = ({ data, checkin, checkout }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden duration-300 w-full flex flex-col ">
@@ -15,10 +17,8 @@ const DashboardCard = ({ data, checkin, checkout }) => {
           className="w-full h-[250px] lg:h-[400px] object-cover"
           alt={data?.title || "Accommodation"}
         />
-        <p className="text-white absolute top-3 left-3 sm:top-4 sm:left-4 bg-black bg-opacity-10 px-2 py-1 sm:px-3 text-xs sm:text-sm font-medium backdrop-blur-sm rounded">
-          Booked
-        </p>
-        <p className="text-white flex items-center gap-3 absolute top-3 sm:top-4 left-28 bg-black bg-opacity-10 px-2 py-1 sm:px-3 text-xs sm:text-sm font-medium backdrop-blur-sm rounded">
+
+        <p className="text-white flex items-center gap-3 absolute top-3 sm:top-4 left-0 bg-black bg-opacity-10 px-2 py-1 sm:px-3 text-xs sm:text-sm font-medium backdrop-blur-sm rounded">
           <CiLocationOn /> {data?.location}
         </p>
       </div>
@@ -27,10 +27,12 @@ const DashboardCard = ({ data, checkin, checkout }) => {
       <div className="p-3 sm:p-4 bg-white flex-1 flex flex-col justify-between">
         <div className="flex justify-between items-start gap-2 sm:items-center">
           <div className="flex justify-between  w-full">
-            <p className="w-[70%] lg:text-2xl mb-0">{data?.villa_name}</p>
-            <p className="lg:text-2xl mb-0">INR {data?.price_a_night}</p>
+            <p className="w-[70%] lg:text-xl font-semibold mb-0">{data?.villa_name}</p>
+            <p className="lg:text-xl font-semibold mb-0">INR {data?.paid_amount}</p>
           </div>
         </div>
+        
+        <ReviewForm villa={data} />
 
         <div className="flex  items-center">
           {checkin && checkout ? (

@@ -14,11 +14,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
+const PriceDetails = ({ villa, addOnPrice, selectedAddOnId, selectedMealPackages }) => {
 
   const { user } = useAuth();
 
-  console.log('user', user);
+  console.log(user)
 
 
   const axiosPublic = useAxiosPublic();
@@ -127,7 +127,7 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
     // setLoading(true);
     const payload = {
       amount: totalPrice,
-      type: from,
+      type: 'villa',
       userId: user?.id,
       userEmail: user?.email,
       villaorhotelid: villa?.specificVilla?.id,
@@ -137,7 +137,7 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
     };
 
 
-    console.log(payload)
+    console.log('booking payload', payload);
 
     try {
       const res = await axiosPublic.post('/razoarpay/payment', payload);
@@ -221,8 +221,6 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
         addons_price: addOnPrice
       };
 
-      console.log('calculate payload', payload);
-
       /* const toastId = toast.loading('Calculating price'); */
       try {
         const res = await axiosPublic.post('/calculate-total', payload);
@@ -241,8 +239,58 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
 
 
 
-  const handleReserveNow = () => {
-    console.log('reserve now')
+  const handleReserveNow = async () => {
+    if (totalPrice === 0) {
+      toast.error('Please select a meal package and initial guest');
+      return;
+    }
+
+    // Validate dates
+    if (!checkInDate || !checkOutDate) {
+      toast.error('Please select both check-in and check-out dates');
+      return;
+    }
+
+    if (dateError) {
+      toast.error(dateError);
+      return;
+    }
+
+    // Validate terms
+    if (!acceptTerms) {
+      toast.error('Please accept the terms and conditions');
+      return;
+    }
+
+    // setLoading(true);
+    const payload = {
+      user_id: user?.id,
+      villa_id: villa?.specificVilla?.id,
+      meal_pack_id: selectedMealPackages[0]?.id,
+      addon_id: selectedAddOnId,
+      guest_name: user?.name,
+      email: user?.email,
+      adult_guest: String(initialAdults + extraAdults),
+      child_guest: String(initialChildren + extraChildren),
+      contact: user?.contact || '25235234523',
+      check_in: checkInDate,
+      check_out: checkOutDate,
+      payable: String(totalPrice),
+    };
+
+
+    console.log('Reserve payload', payload);
+
+    const toastId = toast.loading('Reserving villa...');
+    try {
+      const res = await axiosPublic.post('/reserve', payload);
+      if (res) {
+        toast.success(res?.data?.message, { id: toastId });
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.error || 'Villa reservation failed', { id: toastId });
+    }
+
   }
 
 
@@ -451,6 +499,7 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
       {
         villa?.specificVilla?.booking_option === "reserve_btn" ?
           <button
+            onClick={handleReserveNow}
             disabled={totalPrice === 0}
             className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full"
           >
@@ -458,6 +507,7 @@ const PriceDetails = ({ villa, addOnPrice, selectedMealPackages }) => {
           </button>
           :
           <button
+            disabled={totalPrice === 0}
             onClick={handleBookNow}
             className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full"
           >

@@ -23,6 +23,7 @@ const Checkout = () => {
   // Track selected add-ons and total price
   const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [addOnPrice, setAddOnPrice] = useState([]);
+  const [addOnId, setAddOnId] = useState([]);
 
   // Track selected meal packages and total price 
   const [selectedMealPackages, setSelectedMealPackages] = useState([]);
@@ -30,7 +31,9 @@ const Checkout = () => {
   // Calculate total add-on price whenever selectedAddOns changes
   useEffect(() => {
     const prices = selectedAddOns.map(addOn => addOn.price);
+    const addOnIds = selectedAddOns.map(addOn => addOn.id);
     setAddOnPrice(prices);
+    setAddOnId(addOnIds);
   }, [selectedAddOns]);
 
 
@@ -143,7 +146,7 @@ const Checkout = () => {
 
           {/* =====================Price Card ======================= */}
           <div className="xlg:w-[30%] hidden xlg:block">
-            <PriceDetails villa={villa} addOnPrice={addOnPrice} selectedMealPackages={selectedMealPackages} />
+            <PriceDetails villa={villa} addOnPrice={addOnPrice} selectedAddOnId={addOnId} selectedMealPackages={selectedMealPackages} />
           </div>
         </div>
       </div>

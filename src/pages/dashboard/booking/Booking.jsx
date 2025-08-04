@@ -67,7 +67,7 @@ const Booking = () => {
         }
     })
 
-    // console.log(bookingData);
+    console.log(bookingData);
 
     return (
         <div>

@@ -64,19 +64,18 @@ const BookingHistory = () => {
     const { data: bookingHistoryData } = useQuery({
         queryKey: ['bookingHistoryData'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/villa/booking-history`);
-            return res?.data?.villa_bookings;
+            const res = await axiosSecure.get(`/booking-history`);
+            return res?.data?.bookedVillas;
         }
     })
 
-    console.log(bookingHistoryData);
 
     return (
         <div> 
             <h1 className='text-2xl font-semibold mb-6 font-neris'>Booking History</h1>
         <div className='grid grid-cols-1  xmd:grid-cols-2 xlg:grid-cols-3 gap-4'>
             {
-                bookingHistoryData?.map((item, index) => <DashboardCard key={index} data={item?.villa} checkin={item?.checkindate} checkout={item?.checkoutdate}  />)
+                bookingHistoryData?.map((item, index) => <DashboardCard key={index} data={item} checkin={item?.checkindate} checkout={item?.checkoutdate}  />)
             }
     
         </div>
