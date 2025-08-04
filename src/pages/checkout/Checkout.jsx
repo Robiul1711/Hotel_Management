@@ -22,15 +22,15 @@ const Checkout = () => {
   // price related state 
   // Track selected add-ons and total price
   const [selectedAddOns, setSelectedAddOns] = useState([]);
-  const [addOnPrice, setAddOnPrice] = useState(0);
+  const [addOnPrice, setAddOnPrice] = useState([]);
 
   // Track selected meal packages and total price 
   const [selectedMealPackages, setSelectedMealPackages] = useState([]);
 
   // Calculate total add-on price whenever selectedAddOns changes
   useEffect(() => {
-    const total = selectedAddOns.reduce((sum, addOn) => sum + addOn.price, 0);
-    setAddOnPrice(total);
+    const prices = selectedAddOns.map(addOn => addOn.price);
+    setAddOnPrice(prices);
   }, [selectedAddOns]);
 
 
@@ -73,7 +73,7 @@ const Checkout = () => {
     queryKey: ['villa', id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/single/villa/${id}`);
-      return res?.data?.specificVilla;
+      return res?.data;
     }
   })
 
@@ -92,13 +92,18 @@ const Checkout = () => {
         <div className=" w-full section-padding-x flex flex-col xlg:flex-row  justify-between gap-6">
           <div className="space-y-7  xlg:w-[70%]">
             <div className="flex flex-col xlg:flex-col gap-4">
-              <SunshineAndSoul villa={villa} />
+              <SunshineAndSoul villa={villa?.specificVilla} />
               <div className="xlg:hidden">
-                <PriceDetails villa={villa} />
+                <PriceDetails villa={villa?.specificVilla} />
               </div>
+
+
               {/* <BookingCancellationPolicy /> */}
+
+              {/* ======================Meal package=================================== */}
+
               {
-                mealPackages?.map(item => <MealPackageCard
+                villa?.specificVilla?.meal_packages?.map(item => <MealPackageCard
                   key={item.id}
                   data={item}
                   isSelected={selectedMealPackages.some(selected => selected.id === item.id)}
@@ -106,9 +111,10 @@ const Checkout = () => {
                 />)
               }
 
+              {/* ===============Add ons ========================= */}
               <div className="my-10">
                 <p className="lg:text-2xl font-semibold"> ADD-ONS</p>
-                <div className="grid grid-cols-3">
+                <div className="grid grid-cols-2 gap-5">
                   {
                     addOnData?.map(item => <AddOnCard
                       key={item.id}
@@ -118,20 +124,24 @@ const Checkout = () => {
                     />)
                   }
                 </div>
-
               </div>
+
+
+
             </div>
             <div className="flex flex-col xmd:flex-row w-full xlg:flex-col items-start gap-4 py-5">
               <div className="flex items-start sm:items-center justify-between w-full bg-[#FEF7DA] p-4 rounded-xl ">
                 <h1 className="text-xs xxs:text-sm sm:text-base">
                   Any issue to complete your booking?
                 </h1>
-                
+
                 <ComplaintForm />
               </div>
               <AnySpecialRequests />
             </div>
           </div>
+
+          {/* =====================Price Card ======================= */}
           <div className="xlg:w-[30%] hidden xlg:block">
             <PriceDetails villa={villa} addOnPrice={addOnPrice} selectedMealPackages={selectedMealPackages} />
           </div>

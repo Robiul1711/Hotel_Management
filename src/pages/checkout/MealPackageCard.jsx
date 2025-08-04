@@ -10,7 +10,6 @@ import {
 
 const MealPackageCard = ({ data, isSelected, onToggle }) => {
 
-    console.log(data);
 
     return (
         <div
