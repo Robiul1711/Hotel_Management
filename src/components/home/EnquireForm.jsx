@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Button, Modal, Form, Input, Select } from 'antd';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
@@ -68,6 +68,7 @@ const EnquireForm = () => {
             <button onClick={showModal} className="xmd:bg-primary xmd:text-white text-primary border text-[10px] p-1 md:text-base border-primary  md:px-8  md:py-3 rounded-full hover:bg-orange-600 transition-all px-3">
                 Enquire Now
             </button>
+            
             <Modal
                 title="Property Information Form"
                 open={open}

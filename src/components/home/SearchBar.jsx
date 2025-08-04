@@ -11,8 +11,8 @@ const SearchBar = () => {
     const { control, handleSubmit, watch, setValue } = useForm({
         defaultValues: {
             destination: "Lonavala",
-            checkIn: dayjs('2025-02-28'),
-            checkOut: dayjs('2025-02-28'),
+            checkIn: dayjs(),
+            checkOut: dayjs().add(1, 'day'),
             adults: 2,
             rooms: 1
         }

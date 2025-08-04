@@ -64,7 +64,7 @@ const HotelPackage = () => {
             </div>
             <CommonPageWrapper>
 
-                <HichFacilities hotel={hotel} />
+                {/* <HichFacilities hotel={hotel} /> */}
                 <Details hotel={hotel} />
                 <ExperienceSection villaExperience={hotel?.experiences} />
                 <RealMomentSection realMoment={hotel?.real_moments} />

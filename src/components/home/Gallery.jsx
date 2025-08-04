@@ -10,6 +10,7 @@ import img8 from '@/assets/images/gallery/8.png';
 import element from '@/assets/images/element1.png';
 import { motion } from 'framer-motion'
 import { SlideUp, Zooming } from '@/animation/animate';
+import useGallaryDataHook from '@/hooks/useGallaryDataHook';
 
 const breakpointColumnsObj = {
     default: 4,
@@ -31,6 +32,9 @@ const galleryItems = [
 ];
 
 const Gallery = () => {
+
+    const { gallary } = useGallaryDataHook();
+
     return (
         <div
             // variants={SlideUp(0.1)}
@@ -49,11 +53,11 @@ const Gallery = () => {
                 className="flex gap-4 md:gap-6 -ml-4 md:-ml-6"
                 columnClassName="ml-4 md:ml-6"
             >
-                {galleryItems.map((item, i) => (
+                {gallary?.map((item, i) => (
                     <div key={i} className="mb-4 md:mb-6 relative group overflow-hidden rounded-lg md:rounded-xl shadow-md hover:shadow-xl transition-all duration-500">
                         <img
-                            src={item.img}
-                            alt={item.title}
+                            src={item?.image_url}
+                            alt={item?.image}
                             className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">

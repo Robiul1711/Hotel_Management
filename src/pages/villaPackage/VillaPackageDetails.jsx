@@ -20,6 +20,7 @@ import { AmanityData } from '@/lib/Database';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import Service from '@/components/home/Service';
+import PropertyBanner from '@/components/common/PropertyBanner';
 
 const VillaPackageDetails = () => {
     const { id } = useParams();
@@ -53,14 +54,12 @@ const VillaPackageDetails = () => {
                                 <CiLocationOn />
                                 {villa?.location}
                             </p>
-                            <p className="text-sm md:text-[20px]">{villa?.short_des}</p>
+                            <p className="text-sm md:text-xl">{villa?.short_des}</p>
                         </div>
-
-
                         {/* <SearchTab/> */}
                     </div>
                 </div>
-                
+
                 <VillaPackageGallery thumbnail={villa?.thumbnail} media={villa?.media} />
             </div>
             <CommonPageWrapper>
@@ -73,7 +72,7 @@ const VillaPackageDetails = () => {
                 </div>
                 <ExperienceSection villaExperience={villa?.experiences} />
                 <RealMomentSection realMoment={villa?.real_moments} />
-                <VillaFacilities />
+                {/* <VillaFacilities /> */}
 
                 {/* <NearbyHotels /> */}
                 <HotelPolicies villa={villa} />

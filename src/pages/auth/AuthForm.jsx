@@ -11,7 +11,7 @@ import { BeatLoader, ClipLoader } from "react-spinners";
 
 export default function AuthForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(true); // true = Sign Up, false = Sign In
+  const [isSignUp, setIsSignUp] = useState(false); // true = Sign Up, false = Sign In
   const { user, setUser } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [isLoading, setIsLoading] = useState(false);

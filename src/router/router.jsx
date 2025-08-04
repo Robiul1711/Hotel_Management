@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         element: <SearchPage />
       },
       {
-        path: "/checkout/:id",
+        path: "/villa-checkout/:id",
         element: <PrivateRoute>
           <Checkout />
         </PrivateRoute>
@@ -79,6 +79,8 @@ const router = createBrowserRouter([
       
     ],
   },
+
+  // user dashboard 
   {
     path: '/dashboard',
     element: <DashboardLayout />,

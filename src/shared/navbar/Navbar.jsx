@@ -27,25 +27,26 @@ const Navbar = () => {
           </li>
           <li className='flex items-center gap-2 font-bold'><BsTelephone className='font-bold' />+91 97693 89956</li>
           <li>
-            <PropertyListingForm button={false} />
+            {/* <PropertyListingForm button={false} /> */}
+            <ListYourVilla/>
           </li>
           {/* <NavLink className={navLinkClass} to={'/'}>About Us</NavLink>
           <NavLink className={navLinkClass} to={'/'}>Our Packages</NavLink>
           <NavLink className={navLinkClass} to={'/'}>FAQ</NavLink>
           <NavLink className={navLinkClass} to={'/'}>Contact Us</NavLink> */}
-          {/* {
+          {
             user ?
               ''
               :
 
               <NavLink className={`${navLinkClass} hover:text-primary`} to={'/auth/registration'}>Login/Register</NavLink>
 
-          } */}
+          }
         </ul>
 
-        {/* {
+        {
           user && <UserDropdown />
-        } */}
+        }
 
 
 

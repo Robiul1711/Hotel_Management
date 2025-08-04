@@ -76,18 +76,18 @@ const HotelPriceDetails = ({ hotel }) => {
         console.log('this is payload', payload);
 
 
-        try {
-            const res = await axiosPublic.post('/razoarpay/payment', payload);
-            if (res) {
-                toast.success('Payment successful');
-                window.location.href = res.data.url;
-            }
-        } catch (error) {
-            console.log(error);
-            toast.error(error?.response?.data?.message);
-        } finally {
-            setLoading(false)
-        }
+        // try {
+        //     const res = await axiosPublic.post('/razoarpay/payment', payload);
+        //     if (res) {
+        //         toast.success('Payment successful');
+        //         window.location.href = res.data.url;
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        //     toast.error(error?.response?.data?.message);
+        // } finally {
+        //     setLoading(false)
+        // }
     }
 
     // Calculate minimum dates

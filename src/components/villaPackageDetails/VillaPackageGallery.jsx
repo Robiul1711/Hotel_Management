@@ -8,6 +8,7 @@ import img5 from '@/assets/images/villa5.png';
 import { CustomLoveIcon, CustomPdfIcon, CustomShareIcon } from '@/lib/CustomIconPackage';
 import StarRatings from 'react-star-ratings';
 import { IoMdCloseCircle } from 'react-icons/io';
+import PropertyBanner from '../common/PropertyBanner';
 
 const VillaPackageGallery = ({ thumbnail, media }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,9 +57,13 @@ const VillaPackageGallery = ({ thumbnail, media }) => {
 
 
             <div className="md:px-4">
-                <div className="flex flex-col md:flex-row gap-4">
+                <div className=" flex flex-col md:flex-row gap-4">
+                    <div className="md:hidden">
+                        <PropertyBanner banners={media} />
+                    </div>
+
                     {/* Left Large Image */}
-                    <div className="md:w-[58%] w-full aspect-square md:aspect-video md:rounded-xl overflow-hidden">
+                    <div className="hidden md:flex md:w-[58%] w-full aspect-square md:aspect-video md:rounded-xl overflow-hidden">
                         <img
                             src={thumbnail}
                             alt="Main"

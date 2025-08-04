@@ -7,11 +7,15 @@ import useAxiosPublic from '@/hooks/useAxiosPublic';
 import useData from '@/hooks/useData';
 import toast from 'react-hot-toast';
 const FilterBar = () => {
+
     let [quantity, setQuantity] = useState(0);
     const [minPrice, setMinPrice] = useState(1000);
     const [maxPrice, setMaxPrice] = useState(500000);
     const [showAll, setShowAll] = useState(false);
     const [selectedAmenities, setSelectedAmenities] = useState([]);
+
+    const [isEnabled, setIsEnabled] = useState(false);
+
     const axiosPublic = useAxiosPublic();
     const { setVillaSearchResult } = useData();
 
@@ -26,8 +30,11 @@ const FilterBar = () => {
     // console.log('All amenities:', aminities);
 
     const handleSearch = async () => {
-        const payload = { minPrice, maxPrice, amenity_id: selectedAmenities };
-        // console.log(payload)
+        let payload = {};
+        isEnabled ? payload = { one_rupe: 1 } :
+            payload = { minPrice, maxPrice, amenity_id: selectedAmenities };
+        console.log(payload)
+
         const toastId = toast.loading('Searching...');
         try {
             const res = await axiosPublic.post('/villa/allfilterdatas', payload);
@@ -39,6 +46,8 @@ const FilterBar = () => {
             toast.error('Something went wrong', { id: toastId });
         }
     }
+
+
 
     return (
         <div className='relative'>
@@ -55,17 +64,24 @@ const FilterBar = () => {
                     scrollTo(0, 400);
                 }} className="underline cursor-pointer text-gray-400 mb-0">Clear All</p>
             </div>
+
             <div className="border-b-2 space-y-3 my-5 pb-8">
+                <p className="text-2xl">One Rupee Villa</p>
+                <p className="text-lg">Price per night with taxes</p>
+                <ToggleButton enabled={isEnabled} onToggle={setIsEnabled} />
+            </div>
+
+
+            {/* <div className="border-b-2 space-y-3 my-5 pb-8">
                 <p className="text-2xl">Display total Price</p>
                 <p className="text-lg">Price per night with taxes</p>
                 <ToggleButton />
-            </div>
+            </div> */}
 
-            <div className="border-b-2 pb-8">
+            {/*  <div className="border-b-2 pb-8">
                 <div className="my-5">
                     <p className="text-2xl">Price Range</p>
                     <AntdDualRangeSlider minPrice={minPrice} maxPrice={maxPrice} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
-                    {/* <Slider defaultValue={[33]} max={100} step={1} /> */}
                 </div>
 
                 <div className="flex gap-5 justify-center items-center">
@@ -79,11 +95,9 @@ const FilterBar = () => {
 
                 <div className="w-fit mx-auto">
 
-                    {/* <button className="border  py-3 px-8 mt-5 rounded-xl ">
-                        Apply Filter
-                    </button> */}
+                    
                 </div>
-            </div>
+            </div> */}
 
             <div className="py-8 border-b-2 flex items-center justify-between ">
                 <div className="">
@@ -127,30 +141,69 @@ const FilterBar = () => {
                 <p className="text-2xl">Price Per Night</p>
 
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(1000);
+                            setMaxPrice(10000);
+                        }}
+                        checked={minPrice === 1000 && maxPrice === 10000}
+                    />
                     <span>Under ₹10,000</span>
                 </label>
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(10000);
+                            setMaxPrice(20000);
+                        }}
+                        checked={minPrice === 10000 && maxPrice === 20000}
+                    />
                     <span>₹10,000 - ₹20,000</span>
                 </label>
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(20000);
+                            setMaxPrice(35000);
+                        }}
+                        checked={minPrice === 20000 && maxPrice === 35000}
+                    />
                     <span>₹20,000 - ₹35,000</span>
                 </label>
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(35000);
+                            setMaxPrice(50000);
+                        }}
+                        checked={minPrice === 35000 && maxPrice === 50000}
+                    />
                     <span>₹35,000 - ₹50,000</span>
                 </label>
-
                 <label className="inline-flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-500" />
-                    <span>More than ₹50,000 </span>
+                    <input
+                        type="checkbox"
+                        className="accent-blue-500"
+                        onChange={() => {
+                            setMinPrice(50000);
+                            setMaxPrice(500000);
+                        }}
+                        checked={minPrice === 50000 && maxPrice === 500000}
+                    />
+                    <span>More than ₹50,000</span>
                 </label>
             </div>
 
             <div className="py-8 flex flex-col gap-3">
-                <p className="text-2xl">Selected Filters</p>
+                {/* <p className="text-2xl">Selected Filters</p> */}
 
                 {/* <div className="flex items-center justify-between">
                     <button onClick={handleSearch} className="border py-3 px-8  rounded-xl">

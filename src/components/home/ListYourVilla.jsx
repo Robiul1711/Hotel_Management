@@ -20,14 +20,15 @@ const ListYourVilla = () => {
             .validateFields()
             .then(async (values) => {
                 const payload = {
-                    owner_name: values.ownerName,
-                    contact_number: values.contactNumber,
+                    first_name: values.first_name,
+                    last_name: values.last_name,
+                    contact_number: values.contact_number,
                     email_address: values.email,
                     property_name: values.propertyName,
-                    location: values.location,
+                    property_location: values.location,
                     property_type: values.propertyType,
-                    number_villa: values.roomCount,
-                    anything_text_property: values.uniqueFeatures
+                    number_of_rooms: values.roomCount,
+                    unique_features: values.uniqueFeatures
                 }
                 console.log('Form values:', payload);
                 try {
@@ -89,7 +90,7 @@ const ListYourVilla = () => {
                     name="property_form"
                 >
                     <Form.Item
-                        name="ownerName"
+                        name="first_name"
                         label="Owner/Manager Name"
                         rules={[{ required: true, message: 'Please input the owner/manager name!' }]}
                     >
@@ -97,7 +98,15 @@ const ListYourVilla = () => {
                     </Form.Item>
 
                     <Form.Item
-                        name="contactNumber"
+                        name="last_name"
+                        label="Owner/Manager Name"
+                        rules={[{ required: true, message: 'Please input the owner/manager name!' }]}
+                    >
+                        <Input placeholder="Enter owner/manager name" />
+                    </Form.Item>
+
+                    <Form.Item
+                        name="contact_number"
                         label="Contact Number"
                         rules={[{ required: true, message: 'Please input the contact number!' }]}
                     >
@@ -150,6 +159,14 @@ const ListYourVilla = () => {
                         label="Number of Rooms/Villas (optional)"
                     >
                         <Input type="number" min={0} placeholder="Enter number of rooms/villas" />
+                    </Form.Item>
+
+                    <Form.Item
+                        name="media_folder_link"
+                        label="Media Folder Link"
+                        rules={[{ required: true, message: 'Please input the media folder link!' }]}
+                    >
+                        <Input placeholder="Enter media folder link" />
                     </Form.Item>
 
                     <Form.Item
