@@ -65,6 +65,8 @@ const VillaPackageDetails = () => {
             <CommonPageWrapper>
 
                 <VillaDetailsSection villa={villa} />
+
+
                 <SpaceSection villa={villa} />
                 <div className="flex items-center">
                     <Aminities amenityData={villa?.amenities} data={villa} />

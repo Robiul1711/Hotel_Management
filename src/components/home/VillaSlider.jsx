@@ -12,7 +12,6 @@ import useData from '@/hooks/useData';
 
 const VillaCard = ({ data }) => {
 
-    console.log(data);
 
 
 
@@ -46,9 +45,9 @@ const VillaCard = ({ data }) => {
                         </p>
                     </div>
                     <div className="flex-shrink-0">
-                        {/* <p className="flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
-                            <StarIcons className="w-3 h-3 sm:w-4 sm:h-4" />5.0
-                        </p> */}
+                        <p className="flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
+                            <StarIcons className="w-3 h-3 sm:w-4 sm:h-4" />{data?.rating_summary?.average}
+                        </p>
                     </div>
                 </div>
                 <p className="text-gray-400 text-sm sm:text-base line-clamp-2 sm:line-clamp-3 mt-auto">

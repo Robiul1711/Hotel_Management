@@ -272,14 +272,14 @@ const PriceDetails = ({ villa, addOnPrice, selectedAddOnId, selectedMealPackages
       email: user?.email,
       adult_guest: String(initialAdults + extraAdults),
       child_guest: String(initialChildren + extraChildren),
-      contact: user?.contact || '25235234523',
+      contact: user?.contact,
       check_in: checkInDate,
       check_out: checkOutDate,
       payable: String(totalPrice),
     };
 
 
-    console.log('Reserve payload', payload);
+ 
 
     const toastId = toast.loading('Reserving villa...');
     try {

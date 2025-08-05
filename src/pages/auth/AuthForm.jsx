@@ -27,14 +27,12 @@ export default function AuthForm() {
         if (response) {
           console.log(response);
           toast.success('Registration successful');
-          setUser({
-            ...response?.data
-          })
-          navigate('/');
+          setIsSignUp(false);
+          navigate('/auth/registration');
         }
       } catch (error) {
         console.log(error);
-        toast.error(error?.response?.data?.message);
+        toast.error(error?.response?.data?.error);
 
       } finally {
         setIsLoading(false)
@@ -146,6 +144,22 @@ export default function AuthForm() {
               />
               {errors.address && (
                 <p className="text-red-600 text-sm">{errors.address.message}</p>
+              )}
+            </div>
+
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">
+                Phone
+              </label>
+              <input
+                type="tel"
+                {...register("phone", { required: "Phone number is required" })}
+                placeholder="Mobile Number"
+                className="w-full border border-gray-300 rounded-md p-2"
+              />
+              {errors.name && (
+                <p className="text-red-600 text-sm">{errors.phone.message}</p>
               )}
             </div>
           </>

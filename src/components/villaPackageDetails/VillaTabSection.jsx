@@ -6,7 +6,7 @@ import { HotelTabsSection, VillaTabsSection } from '@/lib/Database';
 import { Link } from 'react-router-dom';
 
 const VillaTabSection = ({ villa }) => {
-    // console.log(villa)
+    console.log(villa)
     return (
         <div>
             <TabSection tabs={VillaTabsSection} />
@@ -15,11 +15,11 @@ const VillaTabSection = ({ villa }) => {
                 <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-4xl mb-0">
                     {villa?.villa_name}
                 </p>
-                <p className="flex items-center text-sm sm:text-base md:text-2xl gap-1 sm:gap-2 mb-0">
+                <p className="flex mb-3 items-center text-sm sm:text-base md:text-2xl gap-1 sm:gap-2 mb-0">
                     <span className="">{villa?.location} </span>
                 </p>
 
-                <p className="text-sm sm:text-base md:text-lg flex items-center gap-3">Guest Favourite  <StarIcons /> 5/5  <span className="border-l px-4 text-blue-500 underline">15 reviews</span></p>
+                {/* <p className="text-sm sm:text-base md:text-lg flex items-center gap-3">Guest Favourite  <StarIcons /> 5/5  <span className="border-l px-4 text-blue-500 underline">15 reviews</span></p> */}
 
 
                 <div className="flex flex-wrap gap-4 xlg:gap-12">

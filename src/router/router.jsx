@@ -28,6 +28,7 @@ import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import HotelCheckout from "@/pages/hotelCheckout/HotelCheckout";
 import PaymentSuccess from "@/pages/PaymentSuccess";
+import Profile from "@/pages/auth/Profile";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +77,10 @@ const router = createBrowserRouter([
           <HotelCheckout />
         </PrivateRoute>
       },
-      
+      {
+        path: '/profile',
+        element: <Profile />
+      }
     ],
   },
 
@@ -149,7 +153,8 @@ const router = createBrowserRouter([
       {
         path: 'new-password',
         element: <NewPassword />
-      }
+      },
+
     ]
   }
 ]);

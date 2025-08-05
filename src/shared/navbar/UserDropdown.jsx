@@ -8,11 +8,11 @@ import useAuth from '@/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 const items = [
-    // {
-    //     label: 'Profile',
-    //     key: 'profile',
-    //     icon: <UserOutlined />,
-    // },
+    {
+        label: 'Profile',
+        key: 'profile',
+        icon: <UserOutlined />,
+    },
     // {
     //     label: 'Settings',
     //     key: 'settings',
@@ -61,7 +61,7 @@ const UserDropdown = () => {
     const handleMenuClick = ({ key }) => {
         switch (key) {
             case 'profile':
-                console.log('Go to Profile');
+                navigate('/profile')
                 break;
             case 'settings':
                 console.log('Go to Settings');
