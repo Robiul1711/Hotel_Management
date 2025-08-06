@@ -14,6 +14,7 @@ const Profile = () => {
 
     const showModal = () => setIsModalOpen(true);
     const handleCancel = () => setIsModalOpen(false);
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         defaultValues: {
             name: user?.name || '',
@@ -28,7 +29,6 @@ const Profile = () => {
         try {
             const response = await axiosSecure.post('/logout');
             if (response) {
-                // console.log(response);
                 setUser(null);
                 toast.success(response?.data?.message || 'Logout successful', { id: toastId });
             }
@@ -38,15 +38,12 @@ const Profile = () => {
         }
     }
 
-
     const onSubmit = async (values) => {
         const payload = {
             name: values.name,
             phone: values.phone,
             first_name: values.first_name
         };
-        console.log('Form values:', payload);
-        // You can add your API call here
         try {
             const res = await axiosSecure.post('/profile/update', payload);
             if (res) {
@@ -61,16 +58,16 @@ const Profile = () => {
     };
 
     return (
-        <div className=" mx-auto p-6 bg-primary min-h-screen flex flex-col  justify-center">
+        <div className="min-h-screen bg-black/20 backdrop-blur-sm flex items-center justify-center p-6">
             <ScrollRestoration />
-            <div className="bg-white w-1/2 mx-auto rounded-2xl shadow-lg p-8">
+            <div className="bg-white w-full max-w-3xl rounded-xl shadow-lg p-8">
                 {/* Header */}
                 <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-800">Profile</h1>
+                    <h1 className="text-3xl font-semibold text-gray-800">Profile</h1>
                     <Button
-                        type="primary"
+                        type="default"
                         onClick={showModal}
-                        className="bg-orange-600 text-xl py-6 hover:bg-orange-700"
+                        className="text-base px-6 py-2 rounded-md border-gray-300 hover:border-gray-400"
                     >
                         Edit Profile
                     </Button>
@@ -80,12 +77,12 @@ const Profile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Avatar Section */}
                     <div className="md:col-span-1 flex flex-col items-center">
-                        <div className="w-32 h-32 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                        <div className="w-32 h-32 rounded-full bg-gray-100 flex items-center justify-center mb-4 overflow-hidden">
                             {user?.avatar ? (
                                 <img
                                     src={user.avatar}
                                     alt="Avatar"
-                                    className="w-full h-full rounded-full object-cover"
+                                    className="w-full h-full object-cover"
                                 />
                             ) : (
                                 <span className="text-4xl text-gray-500 font-medium">
@@ -97,18 +94,18 @@ const Profile = () => {
 
                     {/* Information Section */}
                     <div className="md:col-span-2 space-y-6">
-                        <div className="space-y-1">
-                            <label className="text-sm font-medium text-gray-500">Full Name</label>
+                        <div>
+                            <label className="text-sm text-gray-500">Full Name</label>
                             <p className="text-lg text-gray-800">{user?.name}</p>
                         </div>
 
-                        <div className="space-y-1">
-                            <label className="text-sm font-medium text-gray-500">Email</label>
+                        <div>
+                            <label className="text-sm text-gray-500">Email</label>
                             <p className="text-lg text-gray-800">{user?.email}</p>
                         </div>
 
-                        <div className="space-y-1">
-                            <label className="text-sm font-medium text-gray-500">Phone</label>
+                        <div>
+                            <label className="text-sm text-gray-500">Phone</label>
                             <p className="text-lg text-gray-800">{user?.phone}</p>
                         </div>
                     </div>
@@ -122,11 +119,11 @@ const Profile = () => {
                 onCancel={handleCancel}
                 footer={null}
             >
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Name</label>
                         <input
-                            className="w-full border rounded px-3 py-2 mt-1"
+                            className="w-full border border-gray-300 rounded px-3 py-2 mt-1"
                             {...register('name', { required: 'Name is required' })}
                         />
                         {errors.name && <span className="text-red-500 text-xs">{errors.name.message}</span>}
@@ -135,19 +132,21 @@ const Profile = () => {
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Email</label>
                         <input
-                            className="w-full border rounded px-3 py-2 mt-1 bg-gray-100"
+                            className="w-full border border-gray-300 rounded px-3 py-2 mt-1 bg-gray-100"
                             {...register('email')}
                             disabled
                         />
                     </div>
+
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Phone</label>
                         <input
-                            className="w-full border rounded px-3 py-2 mt-1"
+                            className="w-full border border-gray-300 rounded px-3 py-2 mt-1"
                             {...register('phone')}
                         />
                     </div>
-                    <div className="flex justify-end gap-4">
+
+                    <div className="flex justify-end gap-4 pt-2">
                         <Button onClick={handleCancel}>Cancel</Button>
                         <Button type="primary" htmlType="submit">Save</Button>
                     </div>

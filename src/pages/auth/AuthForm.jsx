@@ -23,45 +23,44 @@ export default function AuthForm() {
     mutationFn: async (data) => {
       setIsLoading(true);
       try {
-        const response = await axiosPublic.post('/register', data);
+        const response = await axiosPublic.post("/register", data);
         if (response) {
           console.log(response);
-          toast.success('Registration successful');
+          toast.success("Registration successful");
           setIsSignUp(false);
-          navigate('/auth/registration');
+          navigate("/auth/registration");
         }
       } catch (error) {
         console.log(error);
         toast.error(error?.response?.data?.error);
-
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
-  })
+    },
+  });
 
   const signInMutation = useMutation({
     mutationFn: async (data) => {
       setIsLoading(true);
       try {
-        const response = await axiosPublic.post('/login', data);
+        const response = await axiosPublic.post("/login", data);
         if (response) {
           console.log(response);
           toast.success(response?.data?.message);
           setUser({
             ...response?.data?.userData,
-            token: response?.data?.token
-          })
+            token: response?.data?.token,
+          });
           navigate(from, { replace: true });
         }
       } catch (error) {
         console.log(error);
         toast.error(error?.response?.data?.message);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
-  })
+    },
+  });
 
   const {
     register,
@@ -72,12 +71,12 @@ export default function AuthForm() {
   const onSubmit = (data) => {
     if (isSignUp) {
       if (data?.password !== data?.password_confirmation) {
-        return toast.error('Password does not match');
+        return toast.error("Password does not match");
       }
 
       signUpMutation.mutate(data);
 
-      console.log('Signup data', data);
+      console.log("Signup data", data);
       // signUpMutation.mutate(data);
     } else {
       console.log("Sign In Data:", data);
@@ -93,15 +92,17 @@ export default function AuthForm() {
       <div className="flex space-x-8 text-gray-600 mb-4">
         <p
           onClick={() => setIsSignUp(false)}
-          className={`cursor-pointer ${!isSignUp ? "text-primary font-bold" : ""
-            }`}
+          className={`cursor-pointer ${
+            !isSignUp ? "text-primary font-bold" : ""
+          }`}
         >
           Sign In
         </p>
         <p
           onClick={() => setIsSignUp(true)}
-          className={`cursor-pointer ${isSignUp ? "text-primary font-bold" : ""
-            }`}
+          className={`cursor-pointer ${
+            isSignUp ? "text-primary font-bold" : ""
+          }`}
         >
           Sign Up
         </p>
@@ -134,11 +135,46 @@ export default function AuthForm() {
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Address
+                State
               </label>
               <input
                 type="text"
-                {...register("address")}
+                {...register("state" ,{
+                  required:"State is required"
+                })}
+                placeholder="49640 Walker Knoll, New Ellaberg 17790"
+                className="w-full border border-gray-300 rounded-md p-2"
+              />
+              {errors.state && (
+                <p className="text-red-600 text-sm">{errors.state.message}</p>
+              )}
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">
+                City
+              </label>
+              <input
+                type="text"
+                {...register("city" ,{
+                  required:"city is required"
+                })}
+                placeholder="49640 Walker Knoll, New Ellaberg 17790"
+                className="w-full border border-gray-300 rounded-md p-2"
+              />
+              {errors.city && (
+                <p className="text-red-600 text-sm">{errors.city.message}</p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">
+                Street Address
+              </label>
+              <input
+                type="text"
+                {...register("address",{
+                  required:"street address is required"
+                })}
                 placeholder="49640 Walker Knoll, New Ellaberg 17790"
                 className="w-full border border-gray-300 rounded-md p-2"
               />
@@ -146,7 +182,6 @@ export default function AuthForm() {
                 <p className="text-red-600 text-sm">{errors.address.message}</p>
               )}
             </div>
-
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -215,47 +250,44 @@ export default function AuthForm() {
           )}
         </div>
 
-        {
-          isSignUp && (
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">
-                Confirm Password
-              </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  {...register("password_confirmation", {
-                    required: "Confirm Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters",
-                    },
-                  })}
-                  placeholder="•••••••••••"
-                  className="w-full border border-gray-300 rounded-md p-2 pr-10"
-                />
-                <div
-                  className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </div>
+        {isSignUp && (
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Confirm Password
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                {...register("password_confirmation", {
+                  required: "Confirm Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                })}
+                placeholder="•••••••••••"
+                className="w-full border border-gray-300 rounded-md p-2 pr-10"
+              />
+              <div
+                className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </div>
-              {errors.password_confirmation && (
-                <p className="text-red-600 text-sm">{errors.password_confirmation.message}</p>
-              )}
             </div>
-          )
-        }
-
-
-
-
-
-
+            {errors.password_confirmation && (
+              <p className="text-red-600 text-sm">
+                {errors.password_confirmation.message}
+              </p>
+            )}
+          </div>
+        )}
 
         <div className="flex justify-end">
-          <Link to={'/auth/forget-password'} className="text-[#E64D4F] cursor-pointer underline ">
+          <Link
+            to={"/auth/forget-password"}
+            className="text-[#E64D4F] cursor-pointer underline "
+          >
             Forgot Password
           </Link>
         </div>
@@ -263,11 +295,11 @@ export default function AuthForm() {
           type="submit"
           className="w-full bg-primary-blue bg-primary duration-300 text-white py-2 rounded-md font-medium hover:bg-blue-900 flex justify-center items-center"
         >
-          {
-            isLoading ? <BeatLoader color="#fff" /> :
-              <>{isSignUp ? "Register" : "Sign In"} </>
-          }
-
+          {isLoading ? (
+            <BeatLoader color="#fff" />
+          ) : (
+            <>{isSignUp ? "Register" : "Sign In"} </>
+          )}
         </button>
       </form>
 

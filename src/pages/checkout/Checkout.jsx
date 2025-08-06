@@ -83,7 +83,7 @@ const Checkout = () => {
 
   const { mealPackages } = useMealPackageHook();
   const { addOnData } = useAddOnHooks();
-
+ 
   return (
     <div>
       <ScrollRestoration />
@@ -138,9 +138,9 @@ const Checkout = () => {
                   Any issue to complete your booking?
                 </h1>
 
-                <ComplaintForm />
+                <ComplaintForm vilaDetails ={villa?.specificVilla} />
               </div>
-              <AnySpecialRequests />
+              {/* <AnySpecialRequests /> */}
             </div>
           </div>
 
