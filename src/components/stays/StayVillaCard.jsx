@@ -60,7 +60,7 @@ const StayVillaCard = ({ data }) => {
                     {/* Right content */}
                     <div className="border-t md:border-t-0 md:border-l p-4 md:w-[40%] flex flex-col justify-between   gap-4">
                         <p className="flex justify-end gap-2 text-sm">
-                            <StarIcons /> 4/5
+                            <StarIcons /> {data?.rating_summary?.average}
                         </p>
                         <div className="flex flex-col justify-end items-end space-y-2">
                             <p className="text-lg lg:text-xl mb-0 font-semibold">₹ {data?.price_a_night}</p>

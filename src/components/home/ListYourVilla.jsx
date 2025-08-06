@@ -28,14 +28,15 @@ const ListYourVilla = () => {
                     property_location: values.location,
                     property_type: values.propertyType,
                     number_of_rooms: values.roomCount,
-                    unique_features: values.uniqueFeatures
+                    unique_features: values.uniqueFeatures,
+                    media_folder_link: values.media_folder_link
                 }
                 console.log('Form values:', payload);
                 try {
-                    const res = await axiosPublic.post('/contact_form', payload);
+                    const res = await axiosPublic.post('/villa-owner', payload);
                     if (res) {
                         console.log(res);
-                        toast.success(res?.data)
+                        toast.success('Villa owner registered successfully');
                         form.resetFields();
                         setOpen(false);
                     }
@@ -59,8 +60,8 @@ const ListYourVilla = () => {
     const propertyTypes = [
         { value: 'hotel', label: 'Hotel' },
         { value: 'villa', label: 'Villa' },
-        { value: 'homestay', label: 'Homestay' },
-        { value: 'resort', label: 'Resort' },
+        /*  { value: 'homestay', label: 'Homestay' },
+         { value: 'resort', label: 'Resort' }, */
     ];
 
     return (
@@ -89,21 +90,24 @@ const ListYourVilla = () => {
                     layout="vertical"
                     name="property_form"
                 >
-                    <Form.Item
-                        name="first_name"
-                        label="Owner/Manager Name"
-                        rules={[{ required: true, message: 'Please input the owner/manager name!' }]}
-                    >
-                        <Input placeholder="Enter owner/manager name" />
-                    </Form.Item>
+                    <div className="grid grid-cols-2 gap-5">
+                        <Form.Item
+                            name="first_name"
+                            label="Owner/Manager First Name"
+                            rules={[{ required: true, message: 'Please input the owner/manager first name!' }]}
+                        >
+                            <Input placeholder="Enter owner/manager first name" />
+                        </Form.Item>
 
-                    <Form.Item
-                        name="last_name"
-                        label="Owner/Manager Name"
-                        rules={[{ required: true, message: 'Please input the owner/manager name!' }]}
-                    >
-                        <Input placeholder="Enter owner/manager name" />
-                    </Form.Item>
+                        <Form.Item
+                            name="last_name"
+                            label="Owner/Manager Last Name"
+                            rules={[{ required: true, message: 'Please input the owner/manager last name!' }]}
+                        >
+                            <Input placeholder="Enter owner/manager last name" />
+                        </Form.Item>
+
+                    </div>
 
                     <Form.Item
                         name="contact_number"
