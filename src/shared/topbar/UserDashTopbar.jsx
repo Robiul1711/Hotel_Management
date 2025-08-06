@@ -1,6 +1,7 @@
 import { BellIcon, MessageIcon } from '@/lib/CustomIconPackage';
 import React from 'react';
 import { FaBars, FaBell, FaSearch, FaUserCircle } from 'react-icons/fa';
+import UserDropdown from '../navbar/UserDropdown';
 
 const UserDashTopbar = ({ setIsSidebarOpen }) => {
     return (
@@ -18,11 +19,12 @@ const UserDashTopbar = ({ setIsSidebarOpen }) => {
                     />
                 </div>
             </div>
-            <div className="hidden md:flex items-center gap-4">
-                <MessageIcon/>
+            <div className="hidden md:flex items-center gap-4 mt-3">
+                {/* <MessageIcon/>
                 <BellIcon/>
                 
-                <FaUserCircle className="text-gray-600 text-2xl" />
+                <FaUserCircle className="text-gray-600 text-2xl" /> */}
+                <UserDropdown />
             </div>
         </div>
     );

@@ -1,14 +1,64 @@
 import useAuth from '@/hooks/useAuth';
-import { Button, Form, Input, Modal } from 'antd';
+import { Button, Modal } from 'antd';
+import { useForm } from 'react-hook-form';
 import React, { useState } from 'react';
-import { ScrollRestoration } from 'react-router-dom';
+import { ScrollRestoration, useNavigate } from 'react-router-dom';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 const Profile = () => {
-    const { user } = useAuth();
+    const { user, setUser } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     const showModal = () => setIsModalOpen(true);
     const handleCancel = () => setIsModalOpen(false);
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        defaultValues: {
+            name: user?.name || '',
+            first_name: user?.first_name || '',
+            email: user?.email || '',
+            phone: user?.phone || ''
+        }
+    });
+
+    const logout = async () => {
+        const toastId = toast.loading('Logging out...');
+        try {
+            const response = await axiosSecure.post('/logout');
+            if (response) {
+                // console.log(response);
+                setUser(null);
+                toast.success(response?.data?.message || 'Logout successful', { id: toastId });
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error?.response?.data?.message || 'Logout failed', { id: toastId });
+        }
+    }
+
+
+    const onSubmit = async (values) => {
+        const payload = {
+            name: values.name,
+            phone: values.phone,
+            first_name: values.first_name
+        };
+        console.log('Form values:', payload);
+        // You can add your API call here
+        try {
+            const res = await axiosSecure.post('/profile/update', payload);
+            if (res) {
+                logout()
+                navigate('/auth/registration');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        setIsModalOpen(false);
+        reset();
+    };
 
     return (
         <div className=" mx-auto p-6 bg-primary min-h-screen flex flex-col  justify-center">
@@ -17,13 +67,13 @@ const Profile = () => {
                 {/* Header */}
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold text-gray-800">Profile</h1>
-                    {/* <Button 
-                        type="primary" 
+                    <Button
+                        type="primary"
                         onClick={showModal}
                         className="bg-orange-600 text-xl py-6 hover:bg-orange-700"
                     >
                         Edit Profile
-                    </Button> */}
+                    </Button>
                 </div>
 
                 {/* Profile Content */}
@@ -72,21 +122,36 @@ const Profile = () => {
                 onCancel={handleCancel}
                 footer={null}
             >
-                <Form layout="vertical" initialValues={user}>
-                    <Form.Item label="Name" name="name">
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Email" name="email">
-                        <Input disabled />
-                    </Form.Item>
-                    <Form.Item label="Phone" name="phone">
-                        <Input />
-                    </Form.Item>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Name</label>
+                        <input
+                            className="w-full border rounded px-3 py-2 mt-1"
+                            {...register('name', { required: 'Name is required' })}
+                        />
+                        {errors.name && <span className="text-red-500 text-xs">{errors.name.message}</span>}
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Email</label>
+                        <input
+                            className="w-full border rounded px-3 py-2 mt-1 bg-gray-100"
+                            {...register('email')}
+                            disabled
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Phone</label>
+                        <input
+                            className="w-full border rounded px-3 py-2 mt-1"
+                            {...register('phone')}
+                        />
+                    </div>
                     <div className="flex justify-end gap-4">
                         <Button onClick={handleCancel}>Cancel</Button>
                         <Button type="primary" htmlType="submit">Save</Button>
                     </div>
-                </Form>
+                </form>
             </Modal>
         </div>
     );

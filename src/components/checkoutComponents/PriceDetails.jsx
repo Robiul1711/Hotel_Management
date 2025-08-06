@@ -272,7 +272,7 @@ const PriceDetails = ({ villa, addOnPrice, selectedAddOnId, selectedMealPackages
       email: user?.email,
       adult_guest: String(initialAdults + extraAdults),
       child_guest: String(initialChildren + extraChildren),
-      contact: user?.contact,
+      contact: user?.phone || '',
       check_in: checkInDate,
       check_out: checkOutDate,
       payable: String(totalPrice),

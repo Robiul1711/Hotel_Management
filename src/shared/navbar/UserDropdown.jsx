@@ -67,7 +67,7 @@ const UserDropdown = () => {
                 console.log('Go to Settings');
                 break;
             case 'dashboard':
-                navigate('/dashboard/booking');
+                navigate('/dashboard/villa-reservation-history');
                 break;
             case 'logout':
                 logout();

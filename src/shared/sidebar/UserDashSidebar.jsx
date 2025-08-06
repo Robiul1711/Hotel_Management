@@ -38,17 +38,17 @@ const UserDashSidebar = ({ isSidebarOpen, setIsSidebarOpen, logout }) => {
                     )}
                 </NavLink> */}
 
-                <NavLink to="/dashboard/booking">
+                <NavLink to="/dashboard/villa-reservation-history">
                     {({ isActive }) => (
                         <div className={navItemClasses(isActive || booking)}>
                             <BookingIcon color={isActive || booking ? '#fff' : '#333'} />
-                            Villa Booking
+                            Villa Reservation History
                         </div>
                     )}
                 </NavLink>
 
 
-                <NavLink to="/dashboard/booking-history">
+                <NavLink to="/dashboard/villa-booking-history">
                     {({ isActive }) => (
                         <div className={navItemClasses(isActive)}>
                             <BookingHistoryIcon color={isActive ? '#fff' : '#333'} />
