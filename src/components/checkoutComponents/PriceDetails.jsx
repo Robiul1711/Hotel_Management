@@ -754,6 +754,11 @@ const PriceDetails = ({
       return;
     }
 
+    const totalPriceWithCommission = (
+      Number(totalPrice) +
+      (Number(totalPrice) * Number(villa?.specificVilla?.commission || 0)) / 100
+    ).toFixed(2);
+
     const payload = {
       user_id: user?.id,
       villa_id: villa?.specificVilla?.id,
@@ -766,7 +771,7 @@ const PriceDetails = ({
       contact: user?.phone || "",
       check_in: checkInDate,
       check_out: checkOutDate,
-      payable: String(totalPrice),
+      payable: String(totalPriceWithCommission),
     };
 
     const toastId = toast.loading("Reserving villa...");
