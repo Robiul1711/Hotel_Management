@@ -43,11 +43,11 @@ const Stays = () => {
                         className={`${active === 'villa' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-7 py-2 md:px-6 md:py-2 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition-all`}>
                         Villas
                     </button>
-                    <button
+                    {/* <button
                         onClick={() => setActive('hotels')}
                         className={`${active === 'hotels' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-7 py-2 md:px-6 md:py-2 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition-all`}>
                         Hotels
-                    </button>
+                    </button> */}
                 </div>
             </div>
 
