@@ -48,7 +48,7 @@ const CelebrateCard = ({ data }) => {
                 className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center px-4">
-                <h3 className="text-white text-base sm:text-[24px] font-semibold">
+                <h3 className="text-white text-sm sm:text-[24px] sm:font-semibold font-medium">
                     {data.title}
                 </h3>
             </div>
@@ -59,7 +59,7 @@ const CelebrateCard = ({ data }) => {
 const Celebrate = () => {
     return (
         <div className="w-full mx-auto  bg-transparent">
-            <p className="text-primary  md:text-4xl lg:text-5xl lg:text-center md:text-left font-semibold mb-4">
+            <p className="text-primary text-lg  md:text-4xl lg:text-center md:text-left font-semibold mb-4">
                 Celebrate with Hich
             </p>
             <Swiper

@@ -894,7 +894,7 @@ const PriceDetails = ({
                 </div>
                 <div className="flex items-center gap-2">
                   <button
-                    className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
+                    className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-600"
                     onClick={() => setCount(Math.max(count - 1, 0))}
                     disabled={count === 0}
                   >
@@ -902,7 +902,7 @@ const PriceDetails = ({
                   </button>
                   <span className="w-4 text-center text-sm">{count}</span>
                   <button
-                    className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
+                    className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-600"
                     onClick={() => {
                       if (currentInitialGuests < initialGuestLimit) {
                         setCount(count + 1);
@@ -976,7 +976,7 @@ const PriceDetails = ({
                 </div>
                 <div className="flex items-center gap-2">
                   <button
-                    className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
+                    className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-600"
                     onClick={() => setCount(Math.max(count - 1, 0))}
                     disabled={count === 0}
                   >
@@ -984,7 +984,7 @@ const PriceDetails = ({
                   </button>
                   <span className="w-4 text-center text-sm">{count}</span>
                   <button
-                    className="w-6 h-6 rounded-full border flex items-center justify-center text-gray-600"
+                    className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-600"
                     onClick={() => {
                       if (currentExtraGuests < maxExtraGuests) {
                         setCount(count + 1);

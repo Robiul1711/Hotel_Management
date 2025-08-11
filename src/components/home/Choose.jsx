@@ -13,7 +13,7 @@ const Choose = () => {
             className='space-y-20'>
             <div className="">
                 <div className='space-y-4 xlg:w-1/2 pb-5'>
-                    <p className="text-primary  md:text-4xl lg:text-5xl font-semibold mb-0">
+                    <p className="text-primary  md:text-4xl text-lg font-semibold mb-0">
                         Why Choose Us?
                     </p>
                     <p className="text-lg">

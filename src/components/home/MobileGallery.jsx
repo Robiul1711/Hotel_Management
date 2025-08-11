@@ -14,7 +14,7 @@ const MobileGallery = () => {
     return (
         <div className='md:hidden space-y-5'>
             <div className="flex justify-between items-center">
-                <p className="text-primary mb-0 font-semibold  md:text-4xl lg:text-5xl md:text-left">
+                <p className="text-primary mb-0 font-semibold text-lg md:text-4xl  md:text-left">
                     Create Memories, One Stay at a Time
                 </p>
                 {/* <div className="">

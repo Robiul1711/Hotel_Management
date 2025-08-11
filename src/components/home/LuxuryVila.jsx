@@ -11,16 +11,16 @@ const LuxuryVila = () => {
 
     return (
         <div className='flex  justify-between rounded-[10px] '>
-            <div className="w-[60%]  border-black flex items-center justify-center pl-4 py-4 rounded-l-[18px] xlg:px-20 bg-[#fef7da] text-dark">
+            <div className="w-[55%]  border-black flex items-center justify-center pl-4 py-4 rounded-l-[18px] xlg:px-20 bg-[#fef7da] text-dark">
                 <div className="">
                     <p className="text-[15px] sm:text-[24px] font-bold">
                         {cardData[0]?.title}
 
                     </p>
-                    <ul className='list-disc list-inside text-gray-500 text-[13px] space-y-2 md:text-lg'>
+                    <ul className='list-disc px-2 text-black text-xs space-y-2 md:text-lg'>
                         {
                             cardData[0]?.points?.map((item, index) =>
-                                <li key={index} >{item}</li>
+                                <li className=' ' key={index} >{item}</li>
 
                             )
                         }
@@ -31,9 +31,9 @@ const LuxuryVila = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-[40%]  border-black   ">
+            <div className="w-[45%]  border-black   ">
 
-                <img src={cardData[0]?.image} alt="" className='w-full h-full rounded-r-[18px]' />
+                <img src={cardData[0]?.image} alt="" className='w-full h-full rounded-r-[18px] object-cover' />
             </div>
 
         </div>

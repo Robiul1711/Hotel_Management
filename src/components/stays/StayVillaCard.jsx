@@ -11,7 +11,7 @@ const StayVillaCard = ({ data }) => {
         >
             <div className="flex flex-col md:flex-row bg-white w-full rounded-xl">
                 {/* Image Section */}
-                <div className="relative w-full md:w-1/2">
+                <div className="relative w-full md:w-1/2 h-[300px]">
                     <img
                         src={data?.thumbnail}
                         className="w-full h-full  object-cover"

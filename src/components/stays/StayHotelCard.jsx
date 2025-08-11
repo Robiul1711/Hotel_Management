@@ -9,7 +9,7 @@ const StayHotelCard = ({ data }) => {
         <Link to={`/hotel-package-details/${data?.id}`} className="border-2 block border-gray-200 rounded-xl bg-gray-100">
             <div className="flex flex-col md:flex-row bg-white  overflow-hidden duration-300 w-full rounded-xl ">
                 {/* Image Section */}
-                <div className="relative  w-full md:w-1/2">
+                <div className="relative  w-full md:w-1/2 h-[300px]">
                     <img
                         src={data?.thumbnail}
                         className="w-full h-full object-cover"

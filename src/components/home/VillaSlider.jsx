@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import useData from '@/hooks/useData';
+import { LocationIcons } from '@/lib/CustomIcons';
 
 
 const VillaCard = ({ data }) => {
@@ -37,9 +38,9 @@ const VillaCard = ({ data }) => {
                         <p className="font-semibold mb-2 text-gray-800 text-base sm:text-lg md:text-xl lg:text-xl truncate">
                             {data?.villa_name}
                         </p>
-                        <p className="my-0">
-                            Location: {data?.location}
-                        </p>
+                        <div className="my-0 flex items-center">
+                            <span className=' inline-flex'><LocationIcons /></span> {data?.location}
+                        </div>
                         <p className="font-bold text-sm sm:text-base">
                             Starting form ₹{data?.price_a_night}
                         </p>

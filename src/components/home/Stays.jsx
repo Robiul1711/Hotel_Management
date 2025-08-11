@@ -28,7 +28,7 @@ const Stays = () => {
             <ScrollRestoration />
             <div className="flex flex-col gap-2 lg:gap-8">
                 <div className="flex justify-between">
-                    <p className="text-primary font-semibold mb-0 md:text-5xl">
+                    <p className="text-primary font-semibold mb-0 md:text-4xl text-lg">
                         Popular Hich Stays
                     </p>
                     {/* <button className="md:hidden text-gray-400">see all</button> */}
@@ -40,7 +40,7 @@ const Stays = () => {
 
                     <button
                         onClick={() => setActive('villa')}
-                        className={`${active === 'villa' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-7 py-2 md:px-6 md:py-2 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition-all`}>
+                        className={`${active === 'villa' ? 'bg-secondary text-white' : ''}  text-secondary border border-secondary px-7 py-2 md:px-6 md:py-2 rounded-full font-semibold hover:bg-orange-600 md:text-base text-sm hover:text-white transition-all`}>
                         Villas
                     </button>
                     {/* <button
