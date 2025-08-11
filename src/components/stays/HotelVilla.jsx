@@ -6,7 +6,7 @@ const HotelVilla = ({ active, setActive }) => {
         <div className=''>
             <div className="flex flex-col xmd:flex-row xmd:items-center justify-between">
                 <div className="">
-                    <p className="text-primary text-xl xmd:text-3xl xlg:text-5xl">
+                    <p className="text-primary text-lg xmd:text-3xl xlg:text-4xl">
                         Hich Villas
                     </p>
                 </div>

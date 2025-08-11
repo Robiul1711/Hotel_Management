@@ -97,7 +97,7 @@ const Checkout = () => {
             <div className="flex flex-col xlg:flex-col gap-4">
               <SunshineAndSoul villa={villa?.specificVilla} />
               <div className="xlg:hidden">
-                <PriceDetails villa={villa?.specificVilla} />
+                <PriceDetails villa={villa} addOnPrice={addOnPrice} selectedAddOnId={addOnId} selectedMealPackages={selectedMealPackages} />
               </div>
 
 

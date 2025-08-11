@@ -10,7 +10,7 @@ const App = () => {
             viewport={{ once: true, amount: 0.5 }}
             className='mt-[90px] flex flex-col gap-11'>
             <div className="space-y-4 md:space-y-10">
-                <p className="text-primary md:text-5xl font-semibold mb-0">
+                <p className="text-primary md:text-4xl text-lg font-semibold mb-0">
                     HICH – The Unhotel Experience. Stay Different. Live More.
                 </p>
                 <div className=" text-sm lg:text-xl">

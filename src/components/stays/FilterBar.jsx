@@ -52,7 +52,7 @@ const FilterBar = () => {
     return (
         <div className='relative'>
             <p className="text-lg"><span className="text-primary">Home</span> {">"} <span className="text-gray-400">Villas in Lonavala</span></p>
-            <div className="flex items-center justify-between sticky top-[90px] bg-white z-10 py-2 border-b ">
+            <div className="flex items-center justify-between sticky xmd:top-[90px] -top-4 bg-white z-10 py-2 border-b ">
                 <button onClick={handleSearch} className="border py-3 px-8  rounded-xl">
                     Apply
                 </button>
@@ -65,8 +65,8 @@ const FilterBar = () => {
                 }} className="underline cursor-pointer text-gray-400 mb-0">Clear All</p>
             </div>
 
-            <div className="border-b-2 space-y-3 my-5 pb-8">
-                <p className="text-2xl">One Rupee Villa</p>
+            <div className="border-b-2 space-y-3 xmd:my-5 my-3 xmd:pb-8 pb-4">
+                <p className="xmd:text-2xl text-lg">One Rupee Villa</p>
                 <p className="text-lg">Price per night with taxes</p>
                 <ToggleButton enabled={isEnabled} onToggle={setIsEnabled} />
             </div>
@@ -99,12 +99,12 @@ const FilterBar = () => {
                 </div>
             </div> */}
 
-            <div className="py-8 border-b-2 flex items-center justify-between ">
+            <div className="xmd:py-8 py-4 border-b-2 flex items-center justify-between ">
                 <div className="">
-                    <p className="text-2xl">Rooms</p>
+                    <p className="xmd:text-2xl text-lg">Rooms</p>
                     <p className="text-lg">No. of Rooms</p>
                 </div>
-                <div className="border p-5 rounded-xl flex gap-3">
+                <div className="border xmd:p-5 p-2.5 rounded-xl flex gap-3">
                     <button onClick={() => setQuantity(--quantity)}>-</button>
                     {quantity}
                     <button onClick={() => setQuantity(++quantity)}>+</button>
@@ -112,8 +112,8 @@ const FilterBar = () => {
 
             </div>
 
-            <div className="py-8 border-b-2 flex flex-col gap-3">
-                <p className="text-2xl">Key Amenities</p>
+            <div className="xmd:py-8 py-4 border-b-2 flex flex-col gap-3">
+                <p className="xmd:text-2xl text-lg">Key Amenities</p>
 
                 {
                     displayedAmenities?.map(item =>
@@ -137,8 +137,8 @@ const FilterBar = () => {
 
 
 
-            <div className="py-8 border-b-2 flex flex-col gap-3">
-                <p className="text-2xl">Price Per Night</p>
+            <div className="xmd:py-8 py-4 border-b-2 flex flex-col gap-3">
+                <p className="xmd:text-2xl text-lg">Price Per Night</p>
 
                 <label className="inline-flex items-center gap-2">
                     <input
@@ -202,7 +202,7 @@ const FilterBar = () => {
                 </label>
             </div>
 
-            <div className="py-8 flex flex-col gap-3">
+            <div className="xmd:py-8 py-4 flex flex-col gap-3">
                 {/* <p className="text-2xl">Selected Filters</p> */}
 
                 {/* <div className="flex items-center justify-between">
