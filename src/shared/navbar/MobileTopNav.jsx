@@ -8,12 +8,13 @@ import pune from '@/assets/images/pune.png'
 import mumbai from '@/assets/images/mumbai.png'
 import delhi from '@/assets/images/delhi.png'
 import goa from '@/assets/images/goa.png'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaPhone } from 'react-icons/fa';
 import { BsTelephone } from "react-icons/bs";
 import UserDropdown from './UserDropdown';
 import ListYourVilla from '@/components/home/ListYourVilla';
 import PropertyListingForm from '@/components/home/PropertyListingForm';
+import useAuth from '@/hooks/useAuth';
 
 
 const data = [
@@ -46,7 +47,7 @@ const data = [
 
 
 const MobileTopNav = () => {
-
+ const { user } = useAuth();
     const location = useLocation();
     const show = ["/", "/stays", "/experience"].includes(location.pathname);
 
@@ -89,7 +90,18 @@ const MobileTopNav = () => {
             <div className="font-semibold flex justify-around items-center text-sm">
                 <p className=""> <Link to={'/stays'} className="">Stays</Link></p>
                 <p className="flex justify-center items-center gap-2"><BsTelephone />+91 97693 89956</p>
-                <p className="">   <PropertyListingForm button={false} /></p>
+                {/* <p className="">   <PropertyListingForm button={false} /></p> */}
+                <p className="">   <ListYourVilla/> </p>
+
+                {
+            user ?
+             <UserDropdown />
+              :
+
+              <NavLink className={`-mt-4`} to={'/auth/registration'}>Login</NavLink>
+
+          }
+            
                 {/* <div className="">
                     <UserDropdown />
                 </div> */}

@@ -58,7 +58,7 @@ const MealPackageCard = ({ data, isSelected, onToggle }) => {
                                             data?.items ? (
                                                 <ul className=''>
                                                     {data?.items?.map((mealItem, index) => (
-                                                        <li key={index} className="text-xl font-semibold text-gray-800">
+                                                        <li key={index} className="text-base font-medium my-2 text-gray-800">
                                                             {index + 1}. {mealItem?.items_name}
                                                         </li>
                                                     ))}

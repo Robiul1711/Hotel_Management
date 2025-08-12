@@ -27,7 +27,7 @@ const StayMobileCardVilla = ({ data }) => {
                             <p className="font-semibold text-gray-800 text-lg sm:text-xl md:text-2xl ">
                                 {data?.villa_name}
                             </p>
-                            <p className="flex items-center gap-2"><StarIcons />5.0</p>
+                            <p className="flex items-center gap-2"><StarIcons />{data?.rating_summary?.average}</p>
                         </div>
                         <p className="text-xs text-gray-400">{data?.location}</p>
                         <div className="text-xs text-gray-400">

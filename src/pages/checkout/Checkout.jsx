@@ -80,6 +80,8 @@ const Checkout = () => {
     }
   })
 
+  console.log(villa)
+
 
   const { mealPackages } = useMealPackageHook();
   const { addOnData } = useAddOnHooks();
@@ -117,9 +119,9 @@ const Checkout = () => {
               {/* ===============Add ons ========================= */}
               <div className="my-10">
                 <p className="lg:text-2xl font-semibold"> ADD-ONS</p>
-                <div className="grid grid-cols-2 gap-5">
+                <div className="grid xmd:grid-cols-2 gap-5">
                   {
-                    addOnData?.map(item => <AddOnCard
+                    villa?.specificVilla?.addons?.map(item => <AddOnCard
                       key={item.id}
                       data={item}
                       isSelected={selectedAddOns.some(selected => selected.id === item.id)}

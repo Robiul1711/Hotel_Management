@@ -51,6 +51,7 @@ const UserDropdown = () => {
                 // console.log(response);
                 setUser(null);
                 toast.success(response?.data?.message || 'Logout successful', { id: toastId });
+                navigate("/auth/registration")
             }
         } catch (error) {
             console.log(error);
@@ -86,7 +87,7 @@ const UserDropdown = () => {
             <a onClick={(e) => e.preventDefault()}>
                 <Space>
 
-                    <p className="bg-white border font-semibold rounded-full shadow-lg w-12 h-12 flex items-center justify-center">{user?.name ? user?.name?.charAt(0) : 'A'}</p>
+                    <p className="bg-white border font-semibold rounded-full shadow-lg sm:w-12 w-8 sm:h-12 h-8 flex items-center justify-center">{user?.name ? user?.name?.charAt(0) : 'A'}</p>
                 </Space>
             </a>
         </Dropdown>
