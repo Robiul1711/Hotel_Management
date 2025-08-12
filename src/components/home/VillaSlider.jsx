@@ -41,8 +41,8 @@ const VillaCard = ({ data }) => {
                         <div className="my-0 flex items-center">
                             <span className=' inline-flex'><LocationIcons /></span> {data?.location}
                         </div>
-                        <p className="font-bold text-sm sm:text-base">
-                            Starting form ₹{data?.price_a_night}
+                        <p className="font-normal text-sm sm:text-base">
+                            Starting form ₹<span className=' font-semibold'>{data?.price_a_night}</span>
                         </p>
                     </div>
                     <div className="flex-shrink-0">

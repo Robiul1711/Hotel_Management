@@ -1075,6 +1075,14 @@ const PriceDetails = ({
         </span>
       </div>
 
+      {villa?.specificVilla?.commission && (
+        <div className=" flex w-full justify-end items-end">
+          <p className="text-sm text-gray-500">
+            {villa?.specificVilla?.commission}% commission is included
+          </p>
+        </div>
+      )}
+
       <div className="flex items-start mb-4 text-xs text-gray-600">
         <input
           type="checkbox"
