@@ -146,10 +146,18 @@ const Checkout = () => {
             </div>
           </div>
 
-          {/* =====================Price Card ======================= */}
-          <div className="xlg:w-[30%] ">
-            <PriceDetails villa={villa} addOnPrice={addOnPrice} selectedAddOnId={addOnId} selectedMealPackages={selectedMealPackages} />
-          </div>
+        {/* =====================Price Card ======================= */}
+<div className="xlg:w-[30%] mb-6">
+  <div className="sticky top-28 ">
+    <PriceDetails
+      villa={villa}
+      addOnPrice={addOnPrice}
+      selectedAddOnId={addOnId}
+      selectedMealPackages={selectedMealPackages}
+    />
+  </div>
+</div>
+
         </div>
       </div>
 
