@@ -25,7 +25,7 @@ const Overview = ({ villa }) => {
         {villa?.long_des?.length > 250 ? (
           <>
             <p
-              className="xlg:text-xl"
+              className="xlg:text-xl mb-0"
               dangerouslySetInnerHTML={{
                 __html: showFull ? sanitizedFullDesc : previewText,
               }}

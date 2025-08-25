@@ -98,9 +98,9 @@ const Checkout = () => {
           <div className="space-y-7  xlg:w-[70%]">
             <div className="flex flex-col xlg:flex-col gap-4">
               <SunshineAndSoul villa={villa?.specificVilla} />
-              <div className="xlg:hidden">
+              {/* <div className="xlg:hidden">
                 <PriceDetails villa={villa} addOnPrice={addOnPrice} selectedAddOnId={addOnId} selectedMealPackages={selectedMealPackages} />
-              </div>
+              </div> */}
 
 
               {/* <BookingCancellationPolicy /> */}
@@ -147,7 +147,7 @@ const Checkout = () => {
           </div>
 
           {/* =====================Price Card ======================= */}
-          <div className="xlg:w-[30%] hidden xlg:block">
+          <div className="xlg:w-[30%] ">
             <PriceDetails villa={villa} addOnPrice={addOnPrice} selectedAddOnId={addOnId} selectedMealPackages={selectedMealPackages} />
           </div>
         </div>
