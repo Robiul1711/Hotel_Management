@@ -537,6 +537,7 @@ const PriceDetails = ({
   selectedMealPackages,
 }) => {
   const { user } = useAuth();
+  console.log('villa details', villa);
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(false);
   const [checkInDate, setCheckInDate] = useState("");
@@ -714,7 +715,7 @@ const PriceDetails = ({
       try {
         const res = await axiosPublic.post("/calculate-total", payload);
         if (res) {
-          setTotalPrice(res?.data?.total_payable);
+          setTotalPrice(res?.data?.total_payable + Number(villa?.specificVilla?.price_a_night));
         }
       } catch (error) {
         console.error("Error calculating price:", error);
@@ -852,9 +853,8 @@ const PriceDetails = ({
         >
           <span>{currentInitialGuests} Guests</span>
           <svg
-            className={`w-4 h-4 transition-transform ${
-              initialGuestDropdownOpen ? "rotate-180" : ""
-            }`}
+            className={`w-4 h-4 transition-transform ${initialGuestDropdownOpen ? "rotate-180" : ""
+              }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -934,9 +934,8 @@ const PriceDetails = ({
         >
           <span>{currentExtraGuests} Guests</span>
           <svg
-            className={`w-4 h-4 transition-transform ${
-              guestDropdownOpen ? "rotate-180" : ""
-            }`}
+            className={`w-4 h-4 transition-transform ${guestDropdownOpen ? "rotate-180" : ""
+              }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -1059,18 +1058,20 @@ const PriceDetails = ({
       </div>
 
       <div className="flex justify-between items-center bg-[#FF5A1F] text-white px-4 py-3 rounded-lg mb-4">
-        <button onClick={calculateTotalPrice} className="text-sm font-semibold">
+        <button
+          // onClick={calculateTotalPrice}
+          className="text-sm font-semibold">
           Total Payable
         </button>
         {/* <span className="text-lg font-bold">₹ {totalPrice}</span> */}
         <span className="text-lg font-bold">
           {villa?.specificVilla?.commission
             ? (
-                Number(totalPrice) +
-                (Number(totalPrice) *
-                  Number(villa?.specificVilla?.commission || 0)) /
-                  100
-              ).toFixed(2)
+              Number(totalPrice) +
+              (Number(totalPrice) *
+                Number(villa?.specificVilla?.commission || 0)) /
+              100
+            ).toFixed(2)
             : totalPrice}
         </span>
       </div>
