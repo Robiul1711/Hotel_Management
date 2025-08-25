@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import DataProvider from "./providers/DataProvider";
 
+
 const queryClient = new QueryClient();
 
 
