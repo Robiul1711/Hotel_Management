@@ -1,5 +1,3 @@
-
-
 // import React, { useState, useEffect } from "react";
 // import { CheckCircle, ShieldCheck } from "lucide-react";
 // import useAuth from "@/hooks/useAuth";
@@ -614,18 +612,20 @@
 
 // export default PriceDetails;
 
-
-``
-import React, { useState, useEffect } from "react";
-import { CheckCircle, ShieldCheck } from "lucide-react";
-import useAuth from "@/hooks/useAuth";
-import { useLocation, useParams } from "react-router-dom";
-import useAxiosPublic from "@/hooks/useAxiosPublic";
-import toast from "react-hot-toast";
-
+import React, { useEffect, useState } from "react";
+import { ShieldCheck } from "lucide-react";
 import DateAndTime from "./DateAndTime";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
+import { useParams } from "react-router-dom";
 import useData from "@/hooks/useData";
+import toast from "react-hot-toast";
+import useAuth from "@/hooks/useAuth";
+import {
+  showLoadingToast,
+  updateToastError,
+  updateToastSuccess,
+} from "@/lib/utils";
 
 const PriceDetails = ({
   villa,
@@ -633,288 +633,273 @@ const PriceDetails = ({
   selectedAddOnId,
   selectedMealPackages,
 }) => {
-  const {bookingDate,totalBookingPrice} = useData();
-  const { user } = useAuth();
-  console.log('villa details', villa, selectedMealPackages, addOnPrice, selectedAddOnId, totalBookingPrice, bookingDate);
+  const { bookingDate, totalBookingPrice } = useData();
   const axiosPublic = useAxiosPublic();
-  const [loading, setLoading] = useState(false);
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
+  const { id } = useParams();
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const [dateError, setDateError] = useState("");
-
-  const [guestDropdownOpen, setGuestDropdownOpen] = useState(false);
   const [initialGuestDropdownOpen, setInitialGuestDropdownOpen] =
     useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [mealPackageTotal, setMealPackageTotal] = useState(0);
-
   const [initialAdults, setInitialAdults] = useState(0);
   const [initialChildren, setInitialChildren] = useState(0);
-  const [extraAdults, setExtraAdults] = useState(0);
-  const [extraChildren, setExtraChildren] = useState(0);
+  const [calculatedTotal, setCalculatedTotal] = useState(0);
 
-  const initialGuestLimit = villa?.specificVilla?.total_guest || 0;
-  const maxExtraGuests = villa?.specificVilla?.max_guest - initialGuestLimit;
-  const maxTotalGuests = villa?.specificVilla?.max_guest;
-
+  // Get guest information from villa data
+  const initialGuestLimit = parseInt(villa?.specificVilla?.total_guest) || 0;
+  const maxGuestLimit = parseInt(villa?.specificVilla?.max_guest) || 0;
   const currentInitialGuests = initialAdults + initialChildren;
-  const currentExtraGuests = extraAdults + extraChildren;
 
-const {id}=useParams();
-
-const {data:CalendarData}=useQuery({
-  queryKey: ["CalendarData", id],
-  queryFn: async () => {
-    const res = await axiosPublic.get(`/villas/${id}/calendar-prices`);
-    return res?.data;
-  },
-})
-  useEffect(() => {
-    const newMealPackageTotal = selectedMealPackages?.reduce((total, pkg) => {
-      const adultPrice = parseFloat(pkg.adult_price) || 0;
-      const childPrice = parseFloat(pkg.child_price) || 0;
-      return (
-        total +
-        adultPrice * (initialAdults + extraAdults) +
-        childPrice * (initialChildren + extraChildren)
-      );
-    }, 0);
-
-    setMealPackageTotal(newMealPackageTotal);
-  }, [
-    selectedMealPackages,
-    initialAdults,
-    initialChildren,
-    extraAdults,
-    extraChildren,
-  ]);
-
-  const location = useLocation();
-
-  useEffect(() => {
-    if (checkInDate && checkOutDate) {
-      const checkIn = new Date(checkInDate);
-      const checkOut = new Date(checkOutDate);
-
-      if (checkOut < checkIn) {
-        const errorMsg = "Check-out date cannot be before check-in date";
-        setDateError(errorMsg);
-        toast.error(errorMsg);
-      } else {
-        setDateError("");
-      }
-    }
-  }, [checkInDate, checkOutDate]);
-
-  const handleCheckInChange = (e) => {
-    const newCheckInDate = e.target.value;
-    setCheckInDate(newCheckInDate);
-
-    if (checkOutDate && new Date(newCheckInDate) > new Date(checkOutDate)) {
-      setCheckOutDate("");
-      toast.error("Please select a new check-out date");
-    }
-  };
-
-  const handleBookNow = async () => {
-    if (totalPrice === 0) {
-      toast.error("Please select a meal package and initial guest");
-      return;
-    }
-
-    if (!checkInDate || !checkOutDate) {
-      toast.error("Please select both check-in and check-out dates");
-      return;
-    }
-
-    if (dateError) {
-      toast.error(dateError);
-      return;
-    }
-
-    if (!acceptTerms) {
-      toast.error("Please accept the terms and conditions");
-      return;
-    }
-
-    const payload = {
-      amount: totalPrice,
-      type: "villa",
-      userId: user?.id,
-      userEmail: user?.email,
-      villaorhotelid: villa?.specificVilla?.id,
-      userName: user?.name,
-      checkindate: checkInDate,
-      checkoutdate: checkOutDate,
-    };
-
-    try {
-      const res = await axiosPublic.post("/razoarpay/payment", payload);
-      if (res) {
-        toast.success("Payment successful");
-        window.location.href = res.data.url;
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error?.response?.data?.error || "Payment failed");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const today = new Date().toISOString().split("T")[0];
-  const minCheckOutDate = checkInDate || today;
-
-  const calculateTotalPrice = async () => {
-    if (selectedMealPackages?.length === 0 && initialAdults === 0) {
-      return toast.error("Please select a meal package and initial guest");
-    }
-
-    const payload = {
-      adult_price: villa?.prices?.adult_price,
-      child_price: villa?.prices?.child_price,
-      extra_adult_price: villa?.specificVilla?.extra_adult_price,
-      extra_child_price: villa?.specificVilla?.extra_child_price,
-      initial_adult_guest: initialAdults,
-      initial_child_guest: initialChildren,
-      extra_adult_guest: extraAdults,
-      extra_child_guest: extraChildren,
-      meal_adult_price: selectedMealPackages[0]?.adult_price || 0,
-      meal_child_price: selectedMealPackages[0]?.child_price || 0,
-      addons_price: addOnPrice,
-    };
-
-    const toastId = toast.loading("Calculating price");
-    try {
-      const res = await axiosPublic.post("/calculate-total", payload);
-      if (res) {
-        toast.success("Total price calculated", { id: toastId });
-        setTotalPrice(res?.data?.total_payable);
-      }
-    } catch (error) {
-      toast.error("Something went wrong", { id: toastId });
-    }
-  };
-
-  useEffect(() => {
-    const fetchTotalPrice = async () => {
-      const payload = {
-        adult_price: villa?.prices?.adult_price,
-        child_price: villa?.prices?.child_price,
-        extra_adult_price: villa?.specificVilla?.extra_adult_price,
-        extra_child_price: villa?.specificVilla?.extra_child_price,
-        initial_adult_guest: initialAdults,
-        initial_child_guest: initialChildren,
-        extra_adult_guest: extraAdults,
-        extra_child_guest: extraChildren,
-        meal_adult_price:
-          selectedMealPackages?.length > 0
-            ? selectedMealPackages[0]?.adult_price || 0
-            : 0,
-        meal_child_price:
-          selectedMealPackages?.length > 0
-            ? selectedMealPackages[0]?.child_price || 0
-            : 0,
-        addons_price: addOnPrice,
-      };
-
-      try {
-        const res = await axiosPublic.post("/calculate-total", payload);
-        if (res) {
-          setTotalPrice(res?.data?.total_payable + Number(villa?.specificVilla?.price_a_night));
-        }
-      } catch (error) {
-        console.error("Error calculating price:", error);
-      }
-    };
-
-    fetchTotalPrice();
-  }, [
-    villa,
-    addOnPrice,
-    selectedMealPackages,
-    initialAdults,
-    initialChildren,
-    extraAdults,
-    extraChildren,
-    axiosPublic,
-  ]);
-
-  const handleReserveNow = async () => {
-    if (totalPrice === 0 || selectedMealPackages.length === 0) {
-      toast.error("Please select a meal package and initial guest");
-      return;
-    }
-
-    if (!checkInDate || !checkOutDate) {
-      toast.error("Please select both check-in and check-out dates");
-      return;
-    }
-
-    if (dateError) {
-      toast.error(dateError);
-      return;
-    }
-
-    if (!acceptTerms) {
-      toast.error("Please accept the terms and conditions");
-      return;
-    }
-
-    const totalPriceWithCommission = (
-      Number(totalPrice) +
-      (Number(totalPrice) * Number(villa?.specificVilla?.commission || 0)) / 100
-    ).toFixed(2);
-
-    const payload = {
-      user_id: user?.id,
-      villa_id: villa?.specificVilla?.id,
-      meal_pack_id: selectedMealPackages[0]?.id,
-      addon_id: selectedAddOnId,
-      guest_name: user?.name,
-      email: user?.email,
-      adult_guest: String(initialAdults + extraAdults),
-      child_guest: String(initialChildren + extraChildren),
-      contact: user?.phone || "",
-      check_in: checkInDate,
-      check_out: checkOutDate,
-      payable: String(totalPriceWithCommission),
-    };
-
-    const toastId = toast.loading("Reserving villa...");
-    try {
-      const res = await axiosPublic.post("/reserve", payload);
-      if (res) {
-        toast.success(res?.data?.message, { id: toastId });
-      }
-    } catch (error) {
-      toast.error(error?.response?.data?.error || "Villa reservation failed", {
-        id: toastId,
-      });
-    }
-  };
+  // Calculate add-on price
   const totalAddOnPrice = Array.isArray(addOnPrice)
     ? addOnPrice.reduce((acc, price) => acc + parseFloat(price || 0), 0)
     : parseFloat(addOnPrice || 0);
 
-  // -------------------------------
-  // 🆕 Details Summary Section
-  // -------------------------------
+  // Helper function to render detail rows
   const detailRow = (label, value) => (
     <div className="flex justify-between text-sm text-gray-700 mb-1">
       <span>{label}</span>
       <span className="font-medium">₹ {value || 0}</span>
     </div>
   );
-  const adultPrice = parseFloat(selectedMealPackages?.[0]?.adult_price || 0);
-  const childPrice = parseFloat(selectedMealPackages?.[0]?.child_price || 0);
 
-  const totalAdultGuests = initialAdults + extraAdults;
-  const totalChildGuests = initialChildren + extraChildren;
+  // Get calendar data
+  const { data: CalendarData } = useQuery({
+    queryKey: ["CalendarData", id],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/villas/${id}/calendar-prices`);
+      return res?.data;
+    },
+  });
 
-  const mealAdultTotal = adultPrice * totalAdultGuests;
-  const mealChildTotal = childPrice * totalChildGuests;
+  // Calculate the total manually as a fallback
+  const calculateTotalManually = () => {
+    const basePrice = parseFloat(
+      villa?.prices?.villa_price || villa?.specificVilla?.price_a_night || 0
+    );
+    const mealAdultPrice = parseFloat(
+      selectedMealPackages?.[0]?.adult_price || 0
+    );
+    const mealChildPrice = parseFloat(
+      selectedMealPackages?.[0]?.child_price || 0
+    );
+    const commission = parseFloat(villa?.specificVilla?.commission || 0);
+
+    // Calculate meal costs
+    const mealAdultsCost = initialAdults * mealAdultPrice;
+    const mealChildrenCost = initialChildren * mealChildPrice;
+
+    // Calculate subtotal
+    const subtotal =
+      basePrice + mealAdultsCost + mealChildrenCost + totalAddOnPrice;
+
+    // Calculate commission if applicable
+    const totalWithCommission =
+      commission > 0 ? subtotal + (subtotal * commission) / 100 : subtotal;
+
+    return totalWithCommission;
+  };
+
+  // Mutation for calculating total
+  const { mutate: calculateTotal, isLoading: isCalculating } = useMutation({
+    mutationFn: async (data) => {
+      try {
+        const res = await axiosPublic.post("/calculate-total", data);
+        return res.data;
+      } catch (error) {
+        console.error("API Error:", error);
+        // If API fails, calculate manually
+        return { total_payable: calculateTotalManually() };
+      }
+    },
+    onSuccess: (data) => {
+      setCalculatedTotal(data.total_payable || calculateTotalManually());
+    },
+    onError: (error) => {
+      console.error("Error calculating total:", error);
+      // Fallback to manual calculation
+      setCalculatedTotal(calculateTotalManually());
+      toast.error("Using fallback calculation");
+    },
+  });
+
+  // Calculate total whenever relevant data changes
+  useEffect(() => {
+    if (initialAdults > 0) {
+      const payload = {
+        price_for_night:
+          totalBookingPrice ||
+          villa?.prices?.villa_price ||
+          villa?.specificVilla?.price_a_night ||
+          0,
+        meal_adult_price:
+          parseFloat(selectedMealPackages?.[0]?.adult_price) || 0,
+        meal_child_price:
+          parseFloat(selectedMealPackages?.[0]?.child_price) || 0,
+        addons_price: Array.isArray(addOnPrice)
+          ? addOnPrice
+          : [addOnPrice].filter(Boolean),
+        total_adult_guest: initialAdults,
+        total_child_guest: initialChildren,
+      };
+
+      calculateTotal(payload);
+    }
+  }, [
+    initialAdults,
+    initialChildren,
+    totalBookingPrice,
+    villa,
+    selectedMealPackages,
+    addOnPrice,
+    calculateTotal,
+  ]);
+
+  // Initialize with the base guest count when component mounts
+  useEffect(() => {
+    if (initialGuestLimit > 0 && initialAdults === 0 && initialChildren === 0) {
+      // Set initial adults to the base guest count, children to 0
+      setInitialAdults(initialGuestLimit);
+    }
+  }, [initialGuestLimit]);
+
+  // Calculate costs for display
+  const basePrice = parseFloat(
+    villa?.prices?.villa_price || villa?.specificVilla?.price_a_night || 0
+  );
+  const mealAdultPrice = parseFloat(
+    selectedMealPackages?.[0]?.adult_price || 0
+  );
+  const mealChildPrice = parseFloat(
+    selectedMealPackages?.[0]?.child_price || 0
+  );
+
+  const mealAdultsCost = initialAdults * mealAdultPrice;
+  const mealChildrenCost = initialChildren * mealChildPrice;
+
+  // Submit reserve mutation
+  const { user } = useAuth();
+
+  // Prepare reservation payload
+  const reservationPayload = {
+    user_id: user?.id,
+    villa_id: villa?.specificVilla?.id,
+    meal_pack_id: selectedMealPackages?.[0]?.id,
+    addon_id: selectedAddOnId || villa?.specificVilla?.addons?.map((addon) => addon.id),
+    guest_name: user?.name,
+    contact: user?.phone || "01778456546",
+    email: user?.email,
+    adult_guest: (initialAdults || 0).toString(),
+    child_guest: (initialChildren || 0).toString(),
+    check_in: bookingDate?.checkIn,
+    check_out: bookingDate?.checkOut,
+    payable: calculatedTotal.toFixed(2),
+  };
+
+  // Reserve mutation
+  const reserveMutation = useMutation({
+    mutationFn: async () => {
+      const res = await axiosPublic.post("/reserve", reservationPayload);
+      return res.data;
+    },
+    onMutate: () => {
+      const toastId = showLoadingToast("Reserving the villa...");
+      return { toastId };
+    },
+    onSuccess: (data, _variables, context) => {
+      updateToastSuccess(
+        context.toastId,
+        data?.message || "Reservation successful!"
+      );
+    },
+    onError: (error, _variables, context) => {
+      console.log(error);
+      const errorMessage =
+        error.response?.data?.message ||
+        "Something went wrong, try again later!!";
+      updateToastError(context.toastId, errorMessage);
+    },
+  });
+
+  // Prepare Book Now payload
+  const BookNowPayload = {
+    userId: user?.id,
+    type: "villa",
+    villaorhotelid: villa?.specificVilla?.id,
+    hoteltypeid: villa?.specificVilla?.id,
+    userName: user?.name,
+    userEmail: user?.email,
+    adult_guest: (initialAdults || 0).toString(),
+    child_guest: (initialChildren || 0).toString(),
+    checkindate: bookingDate?.checkIn,
+    checkoutdate: bookingDate?.checkOut,
+    amount: calculatedTotal.toFixed(2),
+  };
+console.log(BookNowPayload)
+  // Booknow mutation
+  const BooknowMutation = useMutation({
+    mutationFn: async () => {
+      const res = await axiosPublic.post("/razoarpay/payment", BookNowPayload);
+      return res.data;
+    },
+    onMutate: () => {
+      const toastId = showLoadingToast("Processing payment...");
+      return { toastId };
+    },
+    onSuccess: (data, _variables, context) => {
+      updateToastSuccess(
+        context.toastId,
+        "Redirecting to payment gateway..."
+      );
+      // Redirect to payment URL immediately
+      if (data?.url) {
+        setTimeout(() => {
+          window.location.href = data.url;
+        }, 1500); // Short delay to show success message
+      }
+    },
+    onError: (error, _variables, context) => {
+      console.log(error);
+      const errorMessage =
+        error.response?.data?.message ||
+        "Something went wrong, try again later!!";
+      updateToastError(context.toastId, errorMessage);
+    },
+  });
+
+  // Handle reservation/booking based on booking option
+  const handleBooking = () => {
+    if (!acceptTerms) {
+      toast.error("Please accept the terms and conditions");
+      return;
+    }
+
+    if (calculatedTotal === 0) {
+      toast.error("Please calculate the total first");
+      return;
+    }
+
+    if (villa?.specificVilla?.booking_option === "reserve_btn") {
+      reserveMutation.mutate();
+    } else {
+      BooknowMutation.mutate();
+    }
+  };
+
+  // Determine which mutation is loading
+  const isLoading = reserveMutation.isLoading || BooknowMutation.isLoading;
+  
+  // Determine button text based on booking option
+  const getButtonText = () => {
+    if (isLoading) return "Processing...";
+    
+    switch(villa?.specificVilla?.booking_option) {
+      case "reserve_btn":
+        return "Reserve Now";
+      case "book_btn":
+        return "Book Now";
+      default:
+        return "Book Now";
+    }
+  };
 
   return (
     <div className="xlg:max-w-md w-full mx-auto border rounded-xl p-6 bg-white shadow-md">
@@ -922,23 +907,26 @@ const {data:CalendarData}=useQuery({
 
       {/* Date and Time Section */}
       <div className="mb-4">
-      <DateAndTime CalendarData={CalendarData} />
-
+        <DateAndTime CalendarData={CalendarData} />
       </div>
 
       {/* Initial Guest Section */}
       <div className="relative mb-4">
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Initial Guests (Max {initialGuestLimit} included in base price)
+          Guests (max {maxGuestLimit})
         </label>
         <div
           className="border rounded-lg p-2 text-sm cursor-pointer flex justify-between items-center"
           onClick={() => setInitialGuestDropdownOpen(!initialGuestDropdownOpen)}
         >
-          <span>{currentInitialGuests} Guests</span>
+          <span>
+            {currentInitialGuests} Guests ({initialAdults} Adults,{" "}
+            {initialChildren} Children)
+          </span>
           <svg
-            className={`w-4 h-4 transition-transform ${initialGuestDropdownOpen ? "rotate-180" : ""
-              }`}
+            className={`w-4 h-4 transition-transform ${
+              initialGuestDropdownOpen ? "rotate-180" : ""
+            }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -960,14 +948,16 @@ const {data:CalendarData}=useQuery({
                 age: "12+ Years",
                 count: initialAdults,
                 setCount: setInitialAdults,
+                max: maxGuestLimit - initialChildren,
               },
               {
                 label: "Children",
                 age: "6–11 Years",
                 count: initialChildren,
                 setCount: setInitialChildren,
+                max: maxGuestLimit - initialAdults,
               },
-            ].map(({ label, age, count, setCount }) => (
+            ].map(({ label, age, count, setCount, max }) => (
               <div
                 className="flex justify-between items-center py-2"
                 key={label}
@@ -978,92 +968,92 @@ const {data:CalendarData}=useQuery({
                 </div>
                 <div className="flex items-center gap-2">
                   <button
-                    className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-600"
-                    onClick={() => setCount(Math.max(count - 1, 0))}
-                    disabled={count === 0}
+                    className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-600 disabled:opacity-50"
+                    onClick={() => {
+                      if (label === "Adults" && count <= 1) {
+                        toast.error("At least 1 adult required");
+                        return;
+                      }
+                      setCount(Math.max(count - 1, 0));
+                    }}
+                    disabled={count === 0 || (label === "Adults" && count <= 1)}
                   >
                     −
                   </button>
+
                   <span className="w-4 text-center text-sm">{count}</span>
                   <button
-                    className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-600"
+                    className="w-8 h-8 rounded-full border flex items-center justify-center text-gray-600 disabled:opacity-50"
                     onClick={() => {
-                      if (currentInitialGuests < initialGuestLimit) {
+                      if (currentInitialGuests < maxGuestLimit) {
                         setCount(count + 1);
                       } else {
-                        toast.error(
-                          `Maximum ${initialGuestLimit} initial guests allowed`
-                        );
+                        toast.error(`Maximum ${maxGuestLimit} guests allowed`);
                       }
                     }}
-                    disabled={currentInitialGuests >= initialGuestLimit}
+                    disabled={
+                      currentInitialGuests >= maxGuestLimit || count >= max
+                    }
                   >
                     +
                   </button>
                 </div>
               </div>
             ))}
+            <div className="text-xs text-gray-500 mt-2">
+              <p>No extra charges for additional guests.</p>
+            </div>
           </div>
         )}
       </div>
 
-
-      {dateError && <p className="text-red-500 text-xs mb-2">{dateError}</p>}
+      {/* Cost Breakdown */}
       <div className="mb-6 border border-dashed rounded-lg p-4 bg-gray-50">
         <h3 className="font-semibold text-gray-800 mb-2 text-sm">
           Cost Breakdown
         </h3>
 
-        {/* ✅ Show Meal Costs Only If a Meal Package is Selected */}
-        {selectedMealPackages?.length > 0 &&
-          adultPrice > 0 &&
-          totalAdultGuests > 0 &&
-          detailRow(
-            `Meal Adult Total (${totalAdultGuests} × ₹${adultPrice})`,
-            mealAdultTotal
-          )}
+        {/* Base Price */}
+        {detailRow("Base Price", basePrice.toFixed(2))}
 
-        {selectedMealPackages?.length > 0 &&
-          childPrice > 0 &&
-          totalChildGuests > 0 &&
-          detailRow(
-            `Meal Child Total (${totalChildGuests} × ₹${childPrice})`,
-            mealChildTotal
-          )}
+        {/* Meal Package Costs */}
+        {selectedMealPackages?.length > 0 && (
+          <>
+            {mealAdultsCost > 0 &&
+              detailRow(
+                `Meal Package (Adults: ${initialAdults})`,
+                mealAdultsCost.toFixed(2)
+              )}
+            {mealChildrenCost > 0 &&
+              detailRow(
+                `Meal Package (Children: ${initialChildren})`,
+                mealChildrenCost.toFixed(2)
+              )}
+          </>
+        )}
 
-        {totalAddOnPrice > 0 && detailRow("Add-on Price", totalAddOnPrice)}
-
-        {/* {villa?.specificVilla?.commission &&
-          detailRow("Commission", villa?.specificVilla?.commission)} */}
+        {/* Add-on Price */}
+        {totalAddOnPrice > 0 &&
+          detailRow("Add-on Price", totalAddOnPrice.toFixed(2))}
       </div>
 
+      {/* Total Price */}
       <div className="flex justify-between items-center bg-[#FF5A1F] text-white px-4 py-3 rounded-lg mb-4">
-        <button
-          // onClick={calculateTotalPrice}
-          className="text-sm font-semibold">
-          Total Payable
-        </button>
-        {/* <span className="text-lg font-bold">₹ {totalPrice}</span> */}
+        <span className="text-sm font-semibold">Total Payable</span>
         <span className="text-lg font-bold">
-          {villa?.specificVilla?.commission
-            ? (
-              Number(totalPrice) +
-              (Number(totalPrice) *
-                Number(villa?.specificVilla?.commission || 0)) /
-              100
-            ).toFixed(2)
-            : totalPrice}
+          {isCalculating ? "Calculating..." : `₹ ${calculatedTotal.toFixed(2)}`}
         </span>
       </div>
 
-      {villa?.specificVilla?.commission && (
-        <div className=" flex w-full justify-end items-end">
+      {/* {villa?.specificVilla?.commission && (
+        <div className="flex w-full justify-end items-end">
           <p className="text-sm text-gray-500">
-            {villa?.specificVilla?.commission}% commission is included
+            {villa?.specificVilla?.commission}% commission included
           </p>
         </div>
-      )}
+      )} */}
 
+      {/* Terms and Conditions */}
       <div className="flex items-start mb-4 text-xs text-gray-600">
         <input
           type="checkbox"
@@ -1080,24 +1070,21 @@ const {data:CalendarData}=useQuery({
         </span>
       </div>
 
-      {villa?.specificVilla?.booking_option === "reserve_btn" ? (
-        <button
-          onClick={handleReserveNow}
-          disabled={totalPrice === 0}
-          className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full"
-        >
-          Reserve Now
-        </button>
-      ) : (
-        <button
-          disabled={totalPrice === 0}
-          onClick={handleBookNow}
-          className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full"
-        >
-          Book Now
-        </button>
-      )}
+      {/* Action Buttons */}
+      <button
+        onClick={handleBooking}
+        className="bg-[#FF7820] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg mb-4 w-full disabled:opacity-50"
+        disabled={
+          isCalculating ||
+          calculatedTotal === 0 ||
+          !acceptTerms ||
+          isLoading
+        }
+      >
+        {getButtonText()}
+      </button>
 
+      {/* Security Badge */}
       <div className="flex items-center justify-center border rounded-lg p-3 text-sm text-green-600">
         <ShieldCheck className="w-4 h-4 mr-2" />
         100% secure payment&nbsp;—&nbsp;Trusted by 5Lakh+ guests

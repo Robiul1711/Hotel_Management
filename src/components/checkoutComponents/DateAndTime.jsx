@@ -113,7 +113,7 @@ const CalendarGrid = ({ month, selectedRange, onSelect, pricesData }) => {
   );
 };
 
-export default function DateRangePicker({ CalendarData }) {
+export default function DateAndTime({ CalendarData }) {
   const { setBookingDate, setTotalBookingPrice } = useData();
   
   const [open, setOpen] = useState(false);
