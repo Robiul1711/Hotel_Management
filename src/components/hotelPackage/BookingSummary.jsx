@@ -13,14 +13,12 @@ import {
 const BookingSummary = ({ villa }) => {
     const navigate = useNavigate();
 
-    console.log(villa?.booking_option)
-
     return (
         <div className='bg-white shadow rounded-xl relative  md:pb-0 z-[9999] border'>
             {/* <p className="py-5 bg-[#fff8db] px-2 lg:text-[24px]">Booking Summary</p> */}
             <div className="p-4 ">
                 <div className="flex justify-between">
-                    <p className="font-semibold text-xl xlg:text-3xl">Starting ₹ {villa?.price_a_night} / Night</p>
+                    <p className="font-semibold text-xl xlg:text-3xl">Starting ₹ {villa?.prices?.villa_price} / Night</p>
                 </div>
                 {/* zoho form  */}
                 {/* <Dialog>
@@ -48,12 +46,13 @@ const BookingSummary = ({ villa }) => {
 
             {/* Desktop Button (hidden on mobile) */}
             <div className=" w-10/12 mx-auto my-5">
+            {console.log(villa)}
                 <button
-                    onClick={() => navigate(`/villa-checkout/${villa?.id}`, { state: { from: 'villa' } })}
+                    onClick={() => navigate(`/villa-checkout/${villa?.specificVilla?.id}`, { state: { from: 'villa' } })}
                     className={`px-4 py-4 w-full rounded-full text-lg bg-primary text-white`}
                 >
                     {
-                        villa?.booking_option === "reserve_btn" ? " Reserve Now" : "Book Now"
+                        villa?.specificVilla?.booking_option === "reserve_btn" ? " Reserve Now" : "Book Now"
                     }
                 </button>
 

@@ -80,8 +80,6 @@ const Checkout = () => {
     }
   })
 
-  console.log(villa)
-
 
   const { mealPackages } = useMealPackageHook();
   const { addOnData } = useAddOnHooks();

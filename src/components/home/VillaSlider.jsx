@@ -11,9 +11,10 @@ import useData from '@/hooks/useData';
 import { LocationIcons } from '@/lib/CustomIcons';
 
 
+
 const VillaCard = ({ data }) => {
 
-
+console.log(data);
 
 
     return (
@@ -42,7 +43,7 @@ const VillaCard = ({ data }) => {
                             <span className=' inline-flex'><LocationIcons /></span> {data?.location}
                         </div>
                         <p className="font-normal text-sm sm:text-base">
-                            Starting form ₹<span className=' font-semibold'>{data?.price_a_night}</span>
+                            Starting form ₹ <span className=' font-semibold'>{data?.villa_price}</span>
                         </p>
                     </div>
                     <div className="flex-shrink-0">
@@ -61,6 +62,7 @@ const VillaCard = ({ data }) => {
 
 
 const VillaSlider = ({ cardNo = 3.5, data }) => {
+    console.log(data);
 
     const { villaData } = useData();
 
