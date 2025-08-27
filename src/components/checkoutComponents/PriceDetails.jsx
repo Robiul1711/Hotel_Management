@@ -711,6 +711,7 @@ const PriceDetails = ({
       }
     },
     onSuccess: (data) => {
+      console.log("Total calculated:", data.total_payable);
       setCalculatedTotal(data.total_payable || calculateTotalManually());
     },
     onError: (error) => {
@@ -720,7 +721,7 @@ const PriceDetails = ({
       toast.error("Using fallback calculation");
     },
   });
-
+console.log(villa?.specificVilla);
   // Calculate total whenever relevant data changes
   useEffect(() => {
     if (initialAdults > 0) {
@@ -730,6 +731,9 @@ const PriceDetails = ({
           villa?.prices?.villa_price ||
           villa?.specificVilla?.price_a_night ||
           0,
+          extra_adult_price: villa?.specificVilla?.extra_adult_price,
+          extra_child_price: villa?.specificVilla?.extra_child_price,
+
         meal_adult_price:
           parseFloat(selectedMealPackages?.[0]?.adult_price) || 0,
         meal_child_price:
@@ -739,8 +743,8 @@ const PriceDetails = ({
           : [addOnPrice].filter(Boolean),
         total_adult_guest: initialAdults,
         total_child_guest: initialChildren,
+        minimum_no_guest_adult: villa?.specificVilla?.total_guest,
       };
-
       calculateTotal(payload);
     }
   }, [
