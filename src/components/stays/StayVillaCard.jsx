@@ -4,6 +4,7 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
 const StayVillaCard = ({ data }) => {
+
     return (
         <Link
             to={`/villa-package-details/${data?.id}`}
@@ -63,7 +64,7 @@ const StayVillaCard = ({ data }) => {
                             <StarIcons /> {data?.rating_summary?.average}
                         </p>
                         <div className="flex flex-col justify-end items-end space-y-2">
-                            <p className="text-lg lg:text-xl mb-0 font-semibold">₹ {data?.price_a_night}</p>
+                            <p className="text-lg lg:text-xl mb-0 font-semibold">₹ {data?.villa_price}</p>
                             {/* <button className="border py-1 px-4 rounded-3xl text-secondary border-secondary text-xs  sm:text-base sm:px-6 sm:py-2">
                                 For 1 Room
                             </button> */}

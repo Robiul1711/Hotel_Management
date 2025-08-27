@@ -5,7 +5,7 @@ const Overview = ({ villa }) => {
   const [showFull, setShowFull] = useState(false);
 
   // Sanitize full HTML content from backend
-  const sanitizedFullDesc = villa?.long_des ? DOMPurify.sanitize(villa.long_des) : '';
+  const sanitizedFullDesc = villa?.specificVilla?.long_des ? DOMPurify.sanitize(villa?.specificVilla.long_des) : '';
 
   // For preview, strip tags and show first 250 chars of plain text + "..."
   const stripHtml = (html) => {

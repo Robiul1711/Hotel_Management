@@ -6,7 +6,6 @@ import { HotelTabsSection, VillaTabsSection } from '@/lib/Database';
 import { Link } from 'react-router-dom';
 
 const VillaTabSection = ({ villa }) => {
-    console.log(villa)
     return (
         <div>
             <TabSection tabs={VillaTabsSection} />

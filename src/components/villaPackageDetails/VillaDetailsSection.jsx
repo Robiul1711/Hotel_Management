@@ -8,8 +8,8 @@ const VillaDetailsSection = ({ villa }) => {
         <div className='flex flex-col lg:flex-row gap-5 relative'>
             {/* Left Section */}
             <div className="w-full lg:w-[70%] space-y-8">
-                <VillaTabSection villa={villa} />
-                <Overview villa={villa} />
+                <VillaTabSection villa={villa?.specificVilla} />
+                <Overview villa={villa?.specificVilla} />
             </div>
 
             {/* Desktop Booking Summary */}

@@ -31,7 +31,7 @@ const VillaPackageDetails = () => {
         queryKey: ['villa', id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/single/villa/${id}`);
-            return res?.data?.specificVilla;
+            return res?.data;
         }
     })
 
@@ -48,36 +48,36 @@ const VillaPackageDetails = () => {
                     <div className=" block ">
 
                         <div className=" flex flex-col items-start">
-                            <p className=" md:text-[32px] font-semibold text-primary mb-0">{villa?.villa_name}</p>
+                            <p className=" md:text-[32px] font-semibold text-primary mb-0">{villa?.specificVilla?.villa_name}</p>
                             <p className="flex items-center gap-2 text-sm md:text-[20px] text-gray-600 mb-6">
 
                                 <CiLocationOn />
-                                {villa?.location}
+                                {villa?.specificVilla?.location}
                             </p>
-                            <p className="text-sm md:text-xl">{villa?.short_des}</p>
+                            <p className="text-sm md:text-xl">{villa?.specificVilla?.short_des}</p>
                         </div>
                         {/* <SearchTab/> */}
                     </div>
                 </div>
 
-                <VillaPackageGallery thumbnail={villa?.thumbnail} media={villa?.media} />
+                <VillaPackageGallery thumbnail={villa?.specificVilla?.thumbnail} media={villa?.specificVilla?.media} />
             </div>
             <CommonPageWrapper>
 
                 <VillaDetailsSection villa={villa} />
 
 
-                <SpaceSection villa={villa} />
+                <SpaceSection villa={villa?.specificVilla} />
                 <div className="flex items-center">
-                    <Aminities amenityData={villa?.amenities} data={villa} />
+                    <Aminities amenityData={villa?.specificVilla?.amenities} data={villa?.specificVilla} />
                     <img src={element} alt="" className='hidden lg:block' />
                 </div>
-                <ExperienceSection villaExperience={villa?.experiences} />
-                <RealMomentSection realMoment={villa?.real_moments} />
+                <ExperienceSection villaExperience={villa?.specificVilla?.experiences} />
+                <RealMomentSection realMoment={villa?.specificVilla?.real_moments} />
                 {/* <VillaFacilities /> */}
 
                 {/* <NearbyHotels /> */}
-                <HotelPolicies villa={villa} />
+                <HotelPolicies villa={villa?.specificVilla} />
                 <SectionBanner />
             </CommonPageWrapper>
         </>

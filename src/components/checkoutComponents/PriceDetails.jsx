@@ -777,6 +777,14 @@ const PriceDetails = ({
 
   // Submit reserve mutation
   const { user } = useAuth();
+// Reset form state helper
+const resetForm = () => {
+  setInitialAdults(0);
+  setInitialChildren(0);
+  setCalculatedTotal(0);
+  setAcceptTerms(false);
+  setInitialGuestDropdownOpen(false);
+};
 
   // Prepare reservation payload
   const reservationPayload = {
@@ -785,7 +793,7 @@ const PriceDetails = ({
     meal_pack_id: selectedMealPackages?.[0]?.id,
     addon_id: selectedAddOnId || villa?.specificVilla?.addons?.map((addon) => addon.id),
     guest_name: user?.name,
-    contact: user?.phone || "01778456546",
+    contact: user?.phone || "",
     email: user?.email,
     adult_guest: (initialAdults || 0).toString(),
     child_guest: (initialChildren || 0).toString(),
@@ -795,29 +803,44 @@ const PriceDetails = ({
   };
 
   // Reserve mutation
-  const reserveMutation = useMutation({
-    mutationFn: async () => {
-      const res = await axiosPublic.post("/reserve", reservationPayload);
-      return res.data;
-    },
-    onMutate: () => {
-      const toastId = showLoadingToast("Reserving the villa...");
-      return { toastId };
-    },
-    onSuccess: (data, _variables, context) => {
-      updateToastSuccess(
-        context.toastId,
-        data?.message || "Reservation successful!"
-      );
-    },
-    onError: (error, _variables, context) => {
-      console.log(error);
-      const errorMessage =
-        error.response?.data?.message ||
-        "Something went wrong, try again later!!";
-      updateToastError(context.toastId, errorMessage);
-    },
-  });
+const reserveMutation = useMutation({
+  mutationFn: async () => {
+    const res = await axiosPublic.post("/reserve", reservationPayload);
+    return res.data;
+  },
+  onMutate: () => {
+    const toastId = showLoadingToast("Reserving the villa...");
+    return { toastId };
+  },
+  onSuccess: (data, _variables, context) => {
+    updateToastSuccess(
+      context.toastId,
+      data?.message || "Reservation successful!"
+    );
+    // ✅ Reset mutation + form after success
+    setTimeout(() => {
+      reserveMutation.reset();
+      resetForm();
+    }, 1000);
+  },
+  onError: (error, _variables, context) => {
+    const errorMessage =
+      error.response?.data?.message ||
+      "Something went wrong, try again later!!";
+
+    updateToastError(context.toastId, errorMessage);
+
+    // ✅ Handle validation errors
+    const fieldErrors = error.response?.data?.errors;
+    if (fieldErrors) {
+      const combined = Object.values(fieldErrors)
+        .map(([msg]) => msg)
+        .join("\n");
+
+      updateToastError(context.toastId, combined);
+    }
+  },
+});
 
   // Prepare Book Now payload
   const BookNowPayload = {
@@ -833,7 +856,6 @@ const PriceDetails = ({
     checkoutdate: bookingDate?.checkOut,
     amount: calculatedTotal.toFixed(2),
   };
-console.log(BookNowPayload)
   // Booknow mutation
   const BooknowMutation = useMutation({
     mutationFn: async () => {
@@ -857,12 +879,22 @@ console.log(BookNowPayload)
       }
     },
     onError: (error, _variables, context) => {
-      console.log(error);
-      const errorMessage =
-        error.response?.data?.message ||
-        "Something went wrong, try again later!!";
-      updateToastError(context.toastId, errorMessage);
-    },
+    const errorMessage =
+      error.response?.data?.message ||
+      "Something went wrong, try again later!!";
+
+    updateToastError(context.toastId, errorMessage);
+
+    // ✅ Handle validation errors
+    const fieldErrors = error.response?.data?.errors;
+    if (fieldErrors) {
+      const combined = Object.values(fieldErrors)
+        .map(([msg]) => msg)
+        .join("\n");
+
+      updateToastError(context.toastId, combined);
+    }
+  },
   });
 
   // Handle reservation/booking based on booking option
