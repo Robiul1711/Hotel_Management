@@ -20,7 +20,7 @@ const Footer = () => {
 
 
       <div className="flex flex-col md:flex-row pb-14 md:pb-0 items-center justify-center md:justify-between ">
-        <p className='font-semibold'>2023. All right reserved.</p>
+        <p className='font-semibold'>{new Date().getFullYear()} All right reserved.</p>
         <div className="">
           <ul className='text-black flex justify-between gap-4 lg:gap-12'>
             {/* <NavLink className={navLinkClass} to={'/'}> <span className="underline text-xs md:text-lg">Privacy Policy</span> </NavLink> */}

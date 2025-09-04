@@ -1121,10 +1121,10 @@ const reserveMutation = useMutation({
       </button>
 
       {/* Security Badge */}
-      <div className="flex items-center justify-center border rounded-lg p-3 text-sm text-green-600">
+      {/* <div className="flex items-center justify-center border rounded-lg p-3 text-sm text-green-600">
         <ShieldCheck className="w-4 h-4 mr-2" />
         100% secure payment&nbsp;—&nbsp;Trusted by 5Lakh+ guests
-      </div>
+      </div> */}
     </div>
   );
 };

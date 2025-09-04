@@ -93,13 +93,27 @@ const Aminities = ({ amenityData, data }) => {
 
       <div className="flex gap-4">
         {/* <MenuModal pdfUrl={data?.menu} /> */}
+       
         {
           data?.menu ? (
-            <Link to={data?.menu ? data?.menu : "#"} target="_blank">
+            <div className="flex items-center gap-4">
+            <Link to={data?.menu ? data?.menu : "#"} target="_blank" >
               <button className="bg-transparent border-[1px] border-primary  text-primary md:px-16 py-2 px-4 md:py-3 rounded-full  transition-all mt-10">
-                View Menu
+                View Menu (veg)
+                 {console.log(data)}
               </button>
+
             </Link>
+            <Link to={data?.menu_pdf_non_veg ? data?.menu_pdf_non_veg : "#"} target="_blank" className="flex items-center gap-4">
+              <button className="bg-transparent border-[1px] border-primary  text-primary md:px-16 py-2 px-4 md:py-3 rounded-full  transition-all mt-10">
+                View Menu (non-veg)
+                 {console.log(data)}
+              </button>
+
+            </Link>
+
+            </div>
+
           ) :
             (
               <button className="bg-transparent border-[1px] border-primary  text-primary md:px-16 py-2 px-4 md:py-3 rounded-full  transition-all mt-10">

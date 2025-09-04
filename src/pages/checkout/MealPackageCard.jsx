@@ -46,7 +46,7 @@ const MealPackageCard = ({ data, isSelected, onToggle }) => {
 
                             <div className="flex gap-4">
 
-                                <Popover>
+                                {/* <Popover>
                                     <PopoverTrigger>
                                         <button
                                             className={`text-secondary border border-secondary px-7 py-2 md:px-6 md:py-2 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition-all`}>
@@ -69,7 +69,7 @@ const MealPackageCard = ({ data, isSelected, onToggle }) => {
                                         }
                                     </PopoverContent>
                                 </Popover>
-
+ */}
 
 
                                 <button
