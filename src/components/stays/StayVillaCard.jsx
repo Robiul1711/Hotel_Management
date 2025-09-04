@@ -35,7 +35,7 @@ const StayVillaCard = ({ data }) => {
                                 <IoLocationOutline />
                                 <span className="truncate">{data?.location}</span>
                             </p>
-
+{console.log(data)}
                             <p className="flex flex-wrap items-center gap-2 text-sm md:text-base mt-2">
                                 <span>Upto {data?.total_guest} Guests</span>
                                 <SmallStarIcons />

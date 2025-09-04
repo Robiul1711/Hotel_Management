@@ -9,8 +9,8 @@ import toast from 'react-hot-toast';
 const FilterBar = () => {
 
     let [quantity, setQuantity] = useState(0);
-    const [minPrice, setMinPrice] = useState(1000);
-    const [maxPrice, setMaxPrice] = useState(500000);
+    const [minPrice, setMinPrice] = useState("");
+    const [maxPrice, setMaxPrice] = useState("");
     const [showAll, setShowAll] = useState(false);
     const [selectedAmenities, setSelectedAmenities] = useState([]);
 
@@ -32,7 +32,7 @@ const FilterBar = () => {
     const handleSearch = async () => {
         let payload = {};
         isEnabled ? payload = { one_rupe: 1 } :
-            payload = { minPrice, maxPrice, amenity_id: selectedAmenities };
+            payload = { minPrice, maxPrice, amenity_id: selectedAmenities , room_count:quantity};
         console.log(payload)
 
         const toastId = toast.loading('Searching...');
