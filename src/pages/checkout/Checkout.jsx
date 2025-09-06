@@ -104,7 +104,6 @@ const Checkout = () => {
               {/* <BookingCancellationPolicy /> */}
 
               {/* ======================Meal package=================================== */}
-
               {
                 villa?.specificVilla?.meal_packages?.map(item => <MealPackageCard
                   key={item.id}

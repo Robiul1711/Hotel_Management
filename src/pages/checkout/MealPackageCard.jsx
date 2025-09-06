@@ -9,18 +9,18 @@ import {
 } from "@/components/ui/popover"
 
 const MealPackageCard = ({ data, isSelected, onToggle }) => {
-
+const VITE_IMG_API_URL = import.meta.env.VITE_IMG_API_URL
 
     return (
         <div
             className="block border-2 border-gray-200 rounded-xl bg-gray-100 overflow-hidden"
         >
-            <div className="flex flex-col md:flex-row bg-white w-full rounded-xl items-center gap-10">
+            <div className="flex flex-col md:flex-row bg-white w-full rounded-xl items-center gap-5">
                 {/* Image Section */}
-                <div className=" w-full md:w-[30%]">
+                <div className=" w-full md:w-[50%]  p-4">
                     <img
-                        src={data?.photo_url}
-                        className=" w-full h-full object-cover"
+                        src={`https://dashboard.hich.co/uploads/${data?.photo}`}
+                        className=" w-full h-full object-cover rounded"
                         alt={data?.title || 'Accommodation'}
                     />
 
