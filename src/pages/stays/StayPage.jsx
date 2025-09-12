@@ -79,7 +79,7 @@ const StayPage = () => {
           </div>
 
           {/* Mobile Filter Button */}
-          <div className="xmd:hidden py-5 flex justify-end">
+          <div className="xmd:hidden py-5 flex justify-end mt-24 sm:mt-5 xmd:mt-0">
             <button
               onClick={() => setIsFilterOpen(true)}
               className="px-4 py-2 bg-primary text-white rounded-lg shadow-md hover:bg-orange-400 transition"

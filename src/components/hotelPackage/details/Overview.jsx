@@ -4,9 +4,12 @@ import DOMPurify from 'dompurify';
 const Overview = ({ villa }) => {
   const [showFull, setShowFull] = useState(false);
 
-  // Sanitize full HTML content from backend
-  const sanitizedFullDesc = villa?.specificVilla?.long_des ? DOMPurify.sanitize(villa?.specificVilla.long_des) : '';
-
+  // Get the description text - prioritize specificVilla data if available
+  const description = villa?.specificVilla?.long_des || villa?.long_des || '';
+  
+  // Sanitize HTML content
+  const sanitizedDesc = DOMPurify.sanitize(description);
+  
   // For preview, strip tags and show first 250 chars of plain text + "..."
   const stripHtml = (html) => {
     const tmp = document.createElement('div');
@@ -14,33 +17,34 @@ const Overview = ({ villa }) => {
     return tmp.textContent || tmp.innerText || '';
   };
 
-  const previewText = villa?.long_des
-    ? stripHtml(villa.long_des).slice(0, 250) + '...'
-    : '';
+  const plainText = stripHtml(description);
+  const previewText = plainText.length > 250 
+    ? plainText.slice(0, 250) + '...' 
+    : plainText;
 
   return (
     <div id="description" className="space-y-5 text-[#495560]">
       <p className="text-[24px] text-black">Description</p>
       <div className="hidden md:block">
-        {villa?.long_des?.length > 250 ? (
+        {plainText.length > 250 ? (
           <>
-            <p
-              className="xlg:text-xl mb-0"
+            <div
+              className=" mb-0"
               dangerouslySetInnerHTML={{
-                __html: showFull ? sanitizedFullDesc : previewText,
+                __html: showFull ? sanitizedDesc : previewText,
               }}
             />
             <button
               onClick={() => setShowFull((prev) => !prev)}
-              className="text-blue-500 font-medium"
+              className="text-blue-500 font-medium hover:underline mt-2"
             >
               {showFull ? 'See Less' : 'See More'}
             </button>
           </>
         ) : (
-          <p
+          <div
             className="xlg:text-xl"
-            dangerouslySetInnerHTML={{ __html: sanitizedFullDesc }}
+            dangerouslySetInnerHTML={{ __html: sanitizedDesc }}
           />
         )}
       </div>

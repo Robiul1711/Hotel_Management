@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/popover"
 
 const MealPackageCard = ({ data, isSelected, onToggle }) => {
-const VITE_IMG_API_URL = import.meta.env.VITE_IMG_API_URL
+
 
     return (
         <div

@@ -73,7 +73,7 @@ const HotelPolicies = ({ villa }) => {
                         <PopoverContent className="w-screen max-w-lg">
                             {
                                 villa?.refunc_policy ? (
-                                    <p className="text-sm text-gray-800">{villa?.refunc_policy}</p>
+                                    <p className="text-sm text-gray-800" dangerouslySetInnerHTML={{ __html: villa?.refunc_policy }}></p>
                                 ) : (
                                     <p className="text-sm text-gray-800">Refund policy not available</p>
                                 )
@@ -90,7 +90,7 @@ const HotelPolicies = ({ villa }) => {
                         <PopoverContent className="w-screen max-w-lg">
                             {
                                 villa?.property_policy ? (
-                                    <p className="text-sm text-gray-800">{villa?.property_policy}</p>
+                                    <p className="text-sm text-gray-800" dangerouslySetInnerHTML={{ __html: villa?.property_policy }}></p>
                                 ) : (
                                     <p className="text-sm text-gray-800">Home rules and policy not available</p>
                                 )
