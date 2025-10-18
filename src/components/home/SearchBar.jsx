@@ -19,7 +19,7 @@ import {
 import dayjs from "dayjs";
 import useAuth from "@/hooks/useAuth";
 
-const popularDestinations = ["Lonavala", "Karjat", "Alibaug", "Palghar", "Goa","Panvel", "Khopoli", "Matheran"];
+const popularDestinations = ["Lonavala", "Karjat", "Alibaug", "Palghar", "Goa","Panvel", "Khopoli", "Matheran","Igatpuri"];
 
 const SearchBar = () => {
   const { allFilters, setAllFilters, searchFunction } = useAuth();
