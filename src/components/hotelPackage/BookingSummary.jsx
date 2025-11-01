@@ -46,10 +46,10 @@ const BookingSummary = ({ villa }) => {
 
             {/* Desktop Button (hidden on mobile) */}
             <div className=" w-10/12 mx-auto my-5">
-            {console.log(villa)}
+            {/* {console.log(villa)} */}
                 <button
                     onClick={() => navigate(`/villa-checkout/${villa?.specificVilla?.id}`, { state: { from: 'villa' } })}
-                    className={`px-4 py-4 w-full rounded-full text-lg bg-primary text-white`}
+                    className={`px-4 py-3 sm:py-4 w-full rounded-full text-lg bg-primary text-white`}
                 >
                     {
                         villa?.specificVilla?.booking_option === "reserve_btn" ? " Reserve Now" : "Book Now"

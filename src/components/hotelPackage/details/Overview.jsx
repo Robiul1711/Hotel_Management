@@ -25,7 +25,7 @@ const Overview = ({ villa }) => {
   return (
     <div id="description" className="space-y-5 text-[#495560]">
       <p className="text-[24px] text-black">Description</p>
-      <div className="hidden md:block">
+      <div className="">
         {plainText.length > 250 ? (
           <>
             <div
